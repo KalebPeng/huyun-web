@@ -3,20 +3,21 @@
     class="group flex h-full flex-col overflow-hidden rounded-lg border border-slate-200 bg-white transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(15,23,42,0.12)]"
   >
     <div class="relative h-56 overflow-hidden bg-slate-100">
-      <img
+      <NuxtImg
         v-if="!imageFailed"
         :src="product.coverImage"
         :alt="`${product.name} 封面图`"
         class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
         loading="lazy"
+        sizes="100vw md:50vw xl:33vw"
         @error="imageFailed = true"
-      >
+      />
       <div
         v-else
         class="flex h-full w-full items-center justify-center bg-[linear-gradient(135deg,#dbe4f0,#f4f4f0)] text-sm font-medium tracking-[0.18em] text-slate-500"
         :aria-label="`${product.name} 图片占位`"
       >
-        产品图占位
+        产品图片占位
       </div>
 
       <div class="absolute left-4 top-4 flex flex-wrap gap-2">

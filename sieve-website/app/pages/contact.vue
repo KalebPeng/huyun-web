@@ -84,6 +84,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
+import { usePageSeoMeta } from '~/composables/useSeoMeta'
 import InquiryForm from '~/components/forms/InquiryForm.vue'
 
 interface ContactItem {
@@ -137,35 +138,17 @@ const resolveQueryValue = (value: unknown) => {
 
 const prefilledProductType = computed(() => {
   const slug = resolveQueryValue(route.query.product)
-
-  if (!slug) {
-    return ''
-  }
-
-  return getProductBySlug(slug)?.name ?? slug
+  return slug ? getProductBySlug(slug)?.name ?? slug : ''
 })
 
 const prefilledUsage = computed(() => {
   const slug = resolveQueryValue(route.query.scene)
-
-  if (!slug) {
-    return ''
-  }
-
-  return getApplicationBySlug(slug)?.name ?? '其他'
+  return slug ? getApplicationBySlug(slug)?.name ?? '其他' : ''
 })
 
-useHead({
-  title: '联系我们 / 发起询价 - 筛网厂',
-  meta: [
-    {
-      name: 'description',
-      content:
-        '通过电话、微信、邮箱或在线表单联系我们，提交筛网产品需求、应用场景和规格信息，快速获取报价与选型建议。'
-    }
-  ]
+usePageSeoMeta({
+  title: '联系我们 / 发起询价',
+  description:
+    '通过电话、微信、邮箱或在线表单联系我们，提交筛网产品需求、应用场景和规格信息，快速获取报价与选型建议。'
 })
 </script>
-
-<style scoped>
-</style>

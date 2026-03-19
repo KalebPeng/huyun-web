@@ -97,6 +97,7 @@
 <script setup lang="ts">
 import { computed, watch } from 'vue'
 
+import { usePageSeoMeta } from '~/composables/useSeoMeta'
 import AppButton from '~/components/common/AppButton.vue'
 import ProductCard from '~/components/product/ProductCard.vue'
 
@@ -120,47 +121,26 @@ const categoryTabs: CategoryTab[] = [
   { label: '过滤网片', value: 'filter-disc' }
 ]
 
-const validCategoryValues = new Set<CategoryKey>(
-  categoryTabs.map((tab) => tab.value)
-)
+const validCategoryValues = new Set<CategoryKey>(categoryTabs.map((tab) => tab.value))
 
 const normalizeCategory = (value: unknown): CategoryKey => {
   if (typeof value !== 'string') {
     return 'all'
   }
 
-  return validCategoryValues.has(value as CategoryKey)
-    ? (value as CategoryKey)
-    : 'all'
+  return validCategoryValues.has(value as CategoryKey) ? (value as CategoryKey) : 'all'
 }
 
 const resolveProductCategory = (slug: string): CategoryKey => {
-  if (slug === 'stainless-woven-mesh') {
-    return 'woven'
-  }
-
-  if (slug === 'welded-wire-mesh') {
-    return 'welded'
-  }
-
-  if (slug === 'crimped-wire-mesh') {
-    return 'crimped'
-  }
-
-  if (slug === 'mine-screen-mesh') {
-    return 'mining'
-  }
-
-  if (slug === 'filter-disc') {
-    return 'filter-disc'
-  }
-
+  if (slug === 'stainless-woven-mesh') return 'woven'
+  if (slug === 'welded-wire-mesh') return 'welded'
+  if (slug === 'crimped-wire-mesh') return 'crimped'
+  if (slug === 'mine-screen-mesh') return 'mining'
+  if (slug === 'filter-disc') return 'filter-disc'
   return 'all'
 }
 
-const activeCategory = computed(() =>
-  normalizeCategory(route.query.category)
-)
+const activeCategory = computed(() => normalizeCategory(route.query.category))
 
 const filteredProducts = computed(() => {
   if (activeCategory.value === 'all') {
@@ -181,9 +161,7 @@ const updateCategoryQuery = async (category: CategoryKey) => {
     nextQuery.category = category
   }
 
-  await router.replace({
-    query: nextQuery
-  })
+  await router.replace({ query: nextQuery })
 }
 
 const handleCategoryChange = (category: CategoryKey) => {
@@ -209,17 +187,9 @@ watch(
   { immediate: true }
 )
 
-useHead({
-  title: '产品中心 - 筛网厂',
-  meta: [
-    {
-      name: 'description',
-      content:
-        '产品中心汇集不锈钢编织网、电焊网、轧花网、矿筛网与过滤网片，支持多规格选型与定制加工。'
-    }
-  ]
+usePageSeoMeta({
+  title: '产品中心',
+  description:
+    '产品中心汇集不锈钢编织网、电焊网、轧花网、矿筛网与过滤网片，支持多规格选型与定制加工。'
 })
 </script>
-
-<style scoped>
-</style>

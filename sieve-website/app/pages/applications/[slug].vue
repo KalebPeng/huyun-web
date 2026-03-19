@@ -201,11 +201,13 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
+import { usePageSeoMeta } from '~/composables/useSeoMeta'
 import AppButton from '~/components/common/AppButton.vue'
 import ProductCard from '~/components/product/ProductCard.vue'
 import type { ApplicationScene } from '~~/types'
 
 const route = useRoute()
+const runtimeConfig = useRuntimeConfig()
 const { getApplicationBySlug } = useApplications()
 const { getProductsByIds } = useProducts()
 
@@ -227,17 +229,18 @@ const scenePainPointMap: Record<string, string[]> = {
   ]
 }
 
+const toAbsoluteUrl = (value: string) => {
+  const siteUrl = runtimeConfig.public.siteUrl.replace(/\/+$/, '')
+  return value.startsWith('http') ? value : `${siteUrl}${value.startsWith('/') ? value : `/${value}`}`
+}
+
 const slug = computed(() => {
   const value = route.params.slug
   return Array.isArray(value) ? value[0] : value
 })
 
 const application = computed<ApplicationScene | undefined>(() => {
-  if (!slug.value) {
-    return undefined
-  }
-
-  return getApplicationBySlug(slug.value)
+  return slug.value ? getApplicationBySlug(slug.value) : undefined
 })
 
 if (!application.value) {
@@ -260,20 +263,47 @@ const recommendedProducts = computed(() => {
   return getProductsByIds(application.value.recommendedProducts)
 })
 
-useHead(() => ({
-  title: application.value
-    ? `${application.value.name} - 推荐产品与选型建议 | 筛网厂`
-    : '应用场景未找到 | 筛网厂',
-  meta: [
-    {
-      name: 'description',
-      content:
-        application.value?.seoDescription ??
-        '当前应用场景不存在或已下线，可返回应用场景列表查看更多筛网解决方案。'
+const articleJsonLd = computed(() => {
+  if (!application.value) {
+    return null
+  }
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: application.value.name,
+    description: application.value.seoDescription || application.value.description,
+    image: application.value.coverImage ? [toAbsoluteUrl(application.value.coverImage)] : undefined,
+    mainEntityOfPage: `${runtimeConfig.public.siteUrl}/applications/${application.value.slug}`,
+    articleSection: '应用场景',
+    author: {
+      '@type': 'Organization',
+      name: '筛网厂'
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: '筛网厂'
     }
-  ]
+  }
+})
+
+usePageSeoMeta({
+  title: application.value ? `${application.value.name} - 推荐产品与选型建议` : '应用场景未找到',
+  description:
+    application.value?.seoDescription ||
+    '当前应用场景不存在或已下线，可返回应用场景列表查看更多筛网解决方案。',
+  image: application.value?.coverImage
+})
+
+useHead(() => ({
+  script: articleJsonLd.value
+    ? [
+        {
+          key: 'application-jsonld',
+          type: 'application/ld+json',
+          textContent: JSON.stringify(articleJsonLd.value)
+        }
+      ]
+    : []
 }))
 </script>
-
-<style scoped>
-</style>

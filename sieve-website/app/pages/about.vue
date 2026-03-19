@@ -229,6 +229,7 @@
 </template>
 
 <script setup lang="ts">
+import { usePageSeoMeta } from '~/composables/useSeoMeta'
 import AppButton from '~/components/common/AppButton.vue'
 
 interface CompanyStat {
@@ -258,7 +259,7 @@ const companyParagraphs: string[] = [
   '筛网厂成立于 2004 年，总部与生产基地位于河北安平，长期专注于金属筛网、过滤网片、矿筛网和定制异形件的研发与生产。',
   '公司配备多条编织、排焊、冲片、包边与整形产线，覆盖常规批量生产和非标定制加工，能够兼顾交付效率与规格稳定性。',
   '服务客户涵盖矿山筛分、粮食清理、工业过滤、养殖防护、建筑配套及设备制造等行业，既做标准件，也承接来图来样项目。',
-  '我们坚持把选型、制造、质检和交付做扎实，少整虚的，靠稳定品质、清晰沟通和长期合作把客户留下来。'
+  '我们坚持把选型、制造、质检和交付做扎实，靠稳定品质、清晰沟通和长期合作把客户留下来。'
 ]
 
 const companyStats: CompanyStat[] = [
@@ -310,21 +311,13 @@ const qualityPromises: QualityPromise[] = [
   {
     icon: '☎',
     title: '售后服务',
-    description: '提供选型沟通、样品确认、使用建议和售后跟进，发现问题及时协同处理，不打太极。'
+    description: '提供选型沟通、样品确认、使用建议和售后跟进，发现问题及时协同处理。'
   }
 ]
 
-useHead({
-  title: '关于我们 - 筛网厂',
-  meta: [
-    {
-      name: 'description',
-      content:
-        '了解筛网厂的发展历程、生产能力、核心产品方向、工厂设备与品质承诺，查看企业实力与服务能力。'
-    }
-  ]
+usePageSeoMeta({
+  title: '关于我们',
+  description:
+    '了解筛网厂的发展历程、生产能力、核心产品方向、工厂设备与品质承诺，查看企业实力与服务能力。'
 })
 </script>
-
-<style scoped>
-</style>

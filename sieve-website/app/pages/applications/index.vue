@@ -84,20 +84,16 @@
 </template>
 
 <script setup lang="ts">
+import { usePageSeoMeta } from '~/composables/useSeoMeta'
 import AppButton from '~/components/common/AppButton.vue'
 import Badge from '~/components/common/Badge.vue'
 
 const { applications } = useApplications()
 
-useHead({
-  title: '应用场景 - 筛网厂',
-  meta: [
-    {
-      name: 'description',
-      content:
-        '通过粮食筛分、工业过滤、矿山筛分等业务场景快速查找合适产品，获取筛网选型建议与配套方案。'
-    }
-  ]
+usePageSeoMeta({
+  title: '应用场景',
+  description:
+    '通过粮食筛分、工业过滤、矿山筛分等业务场景快速查找合适产品，获取筛网选型建议与配套方案。'
 })
 </script>
 

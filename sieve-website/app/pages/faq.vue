@@ -115,6 +115,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 
+import { usePageSeoMeta } from '~/composables/useSeoMeta'
 import AppButton from '~/components/common/AppButton.vue'
 import FaqAccordion from '~/components/common/FaqAccordion.vue'
 import type { FAQ } from '~~/types'
@@ -149,30 +150,12 @@ const categoryTabs: CategoryTab[] = [
 ]
 
 const resolveCategory = (faq: FAQ): FaqCategoryKey => {
-  if (faq.id.startsWith('faq-spec-')) {
-    return 'spec'
-  }
-
-  if (faq.id.startsWith('faq-material-')) {
-    return 'material'
-  }
-
-  if (faq.id.startsWith('faq-custom-')) {
-    return 'custom'
-  }
-
-  if (faq.id.startsWith('faq-quote-')) {
-    return 'quote'
-  }
-
-  if (faq.id.startsWith('faq-delivery-')) {
-    return 'delivery'
-  }
-
-  if (faq.id.startsWith('faq-sample-')) {
-    return 'sample'
-  }
-
+  if (faq.id.startsWith('faq-spec-')) return 'spec'
+  if (faq.id.startsWith('faq-material-')) return 'material'
+  if (faq.id.startsWith('faq-custom-')) return 'custom'
+  if (faq.id.startsWith('faq-quote-')) return 'quote'
+  if (faq.id.startsWith('faq-delivery-')) return 'delivery'
+  if (faq.id.startsWith('faq-sample-')) return 'sample'
   return 'all'
 }
 
@@ -201,17 +184,9 @@ const filteredFaqs = computed(() => {
   return faqs.value.filter((faq) => resolveCategory(faq) === activeCategory.value)
 })
 
-useHead({
-  title: '常见问题 - 筛网厂',
-  meta: [
-    {
-      name: 'description',
-      content:
-        '查看产品规格、材质选择、定制加工、报价交期和样品安排等常见问题，快速获取筛网选型与采购答疑。'
-    }
-  ]
+usePageSeoMeta({
+  title: '常见问题',
+  description:
+    '查看产品规格、材质选择、定制加工、报价交期和样品安排等常见问题，快速获取筛网选型与采购答疑。'
 })
 </script>
-
-<style scoped>
-</style>

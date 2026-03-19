@@ -21,13 +21,14 @@
         <div class="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:px-8">
           <div class="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
             <div class="relative aspect-[4/3] bg-slate-100">
-              <img
+              <NuxtImg
                 v-if="!imageFailed"
                 :src="product.coverImage"
                 :alt="`${product.name} 产品主图`"
                 class="h-full w-full object-cover"
+                sizes="100vw lg:50vw"
                 @error="imageFailed = true"
-              >
+              />
               <div
                 v-else
                 class="flex h-full w-full items-end justify-start bg-[linear-gradient(135deg,#dbe4f0,#f4f4f0)] p-6"
@@ -91,7 +92,7 @@
               </AppButton>
 
               <a
-                href="tel:400-XXX-XXXX"
+                href="tel:4001234567"
                 class="inline-flex min-h-12 items-center justify-center rounded-md border border-primary bg-white px-6 text-base font-semibold text-primary transition-colors duration-200 hover:bg-slate-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
                 :aria-label="`联系客服咨询 ${product.name}`"
               >
@@ -269,18 +270,19 @@
                 :aria-label="`查看 ${related.name} 详情`"
               >
                 <div class="aspect-[4/3] bg-[linear-gradient(135deg,#dbe4f0,#f4f4f0)]">
-                  <img
+                  <NuxtImg
                     :src="related.coverImage"
                     :alt="`${related.name} 关联产品图片`"
                     class="h-full w-full object-cover"
                     loading="lazy"
-                  >
+                    sizes="100vw md:50vw xl:25vw"
+                  />
                 </div>
                 <div class="flex flex-1 flex-col p-5">
                   <h3 class="text-lg font-bold text-slate-900 transition-colors group-hover:text-primary">
                     {{ related.name }}
                   </h3>
-                  <p class="mt-3 text-sm leading-7 text-slate-600 summary-clamp">
+                  <p class="summary-clamp mt-3 text-sm leading-7 text-slate-600">
                     {{ related.summary }}
                   </p>
                   <span class="mt-5 text-sm font-semibold text-primary">
@@ -318,6 +320,7 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
 
+import { usePageSeoMeta } from '~/composables/useSeoMeta'
 import AppButton from '~/components/common/AppButton.vue'
 import Badge from '~/components/common/Badge.vue'
 import type { FAQ, Product } from '~~/types'
@@ -333,27 +336,27 @@ interface QuickSpec {
 }
 
 const route = useRoute()
-const { getProductBySlug, getProductById, getProductsByIds, products } = useProducts()
+const runtimeConfig = useRuntimeConfig()
+const { getProductBySlug, getProductsByIds, products } = useProducts()
 const { getApplicationsByIds } = useApplications()
 const { getFaqsByIds, getFaqsByProductId } = useFaq()
 
 const openFaqId = ref<string | null>(null)
 const imageFailed = ref(false)
-
 const advantageIcons = ['01', '02', '03', '04', '05', '06']
+
+const toAbsoluteUrl = (value: string) => {
+  const siteUrl = runtimeConfig.public.siteUrl.replace(/\/+$/, '')
+  return value.startsWith('http') ? value : `${siteUrl}${value.startsWith('/') ? value : `/${value}`}`
+}
 
 const slug = computed(() => {
   const value = route.params.slug
-
   return Array.isArray(value) ? value[0] : value
 })
 
 const product = computed<Product | undefined>(() => {
-  if (!slug.value) {
-    return undefined
-  }
-
-  return getProductBySlug(slug.value)
+  return slug.value ? getProductBySlug(slug.value) : undefined
 })
 
 if (!product.value) {
@@ -448,11 +451,11 @@ const relatedFaqs = computed<FAQ[]>(() => {
     return []
   }
 
-  const byIds = product.value.faqs?.length
+  const selectedFaqs = product.value.faqs?.length
     ? getFaqsByIds(product.value.faqs)
     : getFaqsByProductId(product.value.id)
 
-  return byIds.slice(0, 5)
+  return selectedFaqs.slice(0, 5)
 })
 
 const relatedProducts = computed<Product[]>(() => {
@@ -477,6 +480,34 @@ const relatedProducts = computed<Product[]>(() => {
   return [...preferred, ...fallback].slice(0, 4)
 })
 
+const productJsonLd = computed(() => {
+  if (!product.value) {
+    return null
+  }
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: product.value.name,
+    description: product.value.seoDescription || product.value.description,
+    image: product.value.coverImage ? [toAbsoluteUrl(product.value.coverImage)] : undefined,
+    url: `${runtimeConfig.public.siteUrl}/products/${product.value.slug}`,
+    category: product.value.category,
+    material: product.value.materials.join(' / '),
+    brand: {
+      '@type': 'Brand',
+      name: '筛网厂'
+    },
+    additionalProperty: specificationRows.value
+      .filter((row) => row.value !== '/')
+      .map((row) => ({
+        '@type': 'PropertyValue',
+        name: row.label,
+        value: row.value
+      }))
+  }
+})
+
 const toggleFaq = (faqId: string) => {
   openFaqId.value = openFaqId.value === faqId ? null : faqId
 }
@@ -497,16 +528,24 @@ watch(
   { immediate: true }
 )
 
+usePageSeoMeta({
+  title: product.value ? `${product.value.name} - 规格参数与应用场景` : '产品未找到',
+  description:
+    product.value?.seoDescription ||
+    '当前产品不存在或已下线，可返回产品中心查看更多筛网产品。',
+  image: product.value?.coverImage
+})
+
 useHead(() => ({
-  title: product.value
-    ? `${product.value.name} - 规格参数与应用场景 | 筛网厂`
-    : '产品未找到 | 筛网厂',
-  meta: [
-    {
-      name: 'description',
-      content: product.value?.seoDescription ?? '当前产品不存在或已下线，可返回产品中心查看更多筛网产品。'
-    }
-  ]
+  script: productJsonLd.value
+    ? [
+        {
+          key: 'product-jsonld',
+          type: 'application/ld+json',
+          textContent: JSON.stringify(productJsonLd.value)
+        }
+      ]
+    : []
 }))
 </script>
 

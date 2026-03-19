@@ -68,14 +68,15 @@
             class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm"
           >
             <div class="relative h-52 overflow-hidden">
-              <img
+              <NuxtImg
                 v-if="!imageErrors[item.label]"
                 :src="item.src"
                 :alt="item.label"
                 class="h-full w-full object-cover"
                 loading="lazy"
+                sizes="100vw sm:50vw"
                 @error="markImageError(item.label)"
-              >
+              />
               <div
                 v-else
                 class="flex h-full w-full items-end bg-[linear-gradient(135deg,var(--from),var(--to))] p-5"
