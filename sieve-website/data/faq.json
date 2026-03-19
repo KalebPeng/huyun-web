@@ -1,0 +1,94 @@
+[
+  {
+    "id": "faq-spec-01",
+    "category": "产品规格",
+    "question": "你们可以提供哪些目数和孔径范围？",
+    "answer": "不同产品的规格范围不同，不锈钢编织网和过滤网片可覆盖更细的目数，重型筛网更偏向中大孔径。确定选型前建议提供筛分对象、目标精度和设备尺寸。",
+    "relatedProductIds": ["product-stainless-woven-mesh", "product-filter-disc"]
+  },
+  {
+    "id": "faq-spec-02",
+    "category": "产品规格",
+    "question": "筛网尺寸可以按照设备图纸生产吗？",
+    "answer": "可以。常规卷网、片网和异形件都支持按图加工，建议提供外形尺寸、孔径、丝径、边框和安装方式。",
+    "relatedProductIds": ["product-welded-wire-mesh", "product-crimped-wire-mesh", "product-mine-screen-mesh"]
+  },
+  {
+    "id": "faq-material-01",
+    "category": "材质选择",
+    "question": "304 和 316 不锈钢该怎么选？",
+    "answer": "常规水处理、食品和一般工业环境通常可选 304；如果介质腐蚀性更强、含氯环境更多或对耐腐蚀要求更高，优先考虑 316 或 316L。",
+    "relatedProductIds": ["product-stainless-woven-mesh", "product-filter-disc"],
+    "relatedApplicationIds": ["app-industrial-filtration"]
+  },
+  {
+    "id": "faq-material-02",
+    "category": "材质选择",
+    "question": "粮食筛分和矿山筛分的材质选择有什么区别？",
+    "answer": "粮食筛分更关注卫生、平整度和防锈能力；矿山筛分则更看重耐磨性和抗冲击能力，常选高碳钢、65Mn 或高锰钢。",
+    "relatedProductIds": ["product-crimped-wire-mesh", "product-mine-screen-mesh"],
+    "relatedApplicationIds": ["app-grain-screening", "app-mining-screening"]
+  },
+  {
+    "id": "faq-custom-01",
+    "category": "定制问题",
+    "question": "是否支持包边、冲片和多层复合加工？",
+    "answer": "支持。过滤网片、不锈钢网裁片和部分异形件都可以按需求进行包边、点焊、冲片和多层复合加工。",
+    "relatedProductIds": ["product-stainless-woven-mesh", "product-filter-disc"],
+    "relatedApplicationIds": ["app-industrial-filtration"]
+  },
+  {
+    "id": "faq-custom-02",
+    "category": "定制问题",
+    "question": "矿筛网能否根据振动筛设备结构定制？",
+    "answer": "可以。请提供设备型号、筛板尺寸、张紧方式和工况说明，我们会根据负载和磨损情况建议结构和材质。",
+    "relatedProductIds": ["product-mine-screen-mesh"],
+    "relatedApplicationIds": ["app-mining-screening"]
+  },
+  {
+    "id": "faq-quote-01",
+    "category": "报价问题",
+    "question": "询价时需要提供哪些信息？",
+    "answer": "至少需要产品类型、材质、孔径或目数、丝径、尺寸和数量。若有图纸、照片或应用场景说明，报价会更准确。",
+    "relatedProductIds": ["product-welded-wire-mesh", "product-stainless-woven-mesh"],
+    "relatedApplicationIds": ["app-industrial-filtration"]
+  },
+  {
+    "id": "faq-quote-02",
+    "category": "报价问题",
+    "question": "定制产品的价格主要受哪些因素影响？",
+    "answer": "材质、丝径、孔径、加工难度、边框结构、数量和交期都会影响价格。异形件和耐磨材质通常成本更高。",
+    "relatedProductIds": ["product-mine-screen-mesh", "product-filter-disc"]
+  },
+  {
+    "id": "faq-delivery-01",
+    "category": "发货交期",
+    "question": "常规规格一般多久可以发货？",
+    "answer": "常规库存规格通常可在 3 到 7 个工作日内安排发货，具体以库存和当期排产为准。",
+    "relatedProductIds": ["product-welded-wire-mesh"],
+    "relatedApplicationIds": ["app-grain-screening"]
+  },
+  {
+    "id": "faq-delivery-02",
+    "category": "发货交期",
+    "question": "重型或定制筛网的交期一般多久？",
+    "answer": "重型筛网和定制加工件通常需要 7 到 20 个工作日，复杂结构或大批量订单会根据排产单独确认。",
+    "relatedProductIds": ["product-crimped-wire-mesh", "product-mine-screen-mesh"],
+    "relatedApplicationIds": ["app-mining-screening"]
+  },
+  {
+    "id": "faq-sample-01",
+    "category": "样品问题",
+    "question": "可以先寄样品确认吗？",
+    "answer": "可以。常规材质和规格支持样品确认，样品形式可以是小块筛网或标准裁片，具体以库存和加工周期为准。",
+    "relatedProductIds": ["product-crimped-wire-mesh"],
+    "relatedApplicationIds": ["app-mining-screening"]
+  },
+  {
+    "id": "faq-sample-02",
+    "category": "样品问题",
+    "question": "过滤网片这类定制件也能打样吗？",
+    "answer": "可以，但定制网片样品通常需要确认图纸和加工要求。若涉及开模或特殊工艺，样品费用会单独说明。",
+    "relatedProductIds": ["product-mine-screen-mesh", "product-filter-disc"]
+  }
+]
