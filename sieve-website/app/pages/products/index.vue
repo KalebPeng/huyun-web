@@ -110,7 +110,10 @@ interface CategoryTab {
 
 const route = useRoute()
 const router = useRouter()
-const { products } = useProducts()
+const { fetchProducts } = useProducts()
+const { data: productsData } = await useAsyncData('products-list', fetchProducts, {
+  default: () => []
+})
 
 const categoryTabs: CategoryTab[] = [
   { label: '全部', value: 'all' },
@@ -144,10 +147,10 @@ const activeCategory = computed(() => normalizeCategory(route.query.category))
 
 const filteredProducts = computed(() => {
   if (activeCategory.value === 'all') {
-    return products.value
+    return productsData.value
   }
 
-  return products.value.filter(
+  return productsData.value.filter(
     (product) => resolveProductCategory(product.slug) === activeCategory.value
   )
 })

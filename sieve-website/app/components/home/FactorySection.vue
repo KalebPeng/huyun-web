@@ -72,9 +72,12 @@
                 v-if="!imageErrors[item.label]"
                 :src="item.src"
                 :alt="item.label"
+                width="640"
+                height="416"
                 class="h-full w-full object-cover"
                 loading="lazy"
                 sizes="100vw sm:50vw"
+                placeholder
                 @error="markImageError(item.label)"
               />
               <div
@@ -132,25 +135,25 @@ const qualityChecks = [
 const galleryItems: GalleryItem[] = [
   {
     label: '车间图',
-    src: '/images/factory/workshop.jpg',
+    src: '/images/factory/workshop.svg',
     gradientFrom: '#314867',
     gradientTo: '#152235'
   },
   {
     label: '设备图',
-    src: '/images/factory/equipment.jpg',
+    src: '/images/factory/equipment.svg',
     gradientFrom: '#2563eb',
     gradientTo: '#1a2744'
   },
   {
     label: '质检图',
-    src: '/images/factory/quality.jpg',
+    src: '/images/factory/quality.svg',
     gradientFrom: '#0f766e',
     gradientTo: '#1a2744'
   },
   {
     label: '打包图',
-    src: '/images/factory/packing.jpg',
+    src: '/images/factory/packing.svg',
     gradientFrom: '#475569',
     gradientTo: '#111827'
   }
@@ -164,6 +167,3 @@ const markImageError = (label: string) => {
   imageErrors[label] = true
 }
 </script>
-
-<style scoped>
-</style>

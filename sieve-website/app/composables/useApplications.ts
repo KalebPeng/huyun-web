@@ -7,6 +7,7 @@ const applications = applicationsData as ApplicationScene[]
 
 export const useApplications = () => {
   const allApplications = computed(() => applications)
+  const fetchApplications = async () => applications
 
   const getApplicationById = (id: string) =>
     applications.find((application) => application.id === id)
@@ -19,6 +20,7 @@ export const useApplications = () => {
 
   return {
     applications: allApplications,
+    fetchApplications,
     getApplicationById,
     getApplicationBySlug,
     getApplicationsByIds

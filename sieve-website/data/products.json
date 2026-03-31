@@ -6,7 +6,7 @@
     "category": "编织网",
     "summary": "适用于过滤、防护和精细筛分的通用型金属丝网。",
     "description": "不锈钢编织网采用 304、316 等材质，通过平纹、斜纹等方式织造而成，兼顾强度、耐腐蚀性与筛分精度，适用于食品、化工、过滤和设备防护场景。",
-    "coverImage": "/images/products/stainless-woven-mesh/cover.jpg",
+    "coverImage": "/images/placeholders/product-cover.svg",
     "gallery": [
       "/images/products/stainless-woven-mesh/detail-1.jpg",
       "/images/products/stainless-woven-mesh/detail-2.jpg"
@@ -31,7 +31,7 @@
     "category": "焊接网",
     "summary": "焊点牢固、网孔均匀，适合围护、隔离和建筑配套。",
     "description": "电焊网以低碳钢丝、镀锌丝或不锈钢丝经自动焊接设备成型，具有网孔整齐、结构稳定和安装便捷的特点，适用于围栏、仓储隔断和建筑加固辅助场景。",
-    "coverImage": "/images/products/welded-wire-mesh/cover.jpg",
+    "coverImage": "/images/placeholders/product-cover.svg",
     "gallery": [
       "/images/products/welded-wire-mesh/detail-1.jpg",
       "/images/products/welded-wire-mesh/detail-2.jpg"
@@ -55,7 +55,7 @@
     "category": "重型筛网",
     "summary": "结构坚固、抗冲击，常用于石料、砂石和粮食分级。",
     "description": "轧花网先将金属丝轧制成波纹后再编织，网面稳定性高，承载力强，适合中粗颗粒物料的筛分与分级，常见于粮机、石料场和振动筛设备。",
-    "coverImage": "/images/products/crimped-wire-mesh/cover.jpg",
+    "coverImage": "/images/placeholders/product-cover.svg",
     "gallery": [
       "/images/products/crimped-wire-mesh/detail-1.jpg",
       "/images/products/crimped-wire-mesh/detail-2.jpg"
@@ -79,7 +79,7 @@
     "category": "矿山筛网",
     "summary": "面向高磨损工况的耐冲击筛网，适合矿山和骨料筛分。",
     "description": "矿筛网主要用于矿石、煤炭、焦炭和骨料筛分，常用高锰钢、高碳钢等耐磨材料制造，可根据振动筛设备结构提供张紧式或模块式配套方案。",
-    "coverImage": "/images/products/mine-screen-mesh/cover.jpg",
+    "coverImage": "/images/placeholders/product-cover.svg",
     "gallery": [
       "/images/products/mine-screen-mesh/detail-1.jpg",
       "/images/products/mine-screen-mesh/detail-2.jpg"
@@ -103,7 +103,7 @@
     "category": "过滤元件",
     "summary": "可冲片、包边和多层复合，适用于液体和气体过滤。",
     "description": "过滤网片由不锈钢网、席型网或冲孔支撑层加工而成，可做圆片、环片、异形片和包边结构，广泛应用于石化、制药、食品和液压系统过滤。",
-    "coverImage": "/images/products/filter-disc/cover.jpg",
+    "coverImage": "/images/placeholders/product-cover.svg",
     "gallery": [
       "/images/products/filter-disc/detail-1.jpg",
       "/images/products/filter-disc/detail-2.jpg"

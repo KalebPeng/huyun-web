@@ -24,8 +24,12 @@
               <NuxtImg
                 v-if="!imageFailed"
                 :src="product.coverImage"
+                width="1200"
+                height="900"
                 :alt="`${product.name} 产品主图`"
                 class="h-full w-full object-cover"
+                loading="eager"
+                placeholder
                 sizes="100vw lg:50vw"
                 @error="imageFailed = true"
               />
@@ -272,10 +276,13 @@
                 <div class="aspect-[4/3] bg-[linear-gradient(135deg,#dbe4f0,#f4f4f0)]">
                   <NuxtImg
                     :src="related.coverImage"
+                    width="640"
+                    height="480"
                     :alt="`${related.name} 关联产品图片`"
                     class="h-full w-full object-cover"
                     loading="lazy"
                     sizes="100vw md:50vw xl:25vw"
+                    placeholder
                   />
                 </div>
                 <div class="flex flex-1 flex-col p-5">

@@ -7,9 +7,12 @@
         v-if="!imageFailed"
         :src="product.coverImage"
         :alt="`${product.name} 封面图`"
+        width="800"
+        height="560"
         class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
         loading="lazy"
         sizes="100vw md:50vw xl:33vw"
+        placeholder
         @error="imageFailed = true"
       />
       <div

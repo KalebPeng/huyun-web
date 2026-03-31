@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-slate-100 text-slate-900">
+  <div class="min-h-screen bg-slate-100 font-sans text-slate-900">
     <AppHeader />
     <main id="main-content" class="min-h-[calc(100vh-18rem)]">
       <slot />

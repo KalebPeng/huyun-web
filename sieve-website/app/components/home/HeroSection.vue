@@ -52,6 +52,17 @@
             <div
               class="relative min-h-[320px] overflow-hidden rounded-[1.35rem] border border-white/10 bg-[linear-gradient(145deg,rgba(37,99,235,0.24),rgba(15,23,42,0.9)_48%,rgba(51,65,85,0.88))] sm:min-h-[420px]"
             >
+              <NuxtImg
+                src="/images/placeholders/hero-factory.svg"
+                alt="工厂实景占位图"
+                preset="hero"
+                width="960"
+                height="720"
+                loading="eager"
+                fetchpriority="high"
+                placeholder
+                class="absolute inset-0 h-full w-full object-cover opacity-85"
+              />
               <div
                 class="absolute -right-10 top-10 h-40 w-40 rounded-full bg-blue-500/20 blur-3xl"
                 aria-hidden="true"

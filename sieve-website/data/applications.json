@@ -5,7 +5,7 @@
     "name": "粮食筛分",
     "summary": "用于粮食清理、分级和杂质去除的筛分场景。",
     "description": "粮食筛分场景强调筛孔均匀、通料顺畅和易清理，常见于小麦、玉米、大豆和种子清选设备。选型时要平衡筛分效率、物料破损率和设备匹配尺寸。",
-    "coverImage": "/images/applications/grain-screening/cover.jpg",
+    "coverImage": "/images/placeholders/application-cover.svg",
     "useCases": ["初清筛杂", "分级筛选", "种子精选", "输送前除杂"],
     "considerations": ["根据粮食品类选择孔型", "兼顾产量与筛分精度", "注意防锈和清洁要求"],
     "recommendedProducts": [
@@ -23,7 +23,7 @@
     "name": "工业过滤",
     "summary": "适用于液体、气体和工艺介质过滤的工业场景。",
     "description": "工业过滤需要关注过滤精度、介质兼容性、耐温耐压能力和更换频率。不同工况下，可选择不锈钢编织网或过滤网片作为核心过滤材料，并进行多层复合加工。",
-    "coverImage": "/images/applications/industrial-filtration/cover.jpg",
+    "coverImage": "/images/placeholders/application-cover.svg",
     "useCases": ["液体过滤", "气体过滤", "设备前端保护", "油路和液压系统过滤"],
     "considerations": ["确认介质腐蚀性", "明确过滤精度和压损要求", "评估清洗复用需求"],
     "recommendedProducts": [
@@ -40,7 +40,7 @@
     "name": "矿山筛分",
     "summary": "服务矿石、骨料和煤炭分级的高磨损筛分场景。",
     "description": "矿山筛分工况冲击大、磨损强、物料量高，对筛网的强度和耐磨寿命要求很高。选型时通常优先考虑高碳钢、65Mn 或复合材质，并结合设备张紧方式确定结构。",
-    "coverImage": "/images/applications/mining-screening/cover.jpg",
+    "coverImage": "/images/placeholders/application-cover.svg",
     "useCases": ["矿石分级", "骨料筛分", "煤炭分选", "重载振动筛配套"],
     "considerations": ["关注耐磨寿命", "确认振动筛张紧方式", "预留备件更换周期"],
     "recommendedProducts": [

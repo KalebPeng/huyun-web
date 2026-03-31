@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 416" role="img" aria-labelledby="title">
+  <title id="title">Packing Placeholder</title>
+  <rect width="640" height="416" fill="#475569" />
+  <rect x="120" y="126" width="184" height="164" fill="rgba(255,255,255,0.14)" />
+  <rect x="336" y="94" width="184" height="196" fill="rgba(255,255,255,0.18)" />
+  <path d="M120 126l92-52 92 52M336 94l92-52 92 52" fill="none" stroke="#fff" stroke-width="10" opacity="0.7" />
+  <text x="48" y="370" fill="#fff" font-size="40" font-family="Arial, sans-serif" font-weight="700">PACKING</text>
+</svg>

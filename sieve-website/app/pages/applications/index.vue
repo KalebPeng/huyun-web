@@ -88,7 +88,10 @@ import { usePageSeoMeta } from '~/composables/useSeoMeta'
 import AppButton from '~/components/common/AppButton.vue'
 import Badge from '~/components/common/Badge.vue'
 
-const { applications } = useApplications()
+const { fetchApplications } = useApplications()
+const { data: applications } = await useAsyncData('applications-list', fetchApplications, {
+  default: () => []
+})
 
 usePageSeoMeta({
   title: '应用场景',

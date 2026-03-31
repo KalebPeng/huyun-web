@@ -7,6 +7,7 @@ const products = productsData as Product[]
 
 export const useProducts = () => {
   const allProducts = computed(() => products)
+  const fetchProducts = async () => products
 
   const getProductById = (id: string) =>
     products.find((product) => product.id === id)
@@ -32,6 +33,7 @@ export const useProducts = () => {
 
   return {
     products: allProducts,
+    fetchProducts,
     getProductById,
     getProductBySlug,
     getProductsByCategory,

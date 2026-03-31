@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 416" role="img" aria-labelledby="title">
+  <title id="title">Quality Inspection Placeholder</title>
+  <rect width="640" height="416" fill="#0f766e" />
+  <rect x="120" y="88" width="400" height="240" rx="20" fill="rgba(255,255,255,0.12)" />
+  <path d="M210 212l70 72 150-168" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="28" />
+  <text x="48" y="370" fill="#fff" font-size="40" font-family="Arial, sans-serif" font-weight="700">QUALITY</text>
+</svg>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 416" role="img" aria-labelledby="title">
+  <title id="title">Workshop Placeholder</title>
+  <rect width="640" height="416" fill="#314867" />
+  <path d="M0 320L120 240L220 280L340 180L470 236L640 140V416H0z" fill="rgba(255,255,255,0.08)" />
+  <text x="48" y="352" fill="#fff" font-size="40" font-family="Arial, sans-serif" font-weight="700">WORKSHOP</text>
+</svg>

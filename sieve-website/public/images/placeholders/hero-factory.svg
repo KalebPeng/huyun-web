@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720" role="img" aria-labelledby="title desc">
+  <title id="title">Factory Hero Placeholder</title>
+  <desc id="desc">Factory hero placeholder artwork</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#1a2744" />
+      <stop offset="52%" stop-color="#243f72" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+  </defs>
+  <rect width="960" height="720" fill="url(#bg)" />
+  <g fill="none" stroke="rgba(255,255,255,0.12)">
+    <path d="M120 120H840V600H120z" />
+    <path d="M120 220H840M120 320H840M120 420H840M120 520H840" />
+    <path d="M240 120V600M360 120V600M480 120V600M600 120V600M720 120V600" />
+  </g>
+  <g fill="#fff" opacity="0.92">
+    <text x="96" y="520" font-size="72" font-family="Arial, sans-serif" font-weight="700">
+      FACTORY VISUAL
+    </text>
+    <text x="96" y="582" font-size="28" font-family="Arial, sans-serif">
+      Replace with workshop or production line photo
+    </text>
+  </g>
+</svg>

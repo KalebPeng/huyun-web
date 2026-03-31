@@ -13,17 +13,14 @@ const applicationUrls = (applicationsData as Array<{ slug: string }>).map((appli
   changefreq: 'weekly' as const
 }))
 
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-
   ssr: true,
 
   modules: [
     '@nuxtjs/tailwindcss',
     '@pinia/nuxt',
-    '@nuxtjs/google-fonts',
     '@nuxtjs/sitemap',
     '@nuxt/image'
   ],
@@ -59,17 +56,45 @@ export default defineNuxtConfig({
 
   image: {
     format: ['webp'],
-    quality: 80
+    quality: 80,
+    screens: {
+      sm: 640,
+      md: 768,
+      lg: 1024,
+      xl: 1280
+    },
+    presets: {
+      hero: {
+        modifiers: {
+          width: 960,
+          height: 720,
+          fit: 'cover'
+        }
+      },
+      card: {
+        modifiers: {
+          width: 800,
+          height: 560,
+          fit: 'cover'
+        }
+      }
+    }
   },
 
   app: {
     head: {
+      htmlAttrs: {
+        lang: 'zh-CN'
+      },
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
       title: '筛网厂',
       titleTemplate: '%s | 筛网厂',
       meta: [
-        { name: 'description', content: '专业筛网生产厂家，提供多规格筛网产品与定制化解决方案。' },
+        {
+          name: 'description',
+          content: '专业筛网生产厂家，提供多规格筛网产品与定制化解决方案。'
+        },
         { property: 'og:site_name', content: '筛网厂' },
         { property: 'og:type', content: 'website' }
       ]

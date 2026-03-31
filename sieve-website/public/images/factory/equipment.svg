@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 416" role="img" aria-labelledby="title">
+  <title id="title">Equipment Placeholder</title>
+  <rect width="640" height="416" fill="#2563eb" />
+  <rect x="72" y="108" width="496" height="196" rx="24" fill="rgba(255,255,255,0.12)" />
+  <circle cx="180" cy="320" r="28" fill="#fff" opacity="0.8" />
+  <circle cx="460" cy="320" r="28" fill="#fff" opacity="0.8" />
+  <text x="48" y="84" fill="#fff" font-size="40" font-family="Arial, sans-serif" font-weight="700">EQUIPMENT</text>
+</svg>
