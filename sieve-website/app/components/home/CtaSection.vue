@@ -51,9 +51,9 @@ interface ContactItem {
 }
 
 const contacts: ContactItem[] = [
-  { icon: '📞', label: '电话', value: '400-XXX-XXXX' },
-  { icon: '💬', label: '微信', value: '扫码咨询' },
-  { icon: '📧', label: '邮件', value: 'xxx@example.com' }
+  { icon: '📞', label: '电话', value: '+86 13561559016' },
+  { icon: '💬', label: '微信', value: 'HUAYUN-MESH' },
+  { icon: '📧', label: '邮件', value: 'sales@huayun-mesh.com' }
 ]
 </script>
 

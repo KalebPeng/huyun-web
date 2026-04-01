@@ -12,7 +12,7 @@
       <div class="absolute inset-y-0 right-0 hidden w-[44%] md:block" aria-hidden="true">
         <div class="h-full bg-[linear-gradient(135deg,rgba(148,163,184,0.12),rgba(37,99,235,0.28))]" />
         <div class="absolute bottom-8 left-8 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-semibold tracking-[0.18em] text-white/90 backdrop-blur-sm">
-          工厂全景图占位
+          山东·滨州 生产基地
         </div>
       </div>
 
@@ -25,7 +25,7 @@
             关于我们
           </h1>
           <p class="mt-5 text-base leading-8 text-slate-200 sm:text-lg">
-            专注筛网制造与定制化解决方案，服务矿山、粮食、工业过滤、养殖防护等多类行业场景。
+            专注矿用筛网制造与高耐磨定制化方案，服务矿山、选煤、骨料分级与工业精细分级场景。
           </p>
         </div>
       </div>
@@ -256,10 +256,10 @@ interface QualityPromise {
 }
 
 const companyParagraphs: string[] = [
-  '筛网厂成立于 2004 年，总部与生产基地位于河北安平，长期专注于金属筛网、过滤网片、矿筛网和定制异形件的研发与生产。',
-  '公司配备多条编织、排焊、冲片、包边与整形产线，覆盖常规批量生产和非标定制加工，能够兼顾交付效率与规格稳定性。',
-  '服务客户涵盖矿山筛分、粮食清理、工业过滤、养殖防护、建筑配套及设备制造等行业，既做标准件，也承接来图来样项目。',
-  '我们坚持把选型、制造、质检和交付做扎实，靠稳定品质、清晰沟通和长期合作把客户留下来。'
+  '华云网业专注于矿用筛网与重型工业网的制造与研发。我们拥有目前业内领先的自动化条缝焊接产线和 65Mn 弹簧钢专属编织线，能够稳定生产丝径高达 14mm 的超重型筛网。',
+  '工厂坐落于山东省滨州市，生产车间占地 15,000 ㎡。我们建立了从原材料性能分析、编织/焊接过程控制到成品负载模拟测试的完整链路。',
+  '除标准规格外，华云网业重点服务于矿山机械配套商与洗煤、洗选大型终端，提供基于工况磨损分析的材质建议与非标定制。',
+  '我们坚持“以耐磨性为核心”的品质理念，通过数字化生产排产和多级质控，确保每一片交付的筛网都能在高冲击、高磨损环境下保持长久寿命。'
 ]
 
 const companyStats: CompanyStat[] = [
@@ -300,8 +300,8 @@ const deliveryCapabilities: string[] = [
 const qualityPromises: QualityPromise[] = [
   {
     icon: '✓',
-    title: '品质管控',
-    description: '从原料入厂到成品抽检，围绕材质、孔径、尺寸和平整度建立多环节质控流程。'
+    title: '品质承诺与认证',
+    description: '华云网业已通过 ISO9001:2015 质量管理体系认证。从原料进厂到成品抽检，围绕材质、孔径、丝径和平整度建立多环节质控流程，并随货提供质检报告。'
   },
   {
     icon: '⏱',
@@ -318,6 +318,6 @@ const qualityPromises: QualityPromise[] = [
 usePageSeoMeta({
   title: '关于我们',
   description:
-    '了解筛网厂的发展历程、生产能力、核心产品方向、工厂设备与品质承诺，查看企业实力与服务能力。'
+    '了解华云网业的发展历程、生产能力、核心产品方向、工厂设备与品质承诺，查看企业实力与服务能力。'
 })
 </script>

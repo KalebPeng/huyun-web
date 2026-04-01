@@ -1,54 +1,55 @@
 [
   {
-    "id": "app-grain-screening",
-    "slug": "grain-screening",
-    "name": "粮食筛分",
-    "summary": "用于粮食清理、分级和杂质去除的筛分场景。",
-    "description": "粮食筛分场景强调筛孔均匀、通料顺畅和易清理，常见于小麦、玉米、大豆和种子清选设备。选型时要平衡筛分效率、物料破损率和设备匹配尺寸。",
+    "id": "app-mining-grading",
+    "slug": "mining-grading",
+    "name": "矿山骨料分级",
+    "summary": "服务于砂石、矿石和骨料的高磨损干湿筛分场景。",
+    "description": "矿山骨料分级工况以大冲击、强磨损为特征。针对玄武岩、花岗岩等莫氏硬度较高的物料，华云提供 HRC 45-50 硬度的 65Mn 弹簧钢编织网，其预轧波纹工艺确保了在高频振动下的网孔稳定性。对于含水率较高的湿式分级，我们推荐模块化聚氨酯筛板，利用其优异的弹性和抗疲劳性能降低堵孔率。该方案能显著提升振动筛的连续作业时间，降低吨处理成本。",
     "coverImage": "/images/placeholders/application-cover.svg",
-    "useCases": ["初清筛杂", "分级筛选", "种子精选", "输送前除杂"],
-    "considerations": ["根据粮食品类选择孔型", "兼顾产量与筛分精度", "注意防锈和清洁要求"],
+    "useCases": ["采石场骨料分级", "金属矿石粗筛", "建筑垃圾回收筛分", "振动筛配套"],
+    "considerations": ["关注材质硬度与抗冲击性能", "根据物料水分选择编织或聚氨酯材质", "确认设备张紧或模块安装方式"],
     "recommendedProducts": [
-      "product-stainless-woven-mesh",
-      "product-crimped-wire-mesh",
-      "product-welded-wire-mesh"
-    ],
-    "faqs": ["faq-spec-02", "faq-material-02", "faq-delivery-01"],
-    "seoTitle": "粮食筛分用筛网方案",
-    "seoDescription": "提供适用于粮食清理、分级和除杂的筛网产品与选型建议。"
-  },
-  {
-    "id": "app-industrial-filtration",
-    "slug": "industrial-filtration",
-    "name": "工业过滤",
-    "summary": "适用于液体、气体和工艺介质过滤的工业场景。",
-    "description": "工业过滤需要关注过滤精度、介质兼容性、耐温耐压能力和更换频率。不同工况下，可选择不锈钢编织网或过滤网片作为核心过滤材料，并进行多层复合加工。",
-    "coverImage": "/images/placeholders/application-cover.svg",
-    "useCases": ["液体过滤", "气体过滤", "设备前端保护", "油路和液压系统过滤"],
-    "considerations": ["确认介质腐蚀性", "明确过滤精度和压损要求", "评估清洗复用需求"],
-    "recommendedProducts": [
-      "product-stainless-woven-mesh",
-      "product-filter-disc"
-    ],
-    "faqs": ["faq-material-01", "faq-custom-01", "faq-quote-01"],
-    "seoTitle": "工业过滤网与过滤网片解决方案",
-    "seoDescription": "面向液体和气体过滤工况，提供不锈钢筛网与过滤网片定制方案。"
-  },
-  {
-    "id": "app-mining-screening",
-    "slug": "mining-screening",
-    "name": "矿山筛分",
-    "summary": "服务矿石、骨料和煤炭分级的高磨损筛分场景。",
-    "description": "矿山筛分工况冲击大、磨损强、物料量高，对筛网的强度和耐磨寿命要求很高。选型时通常优先考虑高碳钢、65Mn 或复合材质，并结合设备张紧方式确定结构。",
-    "coverImage": "/images/placeholders/application-cover.svg",
-    "useCases": ["矿石分级", "骨料筛分", "煤炭分选", "重载振动筛配套"],
-    "considerations": ["关注耐磨寿命", "确认振动筛张紧方式", "预留备件更换周期"],
-    "recommendedProducts": [
-      "product-mine-screen-mesh",
+      "product-65mn-woven-screen",
+      "product-polyurethane-screen",
       "product-crimped-wire-mesh"
     ],
-    "faqs": ["faq-custom-02", "faq-delivery-02", "faq-sample-01"],
-    "seoTitle": "矿山筛分筛网选型方案",
-    "seoDescription": "提供矿山、砂石和骨料筛分用耐磨筛网及设备配套建议。"
+    "faqs": ["faq-material-02", "faq-delivery-02", "faq-sample-01"],
+    "seoTitle": "矿山骨料分级筛网方案 | 65Mn编织网与聚氨酯筛板",
+    "seoDescription": "提供针对矿山、砂石厂的高耐磨筛网解决方案，主打65锰钢编织筛网与聚氨酯模块化筛板。"
+  },
+  {
+    "id": "app-coal-dewatering",
+    "slug": "coal-dewatering",
+    "name": "选煤洗选与脱水",
+    "summary": "专注于洗煤、选矿过程中的脱水、脱介与物料回收。",
+    "description": "在选煤和选矿流程中，筛分的核心痛点在于‘脱水效率’与‘介质回收率’。华云焊接条缝筛（条缝筛板）采用梯形丝设计，通过上窄下宽的物理结构消除了楔形堵塞隐患，确保了极高的开口率与流体通过量。针对精煤脱水与尾矿干排，我们的不锈钢焊接工艺保证了焊点的高剪切强度，在长期高负载运行下依然能保持网孔一致性，是洗煤厂提升‘脱介’效率的关键部件。",
+    "coverImage": "/images/placeholders/application-cover.svg",
+    "useCases": ["洗煤厂脱水脱介", "尾矿干排处理", "精矿粉分级", "离心机筛篮配套"],
+    "considerations": ["要求极高的开口率以提升效率", "关注焊点强度与表面平整度", "评估介质腐蚀性选择不锈钢材质"],
+    "recommendedProducts": [
+      "product-mining-welded-screen",
+      "product-polyurethane-screen"
+    ],
+    "faqs": ["faq-custom-02", "faq-quote-02", "faq-spec-02"],
+    "seoTitle": "选煤洗选脱水筛网厂家 | 焊接条缝筛与细孔聚氨酯筛网",
+    "seoDescription": "专业提供选煤厂、洗选厂用脱水脱介筛网，主打不锈钢焊接条缝筛和高弹性聚氨酯细孔筛板。"
+  },
+  {
+    "id": "app-industrial-grading",
+    "slug": "industrial-grading",
+    "name": "工业分级与过滤",
+    "summary": "适用于化工、化肥、粮食及工业原料的精密分级。",
+    "description": "针对工业生产中的精细物料分级需求，我们利用编织筛网的精度优势和焊接筛网的结构强度，提供定制化的分级方案。适用于化肥造粒分级、化工原料过滤以及粮食初清与深加工流程。",
+    "coverImage": "/images/placeholders/application-cover.svg",
+    "useCases": ["化肥造粒分级", "化工原料过滤", "粮食深加工清选", "工业废水初滤"],
+    "considerations": ["严格控制筛分精度与网孔一致性", "材质需符合行业合规性要求", "支持按设备异形定制"],
+    "recommendedProducts": [
+      "product-65mn-woven-screen",
+      "product-mining-welded-screen",
+      "product-stainless-woven-mesh"
+    ],
+    "faqs": ["faq-spec-01", "faq-custom-01", "faq-material-01"],
+    "seoTitle": "工业分级过滤网定制 | 化工化肥用精密筛网",
+    "seoDescription": "提供工业级精细分级与过滤解决方案，覆盖编织筛网与焊接筛网，支持多种规格定制。"
   }
 ]

@@ -4,10 +4,10 @@
       <div class="grid gap-10 sm:grid-cols-2 xl:grid-cols-4">
         <section aria-labelledby="footer-company">
           <h2 id="footer-company" class="text-lg font-semibold tracking-[0.16em] text-white">
-            筛网厂
+            华云网业
           </h2>
           <p class="mt-4 text-sm leading-7 text-slate-300">
-            专注工业筛网、过滤网与定制筛分方案，面向制造、过滤和矿山场景提供稳定交付。
+            专注矿用、工业级高效筛分方案，提供聚氨酯筛网、编织筛网与焊接条缝筛的定制化交付。
           </p>
         </section>
 
@@ -32,7 +32,7 @@
             id="footer-applications"
             class="text-sm font-semibold tracking-[0.2em] text-slate-200"
           >
-            应用场景
+            技术服务
           </h2>
           <ul class="mt-4 space-y-3 text-sm text-slate-300">
             <li v-for="item in applicationLinks" :key="item.to">
@@ -51,18 +51,18 @@
             联系方式
           </h2>
           <ul class="mt-4 space-y-3 text-sm text-slate-300">
-            <li><span class="font-medium text-white">电话：</span>400-000-0000</li>
-            <li><span class="font-medium text-white">微信：</span>SIEVE-MESH</li>
+            <li><span class="font-medium text-white">电话：</span>+86 13561559016</li>
+            <li><span class="font-medium text-white">微信：</span>HUAYUN-MESH</li>
             <li>
               <span class="font-medium text-white">邮箱：</span>
               <a
-                href="mailto:sales@example.com"
+                href="mailto:sales@huayun-mesh.com"
                 class="transition-colors duration-200 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
               >
-                sales@example.com
+                sales@huayun-mesh.com
               </a>
             </li>
-            <li><span class="font-medium text-white">地址：</span>河北省安平县工业园示例地址</li>
+            <li><span class="font-medium text-white">地址：</span>山东省滨州市华云网业</li>
           </ul>
         </section>
       </div>
@@ -70,7 +70,7 @@
       <div
         class="mt-10 border-t border-white/10 pt-6 text-center text-sm text-slate-400 sm:text-left"
       >
-        2025 筛网厂 版权所有
+        2026 华云网业 版权所有
       </div>
     </div>
   </footer>
@@ -83,16 +83,16 @@ interface FooterLink {
 }
 
 const productLinks: FooterLink[] = [
-  { label: '不锈钢编织网', to: '/products/stainless-woven-mesh' },
-  { label: '电焊网', to: '/products/welded-wire-mesh' },
-  { label: '轧花网', to: '/products/crimped-wire-mesh' },
-  { label: '矿筛网', to: '/products/mine-screen-mesh' }
+  { label: '矿用焊接筛网', to: '/products/mining-welded-screen' },
+  { label: '65锰编织筛网', to: '/products/65mn-woven-screen' },
+  { label: '聚氨酯筛网', to: '/products/polyurethane-screen' },
+  { label: '重型轧花网', to: '/products/crimped-wire-mesh' }
 ]
 
 const applicationLinks: FooterLink[] = [
-  { label: '粮食筛分', to: '/applications/grain-screening' },
-  { label: '工业过滤', to: '/applications/industrial-filtration' },
-  { label: '矿山筛分', to: '/applications/mining-screening' },
+  { label: '矿山骨料分级', to: '/applications/mining-grading' },
+  { label: '选煤洗选脱水', to: '/applications/coal-dewatering' },
+  { label: '技术知识库', to: '/knowledge' },
   { label: '立即询价', to: '/contact' }
 ]
 </script>

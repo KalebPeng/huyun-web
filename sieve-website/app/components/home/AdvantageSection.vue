@@ -9,7 +9,7 @@
           为什么选择我们
         </h2>
         <p class="mt-4 text-base leading-8 text-slate-200 sm:text-lg">
-          从产品规格、定制能力、工厂直供到交付保障，围绕工业筛网采购场景把可靠性和响应速度做扎实。
+          从产品规格、定制能力、工厂直供到交付保障，围绕矿山与工业筛网采购场景把可靠性和响应速度做扎实。
         </p>
       </div>
 
@@ -52,7 +52,7 @@ const advantages: AdvantageItem[] = [
   {
     icon: '📏',
     title: '规格多样',
-    description: '目数 1-400 目，孔径 0.04mm 起，覆盖筛分、过滤、防护等多类工况。'
+    description: '目数 1-400 目，孔径 0.1mm 起，覆盖矿山筛分、洗煤、脱水等重载工况。'
   },
   {
     icon: '🛠️',

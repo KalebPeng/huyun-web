@@ -11,17 +11,17 @@
           <p
             class="fade-in-up delay-1 mb-4 inline-flex rounded-full border border-white/15 bg-white/8 px-4 py-2 text-xs font-semibold uppercase tracking-[0.28em] text-slate-200"
           >
-            Industrial Mesh Solutions
+            HY
           </p>
           <h1
             class="fade-in-up delay-2 max-w-3xl text-4xl font-black leading-tight text-white sm:text-5xl lg:text-6xl"
           >
-            专业筛网生产厂家
+            华云网业 - 矿用筛网生产厂家
           </h1>
           <p
             class="fade-in-up delay-3 mt-6 max-w-2xl text-base leading-8 text-slate-200 sm:text-lg"
           >
-            支持多规格与定制化解决方案，服务矿山、粮食、工业、养殖等行业，覆盖筛分、过滤、防护与设备配套需求。
+            专注矿用焊接筛网、65锰编织网及聚氨酯筛板，为矿山、洗煤与骨料分级提供高耐磨、长寿命的筛分解决方案。
           </p>
 
           <div class="fade-in-up delay-4 mt-8 flex flex-col gap-4 sm:flex-row">
@@ -54,7 +54,7 @@
             >
               <NuxtImg
                 src="/images/placeholders/hero-factory.svg"
-                alt="工厂实景占位图"
+                alt="华云网业矿用焊接筛网与65锰编织筛网生产实景"
                 preset="hero"
                 width="960"
                 height="720"

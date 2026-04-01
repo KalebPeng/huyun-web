@@ -23,7 +23,7 @@ const toAbsoluteUrl = (value: string, siteUrl: string) => {
 
 export function usePageSeoMeta({ title, description, image }: SeoMetaOptions) {
   const config = useRuntimeConfig()
-  const siteUrl = config.public.siteUrl || 'https://yourdomain.com'
+  const siteUrl = config.public.siteUrl || 'https://huayun-mesh.com'
   const imageUrl = image ? toAbsoluteUrl(image, siteUrl) : undefined
 
   useHead({

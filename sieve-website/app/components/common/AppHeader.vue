@@ -13,10 +13,10 @@
           class="flex h-10 w-10 items-center justify-center rounded-md border border-white/20 bg-white/10 text-sm font-black tracking-[0.25em]"
           aria-hidden="true"
         >
-          SW
+          HY
         </span>
         <span class="flex flex-col">
-          <span class="text-lg font-bold tracking-[0.18em]">筛网厂</span>
+          <span class="text-lg font-bold tracking-[0.18em]">华云网业</span>
           <span class="text-xs uppercase tracking-[0.32em] text-slate-300">
             Industrial Mesh
           </span>
@@ -126,6 +126,8 @@ const navItems: NavItem[] = [
   { label: '首页', to: '/' },
   { label: '产品中心', to: '/products' },
   { label: '应用场景', to: '/applications' },
+  { label: '技术知识', to: '/knowledge' },
+  { label: '技术工具', to: '/tools' },
   { label: '常见问题', to: '/faq' },
   { label: '关于我们', to: '/about' }
 ]

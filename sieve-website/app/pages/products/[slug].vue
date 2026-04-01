@@ -1,161 +1,257 @@
 <template>
-  <div class="bg-slate-50">
+  <div class="page-bg min-h-screen">
     <template v-if="product">
-      <section class="border-b border-slate-200 bg-white">
-        <div class="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
-          <nav aria-label="面包屑导航" class="flex flex-wrap items-center gap-2 text-sm text-slate-500">
-            <NuxtLink to="/" class="transition-colors hover:text-primary">
-              首页
-            </NuxtLink>
-            <span aria-hidden="true">/</span>
-            <NuxtLink to="/products" class="transition-colors hover:text-primary">
-              产品中心
-            </NuxtLink>
-            <span aria-hidden="true">/</span>
-            <span class="font-medium text-slate-900">{{ product.name }}</span>
+      <!-- 面包屑 -->
+      <div class="breadcrumb-bar border-b border-slate-200/70 bg-white/80 backdrop-blur-sm">
+        <div class="mx-auto max-w-7xl px-4 py-3 sm:px-6 lg:px-8">
+          <nav aria-label="面包屑导航" class="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-slate-400">
+            <NuxtLink to="/" class="transition-colors hover:text-primary">首页</NuxtLink>
+            <span aria-hidden="true" class="text-slate-300">/</span>
+            <NuxtLink to="/products" class="transition-colors hover:text-primary">产品中心</NuxtLink>
+            <span aria-hidden="true" class="text-slate-300">/</span>
+            <span class="font-medium text-slate-700">{{ product.name }}</span>
           </nav>
         </div>
-      </section>
+      </div>
 
-      <section class="py-12 sm:py-16">
-        <div class="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:px-8">
-          <div class="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
-            <div class="relative aspect-[4/3] bg-slate-100">
-              <NuxtImg
-                v-if="!imageFailed"
-                :src="product.coverImage"
-                width="1200"
-                height="900"
-                :alt="`${product.name} 产品主图`"
-                class="h-full w-full object-cover"
-                loading="eager"
-                placeholder
-                sizes="100vw lg:50vw"
-                @error="imageFailed = true"
-              />
-              <div
-                v-else
-                class="flex h-full w-full items-end justify-start bg-[linear-gradient(135deg,#dbe4f0,#f4f4f0)] p-6"
-                :aria-label="`${product.name} 图片占位`"
-              >
-                <span class="rounded-full border border-slate-300 bg-white/80 px-3 py-1 text-xs font-semibold tracking-[0.18em] text-slate-600">
-                  产品主图占位
+      <!-- ① 主信息区 -->
+      <section class="py-10 sm:py-14">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="grid gap-8 lg:grid-cols-[1fr_440px] xl:grid-cols-[1fr_480px]">
+
+            <!-- 左：产品图 + 计算器 -->
+            <div class="flex flex-col gap-6">
+              <!-- 产品图 -->
+              <div class="product-image-frame overflow-hidden rounded-2xl">
+                <div class="relative aspect-[4/3] bg-slate-100">
+                  <NuxtImg
+                    v-if="!imageFailed"
+                    :src="product.coverImage"
+                    width="1200"
+                    height="900"
+                    :alt="`${product.name} 产品主图`"
+                    class="h-full w-full object-cover"
+                    loading="eager"
+                    placeholder
+                    sizes="100vw lg:60vw"
+                    @error="imageFailed = true"
+                  />
+                  <div
+                    v-else
+                    class="flex h-full w-full flex-col items-center justify-center gap-3 bg-[linear-gradient(135deg,#e8edf5_0%,#f4f4f0_100%)]"
+                    :aria-label="`${product.name} 图片占位`"
+                  >
+                    <svg class="h-10 w-10 text-slate-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+                      <rect x="3" y="3" width="18" height="18" rx="2" />
+                      <circle cx="8.5" cy="8.5" r="1.5" />
+                      <path d="M21 15l-5-5L5 21" />
+                    </svg>
+                    <span class="text-xs font-medium tracking-wide text-slate-400">{{ product.name }}</span>
+                  </div>
+                  <!-- 品类标签叠层 -->
+                  <div class="absolute left-4 top-4">
+                    <span class="inline-block rounded bg-primary/90 px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-white backdrop-blur-sm">
+                      {{ product.category }}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 计算器 -->
+              <MeshCalculator />
+            </div>
+
+            <!-- 右：产品信息 -->
+            <div class="flex flex-col">
+              <p class="section-eyebrow">Product Overview</p>
+              <h1 class="mt-2 text-[2rem] font-black leading-tight text-slate-950 sm:text-[2.25rem]">
+                {{ product.name }}
+              </h1>
+
+              <!-- 材质徽章 -->
+              <div class="mt-4 flex flex-wrap gap-1.5">
+                <Badge
+                  v-for="material in product.materials.slice(0, 3)"
+                  :key="material"
+                  :label="material"
+                  variant="default"
+                />
+                <Badge
+                  v-if="product.customSupported"
+                  label="支持定制"
+                  variant="success"
+                />
+              </div>
+
+              <p class="mt-4 text-[0.9375rem] leading-[1.8] text-slate-500">
+                {{ product.summary }}
+              </p>
+
+              <!-- 快速规格 -->
+              <div class="mt-6 grid grid-cols-3 gap-2.5">
+                <div
+                  v-for="item in quickSpecs"
+                  :key="item.label"
+                  class="quick-spec-card rounded-xl border border-slate-200 bg-white p-3"
+                >
+                  <p class="text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-400">
+                    {{ item.label }}
+                  </p>
+                  <p class="mt-2 text-sm font-bold leading-snug text-slate-800">
+                    {{ item.value }}
+                  </p>
+                </div>
+              </div>
+
+              <!-- 分隔线 -->
+              <div class="my-6 border-t border-slate-100" />
+
+              <!-- 操作按钮 -->
+              <div class="flex flex-col gap-2.5 sm:flex-row">
+                <AppButton
+                  :to="`/contact?product=${product.slug}`"
+                  size="lg"
+                  class="flex-1"
+                  :aria-label="`询价 ${product.name}`"
+                >
+                  立即询价
+                </AppButton>
+                <a
+                  href="tel:4001234567"
+                  class="inline-flex flex-1 min-h-12 items-center justify-center rounded-md border border-slate-200 bg-white px-5 text-sm font-semibold text-primary transition-colors duration-200 hover:border-primary/40 hover:bg-slate-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                  :aria-label="`联系客服咨询 ${product.name}`"
+                >
+                  电话咨询
+                </a>
+              </div>
+
+              <!-- 标准合规标签 -->
+              <div v-if="product.standard" class="mt-5 flex flex-wrap items-center gap-2">
+                <span class="text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-400">符合标准</span>
+                <span
+                  v-for="std in product.standard.split('；')"
+                  :key="std"
+                  class="inline-block rounded border border-slate-200 bg-slate-50 px-2 py-0.5 text-[11px] font-mono font-medium text-slate-600"
+                >
+                  {{ std.trim() }}
                 </span>
               </div>
             </div>
           </div>
+        </div>
+      </section>
 
-          <div>
-            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-accent">
-              Product Overview
-            </p>
-            <h1 class="mt-3 text-3xl font-black text-slate-950 sm:text-4xl">
-              {{ product.name }}
-            </h1>
-
-            <div class="mt-5 flex flex-wrap gap-2">
-              <Badge
-                v-for="material in product.materials.slice(0, 3)"
-                :key="material"
-                :label="material"
-                variant="default"
-              />
-              <Badge
-                v-if="product.customSupported"
-                label="支持定制"
-                variant="success"
-              />
+      <!-- ② 产品参数 -->
+      <section class="pb-10 sm:pb-12">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="content-card rounded-2xl border border-slate-200 bg-white">
+            <div class="flex items-center justify-between border-b border-slate-100 px-6 py-4">
+              <div>
+                <p class="section-eyebrow">Specifications</p>
+                <h2 class="mt-0.5 text-xl font-black text-slate-950">产品参数</h2>
+              </div>
             </div>
 
-            <p class="mt-5 text-base leading-8 text-slate-600">
-              {{ product.summary }}
-            </p>
-
-            <div class="mt-8 grid gap-4 sm:grid-cols-3">
-              <article
-                v-for="item in quickSpecs"
-                :key="item.label"
-                class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm"
-              >
-                <p class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
-                  {{ item.label }}
-                </p>
-                <p class="mt-3 text-lg font-bold text-slate-900">
-                  {{ item.value }}
-                </p>
-              </article>
-            </div>
-
-            <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-              <AppButton
-                :to="`/contact?product=${product.slug}`"
-                size="lg"
-                :aria-label="`询价 ${product.name}`"
-              >
-                立即询价
-              </AppButton>
-
-              <a
-                href="tel:4001234567"
-                class="inline-flex min-h-12 items-center justify-center rounded-md border border-primary bg-white px-6 text-base font-semibold text-primary transition-colors duration-200 hover:bg-slate-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-                :aria-label="`联系客服咨询 ${product.name}`"
-              >
-                联系客服
-              </a>
-            </div>
+            <table
+              class="min-w-full text-sm"
+              itemscope
+              itemtype="https://schema.org/Product"
+            >
+              <tbody class="divide-y divide-slate-100">
+                <tr
+                  v-for="row in specificationRows.filter(r => r.value !== '/')"
+                  :key="row.label"
+                  class="spec-row transition-colors duration-150 hover:bg-slate-50/70"
+                  itemprop="additionalProperty"
+                  itemscope
+                  itemtype="https://schema.org/PropertyValue"
+                >
+                  <th
+                    scope="row"
+                    class="w-36 px-6 py-3.5 text-left text-xs font-bold uppercase tracking-[0.12em] text-slate-400 sm:w-44"
+                    itemprop="name"
+                  >
+                    {{ row.label }}
+                  </th>
+                  <td class="px-6 py-3.5 font-medium text-slate-800" itemprop="value">
+                    {{ row.value }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </section>
 
-      <section class="pb-12 sm:pb-16">
+      <!-- ③ 技术选型建议 -->
+      <section v-if="product.selectionGuide" class="pb-10 sm:pb-12">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
-            <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-              <div>
-                <p class="text-sm font-semibold uppercase tracking-[0.2em] text-accent">
-                  Specifications
+          <!-- 深色主题卡片 -->
+          <div class="selection-card overflow-hidden rounded-2xl">
+            <div class="px-6 py-5 sm:px-8">
+              <p class="section-eyebrow-light">Selection Guide</p>
+              <h2 class="mt-1 text-xl font-black text-white">技术选型建议</h2>
+            </div>
+
+            <!-- 四维评级 -->
+            <div class="grid grid-cols-2 gap-px border-t border-white/8 bg-white/8 lg:grid-cols-4">
+              <div
+                v-for="dim in selectionDimensions"
+                :key="dim.key"
+                class="dim-cell bg-[#192340] px-5 py-4"
+              >
+                <p class="text-[10px] font-bold uppercase tracking-[0.22em] text-slate-400">
+                  {{ dim.label }}
                 </p>
-                <h2 class="mt-2 text-2xl font-black text-slate-950">
-                  产品参数
-                </h2>
+                <div class="mt-3 flex items-end justify-between">
+                  <div class="flex flex-col gap-1.5">
+                    <div class="flex gap-1">
+                      <span
+                        v-for="n in 4"
+                        :key="n"
+                        class="rating-dot h-1.5 rounded-full transition-all"
+                        :class="[n <= dim.score ? 'w-6 bg-accent' : 'w-3 bg-white/15']"
+                      />
+                    </div>
+                    <span class="text-sm font-bold text-white">{{ dim.text }}</span>
+                  </div>
+                  <span class="text-2xl font-black tabular-nums text-white/15">{{ dim.score }}/4</span>
+                </div>
               </div>
-              <p class="text-sm text-slate-500">
-                空值字段统一显示为 /
+            </div>
+
+            <!-- 力学参数条 -->
+            <div
+              v-if="product.tensileStrength || product.hardness"
+              class="grid gap-px border-t border-white/8 bg-white/8 sm:grid-cols-2"
+            >
+              <div v-if="product.tensileStrength" class="bg-[#192340] px-5 py-3.5">
+                <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500">抗拉强度</span>
+                <p class="mt-1 font-mono text-sm font-semibold text-slate-200">{{ product.tensileStrength }}</p>
+              </div>
+              <div v-if="product.hardness" class="bg-[#192340] px-5 py-3.5">
+                <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500">硬度指标</span>
+                <p class="mt-1 font-mono text-sm font-semibold text-slate-200">{{ product.hardness }}</p>
+              </div>
+            </div>
+
+            <!-- 选型说明 -->
+            <div v-if="product.selectionGuide.note" class="border-t border-white/8 px-6 py-4 sm:px-8">
+              <p class="text-sm leading-7 text-slate-400">
+                {{ product.selectionGuide.note }}
               </p>
             </div>
-
-            <div class="mt-6 overflow-hidden rounded-2xl border border-slate-200">
-              <table class="min-w-full divide-y divide-slate-200 text-sm">
-                <tbody class="divide-y divide-slate-200">
-                  <tr
-                    v-for="row in specificationRows"
-                    :key="row.label"
-                    class="bg-white even:bg-slate-50"
-                  >
-                    <th scope="row" class="w-36 px-4 py-4 text-left font-semibold text-slate-900 sm:w-48 sm:px-6">
-                      {{ row.label }}
-                    </th>
-                    <td class="px-4 py-4 leading-7 text-slate-600 sm:px-6">
-                      {{ row.value }}
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
           </div>
         </div>
       </section>
 
-      <section class="pb-12 sm:pb-16">
+      <!-- ④ 应用场景 -->
+      <section class="pb-10 sm:pb-12">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
-            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-accent">
-              Applications
-            </p>
-            <h2 class="mt-2 text-2xl font-black text-slate-950">
-              应用场景
-            </h2>
-            <div class="mt-6 flex flex-wrap gap-3">
+          <div class="content-card rounded-2xl border border-slate-200 bg-white px-6 py-5 sm:px-8">
+            <p class="section-eyebrow">Applications</p>
+            <h2 class="mt-0.5 text-xl font-black text-slate-950">应用场景</h2>
+            <div class="mt-4 flex flex-wrap gap-2">
               <Badge
                 v-for="application in applicationBadges"
                 :key="application.id"
@@ -163,33 +259,30 @@
                 variant="primary"
               />
             </div>
-            <p class="mt-5 max-w-4xl text-base leading-8 text-slate-600">
+            <p class="mt-4 max-w-3xl text-sm leading-7 text-slate-500">
               {{ applicationSummary }}
             </p>
           </div>
         </div>
       </section>
 
-      <section class="pb-12 sm:pb-16">
+      <!-- ⑤ 产品优势 -->
+      <section class="pb-10 sm:pb-12">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div class="rounded-3xl bg-[linear-gradient(135deg,#111827,#1a2744)] p-6 text-white shadow-[0_24px_60px_rgba(15,23,42,0.18)] sm:p-8">
-            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-blue-200">
-              Advantages
-            </p>
-            <h2 class="mt-2 text-2xl font-black">
-              产品优势
-            </h2>
+          <div class="adv-card overflow-hidden rounded-2xl px-6 py-5 sm:px-8">
+            <p class="section-eyebrow-light">Advantages</p>
+            <h2 class="mt-0.5 text-xl font-black text-white">产品优势</h2>
 
-            <div class="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+            <div class="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
               <article
                 v-for="(advantage, index) in product.advantages"
                 :key="advantage"
-                class="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm"
+                class="adv-item rounded-xl border border-white/8 p-4"
               >
-                <div class="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-sm font-bold text-blue-100">
-                  {{ advantageIcons[index % advantageIcons.length] }}
-                </div>
-                <p class="mt-4 text-base font-semibold text-white">
+                <span class="inline-block text-[10px] font-black tabular-nums tracking-[0.1em] text-accent">
+                  {{ String(index + 1).padStart(2, '0') }}
+                </span>
+                <p class="mt-2 text-sm font-semibold leading-snug text-white">
                   {{ advantage }}
                 </p>
               </article>
@@ -198,38 +291,39 @@
         </div>
       </section>
 
-      <section class="pb-12 sm:pb-16">
+      <!-- ⑥ 常见问题 -->
+      <section class="pb-10 sm:pb-12">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
-            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-accent">
-              FAQ
-            </p>
-            <h2 class="mt-2 text-2xl font-black text-slate-950">
-              常见问题
-            </h2>
+          <div class="content-card rounded-2xl border border-slate-200 bg-white">
+            <div class="border-b border-slate-100 px-6 py-4 sm:px-8">
+              <p class="section-eyebrow">FAQ</p>
+              <h2 class="mt-0.5 text-xl font-black text-slate-950">常见问题</h2>
+            </div>
 
-            <div v-if="relatedFaqs.length" class="mt-6 space-y-4">
-              <article
-                v-for="faq in relatedFaqs"
-                :key="faq.id"
-                class="overflow-hidden rounded-2xl border border-slate-200"
-              >
+            <div v-if="relatedFaqs.length" class="divide-y divide-slate-100">
+              <article v-for="faq in relatedFaqs" :key="faq.id">
                 <button
                   type="button"
-                  class="flex w-full items-center justify-between gap-4 bg-white px-5 py-4 text-left transition-colors duration-200 hover:bg-slate-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                  class="faq-btn flex w-full items-center justify-between gap-4 px-6 py-4 text-left transition-colors duration-150 hover:bg-slate-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent sm:px-8"
                   :aria-expanded="openFaqId === faq.id"
                   :aria-controls="`faq-panel-${faq.id}`"
                   @click="toggleFaq(faq.id)"
                 >
-                  <span class="text-base font-semibold text-slate-900">{{ faq.question }}</span>
-                  <span class="text-xl font-light text-slate-500" aria-hidden="true">
-                    {{ openFaqId === faq.id ? '−' : '+' }}
+                  <span class="text-sm font-semibold text-slate-800">{{ faq.question }}</span>
+                  <span
+                    class="faq-icon ml-4 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-slate-200 text-slate-400 transition-all duration-200"
+                    :class="openFaqId === faq.id ? 'rotate-45 border-accent/40 bg-accent/8 text-accent' : ''"
+                    aria-hidden="true"
+                  >
+                    <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M6 1v10M1 6h10" />
+                    </svg>
                   </span>
                 </button>
                 <div
                   v-show="openFaqId === faq.id"
                   :id="`faq-panel-${faq.id}`"
-                  class="border-t border-slate-200 bg-slate-50 px-5 py-4 text-sm leading-7 text-slate-600"
+                  class="bg-slate-50/70 px-6 pb-4 pt-1 text-sm leading-7 text-slate-500 sm:px-8"
                 >
                   {{ faq.answer }}
                 </div>
@@ -238,62 +332,59 @@
 
             <div
               v-else
-              class="mt-6 rounded-2xl border border-dashed border-slate-300 bg-slate-50 px-6 py-10 text-center text-sm text-slate-500"
+              class="px-6 py-10 text-center text-sm text-slate-400 sm:px-8"
             >
-              暂无相关 FAQ，可直接联系我们获取详细说明。
+              暂无相关 FAQ，可直接联系我们获取说明。
             </div>
           </div>
         </div>
       </section>
 
+      <!-- ⑦ 关联产品 -->
       <section class="pb-16 sm:pb-20">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+          <div class="mb-6 flex items-end justify-between">
             <div>
-              <p class="text-sm font-semibold uppercase tracking-[0.2em] text-accent">
-                Related Products
-              </p>
-              <h2 class="mt-2 text-2xl font-black text-slate-950">
-                关联产品推荐
-              </h2>
+              <p class="section-eyebrow">Related Products</p>
+              <h2 class="mt-0.5 text-xl font-black text-slate-950">关联产品推荐</h2>
             </div>
-            <NuxtLink to="/products" class="text-sm font-semibold text-primary transition-colors hover:text-blue-600">
-              查看更多产品
+            <NuxtLink to="/products" class="text-xs font-semibold text-primary transition-colors hover:text-accent">
+              查看全部 →
             </NuxtLink>
           </div>
 
-          <div class="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+          <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
             <article
               v-for="related in relatedProducts"
               :key="related.id"
-              class="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(15,23,42,0.12)]"
+              class="related-card group overflow-hidden rounded-xl border border-slate-200 bg-white transition-all duration-200 hover:-translate-y-1 hover:border-slate-300 hover:shadow-[0_12px_32px_rgba(15,23,42,0.1)]"
             >
               <NuxtLink
                 :to="`/products/${related.slug}`"
                 class="flex h-full flex-col"
                 :aria-label="`查看 ${related.name} 详情`"
               >
-                <div class="aspect-[4/3] bg-[linear-gradient(135deg,#dbe4f0,#f4f4f0)]">
+                <div class="aspect-[4/3] overflow-hidden bg-[linear-gradient(135deg,#e8edf5,#f4f4f0)]">
                   <NuxtImg
                     :src="related.coverImage"
                     width="640"
                     height="480"
-                    :alt="`${related.name} 关联产品图片`"
-                    class="h-full w-full object-cover"
+                    :alt="`${related.name}`"
+                    class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                     loading="lazy"
                     sizes="100vw md:50vw xl:25vw"
                     placeholder
                   />
                 </div>
-                <div class="flex flex-1 flex-col p-5">
-                  <h3 class="text-lg font-bold text-slate-900 transition-colors group-hover:text-primary">
+                <div class="flex flex-1 flex-col p-4">
+                  <h3 class="text-sm font-bold text-slate-800 transition-colors group-hover:text-primary">
                     {{ related.name }}
                   </h3>
-                  <p class="summary-clamp mt-3 text-sm leading-7 text-slate-600">
+                  <p class="summary-clamp mt-1.5 text-xs leading-6 text-slate-500">
                     {{ related.summary }}
                   </p>
-                  <span class="mt-5 text-sm font-semibold text-primary">
-                    查看详情
+                  <span class="mt-3 text-xs font-semibold text-accent">
+                    查看详情 →
                   </span>
                 </div>
               </NuxtLink>
@@ -305,13 +396,11 @@
 
     <section v-else class="py-24">
       <div class="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
-        <p class="text-sm font-semibold uppercase tracking-[0.2em] text-accent">
-          Product Not Found
-        </p>
+        <p class="section-eyebrow">Product Not Found</p>
         <h1 class="mt-4 text-3xl font-black text-slate-950 sm:text-4xl">
           产品未找到
         </h1>
-        <p class="mt-5 text-base leading-8 text-slate-600">
+        <p class="mt-5 text-sm leading-8 text-slate-500">
           当前链接对应的产品不存在、已下线，或参数地址有误。您可以返回产品中心继续查看。
         </p>
         <div class="mt-8 flex justify-center">
@@ -428,8 +517,41 @@ const specificationRows = computed<SpecificationRow[]>(() => {
     { label: '孔径范围', value: resolveDisplayValue(product.value.apertureRange) },
     { label: '宽幅', value: resolveWidth(product.value) },
     { label: '编织方式', value: resolveWeaveMethod(product.value) },
+    { label: '抗拉强度', value: resolveDisplayValue(product.value.tensileStrength) },
+    { label: '硬度', value: resolveDisplayValue(product.value.hardness) },
+    { label: '参照标准', value: resolveDisplayValue(product.value.standard) },
     { label: '是否支持定制', value: product.value.customSupported ? '支持' : '不支持' }
   ]
+})
+
+type RatingLevel = 'low' | 'medium' | 'high' | 'excellent'
+
+const ratingScore: Record<RatingLevel, number> = { low: 1, medium: 2, high: 3, excellent: 4 }
+const ratingText: Record<RatingLevel, string> = { low: '一般', medium: '良好', high: '优秀', excellent: '卓越' }
+const ratingColor: Record<RatingLevel, string> = {
+  low: 'bg-slate-400',
+  medium: 'bg-blue-400',
+  high: 'bg-blue-600',
+  excellent: 'bg-accent'
+}
+
+const selectionDimensions = computed(() => {
+  const guide = product.value?.selectionGuide
+  if (!guide) return []
+
+  const dims: Array<{ key: string; label: string; level: RatingLevel }> = [
+    { key: 'abrasion', label: '耐磨性', level: guide.abrasion as RatingLevel },
+    { key: 'corrosion', label: '耐腐蚀', level: guide.corrosion as RatingLevel },
+    { key: 'temperature', label: '耐高温', level: guide.temperature as RatingLevel },
+    { key: 'moisture', label: '耐潮湿', level: guide.moisture as RatingLevel }
+  ]
+
+  return dims.map((d) => ({
+    ...d,
+    score: ratingScore[d.level],
+    text: ratingText[d.level],
+    color: ratingColor[d.level]
+  }))
 })
 
 const applicationBadges = computed(() => {
@@ -503,15 +625,61 @@ const productJsonLd = computed(() => {
     material: product.value.materials.join(' / '),
     brand: {
       '@type': 'Brand',
-      name: '筛网厂'
+      name: '华云网业'
     },
+    offers: {
+      '@type': 'Offer',
+      url: `${runtimeConfig.public.siteUrl}/products/${product.value.slug}`,
+      priceCurrency: 'CNY',
+      availability: 'https://schema.org/InStock',
+      itemCondition: 'https://schema.org/NewCondition'
+    },
+    mainEntity: relatedFaqs.value.length ? {
+      '@type': 'FAQPage',
+      mainEntity: relatedFaqs.value.map(faq => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer
+        }
+      }))
+    } : undefined,
     additionalProperty: specificationRows.value
       .filter((row) => row.value !== '/')
       .map((row) => ({
         '@type': 'PropertyValue',
         name: row.label,
         value: row.value
-      }))
+      })),
+    isRelatedTo: [
+      ...(product.value.standard
+        ? product.value.standard.split('；').map(std => ({
+            '@type': 'CreativeWork',
+            name: std.trim(),
+            description: `${product.value!.name} 遵循的技术标准`
+          }))
+        : []),
+      ...(product.value.relatedProducts?.map(relId => ({
+        '@type': 'Product',
+        '@id': `${runtimeConfig.public.siteUrl}/products/${relId.replace('product-', '')}`
+      })) ?? [])
+    ],
+    manufacturer: {
+      '@type': 'Organization',
+      name: '华云网业',
+      url: runtimeConfig.public.siteUrl,
+      knowsAbout: [
+        '工业丝网制造',
+        'ISO 9044 金属丝编织网',
+        'ASTM E11 试验筛标准',
+        'GB/T 5330 金属编织网',
+        '矿山振动筛配套筛板',
+        '不锈钢过滤网定制',
+        '聚氨酯筛板',
+        'Johnson Screen 条缝筛'
+      ]
+    }
   }
 })
 
@@ -557,6 +725,106 @@ useHead(() => ({
 </script>
 
 <style scoped>
+.page-bg {
+  background-color: #f8f9fb;
+  background-image:
+    radial-gradient(circle at 20% 0%, rgba(37, 99, 235, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 100%, rgba(26, 39, 68, 0.04) 0%, transparent 50%);
+}
+
+.breadcrumb-bar {
+  position: sticky;
+  top: 64px; /* header height */
+  z-index: 40;
+}
+
+.section-eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #2563eb;
+}
+
+.section-eyebrow-light {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(147, 170, 220, 0.7);
+}
+
+.product-image-frame {
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  background: white;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06), 0 8px 24px rgba(15, 23, 42, 0.05);
+}
+
+.quick-spec-card {
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+.content-card {
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
+}
+
+.spec-row:first-child th,
+.spec-row:first-child td {
+  padding-top: 1rem;
+}
+
+.spec-row:last-child th,
+.spec-row:last-child td {
+  padding-bottom: 1rem;
+}
+
+/* 深色选型卡片 */
+.selection-card {
+  background: #141e33;
+  box-shadow: 0 4px 6px rgba(15, 23, 42, 0.12), 0 20px 48px rgba(15, 23, 42, 0.16);
+}
+
+.dim-cell {
+  transition: background-color 0.15s;
+}
+
+.dim-cell:hover {
+  background-color: #1e2d4a;
+}
+
+.rating-dot {
+  transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+/* 产品优势深色卡片 */
+.adv-card {
+  background: linear-gradient(145deg, #111827 0%, #1a2744 100%);
+  box-shadow: 0 4px 6px rgba(15, 23, 42, 0.1), 0 20px 48px rgba(15, 23, 42, 0.18);
+}
+
+.adv-item {
+  background: rgba(255, 255, 255, 0.04);
+  transition: background-color 0.15s;
+}
+
+.adv-item:hover {
+  background: rgba(255, 255, 255, 0.07);
+}
+
+/* FAQ 旋转图标 */
+.faq-icon {
+  transition: transform 0.2s ease, border-color 0.2s, background-color 0.2s, color 0.2s;
+}
+
+.rotate-45 {
+  transform: rotate(45deg);
+}
+
+/* 关联产品卡片 */
+.related-card {
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
 .summary-clamp {
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -564,3 +832,4 @@ useHead(() => ({
   overflow: hidden;
 }
 </style>
+

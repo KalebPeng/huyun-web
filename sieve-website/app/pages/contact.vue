@@ -59,14 +59,14 @@
             <div class="mt-6 grid gap-5 sm:grid-cols-[minmax(0,1fr)_120px] sm:items-center">
               <div>
                 <p class="text-base font-semibold text-slate-900">
-                  微信号：sieve-factory
+                  微信号：huayun-sieve
                 </p>
                 <p class="mt-3 text-sm leading-7 text-slate-600">
                   扫码或添加微信可发送图纸、照片和工况说明，方便我们更快判断产品方案。
                 </p>
               </div>
-              <div class="flex h-32 w-32 items-center justify-center rounded-2xl border border-dashed border-slate-300 bg-slate-50 text-center text-xs font-semibold tracking-[0.16em] text-slate-500">
-                二维码图占位
+              <div class="flex h-32 w-32 items-center justify-center rounded-2xl border border-dashed border-slate-300 bg-slate-50 p-4 text-center text-[10px] font-semibold tracking-wider text-slate-500">
+                微信号<br>huayun-sieve
               </div>
             </div>
           </div>
@@ -101,25 +101,25 @@ const { getApplicationBySlug } = useApplications()
 const contactItems: ContactItem[] = [
   {
     label: '电话',
-    value: '400-123-4567',
-    href: 'tel:4001234567',
+    value: '+86 13561559016',
+    href: 'tel:+8613561559016',
     description: '欢迎工作时间内直接来电沟通。'
   },
   {
     label: '邮箱',
-    value: 'sales@example.com',
-    href: 'mailto:sales@example.com',
+    value: 'sales@huayun-mesh.com',
+    href: 'mailto:sales@huayun-mesh.com',
     description: '图纸、规格单和报价需求建议直接发邮件。'
   },
   {
     label: '地址',
-    value: '河北省衡水市安平县筛网产业园 88 号',
+    value: '山东省滨州市华云网业',
     description: '支持预约到厂考察与样品确认。'
   },
   {
     label: 'WhatsApp',
-    value: '+86 138 0000 0000',
-    href: 'https://wa.me/8613800000000',
+    value: '+86 13561559016',
+    href: 'https://wa.me/8613561559016',
     description: '外贸客户可通过 WhatsApp 直接联系。'
   },
   {

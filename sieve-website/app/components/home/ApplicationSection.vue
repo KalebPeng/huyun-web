@@ -6,10 +6,10 @@
           Application Scenarios
         </p>
         <h2 class="mt-3 text-3xl font-black text-primary sm:text-4xl">
-          应用场景
+          核心应用场景
         </h2>
         <p class="mt-4 text-base leading-8 text-slate-600 sm:text-lg">
-          面向粮食、矿山、工业过滤、养殖防护、建筑防护和机械配套等行业，提供匹配工况的筛网与配套方案。
+          专注矿山、洗煤及工业级高效筛分领域，针对不同物料与工况提供匹配的产品方案。
         </p>
       </div>
 
@@ -50,62 +50,24 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-
-import type { ApplicationScene } from '~~/types'
-
-interface ApplicationCardItem
-  extends Pick<ApplicationScene, 'id' | 'slug' | 'name' | 'summary'> {
-  icon: string
-}
+import { useApplications } from '~/composables/useApplications'
 
 const { applications } = useApplications()
 
 const iconMap: Record<string, string> = {
-  'grain-screening': '🌾',
-  'industrial-filtration': '🧪',
-  'mining-screening': '⛏️',
-  'breeding-protection': '🐓',
-  'construction-protection': '🏗️',
-  'machinery-support': '⚙️'
+  'mining-grading': '⛏️',
+  'coal-dewatering': '🌊',
+  'industrial-grading': '🏭'
 }
 
-const staticApplications: ApplicationCardItem[] = [
-  {
-    id: 'app-breeding-protection',
-    slug: 'breeding-protection',
-    name: '养殖防护',
-    summary: '适用于鸡舍、养殖围栏、隔离防护和通风护网等配套场景。',
-    icon: '🐓'
-  },
-  {
-    id: 'app-construction-protection',
-    slug: 'construction-protection',
-    name: '建筑防护',
-    summary: '适用于脚手架围护、门窗防护、洞口隔离和施工区域安全防护。',
-    icon: '🏗️'
-  },
-  {
-    id: 'app-machinery-support',
-    slug: 'machinery-support',
-    name: '机械配套',
-    summary: '适用于设备护罩、输送筛板、过滤组件和各类异形网件配套。',
-    icon: '⚙️'
-  }
-]
-
-const displayedApplications = computed<ApplicationCardItem[]>(() => {
-  const fromData = applications.value.map((application) => ({
+const displayedApplications = computed(() => {
+  return applications.value.map((application) => ({
     id: application.id,
     slug: application.slug,
     name: application.name,
     summary: application.summary,
-    icon: iconMap[application.slug] ?? '🏭'
+    icon: iconMap[application.slug] ?? '⚙️'
   }))
-
-  const existingSlugs = new Set(fromData.map((item) => item.slug))
-  const supplements = staticApplications.filter((item) => !existingSlugs.has(item.slug))
-
-  return [...fromData, ...supplements].slice(0, 6)
 })
 </script>
 

@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 项目概述
 
-筛网厂企业官网，基于 Nuxt 4 + Vue 3 + Tailwind CSS 构建的 SSR 站点，面向 B2B 工业客户，提供产品展示、应用场景说明、FAQ 和在线询价功能。所有代码位于 `sieve-website/` 子目录。
+华云网业企业官网，基于 Nuxt 4 + Vue 3 + Tailwind CSS 构建的 SSR 站点，面向 B2B 工业客户，提供产品展示、应用场景说明、FAQ 和在线询价功能。所有代码位于 `sieve-website/` 子目录。
 
 ## 常用命令
 
@@ -44,6 +44,7 @@ npm run format     # Prettier 格式化
 data/products.json       → app/composables/useProducts.ts
 data/applications.json   → app/composables/useApplications.ts
 data/faq.json            → app/composables/useFaq.ts
+data/articles.json       → app/composables/useArticles.ts
 ```
 
 `nuxt.config.ts` 在构建阶段读取这些 JSON 文件生成 sitemap 动态 URL 条目。
@@ -62,7 +63,7 @@ data/faq.json            → app/composables/useFaq.ts
 
 ### SEO
 
-- `app/composables/useSeoMeta.ts` — 封装 `useHead` + `useNuxtSeoMeta`，统一设置 title/description/og/twitter；全局 `titleTemplate: '%s | 筛网厂'`
+- `app/composables/useSeoMeta.ts` — 封装 `useHead` + `useNuxtSeoMeta`，统一设置 title/description/og/twitter；全局 `titleTemplate: '%s | 华云网业'`
 - 产品详情页（`pages/products/[slug].vue`）注入 Schema.org `Product` JSON-LD 结构化数据
 - `@nuxt/image` 配置了 `hero`（960×720）和 `card`（800×560）两种图片预设，输出 WebP 格式
 
@@ -70,12 +71,15 @@ data/faq.json            → app/composables/useFaq.ts
 
 | 路由 | 说明 |
 |------|------|
-| `/` | 首页，6 个懒加载 Section 组件 |
+| `/` | 首页，多个懒加载 Section 组件 |
 | `/products` | 产品列表 |
-| `/products/:slug` | 产品详情（含 JSON-LD） |
+| `/products/:slug` | 产品详情（含 Schema.org JSON-LD、选型指南、itemprop 规格表） |
 | `/applications` | 应用场景列表 |
 | `/applications/:slug` | 场景详情 |
-| `/faq` | 全部 FAQ |
+| `/faq` | 全部 FAQ，支持关键词搜索和分类筛选 |
+| `/knowledge` | 技术博客列表，支持搜索和分类 |
+| `/knowledge/:slug` | 技术文章详情，含相关文章侧边栏 |
+| `/tools` | 丝网技术计算器（目数↔孔径↔开孔率），含 ASTM E11 参考表 |
 | `/about` | 关于我们 |
 | `/contact` | 询价页，支持 `?product=slug` 和 `?scene=slug` 查询参数预填表单 |
 
@@ -95,3 +99,19 @@ Tailwind 自定义主题色：
 - Vue SFC 文件名 PascalCase；路由相关文件名 kebab-case
 - 路径别名：`~/` 指向 `sieve-website/app/`，`~~/` 指向 `sieve-website/`
 - 不要编辑或提交 `node_modules/` 和 `.nuxt/` 下的生成文件
+
+## 路由文件与目录同名冲突
+
+Nuxt 4 中若同时存在 `pages/foo.vue` 和 `pages/foo/[slug].vue`，`foo.vue` 会被当作父布局而非独立路由，导致子路由无法正常访问。正确做法是将列表页命名为 `pages/foo/index.vue`，详情页为 `pages/foo/[slug].vue`。
+
+## 组件自动注册
+
+`nuxt.config.ts` 中设置了 `pathPrefix: false`，`app/components/` 下所有子目录的组件均可直接以文件名使用，无需路径前缀（如 `tools/MeshCalculator.vue` 直接写 `<MeshCalculator />`）。
+
+## sitemap 动态路由
+
+`nuxt.config.ts` 只静态导入了 `products` 和 `applications` 的 slug 用于生成 sitemap。新增 `knowledge`（文章）等动态路由后，需在 `nuxt.config.ts` 中同步追加对应 URL 列表，否则不会出现在 sitemap.xml 中。
+
+## JSON 数据文件编码注意事项
+
+`data/*.json` 文件中若 `answer`/`content` 等字符串字段内需嵌套引号，必须使用书名号（「」）或 Unicode 转义，不可直接使用未转义的 `"` 双引号，否则 Vite 的 JSON 解析器会在构建时报错。

@@ -10,7 +10,7 @@
             工厂实力
           </h2>
           <p class="mt-4 text-base leading-8 text-slate-600 sm:text-lg">
-            从原材料处理、编织焊接到成品质检与打包发货，围绕筛网制造建立完整工序与稳定交付能力。
+            山东省滨州市华云网业
           </p>
 
           <div class="mt-8 grid gap-4 sm:grid-cols-3">
@@ -116,7 +116,7 @@ interface GalleryItem {
 }
 
 const factoryStats: FactoryStat[] = [
-  { label: '成立年份', value: '2004' },
+  { label: '成立年份', value: '20年+' },
   { label: '生产线数量', value: '8条' },
   { label: '厂房面积', value: '12000㎡' }
 ]

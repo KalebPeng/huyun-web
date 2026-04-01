@@ -6,7 +6,12 @@
       "Bash(npm --version)",
       "Bash(echo EXIT_CODE:$?)",
       "Bash(npx nuxt:*)",
-      "Bash(node_modules/.bin/nuxt dev:*)"
+      "Bash(node_modules/.bin/nuxt dev:*)",
+      "WebSearch",
+      "Bash(ls:*)",
+      "Bash(python3:*)",
+      "Bash(python:*)",
+      "Bash(node:*)"
     ]
   }
 }

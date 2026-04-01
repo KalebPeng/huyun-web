@@ -278,11 +278,11 @@ const articleJsonLd = computed(() => {
     articleSection: '应用场景',
     author: {
       '@type': 'Organization',
-      name: '筛网厂'
+      name: '华云网业'
     },
     publisher: {
       '@type': 'Organization',
-      name: '筛网厂'
+      name: '华云网业'
     }
   }
 })

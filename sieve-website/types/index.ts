@@ -1,3 +1,11 @@
+export interface ProductSelectionGuide {
+  abrasion: 'low' | 'medium' | 'high' | 'excellent'
+  corrosion: 'low' | 'medium' | 'high' | 'excellent'
+  temperature: 'low' | 'medium' | 'high' | 'excellent'
+  moisture: 'low' | 'medium' | 'high' | 'excellent'
+  note?: string
+}
+
 export interface Product {
   id: string
   slug: string
@@ -13,6 +21,10 @@ export interface Product {
   wireDiameterRange?: string
   sizes?: string[]
   customSupported: boolean
+  tensileStrength?: string
+  hardness?: string
+  standard?: string
+  selectionGuide?: ProductSelectionGuide
   applications: string[]
   advantages: string[]
   faqs?: string[]

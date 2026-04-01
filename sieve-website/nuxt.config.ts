@@ -1,7 +1,7 @@
 import applicationsData from './data/applications.json'
 import productsData from './data/products.json'
 
-const siteUrl = process.env.NUXT_PUBLIC_SITE_URL || 'https://yourdomain.com'
+const siteUrl = process.env.NUXT_PUBLIC_SITE_URL || 'https://huayun-mesh.com'
 
 const productUrls = (productsData as Array<{ slug: string }>).map((product) => ({
   loc: `/products/${product.slug}`,
@@ -47,7 +47,7 @@ export default defineNuxtConfig({
 
   site: {
     url: siteUrl,
-    name: '筛网厂'
+    name: '华云网业'
   },
 
   sitemap: {
@@ -88,14 +88,14 @@ export default defineNuxtConfig({
       },
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
-      title: '筛网厂',
-      titleTemplate: '%s | 筛网厂',
+      title: '华云网业',
+      titleTemplate: '%s | 华云网业',
       meta: [
         {
           name: 'description',
-          content: '专业筛网生产厂家，提供多规格筛网产品与定制化解决方案。'
+          content: '华云网业 - 专注矿用焊接筛网、65Mn编织网及聚氨酯筛板生产，为矿山、洗煤与骨料分级提供高耐磨、长寿命的筛分解决方案。'
         },
-        { property: 'og:site_name', content: '筛网厂' },
+        { property: 'og:site_name', content: '华云网业' },
         { property: 'og:type', content: 'website' }
       ]
     }
