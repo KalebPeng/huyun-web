@@ -3,26 +3,26 @@
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="max-w-3xl">
         <p class="text-sm font-semibold uppercase tracking-[0.2em] text-blue-200">
-          Why Choose Us
+          {{ $t('home.advantageSection.eyebrow') }}
         </p>
         <h2 class="mt-3 text-3xl font-black sm:text-4xl">
-          为什么选择我们
+          {{ $t('home.advantageSection.title') }}
         </h2>
         <p class="mt-4 text-base leading-8 text-slate-200 sm:text-lg">
-          从产品规格、定制能力、工厂直供到交付保障，围绕矿山与工业筛网采购场景把可靠性和响应速度做扎实。
+          {{ $t('home.advantageSection.description') }}
         </p>
       </div>
 
       <div class="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
         <article
           v-for="advantage in advantages"
-          :key="advantage.title"
+          :key="advantage.key"
           class="rounded-2xl border border-white/10 bg-white/6 p-6 backdrop-blur-sm"
         >
           <div class="flex items-start gap-4">
             <span
               class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white/10 text-2xl"
-              :aria-label="`${advantage.title} 图标`"
+              :aria-label="$t('home.advantageSection.iconAria', { title: advantage.title })"
             >
               {{ advantage.icon }}
             </span>
@@ -42,44 +42,55 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
+
 interface AdvantageItem {
+  key: string
   icon: string
   title: string
   description: string
 }
 
-const advantages: AdvantageItem[] = [
+const { t } = useI18n()
+
+const advantages = computed<AdvantageItem[]>(() => [
   {
+    key: 'specs',
     icon: '📏',
-    title: '规格多样',
-    description: '目数 1-400 目，孔径 0.1mm 起，覆盖矿山筛分、洗煤、脱水等重载工况。'
+    title: t('home.advantageSection.items.specs.title'),
+    description: t('home.advantageSection.items.specs.description')
   },
   {
+    key: 'custom',
     icon: '🛠️',
-    title: '支持定制',
-    description: '来图来样即可评估，支持尺寸、材质、结构和边框方式的定制加工。'
+    title: t('home.advantageSection.items.custom.title'),
+    description: t('home.advantageSection.items.custom.description')
   },
   {
+    key: 'factory',
     icon: '🏭',
-    title: '工厂直供',
-    description: '自有生产与加工能力，无中间商层层加价，报价逻辑更直接透明。'
+    title: t('home.advantageSection.items.factory.title'),
+    description: t('home.advantageSection.items.factory.description')
   },
   {
+    key: 'response',
     icon: '⏱️',
-    title: '快速响应',
-    description: '48小时内报价，7天内发货，紧急项目优先评估排产与打样。'
+    title: t('home.advantageSection.items.response.title'),
+    description: t('home.advantageSection.items.response.description')
   },
   {
+    key: 'quality',
     icon: '✅',
-    title: '品控稳定',
-    description: '严格质检控制丝径、孔径和结构一致性，减少批次间波动带来的风险。'
+    title: t('home.advantageSection.items.quality.title'),
+    description: t('home.advantageSection.items.quality.description')
   },
   {
+    key: 'delivery',
     icon: '🚚',
-    title: '交付可靠',
-    description: '支持零担、整车和国际物流，适配不同体量订单与跨区域交付需求。'
+    title: t('home.advantageSection.items.delivery.title'),
+    description: t('home.advantageSection.items.delivery.description')
   }
-]
+])
 </script>
 
 <style scoped>

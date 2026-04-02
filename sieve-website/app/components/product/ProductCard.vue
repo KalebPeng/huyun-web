@@ -6,7 +6,7 @@
       <NuxtImg
         v-if="!imageFailed"
         :src="product.coverImage"
-        :alt="`${product.name} 封面图`"
+        :alt="$t('productCard.imageAlt', { name: product.name })"
         width="800"
         height="560"
         class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
@@ -18,9 +18,9 @@
       <div
         v-else
         class="flex h-full w-full items-center justify-center bg-[linear-gradient(135deg,#dbe4f0,#f4f4f0)] text-sm font-medium tracking-[0.18em] text-slate-500"
-        :aria-label="`${product.name} 图片占位`"
+        :aria-label="$t('productCard.placeholderAria', { name: product.name })"
       >
-        产品图片占位
+        {{ $t('productCard.placeholderText') }}
       </div>
 
       <div class="absolute left-4 top-4 flex flex-wrap gap-2">
@@ -45,7 +45,7 @@
         </div>
         <Badge
           v-if="product.customSupported"
-          label="支持定制"
+          :label="$t('productCard.customSupported')"
           variant="success"
         />
       </div>
@@ -58,9 +58,9 @@
         <AppButton
           :to="`/products/${product.slug}`"
           size="sm"
-          aria-label="查看产品详情"
+          :aria-label="$t('productCard.detailAria')"
         >
-          查看详情
+          {{ $t('productCard.detailCta') }}
         </AppButton>
       </div>
     </div>

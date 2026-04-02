@@ -6,22 +6,22 @@
           FAQ
         </p>
         <h1 class="mt-4 text-4xl font-black sm:text-5xl">
-          常见问题
+          {{ $t('faqPage.title') }}
         </h1>
         <p class="mt-5 max-w-3xl text-base leading-8 text-slate-200 sm:text-lg">
-          找不到答案？直接联系我们，我们会根据产品规格、使用场景和工况要求给您更具体的建议。
+          {{ $t('faqPage.description') }}
         </p>
 
         <div class="mt-8 max-w-2xl">
-          <label for="faq-search" class="sr-only">搜索常见问题</label>
+          <label for="faq-search" class="sr-only">{{ $t('faqPage.searchLabel') }}</label>
           <div class="relative">
             <input
               id="faq-search"
               v-model.trim="searchKeyword"
               type="search"
-              placeholder="搜索问题或答案关键词"
+              :placeholder="$t('faqPage.searchPlaceholder')"
               class="min-h-12 w-full rounded-2xl border border-white/15 bg-white/10 px-5 pr-12 text-base text-white placeholder:text-slate-300 backdrop-blur-sm outline-none transition-colors duration-200 focus:border-white/40"
-              aria-label="搜索常见问题"
+              :aria-label="$t('faqPage.searchAria')"
             >
             <span class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-slate-300" aria-hidden="true">
               ⌕
@@ -35,7 +35,7 @@
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div
           class="-mx-4 overflow-x-auto px-4 pb-2 sm:mx-0 sm:px-0"
-          aria-label="FAQ 分类筛选"
+          :aria-label="$t('faqPage.filterAria')"
         >
           <div class="inline-flex min-w-full gap-3 sm:min-w-0 sm:flex-wrap">
             <button
@@ -58,7 +58,7 @@
           v-if="searchKeyword"
           class="mt-4 text-sm text-slate-500"
         >
-          正在搜索“{{ searchKeyword }}”，此时会忽略分类筛选并显示全部匹配结果。
+          {{ $t('faqPage.searching', { keyword: searchKeyword }) }}
         </p>
       </div>
     </section>
@@ -75,10 +75,10 @@
           class="rounded-3xl border border-dashed border-slate-300 bg-white px-6 py-16 text-center shadow-sm"
         >
           <p class="text-lg font-bold text-slate-900">
-            暂无匹配问题
+            {{ $t('faqPage.emptyTitle') }}
           </p>
           <p class="mt-3 text-sm leading-7 text-slate-500">
-            可以换个关键词再试试，或者直接联系我们获取人工答复。
+            {{ $t('faqPage.emptyDescription') }}
           </p>
         </div>
       </div>
@@ -90,20 +90,20 @@
           <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
             <div>
               <h2 class="text-2xl font-black sm:text-3xl">
-                还有其他问题？
+                {{ $t('faqPage.ctaTitle') }}
               </h2>
               <p class="mt-3 max-w-2xl text-sm leading-7 text-slate-200 sm:text-base">
-                把您的工况、材质和尺寸要求发给我们，沟通清楚比瞎猜快得多。
+                {{ $t('faqPage.ctaDescription') }}
               </p>
             </div>
 
             <AppButton
               to="/contact"
               size="lg"
-              aria-label="前往联系我们页面"
+              :aria-label="$t('faqPage.ctaAria')"
               class="!bg-white !text-primary hover:!bg-slate-100 focus-visible:!outline-white"
             >
-              联系我们
+              {{ $t('common.contactUs') }}
             </AppButton>
           </div>
         </div>
@@ -137,19 +137,20 @@ interface CategoryTab {
 const { faqs } = useFaq()
 const runtimeConfig = useRuntimeConfig()
 const siteUrl = runtimeConfig.public.siteUrl.replace(/\/+$/, '')
+const { t, localeProperties } = useI18n()
 
 const searchKeyword = ref('')
 const activeCategory = ref<FaqCategoryKey>('all')
 
-const categoryTabs: CategoryTab[] = [
-  { label: '全部', value: 'all' },
-  { label: '产品规格', value: 'spec' },
-  { label: '材质选择', value: 'material' },
-  { label: '定制问题', value: 'custom' },
-  { label: '报价问题', value: 'quote' },
-  { label: '发货交期', value: 'delivery' },
-  { label: '样品问题', value: 'sample' }
-]
+const categoryTabs = computed<CategoryTab[]>(() => [
+  { label: t('faqPage.categories.all'), value: 'all' },
+  { label: t('faqPage.categories.spec'), value: 'spec' },
+  { label: t('faqPage.categories.material'), value: 'material' },
+  { label: t('faqPage.categories.custom'), value: 'custom' },
+  { label: t('faqPage.categories.quote'), value: 'quote' },
+  { label: t('faqPage.categories.delivery'), value: 'delivery' },
+  { label: t('faqPage.categories.sample'), value: 'sample' }
+])
 
 const resolveCategory = (faq: FAQ): FaqCategoryKey => {
   if (faq.id.startsWith('faq-spec-')) return 'spec'
@@ -190,7 +191,7 @@ const faqJsonLd = computed(() => ({
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
   mainEntityOfPage: `${siteUrl}/faq`,
-  inLanguage: 'zh-CN',
+  inLanguage: localeProperties.value.language || 'zh-CN',
   mainEntity: faqs.value.map((faq) => ({
     '@type': 'Question',
     name: faq.question,
@@ -202,9 +203,8 @@ const faqJsonLd = computed(() => ({
 }))
 
 usePageSeoMeta({
-  title: '常见问题',
-  description:
-    '查看产品规格、材质选择、定制加工、报价交期和样品安排等常见问题，快速获取筛网选型与采购答疑。'
+  title: t('faqPage.seo.title'),
+  description: t('faqPage.seo.description')
 })
 
 useHead(() => ({

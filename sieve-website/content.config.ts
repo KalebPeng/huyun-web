@@ -4,8 +4,12 @@ export default defineContentConfig({
   collections: {
     knowledge: defineCollection({
       type: 'page',
-      source: 'knowledge/**/*.md',
+      source: [
+        { include: 'zh/knowledge/**/*.md' },
+        { include: 'en/knowledge/**/*.md' }
+      ],
       schema: z.object({
+        lang: z.enum(['zh', 'en']).optional(),
         category: z.string(),
         summary: z.string(),
         author: z.string(),

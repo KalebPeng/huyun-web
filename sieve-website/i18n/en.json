@@ -1,0 +1,825 @@
+{
+  "aboutPage": {
+    "companyParagraphs": {
+      "four": "We uphold a quality philosophy centered on wear resistance. Through digital production scheduling and multi-stage quality control, every screen we deliver is built to last in high-impact, high-abrasion environments.",
+      "one": "Huayun Wire Mesh specializes in manufacturing and developing mining screens and heavy-duty industrial mesh. With industry-leading automated slot-welding lines and dedicated 65Mn spring steel weaving equipment, we reliably produce ultra-heavy screens with wire diameters up to 14 mm.",
+      "three": "Beyond standard specifications, Huayun serves mining equipment suppliers and large-scale coal washing and mineral processing operations, offering material recommendations based on wear analysis and non-standard custom fabrication.",
+      "two": "Our factory is located in Binzhou, Shandong Province, with a production floor of 15,000 m². We have established a complete quality chain from raw material analysis and weaving/welding process control through to finished product load simulation testing."
+    },
+    "ctaAria": "Go to Contact Us",
+    "ctaDescription": "Share your application, order volume, and customization requirements — we'll arrange a business and technical consultation promptly.",
+    "ctaTitle": "Want to learn more about our factory capabilities?",
+    "customCapabilities": {
+      "one": "Production from customer drawings or samples, with processing tailored by aperture, wire diameter, dimensions, and frame structure.",
+      "three": "For corrosive, abrasive, high-temperature, and other special conditions, we assist in selecting stainless steel, high-manganese steel, and composite materials.",
+      "two": "Standard specifications are quickly matched to stock or standard production parameters, reducing back-and-forth communication."
+    },
+    "customEyebrow": "Custom Capability",
+    "customTitle": "Custom Capability",
+    "deliveryCapabilities": {
+      "one": "Standard specifications ship from stock; urgent orders are prioritized in production scheduling and dispatch.",
+      "three": "LTL, full truckload, and international freight available, with wooden crates, pallets, and protective packaging.",
+      "two": "Custom products are scheduled by processing complexity with clear delivery milestones — no vague commitments."
+    },
+    "deliveryEyebrow": "Delivery Capability",
+    "deliveryTitle": "Delivery Capability",
+    "description": "Focused on mining screen manufacturing and high-abrasion custom solutions, serving mining, coal washing, aggregate grading, and industrial fine screening.",
+    "eyebrow": "About Us",
+    "factoryEyebrow": "Factory & Equipment",
+    "factoryGallery": {
+      "line": "Automated Production Line",
+      "packing": "Packing & Dispatch Area",
+      "quality": "Quality Inspection Station",
+      "weaving": "CNC Weaving Machine"
+    },
+    "factoryTitle": "Factory & Equipment Gallery",
+    "heroBadge": "Binzhou, Shandong — Manufacturing Base",
+    "productDirections": {
+      "crimped": {
+        "name": "Crimped Wire Mesh",
+        "summary": "High load capacity, commonly used for medium to coarse particle screening."
+      },
+      "custom": {
+        "name": "Custom Fabricated Parts",
+        "summary": "Fabricated to equipment drawings for special-structure screen components."
+      },
+      "filter": {
+        "name": "Filter Discs & Panels",
+        "summary": "Available with punching, edge binding, and multi-layer composite processing."
+      },
+      "mining": {
+        "name": "Mining Screens",
+        "summary": "Designed for heavy-duty, abrasion-resistant, high-impact mining applications."
+      },
+      "welded": {
+        "name": "Welded Wire Mesh",
+        "summary": "Suitable for fencing, enclosures, and standard construction applications."
+      },
+      "woven": {
+        "name": "Stainless Steel Woven Mesh",
+        "summary": "Used for filtration, screening, and protection in precision applications."
+      }
+    },
+    "productFocusDescription": "Covering various operating conditions and industry requirements, from standard specs to custom-fabricated screen products.",
+    "productFocusEyebrow": "Product Focus",
+    "productFocusTitle": "Core Product Lines",
+    "profileEyebrow": "Company Profile",
+    "profileTitle": "Company Profile",
+    "qualityEyebrow": "Quality Promise",
+    "qualityPromises": {
+      "afterSales": {
+        "description": "We provide selection consultation, sample confirmation, usage guidance, and after-sales follow-up, with prompt issue resolution.",
+        "title": "After-Sales Service"
+      },
+      "cert": {
+        "description": "Huayun Wire Mesh is ISO 9001:2015 certified. From incoming raw materials to finished product inspection, our multi-stage QC covers material, aperture, wire diameter, and flatness — with inspection reports included with every order.",
+        "title": "Quality Commitment & Certification"
+      },
+      "delivery": {
+        "description": "Clear production schedules with milestone updates, with standard and custom orders managed separately to keep delivery on track.",
+        "title": "Delivery Guarantee"
+      }
+    },
+    "qualityTitle": "Quality Commitment",
+    "seo": {
+      "description": "Learn about Huayun Wire Mesh's history, production capacity, core product lines, factory equipment, and quality commitments.",
+      "title": "About Us"
+    },
+    "stats": {
+      "baseLabel": "Production Base",
+      "baseValue": "15,000 m²",
+      "clientsLabel": "Clients Served",
+      "clientsValue": "500+",
+      "experienceLabel": "Industry Experience",
+      "experienceValue": "20+ Years",
+      "skusLabel": "Product Specifications",
+      "skusValue": "200+"
+    },
+    "title": "About Us"
+  },
+  "applicationDetail": {
+    "breadcrumbAria": "Breadcrumb Navigation",
+    "considerationEyebrow": "Key Considerations",
+    "considerationTitle": "Key Selection Factors",
+    "ctaAria": "Inquire About {name} Solution",
+    "ctaButton": "Request a Tailored Solution",
+    "ctaDescription": "Send us your material properties, equipment dimensions, and target throughput — we'll provide tailored selection advice for your application.",
+    "ctaTitle": "Need a tailored solution for this application?",
+    "emptyProductsDescription": "Product recommendations for this application are not yet complete. Contact us directly for manual selection assistance.",
+    "emptyProductsTitle": "No Recommended Products Yet",
+    "notFoundAria": "Back to Application Scenes",
+    "notFoundButton": "Back to Applications",
+    "notFoundDescription": "This application scene no longer exists or has been removed. Return to the list to explore other solutions.",
+    "notFoundEyebrow": "Scene Not Found",
+    "notFoundTitle": "Application Scene Not Found",
+    "overviewEyebrow": "Application Overview",
+    "painPoints": {
+      "filtration": {
+        "one": "Filtration precision, pressure drop, and cleaning frequency are interdependent — the wrong material choice leads to problems fast.",
+        "three": "Customers often have end-use goals but lack drawings, leaving selection information incomplete upfront.",
+        "two": "Many process media are corrosive or temperature-sensitive — material compatibility must be confirmed first."
+      },
+      "grain": {
+        "one": "Customers typically describe grain type and contaminants but can't specify which mesh structure to use.",
+        "three": "Equipment models and mounting dimensions vary — standard sizes don't always fit directly.",
+        "two": "Balancing screening efficiency against grain breakage and mesh blinding makes parameter selection tricky."
+      },
+      "mining": {
+        "one": "Both impact and abrasion are severe — short service life usually means mismatched selection or structure, not poor product quality.",
+        "three": "Replacement downtime is costly — spare part lead times and wear life must be factored in from the start.",
+        "two": "When tensioning method, aperture, and particle size are mismatched, throughput drops immediately."
+      }
+    },
+    "painPointsTitle": "Common Challenges",
+    "recommendedEyebrow": "Recommended Products",
+    "recommendedTitle": "Products for This Application",
+    "seo": {
+      "fallbackDescription": "This application scene no longer exists or has been removed. Return to the list for more screening solutions.",
+      "title": "{name} — Recommended Products & Selection Guide"
+    },
+    "usageAdviceEyebrow": "Usage Advice",
+    "usageAdviceTitle": "Usage Advice",
+    "viewAllProducts": "View All Products"
+  },
+  "applicationsPage": {
+    "cardAria": "View {name} Recommended Solutions",
+    "cardCta": "View Recommended Solutions",
+    "cardEyebrow": "Scene",
+    "ctaAria": "Go to Inquiry Page",
+    "ctaDescription": "Tell us your operating conditions, material, and target precision — we'll give you reliable selection advice and a quote based on your application.",
+    "ctaTitle": "Not sure which screen type to choose?",
+    "description": "Helping customers find the right screen solution by starting from their application — grain screening, industrial filtration, mineral processing, and more.",
+    "eyebrow": "Application Scenes",
+    "seo": {
+      "description": "Quickly find the right product through application scenarios like grain screening, industrial filtration, and mining — with selection guidance and solution packages.",
+      "title": "Application Scenes"
+    },
+    "title": "Application Scenes"
+  },
+  "brand": {
+    "name": "Huayun Wire Mesh",
+    "tagline": "Industrial Mesh"
+  },
+  "common": {
+    "contactUs": "Contact Us",
+    "getQuote": "Request a Quote",
+    "no": "No",
+    "notSupported": "Not Supported",
+    "supported": "Supported",
+    "yes": "Yes"
+  },
+  "contactPage": {
+    "contactInfoEyebrow": "Contact Info",
+    "contactInfoTitle": "Contact Information",
+    "contactItems": {
+      "addressDescription": "Factory visits and sample confirmation available by appointment.",
+      "addressLabel": "Address",
+      "addressValue": "Huayun Wire Mesh, Binzhou, Shandong Province",
+      "emailDescription": "Send drawings, specification sheets, and quote requests directly by email.",
+      "emailLabel": "Email",
+      "hoursLabel": "Business Hours",
+      "hoursValue": "Mon–Sat, 9:00–18:00",
+      "phoneDescription": "Calls welcome during business hours.",
+      "phoneLabel": "Phone",
+      "whatsAppDescription": "International customers can reach us directly via WhatsApp."
+    },
+    "description": "Submit your product requirements, application details, and specifications — we commit to a professional response and quote within 48 hours.",
+    "eyebrow": "Contact Us",
+    "seo": {
+      "description": "Contact us by phone, WeChat, email, or online form. Submit your screen requirements for a fast quote and selection advice.",
+      "title": "Contact Us / Request a Quote"
+    },
+    "title": "Contact Us / Request a Quote",
+    "wechatDescription": "Scan the QR code or add us on WeChat to send drawings, photos, and application details for faster product recommendations.",
+    "wechatEyebrow": "WeChat",
+    "wechatLabel": "WeChat ID: huayun-sieve",
+    "wechatQr": "WeChat ID\nhuayun-sieve",
+    "wechatTitle": "WeChat Consultation"
+  },
+  "contentStandardsPage": {
+    "boundary": {
+      "one": "Knowledge base content helps you understand screen specifications, material differences, common operating conditions, and calculation methods. It does not replace on-site trial screening, third-party testing, or full system validation.",
+      "three": "Service life, throughput, open area, and material recommendations are all affected by on-site conditions. Empirical values on this site are a starting point only.",
+      "two": "For food, pharmaceutical, highly corrosive, high-temperature/pressure, or regulated certification applications, final selection must be confirmed against actual media, compliance requirements, and project drawings."
+    },
+    "boundaryEyebrow": "Boundary",
+    "boundaryTitle": "Scope & Limitations",
+    "ctaDescription": "Each article displays sources, review team, last review date, and scope limitations at the top. If you find unclear descriptions or questionable parameters, contact us and we'll review manually.",
+    "ctaFeedback": "Report a Content Issue",
+    "ctaKnowledge": "Browse Knowledge Base",
+    "ctaTitle": "Want to verify an article's sources and last update?",
+    "description": "This page explains who writes and reviews Huayun's knowledge base content, what sources are used, when updates happen, and how errors are handled — establishing a clear chain of credibility.",
+    "eyebrow": "Content Standards",
+    "roles": {
+      "publisherDescription": "Articles are only published once source documentation, review information, and scope limitations are complete.",
+      "publisherTitle": "Publishing Responsibility",
+      "reviewerDescription": "Key parameters, material descriptions, applicable conditions, calculation logic, and risk boundaries are reviewed by the Huayun Technical & Quality Control Joint Review team.",
+      "reviewerTitle": "Technical Review",
+      "writerDescription": "Content editors compile common customer questions, product specification language, and page structure — turning technical information into clear, readable content.",
+      "writerTitle": "Content Writing"
+    },
+    "rolesEyebrow": "Roles",
+    "rolesTitle": "Author & Reviewer Roles",
+    "seo": {
+      "description": "Explains author roles, review mechanisms, source policies, update rules, and error correction procedures for the Huayun knowledge base.",
+      "title": "Content Review & Editorial Standards"
+    },
+    "sourcePolicy": {
+      "four": "AI tools may assist with drafting, but content involving specifications, formulas, material recommendations, or applicable conclusions must pass human review before publication.",
+      "one": "Primary sources are prioritized: national standards, industry standards, test specifications, equipment datasheets, and raw material spec sheets.",
+      "three": "Source citations include both the publisher and intended use, so readers can judge whether a reference defines a term, verifies a parameter, or establishes a boundary.",
+      "two": "Material selection, service life judgments, and condition guidance draw on internal production and QC experience — but individual cases are never generalized into universal conclusions."
+    },
+    "sourcePolicyEyebrow": "Source Policy",
+    "sourcePolicyTitle": "Source Policy",
+    "title": "Content Review & Editorial Standards",
+    "trustHighlights": {
+      "clearBoundary": {
+        "description": "Every article states applicable and non-applicable scenarios, preventing experiential judgments from being presented as absolute conclusions.",
+        "title": "Clear Boundaries"
+      },
+      "correctionTrigger": {
+        "description": "If you find issues with parameters, descriptions, or conclusions, submit feedback directly — the content will enter a manual review process.",
+        "title": "Error Correction Enabled"
+      },
+      "namedReview": {
+        "description": "Knowledge base articles display the author, review team, and last review date — no anonymous technical conclusions.",
+        "title": "Named Review"
+      },
+      "traceableSources": {
+        "description": "Content involving standards, materials, calculations, and condition assessments clearly displays references and their intended use.",
+        "title": "Traceable Sources"
+      }
+    },
+    "updateRules": {
+      "four": "If a conclusion applies only to specific conditions, it is stated directly in Scope & Limitations — not buried in footnotes.",
+      "one": "The 'Last Reviewed' date on each article represents the most recent date a human reviewer approved the content.",
+      "three": "If feedback identifies ambiguity, missing boundaries, or inaccurate examples, the content re-enters the review process for reconfirmation.",
+      "two": "Content with standard updates, specification changes, calculation logic issues, or clear factual errors is prioritized for correction — no delays."
+    },
+    "updateRulesEyebrow": "Update Rules",
+    "updateRulesTitle": "Update & Correction Process",
+    "workflow": {
+      "step1": {
+        "description": "Drafts are compiled from frequent customer questions, specification explanations, and common selection mistakes — with a clear problem statement established first.",
+        "title": "Topic Selection & Draft"
+      },
+      "step2": {
+        "description": "Standard clauses, product parameters, calculation formulas, and operating condition descriptions are verified item by item, with sources and intended use documented.",
+        "title": "Source Verification"
+      },
+      "step3": {
+        "description": "Technical and QC teams jointly review key parameters, applicable boundaries, tolerance ranges, and exclusions — preventing marketing language from overriding technical facts.",
+        "title": "Technical Review"
+      },
+      "step4": {
+        "description": "The last reviewed date is recorded at publication. When standards, specifications, or condition conclusions change, the content is re-reviewed and updated.",
+        "title": "Publication & Re-review"
+      }
+    },
+    "workflowEyebrow": "Workflow",
+    "workflowTitle": "Content Production & Review Workflow"
+  },
+  "faqPage": {
+    "categories": {
+      "all": "All",
+      "custom": "Custom Orders",
+      "delivery": "Shipping & Lead Time",
+      "material": "Material Selection",
+      "quote": "Pricing",
+      "sample": "Samples",
+      "spec": "Product Specifications"
+    },
+    "ctaAria": "Go to Contact Us",
+    "ctaDescription": "Send us your operating conditions, material needs, and dimensions — clear communication beats guesswork.",
+    "ctaTitle": "Have More Questions?",
+    "description": "Can't find your answer? Contact us — we'll give specific advice based on your specs, application, and operating conditions.",
+    "emptyDescription": "Try a different keyword, or contact us directly for a manual response.",
+    "emptyTitle": "No Matching Questions",
+    "filterAria": "Filter FAQ by Category",
+    "searchAria": "Search FAQ",
+    "searchLabel": "Search FAQ",
+    "searchPlaceholder": "Search question or answer keywords",
+    "searching": "Showing all results matching \"{keyword}\" — category filters are temporarily ignored.",
+    "seo": {
+      "description": "Browse FAQs on specifications, material selection, custom fabrication, pricing, lead times, and samples — get fast answers for screen procurement.",
+      "title": "FAQ"
+    },
+    "title": "FAQ"
+  },
+  "footer": {
+    "address": "Address:",
+    "applicationLinks": {
+      "coalDewatering": "Coal Washing & Dewatering",
+      "getQuote": "Request a Quote",
+      "knowledge": "Technical Knowledge Base",
+      "miningGrading": "Mining & Aggregate Grading"
+    },
+    "contact": "Contact Information",
+    "copyright": "© 2026 Huayun Wire Mesh. All rights reserved.",
+    "description": "Specialized in mining and industrial screening solutions — custom delivery of polyurethane screens, woven mesh, and welded slot screens.",
+    "email": "Email:",
+    "phone": "Phone:",
+    "productLinks": {
+      "crimpedWireMesh": "Heavy-Duty Crimped Wire Mesh",
+      "miningWeldedScreen": "Mining Welded Screen",
+      "polyurethaneScreen": "Polyurethane Screen",
+      "woven65mnScreen": "65Mn Woven Screen"
+    },
+    "products": "Products",
+    "services": "Technical Services",
+    "wechat": "WeChat:"
+  },
+  "form": {
+    "inquiry": {
+      "error": "Submission failed. Please call us directly.",
+      "eyebrow": "Inquiry Form",
+      "fields": {
+        "company": "Company Name",
+        "contact": "Contact *",
+        "customRequired": "Custom Required",
+        "material": "Material Requirement",
+        "meshOrAperture": "Mesh Size or Aperture",
+        "name": "Name *",
+        "productType": "Product Type",
+        "quantity": "Quantity",
+        "remark": "Additional Notes",
+        "size": "Dimensions",
+        "usage": "Application / Industry"
+      },
+      "options": {
+        "material": {
+          "carbonSteel": "Carbon Steel",
+          "galvanized": "Galvanized",
+          "other": "Other",
+          "stainless304": "Stainless Steel 304",
+          "stainless316": "Stainless Steel 316"
+        },
+        "usage": {
+          "breeding": "Aquaculture / Livestock",
+          "construction": "Construction",
+          "filtration": "Industrial Filtration",
+          "grain": "Grain Screening",
+          "mining": "Mining Screening",
+          "other": "Other"
+        }
+      },
+      "placeholders": {
+        "company": "Enter your company name",
+        "contact": "Phone or WeChat",
+        "material": "Select material",
+        "meshOrAperture": "e.g., 40 mesh / 2 mm",
+        "name": "Enter your name",
+        "productType": "e.g., Stainless Steel Woven Mesh",
+        "quantity": "e.g., 100 rolls / 20 panels",
+        "remark": "Operating conditions, equipment model, lead time requirements, or other details",
+        "size": "e.g., 1m × 30m",
+        "usage": "Select application / industry"
+      },
+      "requiredHint": "Fields marked * are required",
+      "submit": "Submit Inquiry",
+      "submitAria": "Submit Inquiry Request",
+      "submitting": "Submitting...",
+      "success": "We've received your inquiry and will contact you shortly.",
+      "title": "Submit Inquiry Request",
+      "validation": {
+        "contact": "Please enter your contact information",
+        "name": "Please enter your name"
+      }
+    }
+  },
+  "header": {
+    "backHome": "Back to Home",
+    "closeMenu": "Close Menu",
+    "getQuoteAria": "Go to Inquiry Page",
+    "mainNav": "Main Navigation",
+    "mobileNav": "Mobile Navigation",
+    "openMenu": "Open Menu"
+  },
+  "home": {
+    "advantageSection": {
+      "description": "From product specs and custom capability to direct factory supply and delivery assurance — reliability and fast response built for mining and industrial screen procurement.",
+      "eyebrow": "Why Choose Us",
+      "iconAria": "{title} icon",
+      "items": {
+        "custom": {
+          "description": "Send drawings or samples for evaluation. Custom processing available for dimensions, material, structure, and frame type.",
+          "title": "Custom Available"
+        },
+        "delivery": {
+          "description": "LTL, full truckload, and international freight supported — suitable for orders of any size and cross-region delivery.",
+          "title": "Reliable Delivery"
+        },
+        "factory": {
+          "description": "In-house production and processing — no middlemen, more transparent pricing.",
+          "title": "Direct from Factory"
+        },
+        "quality": {
+          "description": "Strict QC controls wire diameter, aperture, and structural consistency, reducing batch-to-batch variation.",
+          "title": "Consistent Quality"
+        },
+        "response": {
+          "description": "Quotes within 48 hours, shipment within 7 days. Urgent orders prioritized for scheduling and sampling.",
+          "title": "Fast Response"
+        },
+        "specs": {
+          "description": "Mesh 1–400, aperture from 0.1 mm — covering heavy-duty applications including mining, coal washing, and dewatering.",
+          "title": "Wide Range of Specs"
+        }
+      },
+      "title": "Why Choose Us"
+    },
+    "applicationSection": {
+      "description": "Focused on mining, coal washing, and industrial screening — matched product solutions for different materials and operating conditions.",
+      "detail": "Learn More",
+      "detailAria": "Learn more about {name}",
+      "eyebrow": "Application Scenarios",
+      "iconAria": "{name} icon",
+      "title": "Core Application Scenes"
+    },
+    "ctaSection": {
+      "contacts": {
+        "email": "Email",
+        "phone": "Phone",
+        "wechat": "WeChat"
+      },
+      "cta": "Submit Your Inquiry Now",
+      "ctaAria": "Submit Your Inquiry Now",
+      "description": "Tell us what you need — professional quotes within 48 hours, fast turnaround for standard specs, and evaluation for custom products.",
+      "eyebrow": "Get A Quote",
+      "title": "Ready to Get Started?"
+    },
+    "factorySection": {
+      "equipmentItems": {
+        "automation": "Equipped with automatic weaving machines, welding machines, and heavy crimping equipment — covering multi-spec screen production.",
+        "processing": "Laser cutting, punching, and edge binding stations — supporting custom-shaped parts and filter panel accessories.",
+        "sampling": "Dedicated sampling and cutting area for small-batch trial production and non-standard structure confirmation."
+      },
+      "equipmentTitle": "Core Equipment",
+      "eyebrow": "Factory Strength",
+      "gallery": {
+        "equipment": "Equipment Photo",
+        "packing": "Packing Photo",
+        "quality": "QC Photo",
+        "workshop": "Workshop Photo"
+      },
+      "location": "Huayun Wire Mesh, Binzhou, Shandong Province",
+      "qualityItems": {
+        "finishedGoods": "Finished products are batch-sampled for aperture, dimensions, and flatness. Labels, quantity, and appearance verified before packing.",
+        "rawMaterials": "Incoming materials checked for grade, wire diameter, and surface condition. Key specifications retained as reference samples."
+      },
+      "qualityTitle": "Quality Inspection Process",
+      "stats": {
+        "area": "Factory Floor Area",
+        "founded": "Years in Operation",
+        "lines": "Production Lines"
+      },
+      "title": "Factory Capabilities",
+      "values": {
+        "founded": "20+ Years",
+        "lines": "8 Lines"
+      }
+    },
+    "hero": {
+      "capabilityLabel": "Core Capability",
+      "capabilityValue": "Integrated supply of screening, filtration, and protection products",
+      "deliveryLabel": "Delivery Focus",
+      "deliveryValue": "Rapid sampling, custom fabrication, reliable delivery",
+      "description": "Specialized in mining welded screens, 65Mn woven mesh, and polyurethane panels — delivering high-abrasion, long-life screening solutions for mining, coal washing, and aggregate grading.",
+      "factoryPlaceholderLabel": "Factory Visual Placeholder",
+      "factoryPlaceholderTitle": "Factory Photo Placeholder",
+      "imageAlt": "Huayun Wire Mesh — Mining Welded Screen and 65Mn Woven Mesh Production",
+      "primaryCtaAria": "Go to Request a Quote",
+      "secondaryCta": "View Products",
+      "secondaryCtaAria": "Go to Products",
+      "stats": {
+        "clients": "Clients",
+        "experience": "Experience",
+        "response": "Fast Response",
+        "skus": "Product Specifications"
+      },
+      "statsValues": {
+        "experience": "20+ Years"
+      },
+      "title": "Huayun Wire Mesh — Mining Screen Manufacturer"
+    },
+    "productSection": {
+      "cta": "View All Products",
+      "ctaAria": "View All Products",
+      "description": "Focused on screening, filtration, and protection — multi-spec standard products and custom fabrication for industrial, grain, and mining applications.",
+      "eyebrow": "Core Products",
+      "title": "Core Products"
+    },
+    "seo": {
+      "description": "Huayun Wire Mesh specializes in high-quality mining screens — welded screens, 65Mn woven mesh, and polyurethane panels — delivering wear-resistant, efficient screening for mining, aggregate, and industrial filtration.",
+      "title": "Huayun Wire Mesh — Professional Mining Screen Manufacturer"
+    }
+  },
+  "knowledgeDetail": {
+    "aboutLink": "View Factory & Quality Commitments",
+    "backToList": "Back to Knowledge Base",
+    "boundaryTitle": "Scope & Limitations",
+    "breadcrumbAria": "Breadcrumb Navigation",
+    "contactCta": "Have questions? Contact us",
+    "fallbackTitle": "Article Details",
+    "notFoundTitle": "Article Not Found",
+    "quoteBoxDescription": "Share your operating conditions and parameters — our engineers will respond with selection advice within 24 hours.",
+    "quoteBoxTitle": "Need a Custom Screen?",
+    "relatedTitle": "Related Articles",
+    "reviewStandardsLink": "View Content Review & Editorial Standards",
+    "reviewTitle": "Author & Review",
+    "reviewedAt": "Last reviewed: {date}",
+    "reviewedBy": "Review team: {team}",
+    "sourcesTitle": "Sources & References",
+    "toolsCta": "Open Calculator",
+    "toolsDescription": "Online mesh, aperture, and open area conversion, plus ASTM E11 reference table.",
+    "toolsTitle": "Technical Calculator"
+  },
+  "knowledgePage": {
+    "categories": {
+      "all": "All"
+    },
+    "ctaDescription": "Tell us your operating conditions, material, and equipment parameters — our engineers will provide targeted screen selection advice.",
+    "ctaTitle": "Have a specific selection question?",
+    "description": "Covering ISO/ASTM standards, material selection logic, screening process principles, and application analysis. The knowledge base is driven by Markdown — adding articles requires no code changes.",
+    "emptyDescription": "Try a different keyword, or browse all categories.",
+    "emptyTitle": "No Matching Articles",
+    "eyebrow": "Technical Knowledge",
+    "readMore": "Read Full Article",
+    "searchPlaceholder": "Search article titles or keywords",
+    "searchResult": "Found {count} articles matching \"{keyword}\"",
+    "seo": {
+      "description": "Huayun Wire Mesh technical articles covering ISO 9044, ASTM E11, material selection, slot screen principles, and open area calculation.",
+      "title": "Technical Knowledge Base"
+    },
+    "title": "Technical Knowledge Base",
+    "toolsCta": "Technical Calculator"
+  },
+  "langSwitcher": {
+    "current": "Current",
+    "en": "English",
+    "switchToAria": "Switch to {locale}",
+    "zh": "Chinese"
+  },
+  "meshCalculator": {
+    "eyebrow": "Technical Tool",
+    "fields": {
+      "aperture": "Aperture",
+      "mesh": "Mesh Size",
+      "openingArea": "Open Area (%)",
+      "wireDiameter": "Wire Diameter"
+    },
+    "formula": {
+      "apertureFormula": " = 25.4 / Mesh − Wire Dia.",
+      "apertureLabel": "Aperture",
+      "openingAreaFormula": " = Aperture² / (Aperture + Wire Dia.)²",
+      "openingAreaLabel": "Open Area"
+    },
+    "title": "Industrial Wire Mesh Technical Calculator",
+    "units": {
+      "mesh": "holes/in",
+      "metric": "mm"
+    }
+  },
+  "nav": {
+    "about": "About Us",
+    "applications": "Application Scenes",
+    "faq": "FAQ",
+    "home": "Home",
+    "knowledge": "Technical Knowledge Base",
+    "products": "Products",
+    "tools": "Technical Tools"
+  },
+  "productCard": {
+    "customSupported": "Custom Available",
+    "detailAria": "View Product Details",
+    "detailCta": "View Details",
+    "imageAlt": "{name} cover image",
+    "placeholderAria": "{name} image placeholder",
+    "placeholderText": "Product Image Placeholder"
+  },
+  "productDetail": {
+    "advantagesTitle": "Product Advantages",
+    "applicationSummary": "This product is commonly used in {names} and similar applications — {description}",
+    "applicationsTitle": "Application Scenes",
+    "breadcrumbAria": "Breadcrumb Navigation",
+    "callAria": "Call to inquire about {name}",
+    "callButton": "Call Us",
+    "customSupported": "Custom Available",
+    "emptyFaq": "No FAQs available yet. Contact us directly for clarification.",
+    "faqTitle": "FAQ",
+    "imageAlt": "{name} — Main Product Image",
+    "imagePlaceholderAria": "{name} image placeholder",
+    "labels": {
+      "apertureRange": "Aperture Range",
+      "customSupport": "Custom Available",
+      "hardness": "Hardness",
+      "hardnessIndex": "Hardness Index",
+      "material": "Material",
+      "meshRange": "Mesh Range",
+      "primaryMaterial": "Primary Material",
+      "referenceStandard": "Reference Standard",
+      "tensileStrength": "Tensile Strength",
+      "weaveMethod": "Weave Method",
+      "width": "Width",
+      "wireDiameterRange": "Wire Diameter Range"
+    },
+    "notFoundAria": "Back to Products",
+    "notFoundButton": "Back to Products",
+    "notFoundDescription": "The product for this link no longer exists, has been removed, or the URL is incorrect. Return to the product catalog to continue browsing.",
+    "notFoundTitle": "Product Not Found",
+    "quoteAria": "Request Quote for {name}",
+    "rating": {
+      "excellent": "Excellent",
+      "high": "Very Good",
+      "low": "Fair",
+      "medium": "Good"
+    },
+    "relatedDetailAria": "View {name} details",
+    "relatedProductsTitle": "Related Products",
+    "selectionDimensions": {
+      "abrasion": "Abrasion Resistance",
+      "corrosion": "Corrosion Resistance",
+      "moisture": "Moisture Resistance",
+      "temperature": "High-Temperature Resistance"
+    },
+    "selectionGuideTitle": "Technical Selection Guide",
+    "seo": {
+      "fallbackDescription": "This product no longer exists or has been removed. Return to the product catalog for more screen options.",
+      "title": "{name} — Specifications & Applications"
+    },
+    "specificationsTitle": "Specifications",
+    "standardDescription": "Technical standards for {name}",
+    "standardsLabel": "Standards Compliance",
+    "unavailable": "Product information is currently unavailable.",
+    "viewAllProducts": "View All",
+    "viewDetail": "View Details",
+    "weaveMethods": {
+      "crimped": "Pre-crimped then woven",
+      "filterDisc": "Multi-layer composite / edge-bound punched",
+      "mining": "Heavy crimped / tensioned structure",
+      "welded": "Automatic resistance welding",
+      "woven": "Plain weave / Twill weave"
+    }
+  },
+  "productsPage": {
+    "categories": {
+      "all": "All",
+      "crimped": "Crimped Wire Mesh",
+      "filterDisc": "Filter Discs & Panels",
+      "mining": "Mining Screens",
+      "welded": "Welded Wire Mesh",
+      "woven": "Woven Mesh"
+    },
+    "ctaAria": "Go to Inquiry Page",
+    "ctaDescription": "Tell us your application, material needs, and target dimensions — product recommendations and a quote within 48 hours.",
+    "ctaTitle": "Unsure about specifications?",
+    "description": "Covering woven mesh, welded mesh, crimped mesh, mining screens, and filter panels — multi-spec selection and non-standard custom fabrication.",
+    "emptyDescription": "Submit an inquiry and we'll recommend suitable options based on material, aperture, and dimensions.",
+    "emptyTitle": "No Products in This Category",
+    "eyebrow": "Products",
+    "filterAria": "Filter by Category",
+    "seo": {
+      "description": "Our product catalog includes stainless steel woven mesh, welded mesh, crimped mesh, mining screens, and filter panels — with multi-spec selection and custom fabrication.",
+      "title": "Products"
+    },
+    "title": "Products"
+  },
+  "seo": {
+    "address": {
+      "locality": "Binzhou",
+      "region": "Shandong Province",
+      "street": "Huayun Wire Mesh"
+    },
+    "knowledgeTags": {
+      "astmE11": "ASTM E11 Test Sieve Standard",
+      "gbt5330": "GB/T 5330 Metal Woven Wire Mesh",
+      "iso9044": "ISO 9044 Woven Wire Cloth",
+      "johnsonScreen": "Johnson Screen Slot Screen",
+      "polyurethane": "Polyurethane Screen Panel",
+      "stainlessCustom": "Custom Stainless Steel Filter Mesh",
+      "vibratingScreen": "Vibrating Screen Panels for Mining"
+    },
+    "knowsAbout": {
+      "aggregate": "Aggregate Grading",
+      "custom": "High-Abrasion Material Custom Fabrication",
+      "dewatering": "Coal Dewatering Screen",
+      "miningMesh": "Mining Wire Mesh"
+    }
+  },
+  "toolsPage": {
+    "callCta": "Call to Inquire",
+    "converter": {
+      "subtitle": "Mesh ↔ Aperture Conversion",
+      "title": "Mesh ↔ Aperture Conversion"
+    },
+    "decisionTitle": "Quick Selection Guide",
+    "decisions": {
+      "corrosionA": "Choose SUS316L or polyurethane",
+      "corrosionQ": "Significant corrosion (acid / seawater / salt spray)?",
+      "dewateringA": "Choose mining welded slot screen",
+      "dewateringQ": "Fine particle dewatering / low blinding?",
+      "foodA": "Choose SUS304/316L precision woven mesh",
+      "foodQ": "Food / pharmaceutical / ultra-fine filtration?",
+      "impactA": "Choose 65Mn woven mesh",
+      "impactQ": "High impact + dry coarse aggregate screening?",
+      "noiseA": "Choose polyurethane screen modules",
+      "noiseQ": "Noise reduction + long service life priority?"
+    },
+    "description": "Based on ASTM E11 / ISO 9044 standards — precise conversion of mesh size, aperture, wire diameter, and open area to support engineering selection.",
+    "eyebrow": "Technical Tools",
+    "features": {
+      "decision": "Quick Selection Decision Aid",
+      "material": "Material Corrosion Resistance Reference",
+      "mesh": "Mesh & Aperture Conversion",
+      "opening": "Automatic Open Area Calculation",
+      "reference": "ASTM E11 Standard Mesh Reference Table",
+      "wire": "Wire Diameter Input & Pitch Calculation"
+    },
+    "formulaSummary": "View Formulas",
+    "formulas": {
+      "apertureDescription": "W = Aperture (mm), M = Mesh, d = Wire dia. (mm)",
+      "apertureTitle": "Aperture Formula",
+      "openingAreaDescription": "OA = Open area (%), W = Aperture, d = Wire dia.",
+      "openingAreaTitle": "Open Area Formula"
+    },
+    "howTo": {
+      "description": "Enter mesh size, aperture, or wire diameter to instantly calculate open area, pitch, and ASTM E11 reference values.",
+      "step1": {
+        "text": "Enter any known value — mesh, aperture, or wire diameter — and the tool calculates the rest automatically.",
+        "title": "Enter Known Parameters"
+      },
+      "step2": {
+        "text": "Read open area and pitch results to evaluate screening efficiency, strength, and blinding resistance.",
+        "title": "Read Conversion Results"
+      },
+      "step3": {
+        "text": "Click any row in the ASTM E11 reference table to load standard values into the calculator for quick comparison.",
+        "title": "Check Against Standard Reference"
+      },
+      "step4": {
+        "text": "Combine the corrosion resistance reference and quick selection guide to choose the most suitable screen material and product type.",
+        "title": "Apply to Application Selection"
+      },
+      "supply": "Screen mesh size, aperture, or wire diameter",
+      "title": "How to Use the Wire Mesh Technical Calculator for Screen Parameter Conversion"
+    },
+    "materialGuide": {
+      "65mn": "High hardness, abrasion-resistant; not corrosion-resistant — dry applications only",
+      "carbonSteel": "Low cost; suitable for slight moisture; not resistant to acids or alkalis",
+      "polyurethane": "Water and oil resistant; Shore A 65–90 adjustable; low noise",
+      "sus304": "General-purpose stainless steel; resistant to most chemicals; best value",
+      "sus316l": "Contains 2–3% molybdenum; chloride-resistant; suitable for seawater, acid, and pharmaceutical applications"
+    },
+    "materialGuideLabels": {
+      "carbonSteel": "High Carbon Steel / Galvanized",
+      "polyurethane": "Polyurethane"
+    },
+    "materialGuideTitle": "Material Corrosion Resistance Reference",
+    "materialLevels": {
+      "excellent": "Excellent",
+      "high": "Very Good",
+      "low": "Fair",
+      "medium": "Good"
+    },
+    "pitchDescription": "= Aperture + Wire Dia. (center-to-center spacing)",
+    "pitchLabel": "Pitch",
+    "placeholders": {
+      "aperture": "e.g., 2.000",
+      "mesh": "e.g., 10",
+      "wire": "e.g., 0.50"
+    },
+    "referenceRows": {
+      "row10": "Ore Grading",
+      "row100": "Fine Filtration",
+      "row12": "Concentrate Grading",
+      "row16": "Fine Screening",
+      "row20": "Industrial Filtration",
+      "row200": "Ultra-Fine Classification",
+      "row30": "Liquid Filtration",
+      "row325": "Powder Analysis",
+      "row4": "Coarse Aggregate Scalping",
+      "row50": "Fine Powder Filtration",
+      "row6": "Sand & Gravel Grading",
+      "row8": "Coal & Gangue Screening"
+    },
+    "referenceSubtitle": "Standard Wire Mesh Reference Chart",
+    "referenceTitle": "ASTM E11 Standard Mesh Reference",
+    "seo": {
+      "description": "Industrial wire mesh calculator based on ASTM E11 — mesh/aperture/wire diameter conversion and open area calculation for mining screen engineering.",
+      "title": "Wire Mesh Technical Calculator — Mesh & Aperture Conversion"
+    },
+    "supportCta": "Request a Quote Now",
+    "supportEyebrow": "Need Technical Support?",
+    "supportTitle": "Engineering team available —\nselection inquiries answered within 1 hour",
+    "table": {
+      "aperture": "Standard Aperture (mm)",
+      "mesh": "Mesh Size",
+      "openingArea": "Open Area (%)",
+      "useCase": "Typical Use",
+      "wire": "Standard Wire Dia. (mm)"
+    },
+    "tableHint": "Click any row to load values into the calculator",
+    "title": "Wire Mesh Technical Calculator"
+  }
+}

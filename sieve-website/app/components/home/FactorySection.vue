@@ -4,19 +4,19 @@
       <div class="grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)]">
         <div>
           <p class="text-sm font-semibold uppercase tracking-[0.2em] text-accent">
-            Factory Strength
+            {{ $t('home.factorySection.eyebrow') }}
           </p>
           <h2 class="mt-3 text-3xl font-black text-primary sm:text-4xl">
-            工厂实力
+            {{ $t('home.factorySection.title') }}
           </h2>
           <p class="mt-4 text-base leading-8 text-slate-600 sm:text-lg">
-            山东省滨州市华云网业
+            {{ $t('home.factorySection.location') }}
           </p>
 
           <div class="mt-8 grid gap-4 sm:grid-cols-3">
             <article
               v-for="stat in factoryStats"
-              :key="stat.label"
+              :key="stat.key"
               class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm"
             >
               <p class="text-3xl font-black text-primary">{{ stat.value }}</p>
@@ -29,7 +29,7 @@
           <div class="mt-10 grid gap-8 md:grid-cols-2">
             <section>
               <h3 class="text-xl font-bold text-slate-900">
-                核心设备
+                {{ $t('home.factorySection.equipmentTitle') }}
               </h3>
               <ul class="mt-4 space-y-3 text-sm leading-7 text-slate-600">
                 <li
@@ -45,7 +45,7 @@
 
             <section>
               <h3 class="text-xl font-bold text-slate-900">
-                质检流程
+                {{ $t('home.factorySection.qualityTitle') }}
               </h3>
               <ul class="mt-4 space-y-3 text-sm leading-7 text-slate-600">
                 <li
@@ -64,12 +64,12 @@
         <div class="grid gap-4 sm:grid-cols-2">
           <article
             v-for="item in galleryItems"
-            :key="item.label"
+            :key="item.key"
             class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm"
           >
             <div class="relative h-52 overflow-hidden">
               <NuxtImg
-                v-if="!imageErrors[item.label]"
+                v-if="!imageErrors[item.key]"
                 :src="item.src"
                 :alt="item.label"
                 width="640"
@@ -78,7 +78,7 @@
                 loading="lazy"
                 sizes="100vw sm:50vw"
                 placeholder
-                @error="markImageError(item.label)"
+                @error="markImageError(item.key)"
               />
               <div
                 v-else
@@ -101,69 +101,80 @@
 </template>
 
 <script setup lang="ts">
-import { reactive } from 'vue'
+import { computed, reactive } from 'vue'
 
 interface FactoryStat {
+  key: string
   label: string
   value: string
 }
 
 interface GalleryItem {
+  key: string
   label: string
   src: string
   gradientFrom: string
   gradientTo: string
 }
 
-const factoryStats: FactoryStat[] = [
-  { label: '成立年份', value: '20年+' },
-  { label: '生产线数量', value: '8条' },
-  { label: '厂房面积', value: '12000㎡' }
-]
+const { t } = useI18n()
 
-const equipmentHighlights = [
-  '配备自动编织机、焊网机和重型轧花设备，覆盖多规格筛网生产需求。',
-  '拥有激光切割、冲片和包边加工工位，支持异形件和过滤网片配套。',
-  '独立打样与裁片区域，便于小批量试样和非标结构确认。'
-]
+const factoryStats = computed<FactoryStat[]>(() => [
+  { key: 'founded', label: t('home.factorySection.stats.founded'), value: t('home.factorySection.values.founded') },
+  { key: 'lines', label: t('home.factorySection.stats.lines'), value: t('home.factorySection.values.lines') },
+  { key: 'area', label: t('home.factorySection.stats.area'), value: '12000㎡' }
+])
 
-const qualityChecks = [
-  '原料进厂复核材质、丝径和表面状态，关键规格建立留样记录。',
-  '成品逐批抽检孔径、尺寸和平整度，打包前复核标签、数量和外观。'
-]
+const equipmentHighlights = computed(() => [
+  t('home.factorySection.equipmentItems.automation'),
+  t('home.factorySection.equipmentItems.processing'),
+  t('home.factorySection.equipmentItems.sampling')
+])
 
-const galleryItems: GalleryItem[] = [
+const qualityChecks = computed(() => [
+  t('home.factorySection.qualityItems.rawMaterials'),
+  t('home.factorySection.qualityItems.finishedGoods')
+])
+
+const galleryItems = computed<GalleryItem[]>(() => [
   {
-    label: '车间图',
+    key: 'workshop',
+    label: t('home.factorySection.gallery.workshop'),
     src: '/images/factory/workshop.svg',
     gradientFrom: '#314867',
     gradientTo: '#152235'
   },
   {
-    label: '设备图',
+    key: 'equipment',
+    label: t('home.factorySection.gallery.equipment'),
     src: '/images/factory/equipment.svg',
     gradientFrom: '#2563eb',
     gradientTo: '#1a2744'
   },
   {
-    label: '质检图',
+    key: 'quality',
+    label: t('home.factorySection.gallery.quality'),
     src: '/images/factory/quality.svg',
     gradientFrom: '#0f766e',
     gradientTo: '#1a2744'
   },
   {
-    label: '打包图',
+    key: 'packing',
+    label: t('home.factorySection.gallery.packing'),
     src: '/images/factory/packing.svg',
     gradientFrom: '#475569',
     gradientTo: '#111827'
   }
-]
+])
 
-const imageErrors = reactive<Record<string, boolean>>(
-  Object.fromEntries(galleryItems.map((item) => [item.label, false]))
-)
+const imageErrors = reactive<Record<string, boolean>>({
+  workshop: false,
+  equipment: false,
+  quality: false,
+  packing: false
+})
 
-const markImageError = (label: string) => {
-  imageErrors[label] = true
+const markImageError = (key: string) => {
+  imageErrors[key] = true
 }
 </script>

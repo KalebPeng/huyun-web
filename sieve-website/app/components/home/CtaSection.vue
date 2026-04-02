@@ -2,19 +2,19 @@
   <section class="bg-[linear-gradient(135deg,#1a2744,#243f72)] py-16 text-white sm:py-20">
     <div class="mx-auto max-w-6xl px-4 text-center sm:px-6 lg:px-8">
       <p class="text-sm font-semibold uppercase tracking-[0.2em] text-blue-200">
-        Get A Quote
+        {{ $t('home.ctaSection.eyebrow') }}
       </p>
       <h2 class="mt-4 text-3xl font-black sm:text-4xl lg:text-5xl">
-        准备好开始了吗？
+        {{ $t('home.ctaSection.title') }}
       </h2>
       <p class="mx-auto mt-5 max-w-3xl text-base leading-8 text-slate-200 sm:text-lg">
-        告诉我们您的需求，48小时内给您专业报价，支持常规规格快速响应与非标产品定制评估。
+        {{ $t('home.ctaSection.description') }}
       </p>
 
       <div class="mt-10 grid gap-4 md:grid-cols-3">
         <article
           v-for="contact in contacts"
-          :key="contact.label"
+          :key="contact.key"
           class="rounded-2xl border border-white/10 bg-white/8 p-5 backdrop-blur-sm"
         >
           <p class="text-3xl">{{ contact.icon }}</p>
@@ -31,10 +31,10 @@
         <AppButton
           to="/contact"
           size="lg"
-          aria-label="立即提交需求"
+          :aria-label="$t('home.ctaSection.ctaAria')"
           class="!bg-white !text-primary hover:!bg-slate-100 focus-visible:!outline-white"
         >
-          立即提交需求
+          {{ $t('home.ctaSection.cta') }}
         </AppButton>
       </div>
     </div>
@@ -42,19 +42,24 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
+
 import AppButton from '~/components/common/AppButton.vue'
 
 interface ContactItem {
+  key: string
   icon: string
   label: string
   value: string
 }
 
-const contacts: ContactItem[] = [
-  { icon: '📞', label: '电话', value: '+86 13561559016' },
-  { icon: '💬', label: '微信', value: 'HUAYUN-MESH' },
-  { icon: '📧', label: '邮件', value: 'sales@huayun-mesh.com' }
-]
+const { t } = useI18n()
+
+const contacts = computed<ContactItem[]>(() => [
+  { key: 'phone', icon: '📞', label: t('home.ctaSection.contacts.phone'), value: '+86 13561559016' },
+  { key: 'wechat', icon: '💬', label: t('home.ctaSection.contacts.wechat'), value: 'HUAYUN-MESH' },
+  { key: 'email', icon: '📧', label: t('home.ctaSection.contacts.email'), value: 'sales@huayun-mesh.com' }
+])
 </script>
 
 <style scoped>

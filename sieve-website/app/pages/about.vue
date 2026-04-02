@@ -12,20 +12,20 @@
       <div class="absolute inset-y-0 right-0 hidden w-[44%] md:block" aria-hidden="true">
         <div class="h-full bg-[linear-gradient(135deg,rgba(148,163,184,0.12),rgba(37,99,235,0.28))]" />
         <div class="absolute bottom-8 left-8 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-semibold tracking-[0.18em] text-white/90 backdrop-blur-sm">
-          山东·滨州 生产基地
+          {{ $t('aboutPage.heroBadge') }}
         </div>
       </div>
 
       <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="max-w-3xl">
           <p class="text-sm font-semibold uppercase tracking-[0.24em] text-blue-200">
-            About Us
+            {{ $t('aboutPage.eyebrow') }}
           </p>
           <h1 class="mt-4 text-4xl font-black sm:text-5xl">
-            关于我们
+            {{ $t('aboutPage.title') }}
           </h1>
           <p class="mt-5 text-base leading-8 text-slate-200 sm:text-lg">
-            专注矿用筛网制造与高耐磨定制化方案，服务矿山、选煤、骨料分级与工业精细分级场景。
+            {{ $t('aboutPage.description') }}
           </p>
         </div>
       </div>
@@ -35,10 +35,10 @@
       <div class="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:px-8">
         <div>
           <p class="text-sm font-semibold uppercase tracking-[0.2em] text-accent">
-            Company Profile
+            {{ $t('aboutPage.profileEyebrow') }}
           </p>
           <h2 class="mt-3 text-3xl font-black text-slate-950">
-            企业简介
+            {{ $t('aboutPage.profileTitle') }}
           </h2>
 
           <div class="mt-6 space-y-5 text-base leading-8 text-slate-600">
@@ -70,14 +70,14 @@
         <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p class="text-sm font-semibold uppercase tracking-[0.2em] text-accent">
-              Product Focus
+              {{ $t('aboutPage.productFocusEyebrow') }}
             </p>
             <h2 class="mt-2 text-3xl font-black text-slate-950">
-              核心产品方向
+              {{ $t('aboutPage.productFocusTitle') }}
             </h2>
           </div>
           <p class="max-w-2xl text-sm leading-7 text-slate-500">
-            围绕不同工况和行业需求，覆盖常规规格到定制加工的多类筛网产品。
+            {{ $t('aboutPage.productFocusDescription') }}
           </p>
         </div>
 
@@ -104,10 +104,10 @@
     <section class="pb-12 sm:pb-16">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <p class="text-sm font-semibold uppercase tracking-[0.2em] text-accent">
-          Factory & Equipment
+          {{ $t('aboutPage.factoryEyebrow') }}
         </p>
         <h2 class="mt-2 text-3xl font-black text-slate-950">
-          工厂与设备展示
+          {{ $t('aboutPage.factoryTitle') }}
         </h2>
 
         <div class="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
@@ -133,10 +133,10 @@
       <div class="mx-auto grid max-w-7xl gap-6 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
         <article class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
           <p class="text-sm font-semibold uppercase tracking-[0.2em] text-accent">
-            Custom Capability
+            {{ $t('aboutPage.customEyebrow') }}
           </p>
           <h2 class="mt-2 text-2xl font-black text-slate-950">
-            定制能力
+            {{ $t('aboutPage.customTitle') }}
           </h2>
           <ul class="mt-6 space-y-4">
             <li
@@ -152,10 +152,10 @@
 
         <article class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
           <p class="text-sm font-semibold uppercase tracking-[0.2em] text-accent">
-            Delivery Capability
+            {{ $t('aboutPage.deliveryEyebrow') }}
           </p>
           <h2 class="mt-2 text-2xl font-black text-slate-950">
-            交付能力
+            {{ $t('aboutPage.deliveryTitle') }}
           </h2>
           <ul class="mt-6 space-y-4">
             <li
@@ -174,10 +174,10 @@
     <section class="pb-12 sm:pb-16">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <p class="text-sm font-semibold uppercase tracking-[0.2em] text-accent">
-          Quality Promise
+          {{ $t('aboutPage.qualityEyebrow') }}
         </p>
         <h2 class="mt-2 text-3xl font-black text-slate-950">
-          品质承诺
+          {{ $t('aboutPage.qualityTitle') }}
         </h2>
 
         <div class="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
@@ -206,20 +206,20 @@
           <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
             <div>
               <h2 class="text-2xl font-black sm:text-3xl">
-                需要进一步了解我们的工厂能力？
+                {{ $t('aboutPage.ctaTitle') }}
               </h2>
               <p class="mt-3 max-w-2xl text-sm leading-7 text-slate-200 sm:text-base">
-                把您的使用场景、采购规模和定制要求发过来，我们会尽快安排业务与技术支持对接。
+                {{ $t('aboutPage.ctaDescription') }}
               </p>
             </div>
 
             <AppButton
               to="/contact"
               size="lg"
-              aria-label="前往联系我们页面"
+              :aria-label="$t('aboutPage.ctaAria')"
               class="!bg-white !text-primary hover:!bg-slate-100 focus-visible:!outline-white"
             >
-              联系我们
+              {{ $t('common.contactUs') }}
             </AppButton>
           </div>
         </div>
@@ -229,6 +229,8 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
+
 import { usePageSeoMeta } from '~/composables/useSeoMeta'
 import AppButton from '~/components/common/AppButton.vue'
 
@@ -255,69 +257,70 @@ interface QualityPromise {
   description: string
 }
 
-const companyParagraphs: string[] = [
-  '华云网业专注于矿用筛网与重型工业网的制造与研发。我们拥有目前业内领先的自动化条缝焊接产线和 65Mn 弹簧钢专属编织线，能够稳定生产丝径高达 14mm 的超重型筛网。',
-  '工厂坐落于山东省滨州市，生产车间占地 15,000 ㎡。我们建立了从原材料性能分析、编织/焊接过程控制到成品负载模拟测试的完整链路。',
-  '除标准规格外，华云网业重点服务于矿山机械配套商与洗煤、洗选大型终端，提供基于工况磨损分析的材质建议与非标定制。',
-  '我们坚持“以耐磨性为核心”的品质理念，通过数字化生产排产和多级质控，确保每一片交付的筛网都能在高冲击、高磨损环境下保持长久寿命。'
-]
+const { t } = useI18n()
 
-const companyStats: CompanyStat[] = [
-  { label: '行业经验', value: '20年+' },
-  { label: '服务客户', value: '500+' },
-  { label: '产品规格', value: '200+' },
-  { label: '生产基地', value: '15000㎡' }
-]
+const companyParagraphs = computed<string[]>(() => [
+  t('aboutPage.companyParagraphs.one'),
+  t('aboutPage.companyParagraphs.two'),
+  t('aboutPage.companyParagraphs.three'),
+  t('aboutPage.companyParagraphs.four')
+])
 
-const productDirections: ProductDirection[] = [
-  { icon: '🧵', name: '不锈钢编织网', summary: '适用于过滤、筛分、防护等精细工况。' },
-  { icon: '🧱', name: '电焊网', summary: '适合围护、隔离和建筑配套等常规需求。' },
-  { icon: '⚙️', name: '轧花网', summary: '承载能力强，常用于中粗颗粒筛分。' },
-  { icon: '⛏️', name: '矿筛网', summary: '面向重载、耐磨、高冲击矿山场景。' },
-  { icon: '🫧', name: '过滤网片', summary: '支持冲片、包边和多层复合加工。' },
-  { icon: '🧩', name: '定制异形件', summary: '按设备图纸加工特殊结构筛网部件。' }
-]
+const companyStats = computed<CompanyStat[]>(() => [
+  { label: t('aboutPage.stats.experienceLabel'), value: t('aboutPage.stats.experienceValue') },
+  { label: t('aboutPage.stats.clientsLabel'), value: t('aboutPage.stats.clientsValue') },
+  { label: t('aboutPage.stats.skusLabel'), value: t('aboutPage.stats.skusValue') },
+  { label: t('aboutPage.stats.baseLabel'), value: t('aboutPage.stats.baseValue') }
+])
 
-const factoryGallery: GalleryItem[] = [
-  { label: '数控织网机', from: '#314867', to: '#152235' },
-  { label: '自动化生产线', from: '#2563eb', to: '#1a2744' },
-  { label: '质检工位', from: '#0f766e', to: '#1a2744' },
-  { label: '打包发货区', from: '#475569', to: '#111827' }
-]
+const productDirections = computed<ProductDirection[]>(() => [
+  { icon: '🧵', name: t('aboutPage.productDirections.woven.name'), summary: t('aboutPage.productDirections.woven.summary') },
+  { icon: '🧱', name: t('aboutPage.productDirections.welded.name'), summary: t('aboutPage.productDirections.welded.summary') },
+  { icon: '⚙️', name: t('aboutPage.productDirections.crimped.name'), summary: t('aboutPage.productDirections.crimped.summary') },
+  { icon: '⛏️', name: t('aboutPage.productDirections.mining.name'), summary: t('aboutPage.productDirections.mining.summary') },
+  { icon: '🫧', name: t('aboutPage.productDirections.filter.name'), summary: t('aboutPage.productDirections.filter.summary') },
+  { icon: '🧩', name: t('aboutPage.productDirections.custom.name'), summary: t('aboutPage.productDirections.custom.summary') }
+])
 
-const customCapabilities: string[] = [
-  '支持来图来样生产，可按孔径、丝径、尺寸和边框结构做针对性加工。',
-  '常规规格可快速匹配库存与标准生产参数，减少重复沟通成本。',
-  '针对耐腐蚀、耐磨、高温等特殊工况，可协助选择不锈钢、高锰钢及复合材质。'
-]
+const factoryGallery = computed<GalleryItem[]>(() => [
+  { label: t('aboutPage.factoryGallery.weaving'), from: '#314867', to: '#152235' },
+  { label: t('aboutPage.factoryGallery.line'), from: '#2563eb', to: '#1a2744' },
+  { label: t('aboutPage.factoryGallery.quality'), from: '#0f766e', to: '#1a2744' },
+  { label: t('aboutPage.factoryGallery.packing'), from: '#475569', to: '#111827' }
+])
 
-const deliveryCapabilities: string[] = [
-  '常规规格支持库存发货，紧急项目优先协调排产与出货节奏。',
-  '定制产品根据加工复杂度安排周期，明确交期节点，避免嘴上乱承诺。',
-  '支持零担、整车及国际物流发运，配合木箱、托盘和防护包装要求。'
-]
+const customCapabilities = computed<string[]>(() => [
+  t('aboutPage.customCapabilities.one'),
+  t('aboutPage.customCapabilities.two'),
+  t('aboutPage.customCapabilities.three')
+])
 
-const qualityPromises: QualityPromise[] = [
+const deliveryCapabilities = computed<string[]>(() => [
+  t('aboutPage.deliveryCapabilities.one'),
+  t('aboutPage.deliveryCapabilities.two'),
+  t('aboutPage.deliveryCapabilities.three')
+])
+
+const qualityPromises = computed<QualityPromise[]>(() => [
   {
     icon: '✓',
-    title: '品质承诺与认证',
-    description: '华云网业已通过 ISO9001:2015 质量管理体系认证。从原料进厂到成品抽检，围绕材质、孔径、丝径和平整度建立多环节质控流程，并随货提供质检报告。'
+    title: t('aboutPage.qualityPromises.cert.title'),
+    description: t('aboutPage.qualityPromises.cert.description')
   },
   {
     icon: '⏱',
-    title: '交期保证',
-    description: '明确生产排期与节点反馈，常规单和定制单分别管理，尽量把交付节奏控在预期内。'
+    title: t('aboutPage.qualityPromises.delivery.title'),
+    description: t('aboutPage.qualityPromises.delivery.description')
   },
   {
     icon: '☎',
-    title: '售后服务',
-    description: '提供选型沟通、样品确认、使用建议和售后跟进，发现问题及时协同处理。'
+    title: t('aboutPage.qualityPromises.afterSales.title'),
+    description: t('aboutPage.qualityPromises.afterSales.description')
   }
-]
+])
 
 usePageSeoMeta({
-  title: '关于我们',
-  description:
-    '了解华云网业的发展历程、生产能力、核心产品方向、工厂设备与品质承诺，查看企业实力与服务能力。'
+  title: t('aboutPage.seo.title'),
+  description: t('aboutPage.seo.description')
 })
 </script>

@@ -3,13 +3,13 @@
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="max-w-3xl">
         <p class="text-sm font-semibold uppercase tracking-[0.2em] text-accent">
-          Core Products
+          {{ $t('home.productSection.eyebrow') }}
         </p>
         <h2 class="mt-3 text-3xl font-black text-primary sm:text-4xl">
-          核心产品
+          {{ $t('home.productSection.title') }}
         </h2>
         <p class="mt-4 text-base leading-8 text-slate-600 sm:text-lg">
-          聚焦筛分、过滤、防护等高频应用，提供多规格标准品与按图定制能力，覆盖工业、粮食、矿山等场景。
+          {{ $t('home.productSection.description') }}
         </p>
       </div>
 
@@ -25,9 +25,9 @@
         <AppButton
           to="/products"
           size="lg"
-          aria-label="查看全部产品"
+          :aria-label="$t('home.productSection.ctaAria')"
         >
-          查看全部产品
+          {{ $t('home.productSection.cta') }}
         </AppButton>
       </div>
     </div>

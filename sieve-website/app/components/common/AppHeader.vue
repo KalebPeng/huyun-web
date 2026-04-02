@@ -5,9 +5,9 @@
   >
     <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
       <NuxtLink
-        to="/"
+        :to="localePath('/')"
         class="inline-flex items-center gap-3 rounded-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-        aria-label="返回首页"
+        :aria-label="$t('header.backHome')"
       >
         <span
           class="flex h-10 w-10 items-center justify-center rounded-md border border-white/20 bg-white/10 text-sm font-black tracking-[0.25em]"
@@ -16,18 +16,18 @@
           HY
         </span>
         <span class="flex flex-col">
-          <span class="text-lg font-bold tracking-[0.18em]">华云网业</span>
+          <span class="text-lg font-bold tracking-[0.18em]">{{ $t('brand.name') }}</span>
           <span class="text-xs uppercase tracking-[0.32em] text-slate-300">
-            Industrial Mesh
+            {{ $t('brand.tagline') }}
           </span>
         </span>
       </NuxtLink>
 
-      <nav class="hidden items-center gap-1 lg:flex" aria-label="主导航">
+      <nav class="hidden items-center gap-1 lg:flex" :aria-label="$t('header.mainNav')">
         <NuxtLink
           v-for="item in navItems"
           :key="item.to"
-          :to="item.to"
+          :to="localePath(item.to)"
           class="rounded-md px-4 py-2 text-sm font-medium transition-colors duration-200 hover:bg-white/10"
           :class="isActive(item.to) ? 'bg-white/12 text-white' : 'text-slate-200'"
           :aria-current="isActive(item.to) ? 'page' : undefined"
@@ -37,8 +37,9 @@
       </nav>
 
       <div class="hidden items-center gap-3 lg:flex">
-        <AppButton to="/contact" size="md" aria-label="跳转到询价页面">
-          立即询价
+        <LangSwitcher />
+        <AppButton to="/contact" size="md" :aria-label="$t('header.getQuoteAria')">
+          {{ $t('common.getQuote') }}
         </AppButton>
       </div>
 
@@ -47,11 +48,11 @@
         class="inline-flex h-11 w-11 items-center justify-center rounded-md border border-white/20 bg-white/5 text-white transition-colors hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white lg:hidden"
         :aria-expanded="mobileMenuOpen"
         aria-controls="mobile-nav-panel"
-        :aria-label="mobileMenuOpen ? '关闭导航菜单' : '打开导航菜单'"
+        :aria-label="mobileMenuOpen ? $t('header.closeMenu') : $t('header.openMenu')"
         @click="toggleMobileMenu"
       >
         <span class="sr-only">
-          {{ mobileMenuOpen ? '关闭导航菜单' : '打开导航菜单' }}
+          {{ mobileMenuOpen ? $t('header.closeMenu') : $t('header.openMenu') }}
         </span>
         <svg
           v-if="!mobileMenuOpen"
@@ -83,11 +84,11 @@
       id="mobile-nav-panel"
       class="border-t border-white/10 bg-primary/95 lg:hidden"
     >
-      <nav class="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-4 sm:px-6" aria-label="移动端主导航">
+      <nav class="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-4 sm:px-6" :aria-label="$t('header.mobileNav')">
         <NuxtLink
           v-for="item in navItems"
           :key="`${item.to}-mobile`"
-          :to="item.to"
+          :to="localePath(item.to)"
           class="rounded-md px-4 py-3 text-sm font-medium transition-colors duration-200 hover:bg-white/10"
           :class="isActive(item.to) ? 'bg-white/12 text-white' : 'text-slate-200'"
           :aria-current="isActive(item.to) ? 'page' : undefined"
@@ -96,14 +97,18 @@
           {{ item.label }}
         </NuxtLink>
 
+        <div class="mt-2">
+          <LangSwitcher />
+        </div>
+
         <AppButton
           to="/contact"
           size="lg"
-          aria-label="跳转到询价页面"
+          :aria-label="$t('header.getQuoteAria')"
           class="mt-2 w-full"
           @click="mobileMenuOpen = false"
         >
-          立即询价
+          {{ $t('common.getQuote') }}
         </AppButton>
       </nav>
     </div>
@@ -111,8 +116,9 @@
 </template>
 
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 
+import LangSwitcher from '~/components/LangSwitcher.vue'
 import AppButton from '~/components/common/AppButton.vue'
 
 interface NavItem {
@@ -121,16 +127,18 @@ interface NavItem {
 }
 
 const route = useRoute()
+const localePath = useLocalePath()
+const { t } = useI18n()
 
-const navItems: NavItem[] = [
-  { label: '首页', to: '/' },
-  { label: '产品中心', to: '/products' },
-  { label: '应用场景', to: '/applications' },
-  { label: '技术知识', to: '/knowledge' },
-  { label: '技术工具', to: '/tools' },
-  { label: '常见问题', to: '/faq' },
-  { label: '关于我们', to: '/about' }
-]
+const navItems = computed<NavItem[]>(() => [
+  { label: t('nav.home'), to: '/' },
+  { label: t('nav.products'), to: '/products' },
+  { label: t('nav.applications'), to: '/applications' },
+  { label: t('nav.knowledge'), to: '/knowledge' },
+  { label: t('nav.tools'), to: '/tools' },
+  { label: t('nav.faq'), to: '/faq' },
+  { label: t('nav.about'), to: '/about' }
+])
 
 const isScrolled = ref(false)
 const mobileMenuOpen = ref(false)
@@ -140,11 +148,13 @@ const updateScrollState = () => {
 }
 
 const isActive = (path: string) => {
+  const localizedPath = localePath(path)
+
   if (path === '/') {
-    return route.path === '/'
+    return route.path === localizedPath
   }
 
-  return route.path === path || route.path.startsWith(`${path}/`)
+  return route.path === localizedPath || route.path.startsWith(`${localizedPath}/`)
 }
 
 const toggleMobileMenu = () => {

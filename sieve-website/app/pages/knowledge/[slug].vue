@@ -2,10 +2,10 @@
   <div v-if="article" class="min-h-screen bg-[#f8f9fb]">
     <div class="sticky top-16 z-30 border-b border-slate-200 bg-white/90 backdrop-blur-sm">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <nav class="flex items-center gap-2 py-3 text-sm text-slate-500">
-          <NuxtLink to="/" class="transition-colors hover:text-primary">首页</NuxtLink>
+        <nav class="flex items-center gap-2 py-3 text-sm text-slate-500" :aria-label="$t('knowledgeDetail.breadcrumbAria')">
+          <NuxtLink :to="localePath('/')" class="transition-colors hover:text-primary">{{ $t('nav.home') }}</NuxtLink>
           <span class="text-slate-300">/</span>
-          <NuxtLink to="/knowledge" class="transition-colors hover:text-primary">技术知识库</NuxtLink>
+          <NuxtLink :to="localePath('/knowledge')" class="transition-colors hover:text-primary">{{ $t('nav.knowledge') }}</NuxtLink>
           <span class="text-slate-300">/</span>
           <span class="line-clamp-1 text-slate-700">{{ article.title }}</span>
         </nav>
@@ -53,7 +53,7 @@
 
             <div class="mt-6 grid gap-4 rounded-2xl border border-slate-200 bg-slate-50/80 p-5 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
               <div>
-                <p class="text-xs font-bold uppercase tracking-[0.18em] text-accent">内容依据</p>
+                <p class="text-xs font-bold uppercase tracking-[0.18em] text-accent">{{ $t('knowledgeDetail.sourcesTitle') }}</p>
                 <ul class="mt-3 space-y-3">
                   <li
                     v-for="source in article.sources || []"
@@ -69,29 +69,29 @@
 
               <div class="space-y-4">
                 <div class="rounded-xl border border-slate-200 bg-white px-4 py-3">
-                  <p class="text-xs font-bold uppercase tracking-[0.18em] text-slate-400">作者与审核</p>
+                  <p class="text-xs font-bold uppercase tracking-[0.18em] text-slate-400">{{ $t('knowledgeDetail.reviewTitle') }}</p>
                   <p class="mt-3 text-sm font-semibold text-slate-900">{{ article.author }}</p>
-                  <p class="mt-1 text-xs text-slate-500">最后审核：{{ formatDate(article.reviewedAt || article.publishedAt) }}</p>
-                  <p class="mt-1 text-xs text-slate-500">审核团队：{{ article.reviewedBy || article.author }}</p>
+                  <p class="mt-1 text-xs text-slate-500">{{ $t('knowledgeDetail.reviewedAt', { date: formatDate(article.reviewedAt || article.publishedAt) }) }}</p>
+                  <p class="mt-1 text-xs text-slate-500">{{ $t('knowledgeDetail.reviewedBy', { team: article.reviewedBy || article.author }) }}</p>
                   <NuxtLink
-                    to="/content-standards"
+                    :to="localePath('/content-standards')"
                     class="mt-3 inline-flex items-center gap-2 text-xs font-semibold text-accent transition-colors hover:text-primary"
                   >
-                    查看内容审核与编辑规范
+                    {{ $t('knowledgeDetail.reviewStandardsLink') }}
                     <span aria-hidden="true">→</span>
                   </NuxtLink>
                 </div>
 
                 <div class="rounded-xl border border-slate-200 bg-white px-4 py-3">
-                  <p class="text-xs font-bold uppercase tracking-[0.18em] text-slate-400">适用边界</p>
+                  <p class="text-xs font-bold uppercase tracking-[0.18em] text-slate-400">{{ $t('knowledgeDetail.boundaryTitle') }}</p>
                   <p class="mt-3 text-sm leading-7 text-slate-600">{{ article.applicability }}</p>
                 </div>
 
                 <NuxtLink
-                  to="/about"
+                  :to="localePath('/about')"
                   class="inline-flex items-center gap-2 text-sm font-semibold text-accent transition-colors hover:text-primary"
                 >
-                  查看工厂与品质承诺
+                  {{ $t('knowledgeDetail.aboutLink') }}
                   <span aria-hidden="true">→</span>
                 </NuxtLink>
               </div>
@@ -108,19 +108,19 @@
 
           <div class="mt-12 flex items-center justify-between border-t border-slate-200 pt-8">
             <NuxtLink
-              to="/knowledge"
+              :to="localePath('/knowledge')"
               class="flex items-center gap-2 text-sm font-semibold text-slate-600 transition-colors hover:text-primary"
             >
               <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
               </svg>
-              返回知识库
+              {{ $t('knowledgeDetail.backToList') }}
             </NuxtLink>
             <NuxtLink
-              to="/contact"
+              :to="localePath('/contact')"
               class="rounded-xl bg-accent px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-blue-700"
             >
-              有疑问？联系我们
+              {{ $t('knowledgeDetail.contactCta') }}
             </NuxtLink>
           </div>
         </article>
@@ -128,7 +128,7 @@
         <aside class="mt-12 lg:mt-0">
           <div class="sticky top-28 flex flex-col gap-6">
             <div v-if="relatedArticles.length" class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-              <h3 class="text-sm font-bold text-slate-900">相关文章</h3>
+              <h3 class="text-sm font-bold text-slate-900">{{ $t('knowledgeDetail.relatedTitle') }}</h3>
               <ul class="mt-4 flex flex-col gap-4">
                 <li v-for="related in relatedArticles" :key="related.path">
                   <NuxtLink :to="related.path" class="group flex flex-col gap-1">
@@ -142,28 +142,28 @@
             </div>
 
             <div class="rounded-2xl bg-[linear-gradient(135deg,#1a2744,#243f72)] p-5 text-white">
-              <p class="text-sm font-bold">需要定制筛网？</p>
+              <p class="text-sm font-bold">{{ $t('knowledgeDetail.quoteBoxTitle') }}</p>
               <p class="mt-2 text-xs leading-6 text-slate-300">
-                把工况和参数告诉我们，技术工程师会在 24 小时内回复选型建议。
+                {{ $t('knowledgeDetail.quoteBoxDescription') }}
               </p>
               <NuxtLink
-                to="/contact"
+                :to="localePath('/contact')"
                 class="mt-4 flex items-center justify-center rounded-xl bg-white py-2.5 text-sm font-bold text-primary transition-colors hover:bg-slate-100"
               >
-                立即询价
+                {{ $t('common.getQuote') }}
               </NuxtLink>
             </div>
 
             <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-              <p class="text-sm font-bold text-slate-900">技术计算工具</p>
+              <p class="text-sm font-bold text-slate-900">{{ $t('knowledgeDetail.toolsTitle') }}</p>
               <p class="mt-2 text-xs leading-6 text-slate-500">
-                在线目数、孔径、开孔率换算，以及 ASTM E11 参考表。
+                {{ $t('knowledgeDetail.toolsDescription') }}
               </p>
               <NuxtLink
-                to="/tools"
+                :to="localePath('/tools')"
                 class="mt-4 flex items-center justify-center rounded-xl border border-accent py-2.5 text-sm font-bold text-accent transition-colors hover:bg-blue-50"
               >
-                打开计算工具 →
+                {{ $t('knowledgeDetail.toolsCta') }}
               </NuxtLink>
             </div>
           </div>
@@ -174,22 +174,25 @@
 
   <div v-else class="flex min-h-[60vh] flex-col items-center justify-center gap-4 text-center">
     <p class="text-5xl font-black text-slate-200">404</p>
-    <p class="text-lg font-bold text-slate-900">文章不存在</p>
-    <NuxtLink to="/knowledge" class="text-sm text-accent hover:underline">返回知识库</NuxtLink>
+    <p class="text-lg font-bold text-slate-900">{{ $t('knowledgeDetail.notFoundTitle') }}</p>
+    <NuxtLink :to="localePath('/knowledge')" class="text-sm text-accent hover:underline">{{ $t('knowledgeDetail.backToList') }}</NuxtLink>
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
+
 import { useArticles } from '~/composables/useArticles'
 import { usePageSeoMeta } from '~/composables/useSeoMeta'
 
 const route = useRoute()
 const runtimeConfig = useRuntimeConfig()
 const siteUrl = runtimeConfig.public.siteUrl.replace(/\/+$/, '')
+const localePath = useLocalePath()
 const articlePath = computed(() => route.path.replace(/\/+$/, '') || '/')
 const { getArticleByPath, getArticlesByCategory } = useArticles()
+const { t, locale, localeProperties } = useI18n()
 
 const { data: articleData } = await useAsyncData(
   () => `knowledge-article:${articlePath.value}`,
@@ -237,8 +240,8 @@ const articleJsonLd = computed(() => {
     dateModified: article.value.reviewedAt || article.value.publishedAt,
     articleSection: article.value.category,
     keywords: article.value.tags.join(', '),
-    inLanguage: 'zh-CN',
-    publishingPrinciples: `${siteUrl}/content-standards`,
+    inLanguage: localeProperties.value.language || 'zh-CN',
+    publishingPrinciples: `${siteUrl}${localePath('/content-standards')}`,
     about: article.value.tags.map(tag => ({
       '@type': 'Thing',
       name: tag
@@ -265,7 +268,7 @@ const articleJsonLd = computed(() => {
       : undefined,
     publisher: {
       '@type': 'Organization',
-      name: '华云网业',
+      name: t('brand.name'),
       url: siteUrl,
       logo: {
         '@type': 'ImageObject',
@@ -276,12 +279,15 @@ const articleJsonLd = computed(() => {
 })
 
 const formatDate = (dateStr: string) => {
-  const date = new Date(dateStr)
-  return `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日`
+  return new Intl.DateTimeFormat(locale.value === 'zh' ? 'zh-CN' : 'en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  }).format(new Date(dateStr))
 }
 
 usePageSeoMeta({
-  title: article.value?.seoTitle || article.value?.title || '文章详情',
+  title: article.value?.seoTitle || article.value?.title || t('knowledgeDetail.fallbackTitle'),
   description: article.value?.seoDescription || article.value?.summary || ''
 })
 

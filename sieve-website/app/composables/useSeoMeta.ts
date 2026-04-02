@@ -24,17 +24,43 @@ const toAbsoluteUrl = (value: string, siteUrl: string) => {
 export function usePageSeoMeta({ title, description, image }: SeoMetaOptions) {
   const route = useRoute()
   const config = useRuntimeConfig()
-  const siteUrl = config.public.siteUrl || 'https://huayun-mesh.com'
-  const canonicalUrl = toAbsoluteUrl(route.path || '/', siteUrl)
+  const { locale, localeProperties } = useI18n()
+  const switchLocalePath = useSwitchLocalePath()
+  const siteUrl = config.public.siteUrl || 'https://huayunmesh.com'
+  const currentPath = switchLocalePath(locale.value) || route.path || '/'
+  const zhPath = switchLocalePath('zh') || '/'
+  const enPath = switchLocalePath('en') || '/en'
+  const canonicalUrl = toAbsoluteUrl(currentPath, siteUrl)
   const imageUrl = image ? toAbsoluteUrl(image, siteUrl) : undefined
 
   useHead({
     title,
+    htmlAttrs: {
+      lang: localeProperties.value.language || (locale.value === 'zh' ? 'zh-CN' : 'en')
+    },
     link: [
       {
         key: 'canonical',
         rel: 'canonical',
         href: canonicalUrl
+      },
+      {
+        key: 'alternate-zh',
+        rel: 'alternate',
+        hreflang: 'zh',
+        href: toAbsoluteUrl(zhPath, siteUrl)
+      },
+      {
+        key: 'alternate-en',
+        rel: 'alternate',
+        hreflang: 'en',
+        href: toAbsoluteUrl(enPath, siteUrl)
+      },
+      {
+        key: 'alternate-x-default',
+        rel: 'alternate',
+        hreflang: 'x-default',
+        href: toAbsoluteUrl(zhPath, siteUrl)
       }
     ]
   })

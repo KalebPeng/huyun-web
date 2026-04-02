@@ -1,7 +1,7 @@
 <template>
   <NuxtLink
-    v-if="to"
-    :to="to"
+    v-if="localizedTo"
+    :to="localizedTo"
     :class="buttonClass"
     :aria-label="ariaLabel"
   >
@@ -40,6 +40,28 @@ const props = withDefaults(defineProps<Props>(), {
   type: 'button',
   disabled: false,
   ariaLabel: undefined
+})
+
+const localePath = useLocalePath()
+
+const isExternalLink = (value?: string) => {
+  if (!value) {
+    return false
+  }
+
+  return /^(https?:|mailto:|tel:|#)/i.test(value)
+}
+
+const localizedTo = computed(() => {
+  if (!props.to) {
+    return undefined
+  }
+
+  if (isExternalLink(props.to)) {
+    return props.to
+  }
+
+  return localePath(props.to)
 })
 
 const variantClasses: Record<ButtonVariant, string> = {

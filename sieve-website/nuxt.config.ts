@@ -1,25 +1,44 @@
 import rehypeKatex from 'rehype-katex'
 import remarkMath from 'remark-math'
+
 import applicationsData from './data/applications.json'
 import productsData from './data/products.json'
 
-const siteUrl = process.env.NUXT_PUBLIC_SITE_URL || 'https://huayun-mesh.com'
+const siteUrl = process.env.NUXT_PUBLIC_SITE_URL || 'https://huayunmesh.com'
 
-const productUrls = (productsData as Array<{ slug: string }>).map((product) => ({
-  loc: `/products/${product.slug}`,
-  changefreq: 'weekly' as const
-}))
+const createLocalizedEntries = (path: string, changefreq: 'daily' | 'weekly' | 'monthly' = 'monthly') => {
+  const normalizedPath = path === '/' ? '' : path
 
-const applicationUrls = (applicationsData as Array<{ slug: string }>).map((application) => ({
-  loc: `/applications/${application.slug}`,
-  changefreq: 'weekly' as const
-}))
+  return [
+    {
+      loc: normalizedPath || '/',
+      changefreq
+    },
+    {
+      loc: `/en${normalizedPath}`,
+      changefreq
+    }
+  ]
+}
+
+const productUrls = (productsData as Array<{ slug: string }>).flatMap((product) =>
+  createLocalizedEntries(`/products/${product.slug}`, 'weekly')
+)
+
+const applicationUrls = (applicationsData as Array<{ slug: string }>).flatMap((application) =>
+  createLocalizedEntries(`/applications/${application.slug}`, 'weekly')
+)
 
 const staticUrls = [
-  {
-    loc: '/content-standards',
-    changefreq: 'monthly' as const
-  }
+  ...createLocalizedEntries('/', 'weekly'),
+  ...createLocalizedEntries('/products', 'weekly'),
+  ...createLocalizedEntries('/applications', 'weekly'),
+  ...createLocalizedEntries('/knowledge', 'weekly'),
+  ...createLocalizedEntries('/faq', 'weekly'),
+  ...createLocalizedEntries('/tools', 'weekly'),
+  ...createLocalizedEntries('/about', 'monthly'),
+  ...createLocalizedEntries('/contact', 'weekly'),
+  ...createLocalizedEntries('/content-standards', 'monthly')
 ]
 
 export default defineNuxtConfig({
@@ -29,6 +48,7 @@ export default defineNuxtConfig({
 
   modules: [
     '@nuxt/content',
+    '@nuxtjs/i18n',
     '@nuxtjs/tailwindcss',
     '@pinia/nuxt',
     '@nuxtjs/sitemap',
@@ -54,6 +74,36 @@ export default defineNuxtConfig({
     fromEmail: process.env.FROM_EMAIL,
     public: {
       siteUrl
+    }
+  },
+
+  i18n: {
+    baseUrl: siteUrl,
+    lazy: true,
+    // Nuxt i18n v10 resolves langDir relative to the layer i18n directory (`<root>/i18n`).
+    // Keeping it empty loads locale files from `sieve-website/i18n/*.json`.
+    langDir: '',
+    strategy: 'prefix_except_default',
+    defaultLocale: 'zh',
+    locales: [
+      {
+        code: 'zh',
+        name: '中文',
+        language: 'zh-CN',
+        file: 'zh.json'
+      },
+      {
+        code: 'en',
+        name: 'English',
+        language: 'en',
+        file: 'en.json'
+      }
+    ],
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      redirectOn: 'root',
+      fallbackLocale: 'zh'
     }
   },
 
@@ -127,7 +177,8 @@ export default defineNuxtConfig({
       meta: [
         {
           name: 'description',
-          content: '华云网业 - 专注矿用焊接筛网、65Mn编织网及聚氨酯筛板生产，为矿山、洗煤与骨料分级提供高耐磨、长寿命的筛分解决方案。'
+          content:
+            '华云网业专注矿用筛网、65Mn 编织网、条缝筛与聚氨酯筛板，提供矿山、选煤、骨料与工业过滤场景的筛分解决方案。'
         },
         { property: 'og:site_name', content: '华云网业' },
         { property: 'og:type', content: 'website' }

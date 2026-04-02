@@ -3,13 +3,13 @@
     <section class="bg-[linear-gradient(135deg,#111827,#1a2744)] py-16 text-white sm:py-20">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <p class="text-sm font-semibold uppercase tracking-[0.24em] text-blue-200">
-          Contact Us
+          {{ $t('contactPage.eyebrow') }}
         </p>
         <h1 class="mt-4 text-4xl font-black sm:text-5xl">
-          联系我们 / 发起询价
+          {{ $t('contactPage.title') }}
         </h1>
         <p class="mt-5 max-w-3xl text-base leading-8 text-slate-200 sm:text-lg">
-          提交您的产品需求、应用场景和规格信息，我们承诺 48 小时内给出专业响应与报价建议。
+          {{ $t('contactPage.description') }}
         </p>
       </div>
     </section>
@@ -19,10 +19,10 @@
         <aside class="space-y-6">
           <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
             <p class="text-sm font-semibold uppercase tracking-[0.2em] text-accent">
-              Contact Info
+              {{ $t('contactPage.contactInfoEyebrow') }}
             </p>
             <h2 class="mt-2 text-2xl font-black text-slate-950">
-              联系方式
+              {{ $t('contactPage.contactInfoTitle') }}
             </h2>
 
             <div class="mt-6 space-y-4">
@@ -51,22 +51,22 @@
 
           <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
             <p class="text-sm font-semibold uppercase tracking-[0.2em] text-accent">
-              WeChat
+              {{ $t('contactPage.wechatEyebrow') }}
             </p>
             <h2 class="mt-2 text-2xl font-black text-slate-950">
-              微信咨询
+              {{ $t('contactPage.wechatTitle') }}
             </h2>
             <div class="mt-6 grid gap-5 sm:grid-cols-[minmax(0,1fr)_120px] sm:items-center">
               <div>
                 <p class="text-base font-semibold text-slate-900">
-                  微信号：huayun-sieve
+                  {{ $t('contactPage.wechatLabel') }}
                 </p>
                 <p class="mt-3 text-sm leading-7 text-slate-600">
-                  扫码或添加微信可发送图纸、照片和工况说明，方便我们更快判断产品方案。
+                  {{ $t('contactPage.wechatDescription') }}
                 </p>
               </div>
               <div class="flex h-32 w-32 items-center justify-center rounded-2xl border border-dashed border-slate-300 bg-slate-50 p-4 text-center text-[10px] font-semibold tracking-wider text-slate-500">
-                微信号<br>huayun-sieve
+                {{ $t('contactPage.wechatQr') }}
               </div>
             </div>
           </div>
@@ -95,38 +95,39 @@ interface ContactItem {
 }
 
 const route = useRoute()
+const { t } = useI18n()
 const { getProductBySlug } = useProducts()
 const { getApplicationBySlug } = useApplications()
 
-const contactItems: ContactItem[] = [
+const contactItems = computed<ContactItem[]>(() => [
   {
-    label: '电话',
+    label: t('contactPage.contactItems.phoneLabel'),
     value: '+86 13561559016',
     href: 'tel:+8613561559016',
-    description: '欢迎工作时间内直接来电沟通。'
+    description: t('contactPage.contactItems.phoneDescription')
   },
   {
-    label: '邮箱',
+    label: t('contactPage.contactItems.emailLabel'),
     value: 'sales@huayun-mesh.com',
     href: 'mailto:sales@huayun-mesh.com',
-    description: '图纸、规格单和报价需求建议直接发邮件。'
+    description: t('contactPage.contactItems.emailDescription')
   },
   {
-    label: '地址',
-    value: '山东省滨州市华云网业',
-    description: '支持预约到厂考察与样品确认。'
+    label: t('contactPage.contactItems.addressLabel'),
+    value: t('contactPage.contactItems.addressValue'),
+    description: t('contactPage.contactItems.addressDescription')
   },
   {
     label: 'WhatsApp',
     value: '+86 13561559016',
     href: 'https://wa.me/8613561559016',
-    description: '外贸客户可通过 WhatsApp 直接联系。'
+    description: t('contactPage.contactItems.whatsAppDescription')
   },
   {
-    label: '工作时间',
-    value: '周一至周六 9:00-18:00'
+    label: t('contactPage.contactItems.hoursLabel'),
+    value: t('contactPage.contactItems.hoursValue')
   }
-]
+])
 
 const resolveQueryValue = (value: unknown) => {
   if (Array.isArray(value)) {
@@ -147,8 +148,7 @@ const prefilledUsage = computed(() => {
 })
 
 usePageSeoMeta({
-  title: '联系我们 / 发起询价',
-  description:
-    '通过电话、微信、邮箱或在线表单联系我们，提交筛网产品需求、应用场景和规格信息，快速获取报价与选型建议。'
+  title: t('contactPage.seo.title'),
+  description: t('contactPage.seo.description')
 })
 </script>

@@ -1,8 +1,6 @@
 <template>
   <div class="tools-page min-h-screen">
-    <!-- 页面顶部 Hero -->
     <section class="tools-hero relative overflow-hidden pb-16 pt-12 sm:pb-20 sm:pt-16">
-      <!-- 背景网格装饰 -->
       <div class="hero-grid pointer-events-none absolute inset-0" aria-hidden="true" />
       <div class="hero-glow pointer-events-none absolute left-1/2 top-0 h-64 w-96 -translate-x-1/2 -translate-y-1/2" aria-hidden="true" />
 
@@ -10,26 +8,22 @@
         <div class="text-center">
           <div class="inline-flex items-center gap-2 rounded-full border border-accent/25 bg-accent/8 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.22em] text-accent">
             <span class="h-1.5 w-1.5 rounded-full bg-accent" />
-            Technical Tools
+            {{ $t('toolsPage.eyebrow') }}
           </div>
           <h1 class="mt-4 text-4xl font-black tracking-tight text-white sm:text-5xl lg:text-6xl">
-            丝网技术计算工具
+            {{ $t('toolsPage.title') }}
           </h1>
           <p class="mx-auto mt-4 max-w-2xl text-base leading-7 text-slate-400">
-            基于 ASTM E11 / ISO 9044 标准，提供目数、孔径、丝径与开孔率的精准换算，辅助工程选型决策。
+            {{ $t('toolsPage.description') }}
           </p>
         </div>
       </div>
     </section>
 
-    <!-- 主计算器区 -->
     <section class="relative pb-16 sm:pb-20">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="grid gap-8 lg:grid-cols-[1fr_340px]">
-
-          <!-- 左：完整计算器 -->
           <div class="space-y-6">
-            <!-- 目数 ↔ 孔径 换算卡 -->
             <div class="calc-card overflow-hidden rounded-2xl">
               <div class="calc-card-header flex items-center justify-between px-6 py-4">
                 <div class="flex items-center gap-3">
@@ -40,8 +34,8 @@
                     </svg>
                   </div>
                   <div>
-                    <h2 class="text-sm font-bold text-white">目数 ↔ 孔径换算</h2>
-                    <p class="text-[11px] text-slate-500">Mesh ↔ Aperture Conversion</p>
+                    <h2 class="text-sm font-bold text-white">{{ $t('toolsPage.converter.title') }}</h2>
+                    <p class="text-[11px] text-slate-500">{{ $t('toolsPage.converter.subtitle') }}</p>
                   </div>
                 </div>
                 <span class="std-badge">ASTM E11</span>
@@ -49,25 +43,23 @@
 
               <div class="px-6 pb-6">
                 <div class="grid gap-5 sm:grid-cols-3">
-                  <!-- 目数 -->
                   <div class="field-group">
-                    <label class="field-label">目数 (Mesh)</label>
+                    <label class="field-label">{{ $t('meshCalculator.fields.mesh') }}</label>
                     <div class="field-wrap">
                       <input
                         v-model.number="mesh"
                         type="number"
                         min="1"
                         class="field-input"
-                        placeholder="例: 10"
+                        :placeholder="$t('toolsPage.placeholders.mesh')"
                         @input="updateFromMesh"
                       />
-                      <span class="field-unit">孔/in</span>
+                      <span class="field-unit">{{ $t('meshCalculator.units.mesh') }}</span>
                     </div>
                   </div>
 
-                  <!-- 孔径 -->
                   <div class="field-group">
-                    <label class="field-label">孔径 (Aperture)</label>
+                    <label class="field-label">{{ $t('meshCalculator.fields.aperture') }}</label>
                     <div class="field-wrap">
                       <input
                         v-model.number="aperture"
@@ -75,16 +67,15 @@
                         step="0.001"
                         min="0"
                         class="field-input"
-                        placeholder="例: 2.000"
+                        :placeholder="$t('toolsPage.placeholders.aperture')"
                         @input="updateFromAperture"
                       />
-                      <span class="field-unit">mm</span>
+                      <span class="field-unit">{{ $t('meshCalculator.units.metric') }}</span>
                     </div>
                   </div>
 
-                  <!-- 丝径 -->
                   <div class="field-group">
-                    <label class="field-label">丝径 (Wire Dia.)</label>
+                    <label class="field-label">{{ $t('meshCalculator.fields.wireDiameter') }}</label>
                     <div class="field-wrap">
                       <input
                         v-model.number="wireDia"
@@ -92,17 +83,16 @@
                         step="0.01"
                         min="0.01"
                         class="field-input"
-                        placeholder="例: 0.50"
+                        :placeholder="$t('toolsPage.placeholders.wire')"
                       />
-                      <span class="field-unit">mm</span>
+                      <span class="field-unit">{{ $t('meshCalculator.units.metric') }}</span>
                     </div>
                   </div>
                 </div>
 
-                <!-- 结果区 -->
                 <div class="result-panel mt-5 grid gap-3 sm:grid-cols-2">
                   <div class="result-item">
-                    <span class="result-label">有效开孔率</span>
+                    <span class="result-label">{{ $t('meshCalculator.fields.openingArea') }}</span>
                     <div class="result-value-wrap">
                       <span class="result-value">{{ openingArea }}</span>
                       <span class="result-unit">%</span>
@@ -116,35 +106,33 @@
                   </div>
 
                   <div class="result-item">
-                    <span class="result-label">节距 (Pitch)</span>
+                    <span class="result-label">{{ $t('toolsPage.pitchLabel') }}</span>
                     <div class="result-value-wrap">
                       <span class="result-value">{{ pitch }}</span>
-                      <span class="result-unit">mm</span>
+                      <span class="result-unit">{{ $t('meshCalculator.units.metric') }}</span>
                     </div>
-                    <p class="mt-2 text-[11px] text-slate-600">= 孔径 + 丝径（相邻丝中心距）</p>
+                    <p class="mt-2 text-[11px] text-slate-600">{{ $t('toolsPage.pitchDescription') }}</p>
                   </div>
                 </div>
 
-                <!-- 公式说明 -->
                 <details class="formula-details mt-5">
-                  <summary class="formula-summary cursor-pointer">查看计算公式</summary>
+                  <summary class="formula-summary cursor-pointer">{{ $t('toolsPage.formulaSummary') }}</summary>
                   <div class="formula-body mt-3 grid gap-3 sm:grid-cols-2">
                     <div class="formula-card">
-                      <p class="formula-name">孔径公式</p>
+                      <p class="formula-name">{{ $t('toolsPage.formulas.apertureTitle') }}</p>
                       <code class="formula-code">W = 25.4 / M − d</code>
-                      <p class="formula-desc">W = 孔径(mm)，M = 目数，d = 丝径(mm)</p>
+                      <p class="formula-desc">{{ $t('toolsPage.formulas.apertureDescription') }}</p>
                     </div>
                     <div class="formula-card">
-                      <p class="formula-name">开孔率公式</p>
+                      <p class="formula-name">{{ $t('toolsPage.formulas.openingAreaTitle') }}</p>
                       <code class="formula-code">OA = (W / (W + d))² × 100</code>
-                      <p class="formula-desc">OA = 开孔率(%)，W = 孔径，d = 丝径</p>
+                      <p class="formula-desc">{{ $t('toolsPage.formulas.openingAreaDescription') }}</p>
                     </div>
                   </div>
                 </details>
               </div>
             </div>
 
-            <!-- 丝径对照表 -->
             <div class="calc-card overflow-hidden rounded-2xl">
               <div class="calc-card-header px-6 py-4">
                 <div class="flex items-center gap-3">
@@ -154,8 +142,8 @@
                     </svg>
                   </div>
                   <div>
-                    <h2 class="text-sm font-bold text-white">ASTM E11 常用目数对照</h2>
-                    <p class="text-[11px] text-slate-500">Standard Wire Mesh Reference Chart</p>
+                    <h2 class="text-sm font-bold text-white">{{ $t('toolsPage.referenceTitle') }}</h2>
+                    <p class="text-[11px] text-slate-500">{{ $t('toolsPage.referenceSubtitle') }}</p>
                   </div>
                 </div>
               </div>
@@ -164,11 +152,11 @@
                 <table class="ref-table min-w-full text-xs">
                   <thead>
                     <tr>
-                      <th class="ref-th">目数</th>
-                      <th class="ref-th">标准孔径 (mm)</th>
-                      <th class="ref-th">标准丝径 (mm)</th>
-                      <th class="ref-th">开孔率 (%)</th>
-                      <th class="ref-th">用途参考</th>
+                      <th class="ref-th">{{ $t('toolsPage.table.mesh') }}</th>
+                      <th class="ref-th">{{ $t('toolsPage.table.aperture') }}</th>
+                      <th class="ref-th">{{ $t('toolsPage.table.wire') }}</th>
+                      <th class="ref-th">{{ $t('toolsPage.table.openingArea') }}</th>
+                      <th class="ref-th">{{ $t('toolsPage.table.useCase') }}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -195,32 +183,26 @@
                   </tbody>
                 </table>
               </div>
-              <p class="px-6 pb-4 pt-2 text-[11px] text-slate-600">点击行可将数据填入计算器</p>
+              <p class="px-6 pb-4 pt-2 text-[11px] text-slate-600">{{ $t('toolsPage.tableHint') }}</p>
             </div>
           </div>
 
-          <!-- 右：侧边信息 -->
           <div class="space-y-5">
-            <!-- 材质耐腐性速查 -->
             <div class="side-card rounded-2xl p-5">
-              <h3 class="side-card-title">材质耐腐性速查</h3>
+              <h3 class="side-card-title">{{ $t('toolsPage.materialGuideTitle') }}</h3>
               <div class="mt-4 space-y-3">
                 <div v-for="mat in materialGuide" :key="mat.name" class="mat-row">
                   <div class="flex items-center justify-between">
                     <span class="text-xs font-bold text-white">{{ mat.name }}</span>
-                    <span
-                      class="mat-badge"
-                      :class="`mat-badge-${mat.level}`"
-                    >{{ mat.levelText }}</span>
+                    <span class="mat-badge" :class="`mat-badge-${mat.level}`">{{ mat.levelText }}</span>
                   </div>
                   <p class="mt-1 text-[11px] leading-5 text-slate-500">{{ mat.note }}</p>
                 </div>
               </div>
             </div>
 
-            <!-- 选型决策树 -->
             <div class="side-card rounded-2xl p-5">
-              <h3 class="side-card-title">快速选型决策</h3>
+              <h3 class="side-card-title">{{ $t('toolsPage.decisionTitle') }}</h3>
               <div class="mt-4 space-y-2.5">
                 <div v-for="step in decisionSteps" :key="step.q" class="decision-item rounded-xl p-3">
                   <p class="text-[11px] font-semibold text-slate-300">{{ step.q }}</p>
@@ -229,21 +211,20 @@
               </div>
             </div>
 
-            <!-- CTA -->
             <div class="cta-card rounded-2xl p-5 text-center">
-              <p class="text-xs font-bold uppercase tracking-[0.16em] text-blue-300/70">需要技术支持？</p>
-              <p class="mt-2 text-sm font-semibold text-white">工程师团队在线，<br/>1小时内响应选型咨询</p>
+              <p class="text-xs font-bold uppercase tracking-[0.16em] text-blue-300/70">{{ $t('toolsPage.supportEyebrow') }}</p>
+              <p class="mt-2 whitespace-pre-line text-sm font-semibold text-white">{{ $t('toolsPage.supportTitle') }}</p>
               <NuxtLink
-                to="/contact"
+                :to="localePath('/contact')"
                 class="mt-4 inline-flex w-full items-center justify-center rounded-lg bg-accent px-4 py-2.5 text-sm font-bold text-white transition-colors duration-200 hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
               >
-                立即发起询价
+                {{ $t('toolsPage.supportCta') }}
               </NuxtLink>
               <a
                 href="tel:4001234567"
                 class="mt-2 inline-flex w-full items-center justify-center rounded-lg border border-white/10 px-4 py-2.5 text-sm font-semibold text-slate-300 transition-colors duration-200 hover:border-white/20 hover:text-white"
               >
-                电话直询
+                {{ $t('toolsPage.callCta') }}
               </a>
             </div>
           </div>
@@ -254,15 +235,39 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { computed, ref } from 'vue'
 
-usePageSeoMeta({
-  title: '丝网技术计算工具 — 目数孔径换算',
-  description: '基于 ASTM E11 标准的工业丝网技术计算器，支持目数、孔径、丝径互算与开孔率计算，辅助矿山筛网工程选型。'
-})
+import { usePageSeoMeta } from '~/composables/useSeoMeta'
+
+interface ReferenceRow {
+  mesh: number
+  aperture: string
+  wire: string
+  oa: number
+  use: string
+}
+
+interface MaterialGuideItem {
+  name: string
+  level: 'excellent' | 'high' | 'medium' | 'low'
+  levelText: string
+  note: string
+}
+
+interface DecisionStep {
+  q: string
+  a: string
+}
 
 const runtimeConfig = useRuntimeConfig()
 const siteUrl = runtimeConfig.public.siteUrl.replace(/\/+$/, '')
+const localePath = useLocalePath()
+const { t, localeProperties } = useI18n()
+
+usePageSeoMeta({
+  title: t('toolsPage.seo.title'),
+  description: t('toolsPage.seo.description')
+})
 
 const mesh = ref<number | null>(null)
 const aperture = ref<number | null>(null)
@@ -296,57 +301,56 @@ const pitch = computed(() => {
   return '—'
 })
 
-const referenceData = [
-  { mesh: 4, aperture: '4.750', wire: '1.40', oa: 58.3, use: '粗骨料粗筛' },
-  { mesh: 6, aperture: '3.350', wire: '0.90', oa: 61.8, use: '砂石分级' },
-  { mesh: 8, aperture: '2.360', wire: '0.80', oa: 57.4, use: '煤矸筛分' },
-  { mesh: 10, aperture: '1.700', wire: '0.83', oa: 46.7, use: '矿石分级' },
-  { mesh: 12, aperture: '1.400', wire: '0.71', oa: 48.4, use: '精矿分级' },
-  { mesh: 16, aperture: '1.000', wire: '0.60', oa: 45.6, use: '精细筛分' },
-  { mesh: 20, aperture: '0.850', wire: '0.43', oa: 51.6, use: '工业过滤' },
-  { mesh: 30, aperture: '0.600', wire: '0.29', oa: 54.5, use: '液体过滤' },
-  { mesh: 50, aperture: '0.300', wire: '0.23', oa: 43.1, use: '细粉过滤' },
-  { mesh: 100, aperture: '0.150', wire: '0.11', oa: 44.9, use: '精细过滤' },
-  { mesh: 200, aperture: '0.075', wire: '0.053', oa: 44.6, use: '超细分级' },
-  { mesh: 325, aperture: '0.045', wire: '0.036', oa: 41.3, use: '粉末检测' },
-]
+const referenceData = computed<ReferenceRow[]>(() => [
+  { mesh: 4, aperture: '4.750', wire: '1.40', oa: 58.3, use: t('toolsPage.referenceRows.row4') },
+  { mesh: 6, aperture: '3.350', wire: '0.90', oa: 61.8, use: t('toolsPage.referenceRows.row6') },
+  { mesh: 8, aperture: '2.360', wire: '0.80', oa: 57.4, use: t('toolsPage.referenceRows.row8') },
+  { mesh: 10, aperture: '1.700', wire: '0.83', oa: 46.7, use: t('toolsPage.referenceRows.row10') },
+  { mesh: 12, aperture: '1.400', wire: '0.71', oa: 48.4, use: t('toolsPage.referenceRows.row12') },
+  { mesh: 16, aperture: '1.000', wire: '0.60', oa: 45.6, use: t('toolsPage.referenceRows.row16') },
+  { mesh: 20, aperture: '0.850', wire: '0.43', oa: 51.6, use: t('toolsPage.referenceRows.row20') },
+  { mesh: 30, aperture: '0.600', wire: '0.29', oa: 54.5, use: t('toolsPage.referenceRows.row30') },
+  { mesh: 50, aperture: '0.300', wire: '0.23', oa: 43.1, use: t('toolsPage.referenceRows.row50') },
+  { mesh: 100, aperture: '0.150', wire: '0.11', oa: 44.9, use: t('toolsPage.referenceRows.row100') },
+  { mesh: 200, aperture: '0.075', wire: '0.053', oa: 44.6, use: t('toolsPage.referenceRows.row200') },
+  { mesh: 325, aperture: '0.045', wire: '0.036', oa: 41.3, use: t('toolsPage.referenceRows.row325') }
+])
 
-const applyRefRow = (row: typeof referenceData[0]) => {
+const applyRefRow = (row: ReferenceRow) => {
   mesh.value = row.mesh
   aperture.value = Number(row.aperture)
   wireDia.value = Number(row.wire)
   selectedRef.value = row.mesh
 }
 
-const materialGuide = [
-  { name: 'SUS316L', level: 'excellent', levelText: '卓越', note: '含钼 2-3%，耐氯离子，适合海水、酸液、医药' },
-  { name: 'SUS304', level: 'high', levelText: '优秀', note: '通用不锈钢，耐大多数化学品，性价比首选' },
-  { name: '65Mn', level: 'low', levelText: '一般', note: '高硬度耐磨，不耐腐蚀，仅限干式工况' },
-  { name: '聚氨酯', level: 'high', levelText: '优秀', note: '耐水耐油，Shore A 65-90 可调，噪音低' },
-  { name: '高碳钢/镀锌', level: 'medium', levelText: '良好', note: '成本低，轻微潮湿可用，不耐酸碱' },
-]
+const materialGuide = computed<MaterialGuideItem[]>(() => [
+  { name: 'SUS316L', level: 'excellent', levelText: t('toolsPage.materialLevels.excellent'), note: t('toolsPage.materialGuide.sus316l') },
+  { name: 'SUS304', level: 'high', levelText: t('toolsPage.materialLevels.high'), note: t('toolsPage.materialGuide.sus304') },
+  { name: '65Mn', level: 'low', levelText: t('toolsPage.materialLevels.low'), note: t('toolsPage.materialGuide.65mn') },
+  { name: t('toolsPage.materialGuideLabels.polyurethane'), level: 'high', levelText: t('toolsPage.materialLevels.high'), note: t('toolsPage.materialGuide.polyurethane') },
+  { name: t('toolsPage.materialGuideLabels.carbonSteel'), level: 'medium', levelText: t('toolsPage.materialLevels.medium'), note: t('toolsPage.materialGuide.carbonSteel') }
+])
 
-const decisionSteps = [
-  { q: '有明显腐蚀性（酸/海水/盐雾）？', a: '选 SUS316L 或聚氨酯' },
-  { q: '高冲击 + 干式大骨料筛分？', a: '选 65Mn 编织网' },
-  { q: '细粒脱水 / 低堵孔要求？', a: '选矿用焊接条缝筛' },
-  { q: '降噪 + 使用寿命优先？', a: '选聚氨酯筛板模块' },
-  { q: '食品/制药/超细过滤？', a: '选 SUS304/316L 精密编织网' },
-]
+const decisionSteps = computed<DecisionStep[]>(() => [
+  { q: t('toolsPage.decisions.corrosionQ'), a: t('toolsPage.decisions.corrosionA') },
+  { q: t('toolsPage.decisions.impactQ'), a: t('toolsPage.decisions.impactA') },
+  { q: t('toolsPage.decisions.dewateringQ'), a: t('toolsPage.decisions.dewateringA') },
+  { q: t('toolsPage.decisions.noiseQ'), a: t('toolsPage.decisions.noiseA') },
+  { q: t('toolsPage.decisions.foodQ'), a: t('toolsPage.decisions.foodA') }
+])
 
 const toolsJsonLd = computed(() => ({
   '@context': 'https://schema.org',
   '@graph': [
     {
       '@type': 'WebApplication',
-      name: '丝网技术计算工具',
-      url: `${siteUrl}/tools`,
+      name: t('toolsPage.title'),
+      url: `${siteUrl}${localePath('/tools')}`,
       applicationCategory: 'EngineeringApplication',
       operatingSystem: 'Any',
       browserRequirements: 'Requires JavaScript',
-      inLanguage: 'zh-CN',
-      description:
-        '基于 ASTM E11 与 ISO 9044 标准的丝网技术计算工具，可进行目数、孔径、丝径与开孔率换算。',
+      inLanguage: localeProperties.value.language || 'zh-CN',
+      description: t('toolsPage.seo.description'),
       offers: {
         '@type': 'Offer',
         price: '0',
@@ -354,71 +358,35 @@ const toolsJsonLd = computed(() => ({
       },
       creator: {
         '@type': 'Organization',
-        name: '华云网业',
+        name: t('brand.name'),
         url: siteUrl
       },
       featureList: [
-        '目数与孔径换算',
-        '丝径输入与节距计算',
-        '开孔率自动计算',
-        'ASTM E11 常用目数对照表',
-        '材质耐腐性速查',
-        '快速选型决策建议'
+        t('toolsPage.features.mesh'),
+        t('toolsPage.features.wire'),
+        t('toolsPage.features.opening'),
+        t('toolsPage.features.reference'),
+        t('toolsPage.features.material'),
+        t('toolsPage.features.decision')
       ],
       about: [
-        {
-          '@type': 'Thing',
-          name: 'ASTM E11'
-        },
-        {
-          '@type': 'Thing',
-          name: 'ISO 9044'
-        }
+        { '@type': 'Thing', name: 'ASTM E11' },
+        { '@type': 'Thing', name: 'ISO 9044' }
       ]
     },
     {
       '@type': 'HowTo',
-      name: '如何使用丝网技术计算工具进行筛网参数换算',
-      description: '输入目数、孔径或丝径参数，快速得到开孔率、节距和 ASTM E11 参考值。',
+      name: t('toolsPage.howTo.title'),
+      description: t('toolsPage.howTo.description'),
       totalTime: 'PT2M',
-      inLanguage: 'zh-CN',
-      supply: [
-        {
-          '@type': 'HowToSupply',
-          name: '筛网目数、孔径或丝径参数'
-        }
-      ],
-      tool: [
-        {
-          '@type': 'HowToTool',
-          name: '丝网技术计算工具'
-        }
-      ],
+      inLanguage: localeProperties.value.language || 'zh-CN',
+      supply: [{ '@type': 'HowToSupply', name: t('toolsPage.howTo.supply') }],
+      tool: [{ '@type': 'HowToTool', name: t('toolsPage.title') }],
       step: [
-        {
-          '@type': 'HowToStep',
-          position: 1,
-          name: '输入已知参数',
-          text: '输入目数、孔径或丝径中的已知值，工具会自动联动计算。'
-        },
-        {
-          '@type': 'HowToStep',
-          position: 2,
-          name: '查看换算结果',
-          text: '读取开孔率和节距结果，判断筛分效率、强度和防堵孔平衡。'
-        },
-        {
-          '@type': 'HowToStep',
-          position: 3,
-          name: '对照标准参考表',
-          text: '点击 ASTM E11 常用目数对照表中的行，将标准数据带入计算器做快速比对。'
-        },
-        {
-          '@type': 'HowToStep',
-          position: 4,
-          name: '结合工况做选型判断',
-          text: '结合材质耐腐性速查和快速选型决策，选择更合适的筛网材质与产品形态。'
-        }
+        { '@type': 'HowToStep', position: 1, name: t('toolsPage.howTo.step1.title'), text: t('toolsPage.howTo.step1.text') },
+        { '@type': 'HowToStep', position: 2, name: t('toolsPage.howTo.step2.title'), text: t('toolsPage.howTo.step2.text') },
+        { '@type': 'HowToStep', position: 3, name: t('toolsPage.howTo.step3.title'), text: t('toolsPage.howTo.step3.text') },
+        { '@type': 'HowToStep', position: 4, name: t('toolsPage.howTo.step4.title'), text: t('toolsPage.howTo.step4.text') }
       ]
     }
   ]
@@ -436,14 +404,12 @@ useHead(() => ({
 </script>
 
 <style scoped>
-/* 页面背景 */
 .tools-page {
   background-color: #0b1120;
   background-image:
     radial-gradient(ellipse 80% 40% at 50% -10%, rgba(37,99,235,0.12) 0%, transparent 60%);
 }
 
-/* Hero 背景网格 */
 .hero-grid {
   background-image:
     linear-gradient(rgba(37,99,235,0.06) 1px, transparent 1px),
@@ -452,7 +418,6 @@ useHead(() => ({
   mask-image: radial-gradient(ellipse 80% 80% at 50% 0%, black 0%, transparent 70%);
 }
 
-/* 计算器卡片 */
 .calc-card {
   background: #111827;
   border: 1px solid rgba(255,255,255,0.07);
@@ -481,7 +446,6 @@ useHead(() => ({
   padding: 2px 8px;
 }
 
-/* 字段 */
 .field-group { display: flex; flex-direction: column; gap: 6px; }
 
 .field-label {
@@ -529,12 +493,10 @@ useHead(() => ({
   font-family: monospace;
 }
 
-/* 数字 spin 隐藏 */
 .field-input::-webkit-inner-spin-button,
 .field-input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
 .field-input { -moz-appearance: textfield; }
 
-/* 结果面板 */
 .result-panel {
   background: #0f172a;
   border: 1px solid rgba(255,255,255,0.06);
@@ -579,7 +541,6 @@ useHead(() => ({
   background: linear-gradient(90deg, #1d4ed8, #60a5fa);
 }
 
-/* 公式区 */
 .formula-details > summary { list-style: none; }
 .formula-details > summary::-webkit-details-marker { display: none; }
 
@@ -634,7 +595,6 @@ details[open] .formula-summary::before { transform: rotate(90deg); }
   line-height: 1.5;
 }
 
-/* 参考表 */
 .ref-table { border-collapse: collapse; }
 .ref-th {
   padding: 8px 16px;
@@ -663,7 +623,6 @@ details[open] .formula-summary::before { transform: rotate(90deg); }
   white-space: nowrap;
 }
 
-/* 侧边卡片 */
 .side-card {
   background: #111827;
   border: 1px solid rgba(255,255,255,0.07);
@@ -700,7 +659,6 @@ details[open] .formula-summary::before { transform: rotate(90deg); }
   border: 1px solid rgba(255,255,255,0.06);
 }
 
-/* CTA 卡片 */
 .cta-card {
   background: linear-gradient(145deg, #1a2744, #1e3a8a);
   border: 1px solid rgba(96,165,250,0.2);

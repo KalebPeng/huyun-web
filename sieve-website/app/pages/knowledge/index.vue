@@ -3,13 +3,13 @@
     <section class="bg-[linear-gradient(135deg,#111827,#1a2744)] py-16 text-white sm:py-20">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <p class="text-sm font-semibold uppercase tracking-[0.24em] text-blue-300">
-          Technical Knowledge
+          {{ $t('knowledgePage.eyebrow') }}
         </p>
         <h1 class="mt-4 text-4xl font-black sm:text-5xl">
-          技术知识库
+          {{ $t('knowledgePage.title') }}
         </h1>
         <p class="mt-5 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
-          覆盖 ISO/ASTM 标准、材质选型逻辑、筛分工艺原理和工况分析，知识库现在直接由 Markdown 内容驱动，新增文章不用再碰代码。
+          {{ $t('knowledgePage.description') }}
         </p>
 
         <div class="mt-8 max-w-xl">
@@ -17,7 +17,7 @@
             <input
               v-model.trim="searchKeyword"
               type="search"
-              placeholder="搜索文章标题或关键词"
+              :placeholder="$t('knowledgePage.searchPlaceholder')"
               class="min-h-12 w-full rounded-2xl border border-white/15 bg-white/10 px-5 pr-12 text-base text-white placeholder:text-slate-400 backdrop-blur-sm outline-none transition focus:border-white/40"
             >
             <svg class="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
@@ -53,7 +53,7 @@
     <section class="py-12 sm:py-16">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <p v-if="searchKeyword" class="mb-6 text-sm text-slate-500">
-          搜索“{{ searchKeyword }}”，共找到 {{ filteredArticles.length }} 篇文章
+          {{ $t('knowledgePage.searchResult', { keyword: searchKeyword, count: filteredArticles.length }) }}
         </p>
 
         <div v-if="filteredArticles.length" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -91,7 +91,7 @@
             </div>
 
             <div class="mt-5 flex items-center gap-1 text-sm font-semibold text-accent">
-              阅读全文
+              {{ $t('knowledgePage.readMore') }}
               <svg class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
               </svg>
@@ -103,8 +103,8 @@
           v-else
           class="rounded-3xl border border-dashed border-slate-300 bg-white px-6 py-20 text-center"
         >
-          <p class="text-lg font-bold text-slate-900">暂无匹配文章</p>
-          <p class="mt-2 text-sm text-slate-500">换个关键词试试，或者直接浏览全部分类。</p>
+          <p class="text-lg font-bold text-slate-900">{{ $t('knowledgePage.emptyTitle') }}</p>
+          <p class="mt-2 text-sm text-slate-500">{{ $t('knowledgePage.emptyDescription') }}</p>
         </div>
       </div>
     </section>
@@ -114,17 +114,17 @@
         <div class="rounded-3xl bg-[linear-gradient(135deg,#1a2744,#243f72)] px-8 py-10 text-white shadow-[0_24px_60px_rgba(15,23,42,0.18)]">
           <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
             <div>
-              <h2 class="text-2xl font-black sm:text-3xl">有具体选型问题？</h2>
+              <h2 class="text-2xl font-black sm:text-3xl">{{ $t('knowledgePage.ctaTitle') }}</h2>
               <p class="mt-3 max-w-2xl text-sm leading-7 text-slate-300 sm:text-base">
-                把工况、物料和设备参数告诉我们，技术工程师会给出针对性的筛网选型建议。
+                {{ $t('knowledgePage.ctaDescription') }}
               </p>
             </div>
             <div class="flex shrink-0 flex-col gap-3 sm:flex-row">
               <AppButton to="/tools" size="lg" class="!border-white/30 !bg-white/10 !text-white hover:!bg-white/20">
-                技术计算工具
+                {{ $t('knowledgePage.toolsCta') }}
               </AppButton>
               <AppButton to="/contact" size="lg" class="!bg-white !text-primary hover:!bg-slate-100">
-                联系我们
+                {{ $t('common.contactUs') }}
               </AppButton>
             </div>
           </div>
@@ -136,29 +136,32 @@
 
 <script setup lang="ts">
 import { computed, ref } from 'vue'
+
 import AppButton from '~/components/common/AppButton.vue'
 import { useArticles } from '~/composables/useArticles'
 import { usePageSeoMeta } from '~/composables/useSeoMeta'
 
 const { getAllArticles } = useArticles()
 const { data } = await useAsyncData('knowledge-articles', () => getAllArticles())
+const { t, locale } = useI18n()
 
+const allCategoryValue = '__all__'
 const articles = computed(() => data.value || [])
 const searchKeyword = ref('')
-const activeCategory = ref('全部')
+const activeCategory = ref(allCategoryValue)
 
 const allCategories = computed(() => {
   const categories = new Set(articles.value.map(article => article.category))
-  return ['全部', ...categories]
+  return [allCategoryValue, ...categories]
 })
 
-const categoryTabs = computed(() => allCategories.value.map(category => ({
-  label: category,
+const categoryTabs = computed(() => allCategories.value.map((category) => ({
+  label: category === allCategoryValue ? t('knowledgePage.categories.all') : category,
   value: category
 })))
 
 const tabCount = (category: string) => {
-  if (category === '全部') {
+  if (category === allCategoryValue) {
     return articles.value.length
   }
 
@@ -179,7 +182,7 @@ const filteredArticles = computed(() => {
     return keywordMatches
   }
 
-  if (activeCategory.value !== '全部') {
+  if (activeCategory.value !== allCategoryValue) {
     return keywordMatches.filter(article => article.category === activeCategory.value)
   }
 
@@ -187,12 +190,15 @@ const filteredArticles = computed(() => {
 })
 
 const formatDate = (dateStr: string) => {
-  const date = new Date(dateStr)
-  return `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日`
+  return new Intl.DateTimeFormat(locale.value === 'zh' ? 'zh-CN' : 'en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  }).format(new Date(dateStr))
 }
 
 usePageSeoMeta({
-  title: '技术知识库',
-  description: '华云网业技术文章：覆盖 ISO 9044、ASTM E11、材质选型、条缝筛原理和开孔率计算等工业筛网知识。'
+  title: t('knowledgePage.seo.title'),
+  description: t('knowledgePage.seo.description')
 })
 </script>

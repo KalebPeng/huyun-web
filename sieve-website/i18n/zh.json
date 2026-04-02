@@ -1,0 +1,825 @@
+{
+  "aboutPage": {
+    "companyParagraphs": {
+      "four": "我们坚持“以耐磨性为核心”的品质理念，通过数字化生产排产和多级质控，确保每一片交付的筛网都能在高冲击、高磨损环境下保持长久寿命。",
+      "one": "华云网业专注于矿用筛网与重型工业网的制造与研发。我们拥有目前业内领先的自动化条缝焊接产线和 65Mn 弹簧钢专属编织线，能够稳定生产丝径高达 14mm 的超重型筛网。",
+      "three": "除标准规格外，华云网业重点服务于矿山机械配套商与洗煤、洗选大型终端，提供基于工况磨损分析的材质建议与非标定制。",
+      "two": "工厂坐落于山东省滨州市，生产车间占地 15,000 ㎡。我们建立了从原材料性能分析、编织/焊接过程控制到成品负载模拟测试的完整链路。"
+    },
+    "ctaAria": "前往联系我们页面",
+    "ctaDescription": "把您的使用场景、采购规模和定制要求发过来，我们会尽快安排业务与技术支持对接。",
+    "ctaTitle": "需要进一步了解我们的工厂能力？",
+    "customCapabilities": {
+      "one": "支持来图来样生产，可按孔径、丝径、尺寸和边框结构做针对性加工。",
+      "three": "针对耐腐蚀、耐磨、高温等特殊工况，可协助选择不锈钢、高锰钢及复合材质。",
+      "two": "常规规格可快速匹配库存与标准生产参数，减少重复沟通成本。"
+    },
+    "customEyebrow": "Custom Capability",
+    "customTitle": "定制能力",
+    "deliveryCapabilities": {
+      "one": "常规规格支持库存发货，紧急项目优先协调排产与出货节奏。",
+      "three": "支持零担、整车及国际物流发运，配合木箱、托盘和防护包装要求。",
+      "two": "定制产品根据加工复杂度安排周期，明确交期节点，避免嘴上乱承诺。"
+    },
+    "deliveryEyebrow": "Delivery Capability",
+    "deliveryTitle": "交付能力",
+    "description": "专注矿用筛网制造与高耐磨定制化方案，服务矿山、选煤、骨料分级与工业精细分级场景。",
+    "eyebrow": "About Us",
+    "factoryEyebrow": "Factory & Equipment",
+    "factoryGallery": {
+      "line": "自动化生产线",
+      "packing": "打包发货区",
+      "quality": "质检工位",
+      "weaving": "数控织网机"
+    },
+    "factoryTitle": "工厂与设备展示",
+    "heroBadge": "山东·滨州 生产基地",
+    "productDirections": {
+      "crimped": {
+        "name": "轧花网",
+        "summary": "承载能力强，常用于中粗颗粒筛分。"
+      },
+      "custom": {
+        "name": "定制异形件",
+        "summary": "按设备图纸加工特殊结构筛网部件。"
+      },
+      "filter": {
+        "name": "过滤网片",
+        "summary": "支持冲片、包边和多层复合加工。"
+      },
+      "mining": {
+        "name": "矿筛网",
+        "summary": "面向重载、耐磨、高冲击矿山场景。"
+      },
+      "welded": {
+        "name": "电焊网",
+        "summary": "适合围护、隔离和建筑配套等常规需求。"
+      },
+      "woven": {
+        "name": "不锈钢编织网",
+        "summary": "适用于过滤、筛分、防护等精细工况。"
+      }
+    },
+    "productFocusDescription": "围绕不同工况和行业需求，覆盖常规规格到定制加工的多类筛网产品。",
+    "productFocusEyebrow": "Product Focus",
+    "productFocusTitle": "核心产品方向",
+    "profileEyebrow": "Company Profile",
+    "profileTitle": "企业简介",
+    "qualityEyebrow": "Quality Promise",
+    "qualityPromises": {
+      "afterSales": {
+        "description": "提供选型沟通、样品确认、使用建议和售后跟进，发现问题及时协同处理。",
+        "title": "售后服务"
+      },
+      "cert": {
+        "description": "华云网业已通过 ISO9001:2015 质量管理体系认证。从原料进厂到成品抽检，围绕材质、孔径、丝径和平整度建立多环节质控流程，并随货提供质检报告。",
+        "title": "品质承诺与认证"
+      },
+      "delivery": {
+        "description": "明确生产排期与节点反馈，常规单和定制单分别管理，尽量把交付节奏控在预期内。",
+        "title": "交期保证"
+      }
+    },
+    "qualityTitle": "品质承诺",
+    "seo": {
+      "description": "了解华云网业的发展历程、生产能力、核心产品方向、工厂设备与品质承诺，查看企业实力与服务能力。",
+      "title": "关于我们"
+    },
+    "stats": {
+      "baseLabel": "生产基地",
+      "baseValue": "15000㎡",
+      "clientsLabel": "服务客户",
+      "clientsValue": "500+",
+      "experienceLabel": "行业经验",
+      "experienceValue": "20年+",
+      "skusLabel": "产品规格",
+      "skusValue": "200+"
+    },
+    "title": "关于我们"
+  },
+  "applicationDetail": {
+    "breadcrumbAria": "面包屑导航",
+    "considerationEyebrow": "Key Considerations",
+    "considerationTitle": "选型关注点",
+    "ctaAria": "咨询 {name} 适配方案",
+    "ctaButton": "咨询适配方案",
+    "ctaDescription": "把物料特性、设备尺寸和目标产能发给我们，我们会结合当前场景给出更贴合的选型建议。",
+    "ctaTitle": "需要针对这个场景做适配方案？",
+    "emptyProductsDescription": "当前场景推荐数据尚未补齐，可以直接联系我们获取人工选型建议。",
+    "emptyProductsTitle": "暂无推荐产品",
+    "notFoundAria": "返回应用场景列表",
+    "notFoundButton": "返回应用场景",
+    "notFoundDescription": "当前链接对应的应用场景不存在或已下线，可以返回列表页继续查看其他方案。",
+    "notFoundEyebrow": "Scene Not Found",
+    "notFoundTitle": "应用场景未找到",
+    "overviewEyebrow": "Application Overview",
+    "painPoints": {
+      "filtration": {
+        "one": "过滤精度、压损和清洗频次互相牵扯，选错材料就很容易翻车。",
+        "three": "客户常常只有使用目标，没有现成图纸，导致前期选型信息不完整。",
+        "two": "不少工况介质有腐蚀性或温度要求，材质兼容性必须先想明白。"
+      },
+      "grain": {
+        "one": "客户往往先描述粮食品类和杂质情况，却说不清该用哪种筛孔结构。",
+        "three": "设备型号和安装尺寸不统一，常规规格不一定能直接套用。",
+        "two": "既想保证筛分效率，又怕粮食破损和堵孔，参数很容易选偏。"
+      },
+      "mining": {
+        "one": "工况冲击和磨损都重，寿命短往往不是产品烂，是选型和结构没配对。",
+        "three": "更换停机成本高，备件周期和耐磨寿命必须提前算进去。",
+        "two": "振动筛张紧方式、开孔尺寸和物料粒径不匹配时，产能会直接掉。"
+      }
+    },
+    "painPointsTitle": "常见问题与痛点",
+    "recommendedEyebrow": "Recommended Products",
+    "recommendedTitle": "适合此场景的产品",
+    "seo": {
+      "fallbackDescription": "当前应用场景不存在或已下线，可返回应用场景列表查看更多筛网解决方案。",
+      "title": "{name} - 推荐产品与选型建议"
+    },
+    "usageAdviceEyebrow": "Usage Advice",
+    "usageAdviceTitle": "使用建议",
+    "viewAllProducts": "查看全部产品"
+  },
+  "applicationsPage": {
+    "cardAria": "查看 {name} 推荐方案",
+    "cardCta": "查看推荐方案",
+    "cardEyebrow": "Scene",
+    "ctaAria": "前往询价页面",
+    "ctaDescription": "把工况、处理物料和目标精度告诉我们，我们会结合应用场景给出更靠谱的选型建议和报价。",
+    "ctaTitle": "还不确定该选哪类筛网？",
+    "description": "帮助不熟悉产品名称的客户，从粮食筛分、工业过滤、矿山筛分等业务场景快速找到更合适的筛网方案。",
+    "eyebrow": "Application Scenes",
+    "seo": {
+      "description": "通过粮食筛分、工业过滤、矿山筛分等业务场景快速查找合适产品，获取筛网选型建议与配套方案。",
+      "title": "应用场景"
+    },
+    "title": "应用场景"
+  },
+  "brand": {
+    "name": "华云网业",
+    "tagline": "Industrial Mesh"
+  },
+  "common": {
+    "contactUs": "联系我们",
+    "getQuote": "立即询价",
+    "no": "否",
+    "notSupported": "不支持",
+    "supported": "支持",
+    "yes": "是"
+  },
+  "contactPage": {
+    "contactInfoEyebrow": "Contact Info",
+    "contactInfoTitle": "联系方式",
+    "contactItems": {
+      "addressDescription": "支持预约到厂考察与样品确认。",
+      "addressLabel": "地址",
+      "addressValue": "山东省滨州市华云网业",
+      "emailDescription": "图纸、规格单和报价需求建议直接发邮件。",
+      "emailLabel": "邮箱",
+      "hoursLabel": "工作时间",
+      "hoursValue": "周一至周六 9:00-18:00",
+      "phoneDescription": "欢迎工作时间内直接来电沟通。",
+      "phoneLabel": "电话",
+      "whatsAppDescription": "外贸客户可通过 WhatsApp 直接联系。"
+    },
+    "description": "提交您的产品需求、应用场景和规格信息，我们承诺 48 小时内给出专业响应与报价建议。",
+    "eyebrow": "Contact Us",
+    "seo": {
+      "description": "通过电话、微信、邮箱或在线表单联系我们，提交筛网产品需求、应用场景和规格信息，快速获取报价与选型建议。",
+      "title": "联系我们 / 发起询价"
+    },
+    "title": "联系我们 / 发起询价",
+    "wechatDescription": "扫码或添加微信可发送图纸、照片和工况说明，方便我们更快判断产品方案。",
+    "wechatEyebrow": "WeChat",
+    "wechatLabel": "微信号：huayun-sieve",
+    "wechatQr": "微信号\nhuayun-sieve",
+    "wechatTitle": "微信咨询"
+  },
+  "contentStandardsPage": {
+    "boundary": {
+      "one": "知识库内容用于帮助理解筛网规格、材质差异、常见工况与计算方法，不替代现场试筛、第三方检测或整机验证。",
+      "three": "寿命、处理量、开孔率和材质建议都受现场条件影响，页面中的经验值只能作为初步判断依据。",
+      "two": "涉及食品、医药、强腐蚀、高温高压或强制认证场景时，最终选型仍需依据实际介质、合规要求和项目图纸确认。"
+    },
+    "boundaryEyebrow": "Boundary",
+    "boundaryTitle": "适用边界说明",
+    "ctaDescription": "文章页顶部已经展示来源、审核团队、最近复核时间和适用边界；如果你发现描述不清或参数可疑，直接通过联系页反馈，我们会人工复核。",
+    "ctaFeedback": "反馈内容问题",
+    "ctaKnowledge": "查看知识库",
+    "ctaTitle": "想核对某篇文章的依据和更新时间？",
+    "description": "这页专门说明华云网业知识库内容由谁编写、由谁审核、依据哪些来源、何时更新，以及发现错误后怎么处理。别扯花活，先把可信度链条摆明白。",
+    "eyebrow": "Content Standards",
+    "roles": {
+      "publisherDescription": "只有在来源说明、审核信息和适用边界齐全后，相关文章才会正式发布到知识库页面。",
+      "publisherTitle": "发布责任",
+      "reviewerDescription": "由“华云网业技术与质控联合审核”复核关键参数、材质描述、适用工况、计算逻辑与风险边界。",
+      "reviewerTitle": "技术审核",
+      "writerDescription": "由站点内容编辑整理客户常见问题、产品规格表达和页面结构，负责把技术信息写成人能看懂的话。",
+      "writerTitle": "内容编写"
+    },
+    "rolesEyebrow": "Roles",
+    "rolesTitle": "作者与审核角色",
+    "seo": {
+      "description": "说明华云网业知识库内容的作者角色、审核机制、来源使用原则、更新规则与纠错流程。",
+      "title": "内容审核与编辑规范"
+    },
+    "sourcePolicy": {
+      "four": "AI 工具可以辅助整理表达，但涉及规格、公式、材质建议和适用结论的内容，必须经过人工审核后才会发布。",
+      "one": "优先引用国家标准、行业标准、测试规范、设备参数表和原材料规格书这类一手资料。",
+      "three": "来源说明会同时写清“发布方”和“用途”，方便读者判断这条信息是用来定义术语、核对参数，还是限定边界。",
+      "two": "涉及材质选择、寿命判断和工况建议时，会结合内部生产与质检经验，但不会把个别案例包装成通用结论。"
+    },
+    "sourcePolicyEyebrow": "Source Policy",
+    "sourcePolicyTitle": "来源使用原则",
+    "title": "内容审核与编辑规范",
+    "trustHighlights": {
+      "clearBoundary": {
+        "description": "每篇文章都会说明适用场景和不适用场景，避免把经验判断硬写成绝对结论。",
+        "title": "边界写清楚"
+      },
+      "correctionTrigger": {
+        "description": "发现参数、描述或结论有问题，可以直接反馈，内容会进入人工复核流程。",
+        "title": "纠错可触发"
+      },
+      "namedReview": {
+        "description": "知识库文章会标注作者、审核团队和最近复核时间，不发匿名技术结论。",
+        "title": "实名审核"
+      },
+      "traceableSources": {
+        "description": "涉及标准、材质、计算和工况判断的内容，会明确展示参考依据及用途说明。",
+        "title": "来源可追溯"
+      }
+    },
+    "updateRules": {
+      "four": "若某条结论只适用于特定工况，会直接写进“适用边界”，而不是藏在脚注里糊弄人。",
+      "one": "文章页展示的“最后审核”时间，代表最近一次人工复核通过的日期。",
+      "three": "如用户反馈存在歧义、缺失边界或示例不准确，相关内容会回到审核流程重新确认。",
+      "two": "涉及标准版本、产品规格、计算逻辑或明显事实错误的内容，会优先更新，不拖着装死。"
+    },
+    "updateRulesEyebrow": "Update Rules",
+    "updateRulesTitle": "更新与纠错机制",
+    "workflow": {
+      "step1": {
+        "description": "根据客户高频问题、产品规格解释和常见选型误区整理初稿，先明确文章要解决的具体问题。",
+        "title": "选题与初稿"
+      },
+      "step2": {
+        "description": "对标准条款、产品参数、计算公式和工况描述逐项核对，补齐来源说明和使用目的。",
+        "title": "来源核对"
+      },
+      "step3": {
+        "description": "由技术与质控联合审核关键参数、适用边界、误差范围和不适用条件，避免营销话术盖过技术事实。",
+        "title": "技术复核"
+      },
+      "step4": {
+        "description": "发布时同步写入最近复核时间；当标准版本、规格数据或工况结论变化时，会重新复审并更新页面。",
+        "title": "发布与复审"
+      }
+    },
+    "workflowEyebrow": "Workflow",
+    "workflowTitle": "内容生产与复核流程"
+  },
+  "faqPage": {
+    "categories": {
+      "all": "全部",
+      "custom": "定制问题",
+      "delivery": "发货交期",
+      "material": "材质选择",
+      "quote": "报价问题",
+      "sample": "样品问题",
+      "spec": "产品规格"
+    },
+    "ctaAria": "前往联系我们页面",
+    "ctaDescription": "把您的工况、材质和尺寸要求发给我们，沟通清楚比瞎猜快得多。",
+    "ctaTitle": "还有其他问题？",
+    "description": "找不到答案？直接联系我们，我们会根据产品规格、使用场景和工况要求给您更具体的建议。",
+    "emptyDescription": "可以换个关键词再试试，或者直接联系我们获取人工答复。",
+    "emptyTitle": "暂无匹配问题",
+    "filterAria": "FAQ 分类筛选",
+    "searchAria": "搜索常见问题",
+    "searchLabel": "搜索常见问题",
+    "searchPlaceholder": "搜索问题或答案关键词",
+    "searching": "正在搜索“{keyword}”，此时会忽略分类筛选并显示全部匹配结果。",
+    "seo": {
+      "description": "查看产品规格、材质选择、定制加工、报价交期和样品安排等常见问题，快速获取筛网选型与采购答疑。",
+      "title": "常见问题"
+    },
+    "title": "常见问题"
+  },
+  "footer": {
+    "address": "地址：",
+    "applicationLinks": {
+      "coalDewatering": "选煤洗选脱水",
+      "getQuote": "立即询价",
+      "knowledge": "技术知识库",
+      "miningGrading": "矿山骨料分级"
+    },
+    "contact": "联系方式",
+    "copyright": "2026 华云网业 版权所有",
+    "description": "专注矿用、工业级高效筛分方案，提供聚氨酯筛网、编织筛网与焊接条缝筛的定制化交付。",
+    "email": "邮箱：",
+    "phone": "电话：",
+    "productLinks": {
+      "crimpedWireMesh": "重型轧花网",
+      "miningWeldedScreen": "矿用焊接筛网",
+      "polyurethaneScreen": "聚氨酯筛网",
+      "woven65mnScreen": "65锰编织筛网"
+    },
+    "products": "产品分类",
+    "services": "技术服务",
+    "wechat": "微信："
+  },
+  "form": {
+    "inquiry": {
+      "error": "提交失败，请直接拨打电话联系。",
+      "eyebrow": "Inquiry Form",
+      "fields": {
+        "company": "公司名称",
+        "contact": "联系方式 *",
+        "customRequired": "是否需要定制",
+        "material": "材质要求",
+        "meshOrAperture": "目数或孔径",
+        "name": "姓名 *",
+        "productType": "所需产品类型",
+        "quantity": "需求数量",
+        "remark": "备注说明",
+        "size": "尺寸规格",
+        "usage": "用途 / 行业"
+      },
+      "options": {
+        "material": {
+          "carbonSteel": "碳钢",
+          "galvanized": "镀锌",
+          "other": "其他",
+          "stainless304": "不锈钢304",
+          "stainless316": "不锈钢316"
+        },
+        "usage": {
+          "breeding": "养殖",
+          "construction": "建筑",
+          "filtration": "工业过滤",
+          "grain": "粮食筛分",
+          "mining": "矿山筛分",
+          "other": "其他"
+        }
+      },
+      "placeholders": {
+        "company": "请输入公司名称",
+        "contact": "手机或微信",
+        "material": "请选择材质",
+        "meshOrAperture": "如：40 目 / 2 mm",
+        "name": "请输入您的姓名",
+        "productType": "如：不锈钢编织网",
+        "quantity": "如：100 卷 / 20 片",
+        "remark": "可填写工况、设备型号、交期要求或其他补充信息",
+        "size": "如：1m x 30m",
+        "usage": "请选择用途 / 行业"
+      },
+      "requiredHint": "标记 * 为必填项",
+      "submit": "提交需求",
+      "submitAria": "提交询价需求",
+      "submitting": "提交中...",
+      "success": "已收到您的需求，我们将尽快联系您。",
+      "title": "提交询价需求",
+      "validation": {
+        "contact": "请输入联系方式",
+        "name": "请输入姓名"
+      }
+    }
+  },
+  "header": {
+    "backHome": "返回首页",
+    "closeMenu": "关闭导航菜单",
+    "getQuoteAria": "跳转到询价页面",
+    "mainNav": "主导航",
+    "mobileNav": "移动端主导航",
+    "openMenu": "打开导航菜单"
+  },
+  "home": {
+    "advantageSection": {
+      "description": "从产品规格、定制能力、工厂直供到交付保障，围绕矿山与工业筛网采购场景把可靠性和响应速度做扎实。",
+      "eyebrow": "Why Choose Us",
+      "iconAria": "{title} 图标",
+      "items": {
+        "custom": {
+          "description": "来图来样即可评估，支持尺寸、材质、结构和边框方式的定制加工。",
+          "title": "支持定制"
+        },
+        "delivery": {
+          "description": "支持零担、整车和国际物流，适配不同体量订单与跨区域交付需求。",
+          "title": "交付可靠"
+        },
+        "factory": {
+          "description": "自有生产与加工能力，无中间商层层加价，报价逻辑更直接透明。",
+          "title": "工厂直供"
+        },
+        "quality": {
+          "description": "严格质检控制丝径、孔径和结构一致性，减少批次间波动带来的风险。",
+          "title": "品控稳定"
+        },
+        "response": {
+          "description": "48小时内报价，7天内发货，紧急项目优先评估排产与打样。",
+          "title": "快速响应"
+        },
+        "specs": {
+          "description": "目数 1-400 目，孔径 0.1mm 起，覆盖矿山筛分、洗煤、脱水等重载工况。",
+          "title": "规格多样"
+        }
+      },
+      "title": "为什么选择我们"
+    },
+    "applicationSection": {
+      "description": "专注矿山、洗煤及工业级高效筛分领域，针对不同物料与工况提供匹配的产品方案。",
+      "detail": "了解详情",
+      "detailAria": "了解{name}详情",
+      "eyebrow": "Application Scenarios",
+      "iconAria": "{name} 图标",
+      "title": "核心应用场景"
+    },
+    "ctaSection": {
+      "contacts": {
+        "email": "邮件",
+        "phone": "电话",
+        "wechat": "微信"
+      },
+      "cta": "立即提交需求",
+      "ctaAria": "立即提交需求",
+      "description": "告诉我们您的需求，48小时内给您专业报价，支持常规规格快速响应与非标产品定制评估。",
+      "eyebrow": "Get A Quote",
+      "title": "准备好开始了吗？"
+    },
+    "factorySection": {
+      "equipmentItems": {
+        "automation": "配备自动编织机、焊网机和重型轧花设备，覆盖多规格筛网生产需求。",
+        "processing": "拥有激光切割、冲片和包边加工工位，支持异形件和过滤网片配套。",
+        "sampling": "独立打样与裁片区域，便于小批量试样和非标结构确认。"
+      },
+      "equipmentTitle": "核心设备",
+      "eyebrow": "Factory Strength",
+      "gallery": {
+        "equipment": "设备图",
+        "packing": "打包图",
+        "quality": "质检图",
+        "workshop": "车间图"
+      },
+      "location": "山东省滨州市华云网业",
+      "qualityItems": {
+        "finishedGoods": "成品逐批抽检孔径、尺寸和平整度，打包前复核标签、数量和外观。",
+        "rawMaterials": "原料进厂复核材质、丝径和表面状态，关键规格建立留样记录。"
+      },
+      "qualityTitle": "质检流程",
+      "stats": {
+        "area": "厂房面积",
+        "founded": "成立年份",
+        "lines": "生产线数量"
+      },
+      "title": "工厂实力",
+      "values": {
+        "founded": "20年+",
+        "lines": "8条"
+      }
+    },
+    "hero": {
+      "capabilityLabel": "Core Capability",
+      "capabilityValue": "筛分、过滤、防护产品一体化配套",
+      "deliveryLabel": "Delivery Focus",
+      "deliveryValue": "快速打样、定制加工、稳定交付",
+      "description": "专注矿用焊接筛网、65锰编织网及聚氨酯筛板，为矿山、洗煤与骨料分级提供高耐磨、长寿命的筛分解决方案。",
+      "factoryPlaceholderLabel": "Factory Visual Placeholder",
+      "factoryPlaceholderTitle": "此处放工厂实景图",
+      "imageAlt": "华云网业矿用焊接筛网与65锰编织筛网生产实景",
+      "primaryCtaAria": "跳转到立即询价页面",
+      "secondaryCta": "查看产品",
+      "secondaryCtaAria": "跳转到产品中心页面",
+      "stats": {
+        "clients": "合作客户",
+        "experience": "生产经验",
+        "response": "快速响应",
+        "skus": "产品规格"
+      },
+      "statsValues": {
+        "experience": "20年+"
+      },
+      "title": "华云网业 - 矿用筛网生产厂家"
+    },
+    "productSection": {
+      "cta": "查看全部产品",
+      "ctaAria": "查看全部产品",
+      "description": "聚焦筛分、过滤、防护等高频应用，提供多规格标准品与按图定制能力，覆盖工业、粮食、矿山等场景。",
+      "eyebrow": "Core Products",
+      "title": "核心产品"
+    },
+    "seo": {
+      "description": "华云网业专注于矿用焊接筛网、65锰编织筛网、聚氨酯筛板等高品质矿筛产品，为矿山、骨料和工业过滤提供耐磨、高效的筛分解决方案。",
+      "title": "华云网业 - 专业矿用筛网生产厂家"
+    }
+  },
+  "knowledgeDetail": {
+    "aboutLink": "查看工厂与品质承诺",
+    "backToList": "返回知识库",
+    "boundaryTitle": "适用边界",
+    "breadcrumbAria": "面包屑导航",
+    "contactCta": "有疑问？联系我们",
+    "fallbackTitle": "文章详情",
+    "notFoundTitle": "文章不存在",
+    "quoteBoxDescription": "把工况和参数告诉我们，技术工程师会在 24 小时内回复选型建议。",
+    "quoteBoxTitle": "需要定制筛网？",
+    "relatedTitle": "相关文章",
+    "reviewStandardsLink": "查看内容审核与编辑规范",
+    "reviewTitle": "作者与审核",
+    "reviewedAt": "最后审核：{date}",
+    "reviewedBy": "审核团队：{team}",
+    "sourcesTitle": "内容依据",
+    "toolsCta": "打开计算工具",
+    "toolsDescription": "在线目数、孔径、开孔率换算，以及 ASTM E11 参考表。",
+    "toolsTitle": "技术计算工具"
+  },
+  "knowledgePage": {
+    "categories": {
+      "all": "全部"
+    },
+    "ctaDescription": "把工况、物料和设备参数告诉我们，技术工程师会给出针对性的筛网选型建议。",
+    "ctaTitle": "有具体选型问题？",
+    "description": "覆盖 ISO/ASTM 标准、材质选型逻辑、筛分工艺原理和工况分析，知识库现在直接由 Markdown 内容驱动，新增文章不用再碰代码。",
+    "emptyDescription": "换个关键词试试，或者直接浏览全部分类。",
+    "emptyTitle": "暂无匹配文章",
+    "eyebrow": "Technical Knowledge",
+    "readMore": "阅读全文",
+    "searchPlaceholder": "搜索文章标题或关键词",
+    "searchResult": "搜索“{keyword}”，共找到 {count} 篇文章",
+    "seo": {
+      "description": "华云网业技术文章：覆盖 ISO 9044、ASTM E11、材质选型、条缝筛原理和开孔率计算等工业筛网知识。",
+      "title": "技术知识库"
+    },
+    "title": "技术知识库",
+    "toolsCta": "技术计算工具"
+  },
+  "langSwitcher": {
+    "current": "当前",
+    "en": "English",
+    "switchToAria": "切换到 {locale}",
+    "zh": "中文"
+  },
+  "meshCalculator": {
+    "eyebrow": "Technical Tool",
+    "fields": {
+      "aperture": "孔径 (Aperture)",
+      "mesh": "目数 (Mesh)",
+      "openingArea": "有效开孔率",
+      "wireDiameter": "丝径 (Wire Dia.)"
+    },
+    "formula": {
+      "apertureFormula": " = 25.4 / 目数 − 丝径",
+      "apertureLabel": "孔径",
+      "openingAreaFormula": " = 孔径² / (孔径＋丝径)²",
+      "openingAreaLabel": "开孔率"
+    },
+    "title": "工业丝网技术计算器",
+    "units": {
+      "mesh": "孔/in",
+      "metric": "mm"
+    }
+  },
+  "nav": {
+    "about": "关于我们",
+    "applications": "应用场景",
+    "faq": "常见问题",
+    "home": "首页",
+    "knowledge": "技术知识库",
+    "products": "产品中心",
+    "tools": "技术工具"
+  },
+  "productCard": {
+    "customSupported": "支持定制",
+    "detailAria": "查看产品详情",
+    "detailCta": "查看详情",
+    "imageAlt": "{name} 封面图",
+    "placeholderAria": "{name} 图片占位",
+    "placeholderText": "产品图片占位"
+  },
+  "productDetail": {
+    "advantagesTitle": "产品优势",
+    "applicationSummary": "该产品常用于{names}等场景，{description}",
+    "applicationsTitle": "应用场景",
+    "breadcrumbAria": "面包屑导航",
+    "callAria": "联系客服咨询 {name}",
+    "callButton": "电话咨询",
+    "customSupported": "支持定制",
+    "emptyFaq": "暂无相关 FAQ，可直接联系我们获取说明。",
+    "faqTitle": "常见问题",
+    "imageAlt": "{name} 产品主图",
+    "imagePlaceholderAria": "{name} 图片占位",
+    "labels": {
+      "apertureRange": "孔径范围",
+      "customSupport": "是否支持定制",
+      "hardness": "硬度",
+      "hardnessIndex": "硬度指标",
+      "material": "材质",
+      "meshRange": "目数范围",
+      "primaryMaterial": "主要材质",
+      "referenceStandard": "参照标准",
+      "tensileStrength": "抗拉强度",
+      "weaveMethod": "编织方式",
+      "width": "宽幅",
+      "wireDiameterRange": "丝径范围"
+    },
+    "notFoundAria": "返回产品中心",
+    "notFoundButton": "返回产品中心",
+    "notFoundDescription": "当前链接对应的产品不存在、已下线，或参数地址有误。您可以返回产品中心继续查看。",
+    "notFoundTitle": "产品未找到",
+    "quoteAria": "询价 {name}",
+    "rating": {
+      "excellent": "卓越",
+      "high": "优秀",
+      "low": "一般",
+      "medium": "良好"
+    },
+    "relatedDetailAria": "查看 {name} 详情",
+    "relatedProductsTitle": "关联产品推荐",
+    "selectionDimensions": {
+      "abrasion": "耐磨性",
+      "corrosion": "耐腐蚀",
+      "moisture": "耐潮湿",
+      "temperature": "耐高温"
+    },
+    "selectionGuideTitle": "技术选型建议",
+    "seo": {
+      "fallbackDescription": "当前产品不存在或已下线，可返回产品中心查看更多筛网产品。",
+      "title": "{name} - 规格参数与应用场景"
+    },
+    "specificationsTitle": "产品参数",
+    "standardDescription": "{name} 遵循的技术标准",
+    "standardsLabel": "符合标准",
+    "unavailable": "当前产品信息不可用。",
+    "viewAllProducts": "查看全部",
+    "viewDetail": "查看详情",
+    "weaveMethods": {
+      "crimped": "先轧后编",
+      "filterDisc": "多层复合 / 包边冲片",
+      "mining": "重型轧花 / 张紧结构",
+      "welded": "自动排焊",
+      "woven": "平纹 / 斜纹"
+    }
+  },
+  "productsPage": {
+    "categories": {
+      "all": "全部",
+      "crimped": "轧花网",
+      "filterDisc": "过滤网片",
+      "mining": "矿筛网",
+      "welded": "电焊网",
+      "woven": "编织网"
+    },
+    "ctaAria": "前往询价页面",
+    "ctaDescription": "告诉我们使用场景、材质要求和目标尺寸，48 小时内给您匹配产品建议和报价。",
+    "ctaTitle": "规格拿不准？",
+    "description": "覆盖编织网、电焊网、轧花网、矿筛网和过滤网片等产品类型，支持多规格选型与非标定制。",
+    "emptyDescription": "可以先提交询价需求，我们会根据材质、孔径和尺寸帮您推荐合适方案。",
+    "emptyTitle": "暂无该分类产品",
+    "eyebrow": "Products",
+    "filterAria": "产品分类筛选",
+    "seo": {
+      "description": "产品中心汇集不锈钢编织网、电焊网、轧花网、矿筛网与过滤网片，支持多规格选型与定制加工。",
+      "title": "产品中心"
+    },
+    "title": "产品中心"
+  },
+  "seo": {
+    "address": {
+      "locality": "滨州市",
+      "region": "山东省",
+      "street": "华云网业"
+    },
+    "knowledgeTags": {
+      "astmE11": "ASTM E11 试验筛标准",
+      "gbt5330": "GB/T 5330 金属编织网",
+      "iso9044": "ISO 9044 金属丝编织网",
+      "johnsonScreen": "Johnson Screen 条缝筛",
+      "polyurethane": "聚氨酯筛板",
+      "stainlessCustom": "不锈钢过滤网定制",
+      "vibratingScreen": "矿山振动筛配套筛板"
+    },
+    "knowsAbout": {
+      "aggregate": "骨料分级",
+      "custom": "高耐磨材质定制",
+      "dewatering": "选煤脱水筛",
+      "miningMesh": "矿用筛网"
+    }
+  },
+  "toolsPage": {
+    "callCta": "电话直询",
+    "converter": {
+      "subtitle": "Mesh ↔ Aperture Conversion",
+      "title": "目数 ↔ 孔径换算"
+    },
+    "decisionTitle": "快速选型决策",
+    "decisions": {
+      "corrosionA": "选 SUS316L 或聚氨酯",
+      "corrosionQ": "有明显腐蚀性（酸/海水/盐雾）？",
+      "dewateringA": "选矿用焊接条缝筛",
+      "dewateringQ": "细粒脱水 / 低堵孔要求？",
+      "foodA": "选 SUS304/316L 精密编织网",
+      "foodQ": "食品/制药/超细过滤？",
+      "impactA": "选 65Mn 编织网",
+      "impactQ": "高冲击 + 干式大骨料筛分？",
+      "noiseA": "选聚氨酯筛板模块",
+      "noiseQ": "降噪 + 使用寿命优先？"
+    },
+    "description": "基于 ASTM E11 / ISO 9044 标准，提供目数、孔径、丝径与开孔率的精准换算，辅助工程选型决策。",
+    "eyebrow": "Technical Tools",
+    "features": {
+      "decision": "快速选型决策建议",
+      "material": "材质耐腐性速查",
+      "mesh": "目数与孔径换算",
+      "opening": "开孔率自动计算",
+      "reference": "ASTM E11 常用目数对照表",
+      "wire": "丝径输入与节距计算"
+    },
+    "formulaSummary": "查看计算公式",
+    "formulas": {
+      "apertureDescription": "W = 孔径(mm)，M = 目数，d = 丝径(mm)",
+      "apertureTitle": "孔径公式",
+      "openingAreaDescription": "OA = 开孔率(%)，W = 孔径，d = 丝径",
+      "openingAreaTitle": "开孔率公式"
+    },
+    "howTo": {
+      "description": "输入目数、孔径或丝径参数，快速得到开孔率、节距和 ASTM E11 参考值。",
+      "step1": {
+        "text": "输入目数、孔径或丝径中的已知值，工具会自动联动计算。",
+        "title": "输入已知参数"
+      },
+      "step2": {
+        "text": "读取开孔率和节距结果，判断筛分效率、强度和防堵孔平衡。",
+        "title": "查看换算结果"
+      },
+      "step3": {
+        "text": "点击 ASTM E11 常用目数对照表中的行，将标准数据带入计算器做快速比对。",
+        "title": "对照标准参考表"
+      },
+      "step4": {
+        "text": "结合材质耐腐性速查和快速选型决策，选择更合适的筛网材质与产品形态。",
+        "title": "结合工况做选型判断"
+      },
+      "supply": "筛网目数、孔径或丝径参数",
+      "title": "如何使用丝网技术计算工具进行筛网参数换算"
+    },
+    "materialGuide": {
+      "65mn": "高硬度耐磨，不耐腐蚀，仅限干式工况",
+      "carbonSteel": "成本低，轻微潮湿可用，不耐酸碱",
+      "polyurethane": "耐水耐油，Shore A 65-90 可调，噪音低",
+      "sus304": "通用不锈钢，耐大多数化学品，性价比首选",
+      "sus316l": "含钼 2-3%，耐氯离子，适合海水、酸液、医药"
+    },
+    "materialGuideLabels": {
+      "carbonSteel": "高碳钢/镀锌",
+      "polyurethane": "聚氨酯"
+    },
+    "materialGuideTitle": "材质耐腐性速查",
+    "materialLevels": {
+      "excellent": "卓越",
+      "high": "优秀",
+      "low": "一般",
+      "medium": "良好"
+    },
+    "pitchDescription": "= 孔径 + 丝径（相邻丝中心距）",
+    "pitchLabel": "节距 (Pitch)",
+    "placeholders": {
+      "aperture": "例: 2.000",
+      "mesh": "例: 10",
+      "wire": "例: 0.50"
+    },
+    "referenceRows": {
+      "row10": "矿石分级",
+      "row100": "精细过滤",
+      "row12": "精矿分级",
+      "row16": "精细筛分",
+      "row20": "工业过滤",
+      "row200": "超细分级",
+      "row30": "液体过滤",
+      "row325": "粉末检测",
+      "row4": "粗骨料粗筛",
+      "row50": "细粉过滤",
+      "row6": "砂石分级",
+      "row8": "煤矸筛分"
+    },
+    "referenceSubtitle": "Standard Wire Mesh Reference Chart",
+    "referenceTitle": "ASTM E11 常用目数对照",
+    "seo": {
+      "description": "基于 ASTM E11 标准的工业丝网技术计算器，支持目数、孔径、丝径互算与开孔率计算，辅助矿山筛网工程选型。",
+      "title": "丝网技术计算工具 — 目数孔径换算"
+    },
+    "supportCta": "立即发起询价",
+    "supportEyebrow": "需要技术支持？",
+    "supportTitle": "工程师团队在线，\n1小时内响应选型咨询",
+    "table": {
+      "aperture": "标准孔径 (mm)",
+      "mesh": "目数",
+      "openingArea": "开孔率 (%)",
+      "useCase": "用途参考",
+      "wire": "标准丝径 (mm)"
+    },
+    "tableHint": "点击行可将数据填入计算器",
+    "title": "丝网技术计算工具"
+  }
+}

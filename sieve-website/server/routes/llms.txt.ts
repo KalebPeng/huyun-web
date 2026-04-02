@@ -1,7 +1,9 @@
 import { queryCollection } from '@nuxt/content/server'
+
 import applicationsData from '~~/data/applications.json'
 import faqData from '~~/data/faq.json'
 import productsData from '~~/data/products.json'
+import { getPublicPathFromContentPath } from '~~/utils/knowledgeLocale'
 
 interface ProductEntry {
   name: string
@@ -36,7 +38,7 @@ const buildSection = (title: string, lines: string[]) => [`## ${title}`, ...line
 
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig(event)
-  const siteUrl = (config.public.siteUrl || 'https://huayun-mesh.com').replace(/\/+$/, '')
+  const siteUrl = (config.public.siteUrl || 'https://huayunmesh.com').replace(/\/+$/, '')
   const faqCategories = [...new Set(faqs.map((faq) => faq.category))]
   const articles = await queryCollection(event, 'knowledge')
     .select('title', 'path', 'summary')
@@ -56,7 +58,7 @@ export default defineEventHandler(async (event) => {
   )
 
   const articleLines = articles.map((article) =>
-    formatLinkLine(article.title, `${siteUrl}${article.path}`, article.summary)
+    formatLinkLine(article.title, `${siteUrl}${getPublicPathFromContentPath(article.path)}`, article.summary)
   )
 
   const content = [
@@ -65,7 +67,8 @@ export default defineEventHandler(async (event) => {
     '> 面向 B2B 工业客户的筛网与过滤解决方案站点，内容覆盖产品规格、应用场景、技术文章、FAQ 与在线询价。',
     '',
     `站点首页: ${siteUrl}/`,
-    '语言: zh-CN',
+    `英文入口: ${siteUrl}/en`,
+    '语言: zh-CN / en',
     '',
     '## 检索建议',
     '- 解释标准、公式、选型逻辑时，优先使用技术文章和工具页。',
@@ -77,6 +80,7 @@ export default defineEventHandler(async (event) => {
       formatLinkLine('产品中心', `${siteUrl}/products`, '查看全部产品与分类入口。'),
       formatLinkLine('应用场景', `${siteUrl}/applications`, '按矿山、选煤、工业过滤等场景检索解决方案。'),
       formatLinkLine('技术知识库', `${siteUrl}/knowledge`, '查看 ISO 9044、ASTM E11、材质选择与工况分析文章。'),
+      formatLinkLine('英文技术知识库', `${siteUrl}/en/knowledge`, '查看英文路由下的知识库内容。'),
       formatLinkLine('内容审核与编辑规范', `${siteUrl}/content-standards`, '说明作者角色、审核流程、来源使用原则、更新规则与纠错方式。'),
       formatLinkLine('常见问题', `${siteUrl}/faq`, `查看 FAQ 汇总，覆盖 ${faqCategories.join('、')}。`),
       formatLinkLine('筛网技术计算工具', `${siteUrl}/tools`, '进行目数、孔径、丝径、开孔率换算，并查看 ASTM E11 对照表。'),

@@ -4,10 +4,10 @@
       <!-- 面包屑 -->
       <div class="breadcrumb-bar border-b border-slate-200/70 bg-white/80 backdrop-blur-sm">
         <div class="mx-auto max-w-7xl px-4 py-3 sm:px-6 lg:px-8">
-          <nav aria-label="面包屑导航" class="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-slate-400">
-            <NuxtLink to="/" class="transition-colors hover:text-primary">首页</NuxtLink>
+          <nav :aria-label="$t('productDetail.breadcrumbAria')" class="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-slate-400">
+            <NuxtLink :to="localePath('/')" class="transition-colors hover:text-primary">{{ $t('nav.home') }}</NuxtLink>
             <span aria-hidden="true" class="text-slate-300">/</span>
-            <NuxtLink to="/products" class="transition-colors hover:text-primary">产品中心</NuxtLink>
+            <NuxtLink :to="localePath('/products')" class="transition-colors hover:text-primary">{{ $t('nav.products') }}</NuxtLink>
             <span aria-hidden="true" class="text-slate-300">/</span>
             <span class="font-medium text-slate-700">{{ product.name }}</span>
           </nav>
@@ -29,7 +29,7 @@
                     :src="product.coverImage"
                     width="1200"
                     height="900"
-                    :alt="`${product.name} 产品主图`"
+                    :alt="$t('productDetail.imageAlt', { name: product.name })"
                     class="h-full w-full object-cover"
                     loading="eager"
                     placeholder
@@ -39,7 +39,7 @@
                   <div
                     v-else
                     class="flex h-full w-full flex-col items-center justify-center gap-3 bg-[linear-gradient(135deg,#e8edf5_0%,#f4f4f0_100%)]"
-                    :aria-label="`${product.name} 图片占位`"
+                    :aria-label="$t('productDetail.imagePlaceholderAria', { name: product.name })"
                   >
                     <svg class="h-10 w-10 text-slate-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
                       <rect x="3" y="3" width="18" height="18" rx="2" />
@@ -78,7 +78,7 @@
                 />
                 <Badge
                   v-if="product.customSupported"
-                  label="支持定制"
+                  :label="$t('productDetail.customSupported')"
                   variant="success"
                 />
               </div>
@@ -112,22 +112,22 @@
                   :to="`/contact?product=${product.slug}`"
                   size="lg"
                   class="flex-1"
-                  :aria-label="`询价 ${product.name}`"
+                  :aria-label="$t('productDetail.quoteAria', { name: product.name })"
                 >
-                  立即询价
+                  {{ $t('common.getQuote') }}
                 </AppButton>
                 <a
                   href="tel:4001234567"
                   class="inline-flex flex-1 min-h-12 items-center justify-center rounded-md border border-slate-200 bg-white px-5 text-sm font-semibold text-primary transition-colors duration-200 hover:border-primary/40 hover:bg-slate-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-                  :aria-label="`联系客服咨询 ${product.name}`"
+                  :aria-label="$t('productDetail.callAria', { name: product.name })"
                 >
-                  电话咨询
+                  {{ $t('productDetail.callButton') }}
                 </a>
               </div>
 
               <!-- 标准合规标签 -->
               <div v-if="product.standard" class="mt-5 flex flex-wrap items-center gap-2">
-                <span class="text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-400">符合标准</span>
+                <span class="text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-400">{{ $t('productDetail.standardsLabel') }}</span>
                 <span
                   v-for="std in product.standard.split('；')"
                   :key="std"
@@ -148,7 +148,7 @@
             <div class="flex items-center justify-between border-b border-slate-100 px-6 py-4">
               <div>
                 <p class="section-eyebrow">Specifications</p>
-                <h2 class="mt-0.5 text-xl font-black text-slate-950">产品参数</h2>
+                <h2 class="mt-0.5 text-xl font-black text-slate-950">{{ $t('productDetail.specificationsTitle') }}</h2>
               </div>
             </div>
 
@@ -190,7 +190,7 @@
           <div class="selection-card overflow-hidden rounded-2xl">
             <div class="px-6 py-5 sm:px-8">
               <p class="section-eyebrow-light">Selection Guide</p>
-              <h2 class="mt-1 text-xl font-black text-white">技术选型建议</h2>
+              <h2 class="mt-1 text-xl font-black text-white">{{ $t('productDetail.selectionGuideTitle') }}</h2>
             </div>
 
             <!-- 四维评级 -->
@@ -226,11 +226,11 @@
               class="grid gap-px border-t border-white/8 bg-white/8 sm:grid-cols-2"
             >
               <div v-if="product.tensileStrength" class="bg-[#192340] px-5 py-3.5">
-                <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500">抗拉强度</span>
+                <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500">{{ $t('productDetail.labels.tensileStrength') }}</span>
                 <p class="mt-1 font-mono text-sm font-semibold text-slate-200">{{ product.tensileStrength }}</p>
               </div>
               <div v-if="product.hardness" class="bg-[#192340] px-5 py-3.5">
-                <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500">硬度指标</span>
+                <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500">{{ $t('productDetail.labels.hardnessIndex') }}</span>
                 <p class="mt-1 font-mono text-sm font-semibold text-slate-200">{{ product.hardness }}</p>
               </div>
             </div>
@@ -250,7 +250,7 @@
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div class="content-card rounded-2xl border border-slate-200 bg-white px-6 py-5 sm:px-8">
             <p class="section-eyebrow">Applications</p>
-            <h2 class="mt-0.5 text-xl font-black text-slate-950">应用场景</h2>
+            <h2 class="mt-0.5 text-xl font-black text-slate-950">{{ $t('productDetail.applicationsTitle') }}</h2>
             <div class="mt-4 flex flex-wrap gap-2">
               <Badge
                 v-for="application in applicationBadges"
@@ -271,7 +271,7 @@
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div class="adv-card overflow-hidden rounded-2xl px-6 py-5 sm:px-8">
             <p class="section-eyebrow-light">Advantages</p>
-            <h2 class="mt-0.5 text-xl font-black text-white">产品优势</h2>
+            <h2 class="mt-0.5 text-xl font-black text-white">{{ $t('productDetail.advantagesTitle') }}</h2>
 
             <div class="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
               <article
@@ -297,7 +297,7 @@
           <div class="content-card rounded-2xl border border-slate-200 bg-white">
             <div class="border-b border-slate-100 px-6 py-4 sm:px-8">
               <p class="section-eyebrow">FAQ</p>
-              <h2 class="mt-0.5 text-xl font-black text-slate-950">常见问题</h2>
+              <h2 class="mt-0.5 text-xl font-black text-slate-950">{{ $t('productDetail.faqTitle') }}</h2>
             </div>
 
             <div v-if="relatedFaqs.length" class="divide-y divide-slate-100">
@@ -334,7 +334,7 @@
               v-else
               class="px-6 py-10 text-center text-sm text-slate-400 sm:px-8"
             >
-              暂无相关 FAQ，可直接联系我们获取说明。
+              {{ $t('productDetail.emptyFaq') }}
             </div>
           </div>
         </div>
@@ -346,10 +346,10 @@
           <div class="mb-6 flex items-end justify-between">
             <div>
               <p class="section-eyebrow">Related Products</p>
-              <h2 class="mt-0.5 text-xl font-black text-slate-950">关联产品推荐</h2>
+              <h2 class="mt-0.5 text-xl font-black text-slate-950">{{ $t('productDetail.relatedProductsTitle') }}</h2>
             </div>
-            <NuxtLink to="/products" class="text-xs font-semibold text-primary transition-colors hover:text-accent">
-              查看全部 →
+            <NuxtLink :to="localePath('/products')" class="text-xs font-semibold text-primary transition-colors hover:text-accent">
+              {{ $t('productDetail.viewAllProducts') }}
             </NuxtLink>
           </div>
 
@@ -360,9 +360,9 @@
               class="related-card group overflow-hidden rounded-xl border border-slate-200 bg-white transition-all duration-200 hover:-translate-y-1 hover:border-slate-300 hover:shadow-[0_12px_32px_rgba(15,23,42,0.1)]"
             >
               <NuxtLink
-                :to="`/products/${related.slug}`"
+                :to="localePath(`/products/${related.slug}`)"
                 class="flex h-full flex-col"
-                :aria-label="`查看 ${related.name} 详情`"
+                :aria-label="$t('productDetail.relatedDetailAria', { name: related.name })"
               >
                 <div class="aspect-[4/3] overflow-hidden bg-[linear-gradient(135deg,#e8edf5,#f4f4f0)]">
                   <NuxtImg
@@ -384,7 +384,7 @@
                     {{ related.summary }}
                   </p>
                   <span class="mt-3 text-xs font-semibold text-accent">
-                    查看详情 →
+                    {{ $t('productDetail.viewDetail') }}
                   </span>
                 </div>
               </NuxtLink>
@@ -398,14 +398,14 @@
       <div class="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
         <p class="section-eyebrow">Product Not Found</p>
         <h1 class="mt-4 text-3xl font-black text-slate-950 sm:text-4xl">
-          产品未找到
+          {{ $t('productDetail.notFoundTitle') }}
         </h1>
         <p class="mt-5 text-sm leading-8 text-slate-500">
-          当前链接对应的产品不存在、已下线，或参数地址有误。您可以返回产品中心继续查看。
+          {{ $t('productDetail.notFoundDescription') }}
         </p>
         <div class="mt-8 flex justify-center">
-          <AppButton to="/products" size="lg" aria-label="返回产品中心">
-            返回产品中心
+          <AppButton to="/products" size="lg" :aria-label="$t('productDetail.notFoundAria')">
+            {{ $t('productDetail.notFoundButton') }}
           </AppButton>
         </div>
       </div>
@@ -433,6 +433,8 @@ interface QuickSpec {
 
 const route = useRoute()
 const runtimeConfig = useRuntimeConfig()
+const localePath = useLocalePath()
+const { t, locale } = useI18n()
 const { getProductBySlug, getProductsByIds, products } = useProducts()
 const { getApplicationsByIds } = useApplications()
 const { getFaqsByIds, getFaqsByProductId } = useFaq()
@@ -483,11 +485,11 @@ const resolveWeaveMethod = (item?: Product) => {
   }
 
   const map: Record<string, string> = {
-    'stainless-woven-mesh': '平纹 / 斜纹',
-    'welded-wire-mesh': '自动排焊',
-    'crimped-wire-mesh': '先轧后编',
-    'mine-screen-mesh': '重型轧花 / 张紧结构',
-    'filter-disc': '多层复合 / 包边冲片'
+    'stainless-woven-mesh': t('productDetail.weaveMethods.woven'),
+    'welded-wire-mesh': t('productDetail.weaveMethods.welded'),
+    'crimped-wire-mesh': t('productDetail.weaveMethods.crimped'),
+    'mine-screen-mesh': t('productDetail.weaveMethods.mining'),
+    'filter-disc': t('productDetail.weaveMethods.filterDisc')
   }
 
   return map[item.slug] ?? '/'
@@ -499,9 +501,9 @@ const quickSpecs = computed<QuickSpec[]>(() => {
   }
 
   return [
-    { label: '目数范围', value: resolveDisplayValue(product.value.meshRange) },
-    { label: '孔径范围', value: resolveDisplayValue(product.value.apertureRange) },
-    { label: '主要材质', value: resolveDisplayValue(product.value.materials.slice(0, 2).join(' / ')) }
+    { label: t('productDetail.labels.meshRange'), value: resolveDisplayValue(product.value.meshRange) },
+    { label: t('productDetail.labels.apertureRange'), value: resolveDisplayValue(product.value.apertureRange) },
+    { label: t('productDetail.labels.primaryMaterial'), value: resolveDisplayValue(product.value.materials.slice(0, 2).join(' / ')) }
   ]
 })
 
@@ -511,23 +513,28 @@ const specificationRows = computed<SpecificationRow[]>(() => {
   }
 
   return [
-    { label: '材质', value: resolveDisplayValue(product.value.materials.join(' / ')) },
-    { label: '丝径范围', value: resolveDisplayValue(product.value.wireDiameterRange) },
-    { label: '目数范围', value: resolveDisplayValue(product.value.meshRange) },
-    { label: '孔径范围', value: resolveDisplayValue(product.value.apertureRange) },
-    { label: '宽幅', value: resolveWidth(product.value) },
-    { label: '编织方式', value: resolveWeaveMethod(product.value) },
-    { label: '抗拉强度', value: resolveDisplayValue(product.value.tensileStrength) },
-    { label: '硬度', value: resolveDisplayValue(product.value.hardness) },
-    { label: '参照标准', value: resolveDisplayValue(product.value.standard) },
-    { label: '是否支持定制', value: product.value.customSupported ? '支持' : '不支持' }
+    { label: t('productDetail.labels.material'), value: resolveDisplayValue(product.value.materials.join(' / ')) },
+    { label: t('productDetail.labels.wireDiameterRange'), value: resolveDisplayValue(product.value.wireDiameterRange) },
+    { label: t('productDetail.labels.meshRange'), value: resolveDisplayValue(product.value.meshRange) },
+    { label: t('productDetail.labels.apertureRange'), value: resolveDisplayValue(product.value.apertureRange) },
+    { label: t('productDetail.labels.width'), value: resolveWidth(product.value) },
+    { label: t('productDetail.labels.weaveMethod'), value: resolveWeaveMethod(product.value) },
+    { label: t('productDetail.labels.tensileStrength'), value: resolveDisplayValue(product.value.tensileStrength) },
+    { label: t('productDetail.labels.hardness'), value: resolveDisplayValue(product.value.hardness) },
+    { label: t('productDetail.labels.referenceStandard'), value: resolveDisplayValue(product.value.standard) },
+    { label: t('productDetail.labels.customSupport'), value: product.value.customSupported ? t('common.supported') : t('common.notSupported') }
   ]
 })
 
 type RatingLevel = 'low' | 'medium' | 'high' | 'excellent'
 
 const ratingScore: Record<RatingLevel, number> = { low: 1, medium: 2, high: 3, excellent: 4 }
-const ratingText: Record<RatingLevel, string> = { low: '一般', medium: '良好', high: '优秀', excellent: '卓越' }
+const ratingText: Record<RatingLevel, string> = {
+  low: t('productDetail.rating.low'),
+  medium: t('productDetail.rating.medium'),
+  high: t('productDetail.rating.high'),
+  excellent: t('productDetail.rating.excellent')
+}
 const ratingColor: Record<RatingLevel, string> = {
   low: 'bg-slate-400',
   medium: 'bg-blue-400',
@@ -540,10 +547,10 @@ const selectionDimensions = computed(() => {
   if (!guide) return []
 
   const dims: Array<{ key: string; label: string; level: RatingLevel }> = [
-    { key: 'abrasion', label: '耐磨性', level: guide.abrasion as RatingLevel },
-    { key: 'corrosion', label: '耐腐蚀', level: guide.corrosion as RatingLevel },
-    { key: 'temperature', label: '耐高温', level: guide.temperature as RatingLevel },
-    { key: 'moisture', label: '耐潮湿', level: guide.moisture as RatingLevel }
+    { key: 'abrasion', label: t('productDetail.selectionDimensions.abrasion'), level: guide.abrasion as RatingLevel },
+    { key: 'corrosion', label: t('productDetail.selectionDimensions.corrosion'), level: guide.corrosion as RatingLevel },
+    { key: 'temperature', label: t('productDetail.selectionDimensions.temperature'), level: guide.temperature as RatingLevel },
+    { key: 'moisture', label: t('productDetail.selectionDimensions.moisture'), level: guide.moisture as RatingLevel }
   ]
 
   return dims.map((d) => ({
@@ -564,15 +571,18 @@ const applicationBadges = computed(() => {
 
 const applicationSummary = computed(() => {
   if (!product.value) {
-    return '当前产品信息不可用。'
+    return t('productDetail.unavailable')
   }
 
   if (!applicationBadges.value.length) {
     return product.value.description
   }
 
-  const names = applicationBadges.value.map((item) => item.name).join('、')
-  return `该产品常用于${names}等场景，${product.value.description}`
+  const names = applicationBadges.value.map((item) => item.name).join(locale.value === 'zh' ? '、' : ', ')
+  return t('productDetail.applicationSummary', {
+    names,
+    description: product.value.description
+  })
 })
 
 const relatedFaqs = computed<FAQ[]>(() => {
@@ -620,16 +630,16 @@ const productJsonLd = computed(() => {
     name: product.value.name,
     description: product.value.seoDescription || product.value.description,
     image: product.value.coverImage ? [toAbsoluteUrl(product.value.coverImage)] : undefined,
-    url: `${runtimeConfig.public.siteUrl}/products/${product.value.slug}`,
+    url: `${runtimeConfig.public.siteUrl}${localePath(`/products/${product.value.slug}`)}`,
     category: product.value.category,
     material: product.value.materials.join(' / '),
     brand: {
       '@type': 'Brand',
-      name: '华云网业'
+      name: t('brand.name')
     },
     offers: {
       '@type': 'Offer',
-      url: `${runtimeConfig.public.siteUrl}/products/${product.value.slug}`,
+      url: `${runtimeConfig.public.siteUrl}${localePath(`/products/${product.value.slug}`)}`,
       priceCurrency: 'CNY',
       availability: 'https://schema.org/InStock',
       itemCondition: 'https://schema.org/NewCondition'
@@ -657,7 +667,7 @@ const productJsonLd = computed(() => {
         ? product.value.standard.split('；').map(std => ({
             '@type': 'CreativeWork',
             name: std.trim(),
-            description: `${product.value!.name} 遵循的技术标准`
+            description: t('productDetail.standardDescription', { name: product.value!.name })
           }))
         : []),
       ...(product.value.relatedProducts?.map(relId => ({
@@ -667,17 +677,17 @@ const productJsonLd = computed(() => {
     ],
     manufacturer: {
       '@type': 'Organization',
-      name: '华云网业',
+      name: t('brand.name'),
       url: runtimeConfig.public.siteUrl,
       knowsAbout: [
-        '工业丝网制造',
-        'ISO 9044 金属丝编织网',
-        'ASTM E11 试验筛标准',
-        'GB/T 5330 金属编织网',
-        '矿山振动筛配套筛板',
-        '不锈钢过滤网定制',
-        '聚氨酯筛板',
-        'Johnson Screen 条缝筛'
+        t('seo.knowsAbout.miningMesh'),
+        t('seo.knowledgeTags.iso9044'),
+        t('seo.knowledgeTags.astmE11'),
+        t('seo.knowledgeTags.gbt5330'),
+        t('seo.knowledgeTags.vibratingScreen'),
+        t('seo.knowledgeTags.stainlessCustom'),
+        t('seo.knowledgeTags.polyurethane'),
+        t('seo.knowledgeTags.johnsonScreen')
       ]
     }
   }
@@ -704,10 +714,10 @@ watch(
 )
 
 usePageSeoMeta({
-  title: product.value ? `${product.value.name} - 规格参数与应用场景` : '产品未找到',
+  title: product.value ? t('productDetail.seo.title', { name: product.value.name }) : t('productDetail.notFoundTitle'),
   description:
     product.value?.seoDescription ||
-    '当前产品不存在或已下线，可返回产品中心查看更多筛网产品。',
+    t('productDetail.seo.fallbackDescription'),
   image: product.value?.coverImage
 })
 
@@ -832,4 +842,3 @@ useHead(() => ({
   overflow: hidden;
 }
 </style>
-

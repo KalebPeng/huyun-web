@@ -3,13 +3,13 @@
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="max-w-3xl">
         <p class="text-sm font-semibold uppercase tracking-[0.2em] text-accent">
-          Application Scenarios
+          {{ $t('home.applicationSection.eyebrow') }}
         </p>
         <h2 class="mt-3 text-3xl font-black text-primary sm:text-4xl">
-          核心应用场景
+          {{ $t('home.applicationSection.title') }}
         </h2>
         <p class="mt-4 text-base leading-8 text-slate-600 sm:text-lg">
-          专注矿山、洗煤及工业级高效筛分领域，针对不同物料与工况提供匹配的产品方案。
+          {{ $t('home.applicationSection.description') }}
         </p>
       </div>
 
@@ -22,7 +22,7 @@
           <div class="flex items-start gap-4 border-l-4 border-transparent pl-4 transition-colors duration-200 group-hover:border-primary">
             <span
               class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-slate-100 text-2xl"
-              :aria-label="`${application.name} 图标`"
+              :aria-label="$t('home.applicationSection.iconAria', { name: application.name })"
             >
               {{ application.icon }}
             </span>
@@ -34,11 +34,11 @@
                 {{ application.summary }}
               </p>
               <NuxtLink
-                :to="`/applications/${application.slug}`"
+                :to="localePath(`/applications/${application.slug}`)"
                 class="mt-5 inline-flex items-center text-sm font-semibold text-primary transition-colors duration-200 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-                :aria-label="`了解${application.name}详情`"
+                :aria-label="$t('home.applicationSection.detailAria', { name: application.name })"
               >
-                了解详情
+                {{ $t('home.applicationSection.detail') }}
               </NuxtLink>
             </div>
           </div>
@@ -50,9 +50,11 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
+
 import { useApplications } from '~/composables/useApplications'
 
 const { applications } = useApplications()
+const localePath = useLocalePath()
 
 const iconMap: Record<string, string> = {
   'mining-grading': '⛏️',

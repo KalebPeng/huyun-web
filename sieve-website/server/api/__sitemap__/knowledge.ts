@@ -1,5 +1,7 @@
 import { queryCollection } from '@nuxt/content/server'
 
+import { getPublicPathFromContentPath } from '~~/utils/knowledgeLocale'
+
 export default defineEventHandler(async (event) => {
   const articles = await queryCollection(event, 'knowledge')
     .select('path', 'publishedAt')
@@ -7,7 +9,7 @@ export default defineEventHandler(async (event) => {
     .all()
 
   return articles.map(article => ({
-    loc: article.path,
+    loc: getPublicPathFromContentPath(article.path),
     changefreq: 'monthly',
     lastmod: article.publishedAt
   }))

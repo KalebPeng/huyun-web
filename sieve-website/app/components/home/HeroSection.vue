@@ -16,31 +16,31 @@
           <h1
             class="fade-in-up delay-2 max-w-3xl text-4xl font-black leading-tight text-white sm:text-5xl lg:text-6xl"
           >
-            华云网业 - 矿用筛网生产厂家
+            {{ $t('home.hero.title') }}
           </h1>
           <p
             class="fade-in-up delay-3 mt-6 max-w-2xl text-base leading-8 text-slate-200 sm:text-lg"
           >
-            专注矿用焊接筛网、65锰编织网及聚氨酯筛板，为矿山、洗煤与骨料分级提供高耐磨、长寿命的筛分解决方案。
+            {{ $t('home.hero.description') }}
           </p>
 
           <div class="fade-in-up delay-4 mt-8 flex flex-col gap-4 sm:flex-row">
             <AppButton
               to="/contact"
               size="lg"
-              aria-label="跳转到立即询价页面"
+              :aria-label="$t('home.hero.primaryCtaAria')"
               class="w-full sm:w-auto"
             >
-              立即询价
+              {{ $t('common.getQuote') }}
             </AppButton>
             <AppButton
               to="/products"
               variant="outline"
               size="lg"
-              aria-label="跳转到产品中心页面"
+              :aria-label="$t('home.hero.secondaryCtaAria')"
               class="w-full sm:w-auto"
             >
-              查看产品
+              {{ $t('home.hero.secondaryCta') }}
             </AppButton>
           </div>
         </div>
@@ -54,7 +54,7 @@
             >
               <NuxtImg
                 src="/images/placeholders/hero-factory.svg"
-                alt="华云网业矿用焊接筛网与65锰编织筛网生产实景"
+                :alt="$t('home.hero.imageAlt')"
                 preset="hero"
                 width="960"
                 height="720"
@@ -80,10 +80,10 @@
                 <div class="flex items-start justify-between gap-4">
                   <div>
                     <p class="text-xs uppercase tracking-[0.32em] text-slate-300">
-                      Factory Visual Placeholder
+                      {{ $t('home.hero.factoryPlaceholderLabel') }}
                     </p>
                     <h2 class="mt-3 text-2xl font-bold text-white sm:text-3xl">
-                      此处放工厂实景图
+                      {{ $t('home.hero.factoryPlaceholderTitle') }}
                     </h2>
                   </div>
                   <span
@@ -96,18 +96,18 @@
                 <div class="grid gap-4 sm:grid-cols-2">
                   <div class="rounded-2xl border border-white/12 bg-white/6 p-4">
                     <p class="text-xs uppercase tracking-[0.24em] text-slate-300">
-                      Core Capability
+                      {{ $t('home.hero.capabilityLabel') }}
                     </p>
                     <p class="mt-2 text-lg font-semibold text-white">
-                      筛分、过滤、防护产品一体化配套
+                      {{ $t('home.hero.capabilityValue') }}
                     </p>
                   </div>
                   <div class="rounded-2xl border border-white/12 bg-white/6 p-4">
                     <p class="text-xs uppercase tracking-[0.24em] text-slate-300">
-                      Delivery Focus
+                      {{ $t('home.hero.deliveryLabel') }}
                     </p>
                     <p class="mt-2 text-lg font-semibold text-white">
-                      快速打样、定制加工、稳定交付
+                      {{ $t('home.hero.deliveryValue') }}
                     </p>
                   </div>
                 </div>
@@ -134,6 +134,8 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
+
 import AppButton from '~/components/common/AppButton.vue'
 
 interface TrustStat {
@@ -141,12 +143,14 @@ interface TrustStat {
   label: string
 }
 
-const stats: TrustStat[] = [
-  { value: '20年+', label: '生产经验' },
-  { value: '500+', label: '合作客户' },
-  { value: '200+', label: '产品规格' },
-  { value: '48h', label: '快速响应' }
-]
+const { t } = useI18n()
+
+const stats = computed<TrustStat[]>(() => [
+  { value: t('home.hero.statsValues.experience'), label: t('home.hero.stats.experience') },
+  { value: '500+', label: t('home.hero.stats.clients') },
+  { value: '200+', label: t('home.hero.stats.skus') },
+  { value: '48h', label: t('home.hero.stats.response') }
+])
 </script>
 
 <style scoped>

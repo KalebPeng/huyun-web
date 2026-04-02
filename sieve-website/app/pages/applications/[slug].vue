@@ -3,13 +3,13 @@
     <template v-if="application">
       <section class="border-b border-slate-200 bg-white">
         <div class="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
-          <nav aria-label="面包屑导航" class="flex flex-wrap items-center gap-2 text-sm text-slate-500">
-            <NuxtLink to="/" class="transition-colors hover:text-primary">
-              首页
+          <nav :aria-label="$t('applicationDetail.breadcrumbAria')" class="flex flex-wrap items-center gap-2 text-sm text-slate-500">
+            <NuxtLink :to="localePath('/')" class="transition-colors hover:text-primary">
+              {{ $t('nav.home') }}
             </NuxtLink>
             <span aria-hidden="true">/</span>
-            <NuxtLink to="/applications" class="transition-colors hover:text-primary">
-              应用场景
+            <NuxtLink :to="localePath('/applications')" class="transition-colors hover:text-primary">
+              {{ $t('nav.applications') }}
             </NuxtLink>
             <span aria-hidden="true">/</span>
             <span class="font-medium text-slate-900">{{ application.name }}</span>
@@ -22,7 +22,7 @@
           <div class="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
             <div>
               <p class="text-sm font-semibold uppercase tracking-[0.2em] text-accent">
-                Application Overview
+                {{ $t('applicationDetail.overviewEyebrow') }}
               </p>
               <h1 class="mt-3 text-3xl font-black text-slate-950 sm:text-4xl">
                 {{ application.name }}
@@ -34,7 +34,7 @@
 
             <aside class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
               <h2 class="text-xl font-black text-slate-950">
-                常见问题与痛点
+                {{ $t('applicationDetail.painPointsTitle') }}
               </h2>
               <ul class="mt-5 space-y-4">
                 <li
@@ -55,10 +55,10 @@
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
             <p class="text-sm font-semibold uppercase tracking-[0.2em] text-accent">
-              Key Considerations
+              {{ $t('applicationDetail.considerationEyebrow') }}
             </p>
             <h2 class="mt-2 text-2xl font-black text-slate-950">
-              选型关注点
+              {{ $t('applicationDetail.considerationTitle') }}
             </h2>
 
             <div class="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -84,14 +84,14 @@
           <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <p class="text-sm font-semibold uppercase tracking-[0.2em] text-accent">
-                Recommended Products
+                {{ $t('applicationDetail.recommendedEyebrow') }}
               </p>
               <h2 class="mt-2 text-2xl font-black text-slate-950">
-                适合此场景的产品
+                {{ $t('applicationDetail.recommendedTitle') }}
               </h2>
             </div>
-            <NuxtLink to="/products" class="text-sm font-semibold text-primary transition-colors hover:text-blue-600">
-              查看全部产品
+            <NuxtLink :to="localePath('/products')" class="text-sm font-semibold text-primary transition-colors hover:text-blue-600">
+              {{ $t('applicationDetail.viewAllProducts') }}
             </NuxtLink>
           </div>
 
@@ -111,10 +111,10 @@
             class="mt-8 rounded-3xl border border-dashed border-slate-300 bg-white px-6 py-16 text-center shadow-sm"
           >
             <p class="text-lg font-bold text-slate-900">
-              暂无推荐产品
+              {{ $t('applicationDetail.emptyProductsTitle') }}
             </p>
             <p class="mt-3 text-sm leading-7 text-slate-500">
-              当前场景推荐数据尚未补齐，可以直接联系我们获取人工选型建议。
+              {{ $t('applicationDetail.emptyProductsDescription') }}
             </p>
           </div>
         </div>
@@ -124,10 +124,10 @@
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div class="rounded-3xl bg-[linear-gradient(135deg,#111827,#1a2744)] p-6 text-white shadow-[0_24px_60px_rgba(15,23,42,0.18)] sm:p-8">
             <p class="text-sm font-semibold uppercase tracking-[0.2em] text-blue-200">
-              Usage Advice
+              {{ $t('applicationDetail.usageAdviceEyebrow') }}
             </p>
             <h2 class="mt-2 text-2xl font-black">
-              使用建议
+              {{ $t('applicationDetail.usageAdviceTitle') }}
             </h2>
 
             <ol class="mt-8 grid gap-4 md:grid-cols-2">
@@ -156,20 +156,20 @@
             <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
               <div>
                 <h2 class="text-2xl font-black sm:text-3xl">
-                  需要针对这个场景做适配方案？
+                  {{ $t('applicationDetail.ctaTitle') }}
                 </h2>
                 <p class="mt-3 max-w-2xl text-sm leading-7 text-slate-200 sm:text-base">
-                  把物料特性、设备尺寸和目标产能发给我们，我们会结合当前场景给出更贴合的选型建议。
+                  {{ $t('applicationDetail.ctaDescription') }}
                 </p>
               </div>
 
               <AppButton
                 :to="`/contact?scene=${application.slug}`"
                 size="lg"
-                :aria-label="`咨询 ${application.name} 适配方案`"
+                :aria-label="$t('applicationDetail.ctaAria', { name: application.name })"
                 class="!bg-white !text-primary hover:!bg-slate-100 focus-visible:!outline-white"
               >
-                咨询适配方案
+                {{ $t('applicationDetail.ctaButton') }}
               </AppButton>
             </div>
           </div>
@@ -180,17 +180,17 @@
     <section v-else class="py-24">
       <div class="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
         <p class="text-sm font-semibold uppercase tracking-[0.2em] text-accent">
-          Scene Not Found
+          {{ $t('applicationDetail.notFoundEyebrow') }}
         </p>
         <h1 class="mt-4 text-3xl font-black text-slate-950 sm:text-4xl">
-          应用场景未找到
+          {{ $t('applicationDetail.notFoundTitle') }}
         </h1>
         <p class="mt-5 text-base leading-8 text-slate-600">
-          当前链接对应的应用场景不存在或已下线，可以返回列表页继续查看其他方案。
+          {{ $t('applicationDetail.notFoundDescription') }}
         </p>
         <div class="mt-8 flex justify-center">
-          <AppButton to="/applications" size="lg" aria-label="返回应用场景列表">
-            返回应用场景
+          <AppButton to="/applications" size="lg" :aria-label="$t('applicationDetail.notFoundAria')">
+            {{ $t('applicationDetail.notFoundButton') }}
           </AppButton>
         </div>
       </div>
@@ -208,26 +208,28 @@ import type { ApplicationScene } from '~~/types'
 
 const route = useRoute()
 const runtimeConfig = useRuntimeConfig()
+const localePath = useLocalePath()
+const { t, localeProperties } = useI18n()
 const { getApplicationBySlug } = useApplications()
 const { getProductsByIds } = useProducts()
 
-const scenePainPointMap: Record<string, string[]> = {
+const scenePainPointMap = computed<Record<string, string[]>>(() => ({
   'grain-screening': [
-    '客户往往先描述粮食品类和杂质情况，却说不清该用哪种筛孔结构。',
-    '既想保证筛分效率，又怕粮食破损和堵孔，参数很容易选偏。',
-    '设备型号和安装尺寸不统一，常规规格不一定能直接套用。'
+    t('applicationDetail.painPoints.grain.one'),
+    t('applicationDetail.painPoints.grain.two'),
+    t('applicationDetail.painPoints.grain.three')
   ],
   'industrial-filtration': [
-    '过滤精度、压损和清洗频次互相牵扯，选错材料就很容易翻车。',
-    '不少工况介质有腐蚀性或温度要求，材质兼容性必须先想明白。',
-    '客户常常只有使用目标，没有现成图纸，导致前期选型信息不完整。'
+    t('applicationDetail.painPoints.filtration.one'),
+    t('applicationDetail.painPoints.filtration.two'),
+    t('applicationDetail.painPoints.filtration.three')
   ],
   'mining-screening': [
-    '工况冲击和磨损都重，寿命短往往不是产品烂，是选型和结构没配对。',
-    '振动筛张紧方式、开孔尺寸和物料粒径不匹配时，产能会直接掉。',
-    '更换停机成本高，备件周期和耐磨寿命必须提前算进去。'
+    t('applicationDetail.painPoints.mining.one'),
+    t('applicationDetail.painPoints.mining.two'),
+    t('applicationDetail.painPoints.mining.three')
   ]
-}
+}))
 
 const toAbsoluteUrl = (value: string) => {
   const siteUrl = runtimeConfig.public.siteUrl.replace(/\/+$/, '')
@@ -252,7 +254,7 @@ const painPoints = computed(() => {
     return []
   }
 
-  return scenePainPointMap[application.value.slug] ?? application.value.considerations.slice(0, 3)
+  return scenePainPointMap.value[application.value.slug] ?? application.value.considerations.slice(0, 3)
 })
 
 const recommendedProducts = computed(() => {
@@ -274,24 +276,27 @@ const articleJsonLd = computed(() => {
     headline: application.value.name,
     description: application.value.seoDescription || application.value.description,
     image: application.value.coverImage ? [toAbsoluteUrl(application.value.coverImage)] : undefined,
-    mainEntityOfPage: `${runtimeConfig.public.siteUrl}/applications/${application.value.slug}`,
-    articleSection: '应用场景',
+    mainEntityOfPage: `${runtimeConfig.public.siteUrl}${localePath(`/applications/${application.value.slug}`)}`,
+    articleSection: t('nav.applications'),
+    inLanguage: localeProperties.value.language || 'zh-CN',
     author: {
       '@type': 'Organization',
-      name: '华云网业'
+      name: t('brand.name')
     },
     publisher: {
       '@type': 'Organization',
-      name: '华云网业'
+      name: t('brand.name')
     }
   }
 })
 
 usePageSeoMeta({
-  title: application.value ? `${application.value.name} - 推荐产品与选型建议` : '应用场景未找到',
+  title: application.value
+    ? t('applicationDetail.seo.title', { name: application.value.name })
+    : t('applicationDetail.notFoundTitle'),
   description:
     application.value?.seoDescription ||
-    '当前应用场景不存在或已下线，可返回应用场景列表查看更多筛网解决方案。',
+    t('applicationDetail.seo.fallbackDescription'),
   image: application.value?.coverImage
 })
 

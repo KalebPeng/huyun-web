@@ -3,14 +3,14 @@
     <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
       <div>
         <p class="text-sm font-semibold uppercase tracking-[0.2em] text-accent">
-          Inquiry Form
+          {{ $t('form.inquiry.eyebrow') }}
         </p>
         <h2 class="mt-2 text-2xl font-black text-slate-950">
-          提交询价需求
+          {{ $t('form.inquiry.title') }}
         </h2>
       </div>
       <p class="text-sm text-slate-500">
-        标记 * 为必填项
+        {{ $t('form.inquiry.requiredHint') }}
       </p>
     </div>
 
@@ -20,7 +20,7 @@
       role="status"
       aria-live="polite"
     >
-      已收到您的需求，我们将尽快联系您。
+      {{ $t('form.inquiry.success') }}
     </div>
 
     <div
@@ -28,14 +28,14 @@
       class="mt-6 rounded-2xl border border-red-200 bg-red-50 px-4 py-4 text-sm font-medium leading-7 text-red-700"
       role="alert"
     >
-      提交失败，请直接拨打电话联系。
+      {{ $t('form.inquiry.error') }}
     </div>
 
     <form class="mt-8 space-y-5" @submit.prevent="handleSubmit">
       <div class="grid gap-5 md:grid-cols-2">
         <div>
           <label class="mb-2 block text-sm font-semibold text-slate-900" for="inquiry-name">
-            姓名 *
+            {{ $t('form.inquiry.fields.name') }}
           </label>
           <input
             id="inquiry-name"
@@ -43,7 +43,7 @@
             type="text"
             class="field-input"
             :class="errors.name ? 'border-red-300 focus:border-red-500 focus:ring-red-100' : ''"
-            placeholder="请输入您的姓名"
+            :placeholder="$t('form.inquiry.placeholders.name')"
           >
           <p v-if="errors.name" class="mt-2 text-sm text-red-600">
             {{ errors.name }}
@@ -52,20 +52,20 @@
 
         <div>
           <label class="mb-2 block text-sm font-semibold text-slate-900" for="inquiry-company">
-            公司名称
+            {{ $t('form.inquiry.fields.company') }}
           </label>
           <input
             id="inquiry-company"
             v-model.trim="form.company"
             type="text"
             class="field-input"
-            placeholder="请输入公司名称"
+            :placeholder="$t('form.inquiry.placeholders.company')"
           >
         </div>
 
         <div>
           <label class="mb-2 block text-sm font-semibold text-slate-900" for="inquiry-contact">
-            联系方式 *
+            {{ $t('form.inquiry.fields.contact') }}
           </label>
           <input
             id="inquiry-contact"
@@ -73,7 +73,7 @@
             type="text"
             class="field-input"
             :class="errors.contact ? 'border-red-300 focus:border-red-500 focus:ring-red-100' : ''"
-            placeholder="手机或微信"
+            :placeholder="$t('form.inquiry.placeholders.contact')"
           >
           <p v-if="errors.contact" class="mt-2 text-sm text-red-600">
             {{ errors.contact }}
@@ -82,7 +82,7 @@
 
         <div>
           <label class="mb-2 block text-sm font-semibold text-slate-900" for="inquiry-usage">
-            用途 / 行业
+            {{ $t('form.inquiry.fields.usage') }}
           </label>
           <select
             id="inquiry-usage"
@@ -90,30 +90,30 @@
             class="field-input"
           >
             <option value="">
-              请选择用途 / 行业
+              {{ $t('form.inquiry.placeholders.usage') }}
             </option>
-            <option v-for="option in usageOptions" :key="option" :value="option">
-              {{ option }}
+            <option v-for="option in usageOptions" :key="option.value" :value="option.value">
+              {{ option.label }}
             </option>
           </select>
         </div>
 
         <div>
           <label class="mb-2 block text-sm font-semibold text-slate-900" for="inquiry-product-type">
-            所需产品类型
+            {{ $t('form.inquiry.fields.productType') }}
           </label>
           <input
             id="inquiry-product-type"
             v-model.trim="form.productType"
             type="text"
             class="field-input"
-            placeholder="如：不锈钢编织网"
+            :placeholder="$t('form.inquiry.placeholders.productType')"
           >
         </div>
 
         <div>
           <label class="mb-2 block text-sm font-semibold text-slate-900" for="inquiry-material">
-            材质要求
+            {{ $t('form.inquiry.fields.material') }}
           </label>
           <select
             id="inquiry-material"
@@ -121,56 +121,56 @@
             class="field-input"
           >
             <option value="">
-              请选择材质
+              {{ $t('form.inquiry.placeholders.material') }}
             </option>
-            <option v-for="option in materialOptions" :key="option" :value="option">
-              {{ option }}
+            <option v-for="option in materialOptions" :key="option.value" :value="option.value">
+              {{ option.label }}
             </option>
           </select>
         </div>
 
         <div>
           <label class="mb-2 block text-sm font-semibold text-slate-900" for="inquiry-mesh">
-            目数或孔径
+            {{ $t('form.inquiry.fields.meshOrAperture') }}
           </label>
           <input
             id="inquiry-mesh"
             v-model.trim="form.meshOrAperture"
             type="text"
             class="field-input"
-            placeholder="如：40 目 / 2 mm"
+            :placeholder="$t('form.inquiry.placeholders.meshOrAperture')"
           >
         </div>
 
         <div>
           <label class="mb-2 block text-sm font-semibold text-slate-900" for="inquiry-size">
-            尺寸规格
+            {{ $t('form.inquiry.fields.size') }}
           </label>
           <input
             id="inquiry-size"
             v-model.trim="form.size"
             type="text"
             class="field-input"
-            placeholder="如：1m x 30m"
+            :placeholder="$t('form.inquiry.placeholders.size')"
           >
         </div>
 
         <div>
           <label class="mb-2 block text-sm font-semibold text-slate-900" for="inquiry-quantity">
-            需求数量
+            {{ $t('form.inquiry.fields.quantity') }}
           </label>
           <input
             id="inquiry-quantity"
             v-model.trim="form.quantity"
             type="text"
             class="field-input"
-            placeholder="如：100 卷 / 20 片"
+            :placeholder="$t('form.inquiry.placeholders.quantity')"
           >
         </div>
 
         <div>
           <span class="mb-2 block text-sm font-semibold text-slate-900">
-            是否需要定制
+            {{ $t('form.inquiry.fields.customRequired') }}
           </span>
           <div class="flex min-h-12 items-center gap-6 rounded-2xl border border-slate-200 bg-slate-50 px-4">
             <label class="inline-flex items-center gap-2 text-sm text-slate-700">
@@ -180,7 +180,7 @@
                 value="yes"
                 class="h-4 w-4 border-slate-300 text-accent focus:ring-accent"
               >
-              <span>是</span>
+              <span>{{ $t('common.yes') }}</span>
             </label>
             <label class="inline-flex items-center gap-2 text-sm text-slate-700">
               <input
@@ -189,7 +189,7 @@
                 value="no"
                 class="h-4 w-4 border-slate-300 text-accent focus:ring-accent"
               >
-              <span>否</span>
+              <span>{{ $t('common.no') }}</span>
             </label>
           </div>
         </div>
@@ -197,14 +197,14 @@
 
       <div>
         <label class="mb-2 block text-sm font-semibold text-slate-900" for="inquiry-remark">
-          备注说明
+          {{ $t('form.inquiry.fields.remark') }}
         </label>
         <textarea
           id="inquiry-remark"
           v-model.trim="form.remark"
           rows="4"
           class="field-input resize-y"
-          placeholder="可填写工况、设备型号、交期要求或其他补充信息"
+          :placeholder="$t('form.inquiry.placeholders.remark')"
         />
       </div>
 
@@ -212,10 +212,10 @@
         type="submit"
         size="lg"
         :disabled="isSubmitting"
-        aria-label="提交询价需求"
+        :aria-label="$t('form.inquiry.submitAria')"
         class="w-full"
       >
-        {{ isSubmitting ? '提交中...' : '提交需求' }}
+        {{ isSubmitting ? $t('form.inquiry.submitting') : $t('form.inquiry.submit') }}
       </AppButton>
     </form>
   </div>
@@ -241,21 +241,34 @@ interface InquiryResponse {
   message: string
 }
 
+interface SelectOption {
+  value: string
+  label: string
+}
+
 const props = withDefaults(defineProps<Props>(), {
   initialProductType: '',
   initialUsage: ''
 })
 
-const usageOptions = [
-  '粮食筛分',
-  '工业过滤',
-  '矿山筛分',
-  '养殖',
-  '建筑',
-  '其他'
-]
+const { t } = useI18n()
 
-const materialOptions = ['不锈钢304', '不锈钢316', '碳钢', '镀锌', '其他']
+const usageOptions = computed<SelectOption[]>(() => [
+  { value: '粮食筛分', label: t('form.inquiry.options.usage.grain') },
+  { value: '工业过滤', label: t('form.inquiry.options.usage.filtration') },
+  { value: '矿山筛分', label: t('form.inquiry.options.usage.mining') },
+  { value: '养殖', label: t('form.inquiry.options.usage.breeding') },
+  { value: '建筑', label: t('form.inquiry.options.usage.construction') },
+  { value: '其他', label: t('form.inquiry.options.usage.other') }
+])
+
+const materialOptions = computed<SelectOption[]>(() => [
+  { value: '不锈钢304', label: t('form.inquiry.options.material.stainless304') },
+  { value: '不锈钢316', label: t('form.inquiry.options.material.stainless316') },
+  { value: '碳钢', label: t('form.inquiry.options.material.carbonSteel') },
+  { value: '镀锌', label: t('form.inquiry.options.material.galvanized') },
+  { value: '其他', label: t('form.inquiry.options.material.other') }
+])
 
 const form = reactive<InquiryFormPayload>({
   name: '',
@@ -309,7 +322,8 @@ const normalizeUsage = (value: string) => {
     return ''
   }
 
-  return usageOptions.includes(value) ? value : '其他'
+  const validOptions = usageOptions.value.map((option) => option.value)
+  return validOptions.includes(value) ? value : '其他'
 }
 
 watch(
@@ -338,12 +352,12 @@ const validate = () => {
   let isValid = true
 
   if (!form.name.trim()) {
-    errors.name = '请输入姓名'
+    errors.name = t('form.inquiry.validation.name')
     isValid = false
   }
 
   if (!form.contact.trim()) {
-    errors.contact = '请输入联系方式'
+    errors.contact = t('form.inquiry.validation.contact')
     isValid = false
   }
 
