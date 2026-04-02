@@ -1,3 +1,9 @@
+export interface ArticleSource {
+  title: string
+  publisher: string
+  note: string
+}
+
 export interface Article {
   id: string
   slug: string
@@ -10,4 +16,8 @@ export interface Article {
   tags: string[]
   seoTitle?: string
   seoDescription?: string
+  reviewedAt?: string
+  reviewedBy?: string
+  applicability?: string
+  sources?: ArticleSource[]
 }

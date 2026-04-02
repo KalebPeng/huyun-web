@@ -1,4 +1,5 @@
 import applicationsData from './data/applications.json'
+import articlesData from './data/articles.json'
 import productsData from './data/products.json'
 
 const siteUrl = process.env.NUXT_PUBLIC_SITE_URL || 'https://huayun-mesh.com'
@@ -11,6 +12,12 @@ const productUrls = (productsData as Array<{ slug: string }>).map((product) => (
 const applicationUrls = (applicationsData as Array<{ slug: string }>).map((application) => ({
   loc: `/applications/${application.slug}`,
   changefreq: 'weekly' as const
+}))
+
+const articleUrls = (articlesData as Array<{ slug: string; date: string }>).map((article) => ({
+  loc: `/knowledge/${article.slug}`,
+  changefreq: 'monthly' as const,
+  lastmod: article.date
 }))
 
 export default defineNuxtConfig({
@@ -51,7 +58,7 @@ export default defineNuxtConfig({
   },
 
   sitemap: {
-    urls: [...productUrls, ...applicationUrls]
+    urls: [...productUrls, ...applicationUrls, ...articleUrls]
   },
 
   image: {

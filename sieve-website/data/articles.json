@@ -10,7 +10,27 @@
     "date": "2026-03-15",
     "tags": ["ISO 9044", "孔径标准", "金属编织网", "选型指南"],
     "seoTitle": "ISO 9044 金属编织网标准详解 | 孔径丝径选型指南",
-    "seoDescription": "深入解读 ISO 9044:1999 标准的孔径定义、公差等级和开孔率计算，帮助工程师和采购人员精准选购金属丝网。"
+    "seoDescription": "深入解读 ISO 9044:1999 标准的孔径定义、公差等级和开孔率计算，帮助工程师和采购人员精准选购金属丝网。",
+    "reviewedAt": "2026-04-02",
+    "reviewedBy": "华云网业技术与质控联合审核",
+    "applicability": "适用于金属编织网采购、来料验收和筛分精度要求明确的过滤场景；不适用于聚氨酯、条缝筛等非编织网产品。",
+    "sources": [
+      {
+        "title": "ISO 9044:1999 Industrial woven wire cloth — Technical requirements and tests",
+        "publisher": "ISO",
+        "note": "用于孔径、丝径允差和检测要求说明。"
+      },
+      {
+        "title": "GB/T 5330-2003 工业用金属丝编织方孔筛网",
+        "publisher": "国家标准",
+        "note": "用于国内采购、图纸对接和验收口径对应。"
+      },
+      {
+        "title": "华云网业编织网来料与成品检验记录",
+        "publisher": "华云网业质量部",
+        "note": "用于补充检测报告中的实操检验项目与抽检流程。"
+      }
+    ]
   },
   {
     "id": "art-65mn-vs-stainless",
@@ -23,7 +43,27 @@
     "date": "2026-03-22",
     "tags": ["65Mn", "不锈钢", "材质选择", "矿山筛网", "TCO分析"],
     "seoTitle": "65Mn锰钢网 vs 不锈钢编织网对比 | 矿山筛分材质选择",
-    "seoDescription": "从抗拉强度、耐磨性、耐腐蚀性和总拥有成本四个维度，对比 65Mn 锰钢网和不锈钢编织网在不同矿山筛分工况下的适用性。"
+    "seoDescription": "从抗拉强度、耐磨性、耐腐蚀性和总拥有成本四个维度，对比 65Mn 锰钢网和不锈钢编织网在不同矿山筛分工况下的适用性。",
+    "reviewedAt": "2026-04-02",
+    "reviewedBy": "华云网业技术与质控联合审核",
+    "applicability": "适用于矿山、骨料和一般工业过滤场景的 65Mn / SUS304 / SUS316L 材质初选；实际腐蚀介质、食品认证和高温要求仍需按现场条件复核。",
+    "sources": [
+      {
+        "title": "GB/T 1222-2016 弹簧钢",
+        "publisher": "国家标准",
+        "note": "用于 65Mn 弹簧钢性能和热处理区间参考。"
+      },
+      {
+        "title": "华云网业矿山筛网客户回访台账",
+        "publisher": "华云网业售后与工艺部",
+        "note": "用于 TCO、寿命和更换周期估算。"
+      },
+      {
+        "title": "华云网业材质适配工况规范",
+        "publisher": "华云网业技术部",
+        "note": "用于腐蚀、磨损与成本边界判断。"
+      }
+    ]
   },
   {
     "id": "art-johnson-screen",
@@ -36,7 +76,27 @@
     "date": "2026-03-28",
     "tags": ["条缝筛", "Johnson Screen", "选煤脱水", "焊接筛", "V型绕丝"],
     "seoTitle": "条缝筛工作原理与选煤脱水应用 | V型绕丝焊接筛板详解",
-    "seoDescription": "详解 Johnson Screen 的 V 型绕丝结构原理、缝隙参数设计和选煤厂脱水脱介工况应用，含维护要点与选型建议。"
+    "seoDescription": "详解 Johnson Screen 的 V 型绕丝结构原理、缝隙参数设计和选煤厂脱水脱介工况应用，含维护要点与选型建议。",
+    "reviewedAt": "2026-04-02",
+    "reviewedBy": "华云网业技术与质控联合审核",
+    "applicability": "适用于选煤、脱水、脱介及中高开口率过滤场景的条缝筛初步选型；具体缝隙宽度和支撑结构仍需结合流量、压差和矿浆性质校核。",
+    "sources": [
+      {
+        "title": "华云网业条缝筛制造通用技术条件",
+        "publisher": "华云网业工艺部",
+        "note": "用于绕丝截面、支撑杆布局和焊接结构说明。"
+      },
+      {
+        "title": "华云网业选煤脱水项目现场回访记录",
+        "publisher": "华云网业售后部",
+        "note": "用于脱水、脱介处理量与维护建议归纳。"
+      },
+      {
+        "title": "华云网业不锈钢材质适配记录",
+        "publisher": "华云网业技术部",
+        "note": "用于 SUS304 / SUS316L 在不同矿浆环境下的选材边界说明。"
+      }
+    ]
   },
   {
     "id": "art-opening-area",
@@ -49,7 +109,27 @@
     "date": "2026-04-01",
     "tags": ["开孔率", "筛分效率", "选型原则", "技术原理"],
     "seoTitle": "开孔率计算公式与筛分效率优化 | 工业筛网选型指南",
-    "seoDescription": "详解筛网开孔率计算方法，分析孔径丝径比对处理能力和使用寿命的影响，给出不同工况下的选型策略。"
+    "seoDescription": "详解筛网开孔率计算方法，分析孔径丝径比对处理能力和使用寿命的影响，给出不同工况下的选型策略。",
+    "reviewedAt": "2026-04-02",
+    "reviewedBy": "华云网业技术与质控联合审核",
+    "applicability": "适用于正方形孔编织网和条缝筛的处理能力估算与方案比较；不应替代现场试筛、整机产能测试和寿命验证。",
+    "sources": [
+      {
+        "title": "ASTM E11 Test Sieves and Test Sieve Cloth",
+        "publisher": "ASTM International",
+        "note": "用于目数、筛孔术语和参考规格口径说明。"
+      },
+      {
+        "title": "ISO 9044:1999 Industrial woven wire cloth — Technical requirements and tests",
+        "publisher": "ISO",
+        "note": "用于编织网孔径、节距和开孔率几何关系参照。"
+      },
+      {
+        "title": "华云网业重载筛分选型规则",
+        "publisher": "华云网业技术部",
+        "note": "用于不同 w/d 比对应工况和寿命权衡建议。"
+      }
+    ]
   },
   {
     "id": "art-polyurethane-guide",
@@ -62,7 +142,27 @@
     "date": "2026-04-01",
     "tags": ["聚氨酯筛网", "Shore A硬度", "矿山筛分", "失效分析"],
     "seoTitle": "聚氨酯筛网选型与失效分析 | Shore A 硬度选择指南",
-    "seoDescription": "系统介绍聚氨酯筛网的硬度选择、工况适配条件和常见失效模式，帮助矿山采购工程师优化筛网选型和延长使用寿命。"
+    "seoDescription": "系统介绍聚氨酯筛网的硬度选择、工况适配条件和常见失效模式，帮助矿山采购工程师优化筛网选型和延长使用寿命。",
+    "reviewedAt": "2026-04-02",
+    "reviewedBy": "华云网业技术与质控联合审核",
+    "applicability": "适用于矿山湿筛、降噪和寿命优先场景下的聚氨酯筛网初选；涉及强酸、有机溶剂或高温工况时需单独做介质兼容性确认。",
+    "sources": [
+      {
+        "title": "ISO 4649 Rubber, vulcanized or thermoplastic — Determination of abrasion resistance",
+        "publisher": "ISO",
+        "note": "用于聚氨酯耐磨性测试口径说明。"
+      },
+      {
+        "title": "华云网业聚氨酯筛板内控标准",
+        "publisher": "华云网业质量部",
+        "note": "用于力学指标、硬度范围和出厂判定要求。"
+      },
+      {
+        "title": "华云网业聚氨酯筛板失效回访记录",
+        "publisher": "华云网业售后部",
+        "note": "用于堵孔、撕裂和老化失效模式归纳。"
+      }
+    ]
   },
   {
     "id": "art-65mn-fatigue-life",
@@ -75,6 +175,26 @@
     "date": "2026-04-01",
     "tags": ["65Mn", "疲劳寿命", "材质分析", "技术研究"],
     "seoTitle": "65Mn 矿用筛网疲劳寿命分析 | 影响因素与延寿建议",
-    "seoDescription": "深入分析 65Mn 弹簧钢筛网的疲劳断裂机理，涵盖丝径均匀性、脱碳层、热处理工艺和安装张紧对使用寿命的影响。"
+    "seoDescription": "深入分析 65Mn 弹簧钢筛网的疲劳断裂机理，涵盖丝径均匀性、脱碳层、热处理工艺和安装张紧对使用寿命的影响。",
+    "reviewedAt": "2026-04-02",
+    "reviewedBy": "华云网业技术与质控联合审核",
+    "applicability": "适用于干式骨料与矿石筛分场景下的 65Mn 编织网寿命预估；寿命数据受振幅、张紧状态和进料方式影响，不能替代现场维护台账。",
+    "sources": [
+      {
+        "title": "GB/T 1222-2016 弹簧钢",
+        "publisher": "国家标准",
+        "note": "用于 65Mn 热处理参数和硬度范围参考。"
+      },
+      {
+        "title": "ISO 9044:1999 Industrial woven wire cloth — Technical requirements and tests",
+        "publisher": "ISO",
+        "note": "用于丝径公差与编织网质量控制口径说明。"
+      },
+      {
+        "title": "华云网业矿山客户寿命回访与更换台账",
+        "publisher": "华云网业售后部",
+        "note": "用于典型寿命区间和预防性更换建议归纳。"
+      }
+    ]
   }
 ]

@@ -54,6 +54,45 @@
                 {{ tag }}
               </span>
             </div>
+
+            <div class="mt-6 grid gap-4 rounded-2xl border border-slate-200 bg-slate-50/80 p-5 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
+              <div>
+                <p class="text-xs font-bold uppercase tracking-[0.18em] text-accent">内容依据</p>
+                <ul class="mt-3 space-y-3">
+                  <li
+                    v-for="source in article.sources"
+                    :key="source.title"
+                    class="rounded-xl border border-slate-200 bg-white px-4 py-3"
+                  >
+                    <p class="text-sm font-semibold text-slate-900">{{ source.title }}</p>
+                    <p class="mt-1 text-xs font-medium text-slate-500">{{ source.publisher }}</p>
+                    <p class="mt-2 text-xs leading-6 text-slate-600">{{ source.note }}</p>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="space-y-4">
+                <div class="rounded-xl border border-slate-200 bg-white px-4 py-3">
+                  <p class="text-xs font-bold uppercase tracking-[0.18em] text-slate-400">作者与审核</p>
+                  <p class="mt-3 text-sm font-semibold text-slate-900">{{ article.author }}</p>
+                  <p class="mt-1 text-xs text-slate-500">最后审核：{{ formatDate(article.reviewedAt || article.date) }}</p>
+                  <p class="mt-1 text-xs text-slate-500">审核团队：{{ article.reviewedBy || article.author }}</p>
+                </div>
+
+                <div class="rounded-xl border border-slate-200 bg-white px-4 py-3">
+                  <p class="text-xs font-bold uppercase tracking-[0.18em] text-slate-400">适用边界</p>
+                  <p class="mt-3 text-sm leading-7 text-slate-600">{{ article.applicability }}</p>
+                </div>
+
+                <NuxtLink
+                  to="/about"
+                  class="inline-flex items-center gap-2 text-sm font-semibold text-accent transition-colors hover:text-primary"
+                >
+                  查看工厂与品质承诺
+                  <span aria-hidden="true">→</span>
+                </NuxtLink>
+              </div>
+            </div>
           </header>
 
           <!-- Divider -->
@@ -155,15 +194,73 @@ import { usePageSeoMeta } from '~/composables/useSeoMeta'
 import { useArticles } from '~/composables/useArticles'
 
 const route = useRoute()
+const runtimeConfig = useRuntimeConfig()
+const siteUrl = runtimeConfig.public.siteUrl.replace(/\/+$/, '')
 const { articles, getArticleBySlug } = useArticles()
 
 const article = computed(() => getArticleBySlug(route.params.slug as string))
+
+if (!article.value) {
+  setResponseStatus(404, 'Article Not Found')
+}
 
 const relatedArticles = computed(() =>
   articles.value
     .filter(a => a.id !== article.value?.id && a.category === article.value?.category)
     .slice(0, 3)
 )
+
+const articleJsonLd = computed(() => {
+  if (!article.value) {
+    return null
+  }
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'TechArticle',
+    headline: article.value.title,
+    description: article.value.seoDescription || article.value.summary,
+    mainEntityOfPage: `${siteUrl}/knowledge/${article.value.slug}`,
+    datePublished: article.value.date,
+    dateModified: article.value.reviewedAt || article.value.date,
+    articleSection: article.value.category,
+    keywords: article.value.tags.join(', '),
+    inLanguage: 'zh-CN',
+    about: article.value.tags.map((tag) => ({
+      '@type': 'Thing',
+      name: tag
+    })),
+    citation: article.value.sources?.map((source) => `${source.title}（${source.publisher}）`),
+    isBasedOn: article.value.sources?.map((source) => ({
+      '@type': 'CreativeWork',
+      name: source.title,
+      description: source.note,
+      publisher: {
+        '@type': 'Organization',
+        name: source.publisher
+      }
+    })),
+    author: {
+      '@type': 'Organization',
+      name: article.value.author
+    },
+    editor: article.value.reviewedBy
+      ? {
+          '@type': 'Organization',
+          name: article.value.reviewedBy
+        }
+      : undefined,
+    publisher: {
+      '@type': 'Organization',
+      name: '华云网业',
+      url: siteUrl,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${siteUrl}/favicon.ico`
+      }
+    }
+  }
+})
 
 // Simple markdown → HTML renderer (headings, bold, code, tables, lists)
 const renderedContent = computed(() => {
@@ -219,4 +316,16 @@ usePageSeoMeta({
   title: article.value?.seoTitle || article.value?.title || '文章详情',
   description: article.value?.seoDescription || article.value?.summary || ''
 })
+
+useHead(() => ({
+  script: articleJsonLd.value
+    ? [
+        {
+          key: 'article-jsonld',
+          type: 'application/ld+json',
+          textContent: JSON.stringify(articleJsonLd.value)
+        }
+      ]
+    : []
+}))
 </script>

@@ -135,6 +135,8 @@ interface CategoryTab {
 }
 
 const { faqs } = useFaq()
+const runtimeConfig = useRuntimeConfig()
+const siteUrl = runtimeConfig.public.siteUrl.replace(/\/+$/, '')
 
 const searchKeyword = ref('')
 const activeCategory = ref<FaqCategoryKey>('all')
@@ -184,9 +186,34 @@ const filteredFaqs = computed(() => {
   return faqs.value.filter((faq) => resolveCategory(faq) === activeCategory.value)
 })
 
+const faqJsonLd = computed(() => ({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntityOfPage: `${siteUrl}/faq`,
+  inLanguage: 'zh-CN',
+  mainEntity: faqs.value.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer
+    }
+  }))
+}))
+
 usePageSeoMeta({
   title: '常见问题',
   description:
     '查看产品规格、材质选择、定制加工、报价交期和样品安排等常见问题，快速获取筛网选型与采购答疑。'
 })
+
+useHead(() => ({
+  script: [
+    {
+      key: 'faq-jsonld',
+      type: 'application/ld+json',
+      textContent: JSON.stringify(faqJsonLd.value)
+    }
+  ]
+}))
 </script>

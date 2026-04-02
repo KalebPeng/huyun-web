@@ -261,6 +261,9 @@ usePageSeoMeta({
   description: '基于 ASTM E11 标准的工业丝网技术计算器，支持目数、孔径、丝径互算与开孔率计算，辅助矿山筛网工程选型。'
 })
 
+const runtimeConfig = useRuntimeConfig()
+const siteUrl = runtimeConfig.public.siteUrl.replace(/\/+$/, '')
+
 const mesh = ref<number | null>(null)
 const aperture = ref<number | null>(null)
 const wireDia = ref<number>(0.5)
@@ -330,6 +333,106 @@ const decisionSteps = [
   { q: '降噪 + 使用寿命优先？', a: '选聚氨酯筛板模块' },
   { q: '食品/制药/超细过滤？', a: '选 SUS304/316L 精密编织网' },
 ]
+
+const toolsJsonLd = computed(() => ({
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebApplication',
+      name: '丝网技术计算工具',
+      url: `${siteUrl}/tools`,
+      applicationCategory: 'EngineeringApplication',
+      operatingSystem: 'Any',
+      browserRequirements: 'Requires JavaScript',
+      inLanguage: 'zh-CN',
+      description:
+        '基于 ASTM E11 与 ISO 9044 标准的丝网技术计算工具，可进行目数、孔径、丝径与开孔率换算。',
+      offers: {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: 'CNY'
+      },
+      creator: {
+        '@type': 'Organization',
+        name: '华云网业',
+        url: siteUrl
+      },
+      featureList: [
+        '目数与孔径换算',
+        '丝径输入与节距计算',
+        '开孔率自动计算',
+        'ASTM E11 常用目数对照表',
+        '材质耐腐性速查',
+        '快速选型决策建议'
+      ],
+      about: [
+        {
+          '@type': 'Thing',
+          name: 'ASTM E11'
+        },
+        {
+          '@type': 'Thing',
+          name: 'ISO 9044'
+        }
+      ]
+    },
+    {
+      '@type': 'HowTo',
+      name: '如何使用丝网技术计算工具进行筛网参数换算',
+      description: '输入目数、孔径或丝径参数，快速得到开孔率、节距和 ASTM E11 参考值。',
+      totalTime: 'PT2M',
+      inLanguage: 'zh-CN',
+      supply: [
+        {
+          '@type': 'HowToSupply',
+          name: '筛网目数、孔径或丝径参数'
+        }
+      ],
+      tool: [
+        {
+          '@type': 'HowToTool',
+          name: '丝网技术计算工具'
+        }
+      ],
+      step: [
+        {
+          '@type': 'HowToStep',
+          position: 1,
+          name: '输入已知参数',
+          text: '输入目数、孔径或丝径中的已知值，工具会自动联动计算。'
+        },
+        {
+          '@type': 'HowToStep',
+          position: 2,
+          name: '查看换算结果',
+          text: '读取开孔率和节距结果，判断筛分效率、强度和防堵孔平衡。'
+        },
+        {
+          '@type': 'HowToStep',
+          position: 3,
+          name: '对照标准参考表',
+          text: '点击 ASTM E11 常用目数对照表中的行，将标准数据带入计算器做快速比对。'
+        },
+        {
+          '@type': 'HowToStep',
+          position: 4,
+          name: '结合工况做选型判断',
+          text: '结合材质耐腐性速查和快速选型决策，选择更合适的筛网材质与产品形态。'
+        }
+      ]
+    }
+  ]
+}))
+
+useHead(() => ({
+  script: [
+    {
+      key: 'tools-jsonld',
+      type: 'application/ld+json',
+      textContent: JSON.stringify(toolsJsonLd.value)
+    }
+  ]
+}))
 </script>
 
 <style scoped>

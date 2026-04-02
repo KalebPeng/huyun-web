@@ -1,4 +1,4 @@
-import { useHead, useRuntimeConfig, useSeoMeta as useNuxtSeoMeta } from '#imports'
+import { useHead, useRoute, useRuntimeConfig, useSeoMeta as useNuxtSeoMeta } from '#imports'
 
 interface SeoMetaOptions {
   title: string
@@ -22,12 +22,21 @@ const toAbsoluteUrl = (value: string, siteUrl: string) => {
 }
 
 export function usePageSeoMeta({ title, description, image }: SeoMetaOptions) {
+  const route = useRoute()
   const config = useRuntimeConfig()
   const siteUrl = config.public.siteUrl || 'https://huayun-mesh.com'
+  const canonicalUrl = toAbsoluteUrl(route.path || '/', siteUrl)
   const imageUrl = image ? toAbsoluteUrl(image, siteUrl) : undefined
 
   useHead({
-    title
+    title,
+    link: [
+      {
+        key: 'canonical',
+        rel: 'canonical',
+        href: canonicalUrl
+      }
+    ]
   })
 
   useNuxtSeoMeta({
@@ -35,6 +44,7 @@ export function usePageSeoMeta({ title, description, image }: SeoMetaOptions) {
     description,
     ogTitle: title,
     ogDescription: description,
+    ogUrl: canonicalUrl,
     ogImage: imageUrl,
     twitterTitle: title,
     twitterDescription: description,

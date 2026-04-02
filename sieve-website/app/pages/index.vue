@@ -20,6 +20,8 @@ const ApplicationSection = defineAsyncComponent(() => import('~/components/home/
 const AdvantageSection = defineAsyncComponent(() => import('~/components/home/AdvantageSection.vue'))
 const FactorySection = defineAsyncComponent(() => import('~/components/home/FactorySection.vue'))
 const CtaSection = defineAsyncComponent(() => import('~/components/home/CtaSection.vue'))
+const runtimeConfig = useRuntimeConfig()
+const siteUrl = runtimeConfig.public.siteUrl.replace(/\/+$/, '')
 
 usePageSeoMeta({
   title: '华云网业 - 专业矿用筛网生产厂家',
@@ -36,8 +38,8 @@ useHead(() => ({
         '@type': 'Organization',
         name: '华云网业',
         alternateName: 'Huayun Mesh',
-        url: 'https://huayun-mesh.com',
-        logo: 'https://huayun-mesh.com/logo.png',
+        url: siteUrl,
+        logo: `${siteUrl}/favicon.ico`,
         address: {
           '@type': 'PostalAddress',
           streetAddress: '华云网业',
