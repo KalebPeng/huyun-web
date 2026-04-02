@@ -1,3 +1,5 @@
+import type { MarkdownRoot } from '@nuxt/content'
+
 export interface ArticleSource {
   title: string
   publisher: string
@@ -6,13 +8,16 @@ export interface ArticleSource {
 
 export interface Article {
   id: string
+  path: string
+  stem: string
   slug: string
   title: string
   category: string
   summary: string
-  content: string
+  description: string
+  body: MarkdownRoot
   author: string
-  date: string
+  publishedAt: string
   tags: string[]
   seoTitle?: string
   seoDescription?: string

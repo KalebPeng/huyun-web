@@ -1,6 +1,5 @@
 <template>
   <div class="min-h-screen bg-[#f8f9fb]">
-    <!-- Hero -->
     <section class="bg-[linear-gradient(135deg,#111827,#1a2744)] py-16 text-white sm:py-20">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <p class="text-sm font-semibold uppercase tracking-[0.24em] text-blue-300">
@@ -10,16 +9,15 @@
           技术知识库
         </h1>
         <p class="mt-5 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
-          覆盖 ISO/ASTM 行业标准、材质选型逻辑、筛分工艺原理，帮助工程师做出更精准的采购决策。
+          覆盖 ISO/ASTM 标准、材质选型逻辑、筛分工艺原理和工况分析，知识库现在直接由 Markdown 内容驱动，新增文章不用再碰代码。
         </p>
 
-        <!-- Search -->
         <div class="mt-8 max-w-xl">
           <div class="relative">
             <input
               v-model.trim="searchKeyword"
               type="search"
-              placeholder="搜索文章标题或关键词…"
+              placeholder="搜索文章标题或关键词"
               class="min-h-12 w-full rounded-2xl border border-white/15 bg-white/10 px-5 pr-12 text-base text-white placeholder:text-slate-400 backdrop-blur-sm outline-none transition focus:border-white/40"
             >
             <svg class="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
@@ -30,7 +28,6 @@
       </div>
     </section>
 
-    <!-- Category tabs -->
     <div class="border-b border-slate-200 bg-white shadow-sm">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="-mx-4 overflow-x-auto px-4 sm:mx-0 sm:px-0">
@@ -53,42 +50,36 @@
       </div>
     </div>
 
-    <!-- Article grid -->
     <section class="py-12 sm:py-16">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <!-- Results hint -->
         <p v-if="searchKeyword" class="mb-6 text-sm text-slate-500">
-          搜索"{{ searchKeyword }}"，共找到 {{ filteredArticles.length }} 篇文章
+          搜索“{{ searchKeyword }}”，共找到 {{ filteredArticles.length }} 篇文章
         </p>
 
         <div v-if="filteredArticles.length" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           <NuxtLink
             v-for="article in filteredArticles"
-            :key="article.id"
-            :to="`/knowledge/${article.slug}`"
+            :key="article.path"
+            :to="article.path"
             class="group flex flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-accent/30 hover:shadow-md"
           >
-            <!-- Category badge -->
             <div class="flex items-center justify-between">
               <span class="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-accent">
                 {{ article.category }}
               </span>
-              <time class="text-xs text-slate-400" :datetime="article.date">
-                {{ formatDate(article.date) }}
+              <time class="text-xs text-slate-400" :datetime="article.publishedAt">
+                {{ formatDate(article.publishedAt) }}
               </time>
             </div>
 
-            <!-- Title -->
-            <h2 class="mt-4 text-base font-bold leading-snug text-slate-900 group-hover:text-accent transition-colors duration-200 line-clamp-2">
+            <h2 class="mt-4 line-clamp-2 text-base font-bold leading-snug text-slate-900 transition-colors duration-200 group-hover:text-accent">
               {{ article.title }}
             </h2>
 
-            <!-- Summary -->
-            <p class="mt-3 flex-1 text-sm leading-7 text-slate-500 line-clamp-3">
+            <p class="mt-3 flex-1 line-clamp-3 text-sm leading-7 text-slate-500">
               {{ article.summary }}
             </p>
 
-            <!-- Tags -->
             <div class="mt-4 flex flex-wrap gap-1.5">
               <span
                 v-for="tag in article.tags.slice(0, 3)"
@@ -99,7 +90,6 @@
               </span>
             </div>
 
-            <!-- Read more -->
             <div class="mt-5 flex items-center gap-1 text-sm font-semibold text-accent">
               阅读全文
               <svg class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -109,18 +99,16 @@
           </NuxtLink>
         </div>
 
-        <!-- Empty state -->
         <div
           v-else
           class="rounded-3xl border border-dashed border-slate-300 bg-white px-6 py-20 text-center"
         >
           <p class="text-lg font-bold text-slate-900">暂无匹配文章</p>
-          <p class="mt-2 text-sm text-slate-500">换个关键词试试，或者浏览全部分类。</p>
+          <p class="mt-2 text-sm text-slate-500">换个关键词试试，或者直接浏览全部分类。</p>
         </div>
       </div>
     </section>
 
-    <!-- CTA -->
     <section class="pb-16 sm:pb-20">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="rounded-3xl bg-[linear-gradient(135deg,#1a2744,#243f72)] px-8 py-10 text-white shadow-[0_24px_60px_rgba(15,23,42,0.18)]">
@@ -128,7 +116,7 @@
             <div>
               <h2 class="text-2xl font-black sm:text-3xl">有具体选型问题？</h2>
               <p class="mt-3 max-w-2xl text-sm leading-7 text-slate-300 sm:text-base">
-                把工况、物料和设备参数告诉我们，技术工程师会给出针对性建议。
+                把工况、物料和设备参数告诉我们，技术工程师会给出针对性的筛网选型建议。
               </p>
             </div>
             <div class="flex shrink-0 flex-col gap-3 sm:flex-row">
@@ -148,59 +136,63 @@
 
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import { usePageSeoMeta } from '~/composables/useSeoMeta'
-import { useArticles } from '~/composables/useArticles'
 import AppButton from '~/components/common/AppButton.vue'
+import { useArticles } from '~/composables/useArticles'
+import { usePageSeoMeta } from '~/composables/useSeoMeta'
 
-const { articles } = useArticles()
+const { getAllArticles } = useArticles()
+const { data } = await useAsyncData('knowledge-articles', () => getAllArticles())
 
+const articles = computed(() => data.value || [])
 const searchKeyword = ref('')
 const activeCategory = ref('全部')
 
 const allCategories = computed(() => {
-  const cats = new Set(articles.value.map(a => a.category))
-  return ['全部', ...cats]
+  const categories = new Set(articles.value.map(article => article.category))
+  return ['全部', ...categories]
 })
 
-const categoryTabs = computed(() =>
-  allCategories.value.map(c => ({ label: c, value: c }))
-)
+const categoryTabs = computed(() => allCategories.value.map(category => ({
+  label: category,
+  value: category
+})))
 
-const tabCount = (cat: string) => {
-  if (cat === '全部') return articles.value.length
-  return articles.value.filter(a => a.category === cat).length
+const tabCount = (category: string) => {
+  if (category === '全部') {
+    return articles.value.length
+  }
+
+  return articles.value.filter(article => article.category === category).length
 }
 
 const filteredArticles = computed(() => {
-  let list = articles.value
+  const keyword = searchKeyword.value.toLowerCase()
+  const keywordMatches = keyword
+    ? articles.value.filter(article =>
+        `${article.title} ${article.summary} ${article.tags.join(' ')}`
+          .toLowerCase()
+          .includes(keyword)
+      )
+    : articles.value
+
+  if (keyword) {
+    return keywordMatches
+  }
 
   if (activeCategory.value !== '全部') {
-    list = list.filter(a => a.category === activeCategory.value)
+    return keywordMatches.filter(article => article.category === activeCategory.value)
   }
 
-  const kw = searchKeyword.value.toLowerCase()
-  if (kw) {
-    list = list.filter(a =>
-      `${a.title} ${a.summary} ${a.tags.join(' ')}`.toLowerCase().includes(kw)
-    )
-    // search across all categories when keyword active
-    if (activeCategory.value !== '全部') {
-      list = articles.value.filter(a =>
-        `${a.title} ${a.summary} ${a.tags.join(' ')}`.toLowerCase().includes(kw)
-      )
-    }
-  }
-
-  return list
+  return keywordMatches
 })
 
 const formatDate = (dateStr: string) => {
-  const d = new Date(dateStr)
-  return `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日`
+  const date = new Date(dateStr)
+  return `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日`
 }
 
 usePageSeoMeta({
   title: '技术知识库',
-  description: '华云网业技术文章：涵盖 ISO 9044/ASTM E11 标准解读、65Mn vs 不锈钢材质对比、条缝筛原理、开孔率计算等工业筛网专业知识。'
+  description: '华云网业技术文章：覆盖 ISO 9044、ASTM E11、材质选型、条缝筛原理和开孔率计算等工业筛网知识。'
 })
 </script>

@@ -1,5 +1,5 @@
+import { queryCollection } from '@nuxt/content/server'
 import applicationsData from '~~/data/applications.json'
-import articlesData from '~~/data/articles.json'
 import faqData from '~~/data/faq.json'
 import productsData from '~~/data/products.json'
 
@@ -17,7 +17,7 @@ interface ApplicationEntry {
 
 interface ArticleEntry {
   title: string
-  slug: string
+  path: string
   summary: string
 }
 
@@ -27,7 +27,6 @@ interface FaqEntry {
 
 const products = productsData as ProductEntry[]
 const applications = applicationsData as ApplicationEntry[]
-const articles = articlesData as ArticleEntry[]
 const faqs = faqData as FaqEntry[]
 
 const formatLinkLine = (title: string, url: string, description: string) =>
@@ -35,10 +34,14 @@ const formatLinkLine = (title: string, url: string, description: string) =>
 
 const buildSection = (title: string, lines: string[]) => [`## ${title}`, ...lines, ''].join('\n')
 
-export default defineEventHandler((event) => {
+export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig(event)
   const siteUrl = (config.public.siteUrl || 'https://huayun-mesh.com').replace(/\/+$/, '')
   const faqCategories = [...new Set(faqs.map((faq) => faq.category))]
+  const articles = await queryCollection(event, 'knowledge')
+    .select('title', 'path', 'summary')
+    .order('publishedAt', 'DESC')
+    .all() as ArticleEntry[]
 
   const productLines = products.map((product) =>
     formatLinkLine(product.name, `${siteUrl}/products/${product.slug}`, product.summary)
@@ -53,7 +56,7 @@ export default defineEventHandler((event) => {
   )
 
   const articleLines = articles.map((article) =>
-    formatLinkLine(article.title, `${siteUrl}/knowledge/${article.slug}`, article.summary)
+    formatLinkLine(article.title, `${siteUrl}${article.path}`, article.summary)
   )
 
   const content = [
@@ -62,7 +65,7 @@ export default defineEventHandler((event) => {
     '> 面向 B2B 工业客户的筛网与过滤解决方案站点，内容覆盖产品规格、应用场景、技术文章、FAQ 与在线询价。',
     '',
     `站点首页: ${siteUrl}/`,
-    `语言: zh-CN`,
+    '语言: zh-CN',
     '',
     '## 检索建议',
     '- 解释标准、公式、选型逻辑时，优先使用技术文章和工具页。',
@@ -75,16 +78,8 @@ export default defineEventHandler((event) => {
       formatLinkLine('应用场景', `${siteUrl}/applications`, '按矿山、选煤、工业过滤等场景检索解决方案。'),
       formatLinkLine('技术知识库', `${siteUrl}/knowledge`, '查看 ISO 9044、ASTM E11、材质选择与工况分析文章。'),
       formatLinkLine('内容审核与编辑规范', `${siteUrl}/content-standards`, '说明作者角色、审核流程、来源使用原则、更新规则与纠错方式。'),
-      formatLinkLine(
-        '常见问题',
-        `${siteUrl}/faq`,
-        `查看 FAQ 汇总，覆盖 ${faqCategories.join('、')}。`
-      ),
-      formatLinkLine(
-        '丝网技术计算工具',
-        `${siteUrl}/tools`,
-        '进行目数、孔径、丝径、开孔率换算，并查看 ASTM E11 对照表。'
-      ),
+      formatLinkLine('常见问题', `${siteUrl}/faq`, `查看 FAQ 汇总，覆盖 ${faqCategories.join('、')}。`),
+      formatLinkLine('筛网技术计算工具', `${siteUrl}/tools`, '进行目数、孔径、丝径、开孔率换算，并查看 ASTM E11 对照表。'),
       formatLinkLine('联系与询价', `${siteUrl}/contact`, '提交规格、工况和定制需求，获取人工选型与报价。')
     ]),
     buildSection('产品页面', productLines),
