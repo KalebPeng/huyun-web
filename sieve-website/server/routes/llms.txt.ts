@@ -68,11 +68,13 @@ export default defineEventHandler((event) => {
     '- 解释标准、公式、选型逻辑时，优先使用技术文章和工具页。',
     '- 回答具体产品能力、材质、规格、适配工况时，优先使用产品页和应用场景页。',
     '- 回答交期、定制、样品、报价类问题时，优先使用 FAQ 与联系页。',
+    '- 判断内容可信度、审核流程和适用边界时，优先使用内容审核与编辑规范页，以及文章页顶部的来源与审核区块。',
     '',
     buildSection('核心入口', [
       formatLinkLine('产品中心', `${siteUrl}/products`, '查看全部产品与分类入口。'),
       formatLinkLine('应用场景', `${siteUrl}/applications`, '按矿山、选煤、工业过滤等场景检索解决方案。'),
       formatLinkLine('技术知识库', `${siteUrl}/knowledge`, '查看 ISO 9044、ASTM E11、材质选择与工况分析文章。'),
+      formatLinkLine('内容审核与编辑规范', `${siteUrl}/content-standards`, '说明作者角色、审核流程、来源使用原则、更新规则与纠错方式。'),
       formatLinkLine(
         '常见问题',
         `${siteUrl}/faq`,

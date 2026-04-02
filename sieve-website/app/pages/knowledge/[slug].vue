@@ -77,6 +77,13 @@
                   <p class="mt-3 text-sm font-semibold text-slate-900">{{ article.author }}</p>
                   <p class="mt-1 text-xs text-slate-500">最后审核：{{ formatDate(article.reviewedAt || article.date) }}</p>
                   <p class="mt-1 text-xs text-slate-500">审核团队：{{ article.reviewedBy || article.author }}</p>
+                  <NuxtLink
+                    to="/content-standards"
+                    class="mt-3 inline-flex items-center gap-2 text-xs font-semibold text-accent transition-colors hover:text-primary"
+                  >
+                    查看内容审核与编辑规范
+                    <span aria-hidden="true">→</span>
+                  </NuxtLink>
                 </div>
 
                 <div class="rounded-xl border border-slate-200 bg-white px-4 py-3">
@@ -226,6 +233,7 @@ const articleJsonLd = computed(() => {
     articleSection: article.value.category,
     keywords: article.value.tags.join(', '),
     inLanguage: 'zh-CN',
+    publishingPrinciples: `${siteUrl}/content-standards`,
     about: article.value.tags.map((tag) => ({
       '@type': 'Thing',
       name: tag

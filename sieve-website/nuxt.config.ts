@@ -20,6 +20,13 @@ const articleUrls = (articlesData as Array<{ slug: string; date: string }>).map(
   lastmod: article.date
 }))
 
+const staticUrls = [
+  {
+    loc: '/content-standards',
+    changefreq: 'monthly' as const
+  }
+]
+
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
@@ -58,7 +65,7 @@ export default defineNuxtConfig({
   },
 
   sitemap: {
-    urls: [...productUrls, ...applicationUrls, ...articleUrls]
+    urls: [...staticUrls, ...productUrls, ...applicationUrls, ...articleUrls]
   },
 
   image: {
