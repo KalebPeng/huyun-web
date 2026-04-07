@@ -1,71 +1,79 @@
-﻿<template>
-  <div class="bg-slate-50">
-    <section class="bg-[linear-gradient(135deg,#111827,#1a2744)] py-16 text-white sm:py-20">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <p class="text-sm font-semibold uppercase tracking-[0.24em] text-blue-200">
-          {{ $t('contactPage.eyebrow') }}
-        </p>
-        <h1 class="mt-4 text-4xl font-black sm:text-5xl">
-          {{ $t('contactPage.title') }}
-        </h1>
-        <p class="mt-5 max-w-3xl text-base leading-8 text-slate-200 sm:text-lg">
-          {{ $t('contactPage.description') }}
-        </p>
-      </div>
-    </section>
+<template>
+  <div class="page-shell">
+    <PageHero
+      :eyebrow="$t('contactPage.eyebrow')"
+      :title="$t('contactPage.title')"
+      :description="$t('contactPage.description')"
+    >
+      <template #aside>
+        <div class="surface-card-soft p-6">
+          <div class="space-y-4">
+            <div class="metric-tile">
+              <p class="metric-value">24/7</p>
+              <p class="metric-label">{{ $t('contactPage.contactItems.hoursLabel') }}</p>
+            </div>
+            <div class="metric-tile">
+              <p class="metric-value">48h</p>
+              <p class="metric-label">{{ $t('contactPage.contactItems.phoneDescription') }}</p>
+            </div>
+          </div>
+        </div>
+      </template>
+    </PageHero>
 
-    <section class="py-12 sm:py-16">
-      <div class="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:px-8">
+    <section class="page-section">
+      <div class="section-shell grid gap-8 lg:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)]">
         <aside class="space-y-6">
-          <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
-            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-accent">
-              {{ $t('contactPage.contactInfoEyebrow') }}
-            </p>
-            <h2 class="mt-2 text-2xl font-black text-slate-950">
-              {{ $t('contactPage.contactInfoTitle') }}
-            </h2>
+          <div class="surface-card p-6 sm:p-8">
+            <SectionHeading
+              :eyebrow="$t('contactPage.contactInfoEyebrow')"
+              :title="$t('contactPage.contactInfoTitle')"
+            />
 
-            <div class="mt-6 space-y-4">
+            <div class="mt-8 space-y-4">
               <article
                 v-for="item in contactItems"
                 :key="item.label"
-                class="rounded-2xl border border-slate-200 bg-slate-50 p-4"
+                class="surface-card-inset p-4"
               >
-                <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
-                  {{ item.label }}
-                </p>
-                <component
-                  :is="item.href ? 'a' : 'p'"
-                  :href="item.href"
-                  class="mt-2 block text-base font-semibold text-slate-900 transition-colors duration-200"
-                  :class="item.href ? 'hover:text-primary' : ''"
-                >
-                  {{ item.value }}
-                </component>
-                <p v-if="item.description" class="mt-2 text-sm leading-7 text-slate-500">
-                  {{ item.description }}
-                </p>
+                <div class="flex items-start gap-4">
+                  <div class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-primary">
+                    <FeatureIcon :name="item.icon" class="h-6 w-6" />
+                  </div>
+                  <div class="min-w-0">
+                    <p class="mono-meta text-brand-muted">{{ item.label }}</p>
+                    <component
+                      :is="item.href ? 'a' : 'p'"
+                      :href="item.href"
+                      class="mt-2 block text-base font-semibold text-brand-ink transition-colors duration-200"
+                      :class="item.href ? 'hover:text-primary' : ''"
+                    >
+                      {{ item.value }}
+                    </component>
+                    <p v-if="item.description" class="mt-2 text-sm leading-7 text-brand-muted">
+                      {{ item.description }}
+                    </p>
+                  </div>
+                </div>
               </article>
             </div>
           </div>
 
-          <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
-            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-accent">
-              {{ $t('contactPage.wechatEyebrow') }}
-            </p>
-            <h2 class="mt-2 text-2xl font-black text-slate-950">
-              {{ $t('contactPage.wechatTitle') }}
-            </h2>
-            <div class="mt-6 grid gap-5 sm:grid-cols-[minmax(0,1fr)_120px] sm:items-center">
+          <div class="surface-card p-6 sm:p-8">
+            <SectionHeading
+              :eyebrow="$t('contactPage.wechatEyebrow')"
+              :title="$t('contactPage.wechatTitle')"
+            />
+            <div class="mt-8 grid gap-5 sm:grid-cols-[minmax(0,1fr)_140px] sm:items-center">
               <div>
-                <p class="text-base font-semibold text-slate-900">
+                <p class="text-base font-semibold text-brand-ink">
                   {{ $t('contactPage.wechatLabel') }}
                 </p>
-                <p class="mt-3 text-sm leading-7 text-slate-600">
+                <p class="mt-3 text-sm leading-7 text-brand-muted">
                   {{ $t('contactPage.wechatDescription') }}
                 </p>
               </div>
-              <div class="flex h-32 w-32 items-center justify-center rounded-2xl border border-dashed border-slate-300 bg-slate-50 p-4 text-center text-[10px] font-semibold tracking-wider text-slate-500">
+              <div class="flex h-36 w-36 items-center justify-center rounded-[1.5rem] border border-dashed border-brand-line bg-brand-surface-strong p-4 text-center text-[10px] font-semibold tracking-[0.18em] text-brand-muted">
                 {{ $t('contactPage.wechatQr') }}
               </div>
             </div>
@@ -84,14 +92,18 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
-import { usePageSeoMeta } from '~/composables/useSeoMeta'
+import FeatureIcon from '~/components/common/FeatureIcon.vue'
+import PageHero from '~/components/common/PageHero.vue'
+import SectionHeading from '~/components/common/SectionHeading.vue'
 import InquiryForm from '~/components/forms/InquiryForm.vue'
+import { usePageSeoMeta } from '~/composables/useSeoMeta'
 
 interface ContactItem {
   label: string
   value: string
   href?: string
   description?: string
+  icon: string
 }
 
 const route = useRoute()
@@ -104,28 +116,33 @@ const contactItems = computed<ContactItem[]>(() => [
     label: t('contactPage.contactItems.phoneLabel'),
     value: '+86 13561559016',
     href: 'tel:+8613561559016',
-    description: t('contactPage.contactItems.phoneDescription')
+    description: t('contactPage.contactItems.phoneDescription'),
+    icon: 'phone'
   },
   {
     label: t('contactPage.contactItems.emailLabel'),
     value: 'sales@huayun-mesh.com',
     href: 'mailto:sales@huayun-mesh.com',
-    description: t('contactPage.contactItems.emailDescription')
+    description: t('contactPage.contactItems.emailDescription'),
+    icon: 'email'
   },
   {
     label: t('contactPage.contactItems.addressLabel'),
     value: t('contactPage.contactItems.addressValue'),
-    description: t('contactPage.contactItems.addressDescription')
+    description: t('contactPage.contactItems.addressDescription'),
+    icon: 'factory'
   },
   {
     label: 'WhatsApp',
     value: '+86 13561559016',
     href: 'https://wa.me/8613561559016',
-    description: t('contactPage.contactItems.whatsAppDescription')
+    description: t('contactPage.contactItems.whatsAppDescription'),
+    icon: 'support'
   },
   {
     label: t('contactPage.contactItems.hoursLabel'),
-    value: t('contactPage.contactItems.hoursValue')
+    value: t('contactPage.contactItems.hoursValue'),
+    icon: 'response'
   }
 ])
 
@@ -152,4 +169,3 @@ usePageSeoMeta({
   description: t('contactPage.seo.description')
 })
 </script>
-

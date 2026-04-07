@@ -1,118 +1,120 @@
 <template>
-  <header
-    class="sticky top-0 z-50 border-b border-white/10 bg-primary text-white transition-shadow duration-300"
-    :class="{ 'shadow-[0_10px_30px_rgba(15,23,42,0.35)]': isScrolled }"
-  >
-    <div class="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-4 sm:px-6 lg:gap-6 lg:px-8">
-      <NuxtLink
-        :to="localePath('/')"
-        class="inline-flex shrink-0 items-center gap-3 rounded-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-        :aria-label="$t('header.backHome')"
-      >
-        <span
-          class="flex h-10 w-10 items-center justify-center rounded-md border border-white/20 bg-white/10 text-sm font-black tracking-[0.25em]"
-          aria-hidden="true"
-        >
-          HY
-        </span>
-        <span class="flex min-w-0 flex-col">
-          <span class="whitespace-nowrap text-base font-bold tracking-[0.12em] sm:text-lg xl:tracking-[0.16em]">
-            {{ $t('brand.name') }}
-          </span>
-          <span class="whitespace-nowrap text-[10px] uppercase tracking-[0.24em] text-slate-300 sm:text-xs">
-            {{ $t('brand.tagline') }}
-          </span>
-        </span>
-      </NuxtLink>
-
-      <nav class="hidden min-w-0 flex-1 items-center justify-center gap-0.5 xl:gap-1 lg:flex" :aria-label="$t('header.mainNav')">
-        <NuxtLink
-          v-for="item in navItems"
-          :key="item.to"
-          :to="localePath(item.to)"
-          class="shrink-0 whitespace-nowrap rounded-md px-3 py-2 text-[13px] font-medium transition-colors duration-200 hover:bg-white/10 xl:px-4 xl:text-sm"
-          :class="isActive(item.to) ? 'bg-white/12 text-white' : 'text-slate-200'"
-          :aria-current="isActive(item.to) ? 'page' : undefined"
-        >
-          {{ item.label }}
-        </NuxtLink>
-      </nav>
-
-      <div class="hidden shrink-0 items-center gap-2 lg:flex">
-        <LangSwitcher />
-        <AppButton to="/contact" size="sm" :aria-label="$t('header.getQuoteAria')">
-          {{ $t('common.getQuote') }}
-        </AppButton>
-      </div>
-
-      <button
-        type="button"
-        class="inline-flex h-11 w-11 items-center justify-center rounded-md border border-white/20 bg-white/5 text-white transition-colors hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white lg:hidden"
-        :aria-expanded="mobileMenuOpen"
-        aria-controls="mobile-nav-panel"
-        :aria-label="mobileMenuOpen ? $t('header.closeMenu') : $t('header.openMenu')"
-        @click="toggleMobileMenu"
-      >
-        <span class="sr-only">
-          {{ mobileMenuOpen ? $t('header.closeMenu') : $t('header.openMenu') }}
-        </span>
-        <svg
-          v-if="!mobileMenuOpen"
-          class="h-6 w-6"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.8"
-          aria-hidden="true"
-        >
-          <path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16" />
-        </svg>
-        <svg
-          v-else
-          class="h-6 w-6"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.8"
-          aria-hidden="true"
-        >
-          <path stroke-linecap="round" d="M6 6l12 12M18 6L6 18" />
-        </svg>
-      </button>
-    </div>
-
+  <header class="sticky top-0 z-50 px-4 py-3 sm:px-6 lg:px-8">
     <div
-      v-if="mobileMenuOpen"
-      id="mobile-nav-panel"
-      class="border-t border-white/10 bg-primary/95 lg:hidden"
+      class="mx-auto max-w-7xl rounded-[1.75rem] border border-white/75 bg-white/88 text-brand-ink shadow-brand backdrop-blur-xl transition-all duration-200"
+      :class="isScrolled ? 'border-brand-line shadow-[0_18px_45px_rgba(22,48,79,0.12)]' : 'shadow-brand-soft'"
     >
-      <nav class="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-4 sm:px-6" :aria-label="$t('header.mobileNav')">
+      <div class="flex items-center justify-between gap-3 px-4 py-3 lg:px-6">
         <NuxtLink
-          v-for="item in navItems"
-          :key="`${item.to}-mobile`"
-          :to="localePath(item.to)"
-          class="rounded-md px-4 py-3 text-sm font-medium transition-colors duration-200 hover:bg-white/10"
-          :class="isActive(item.to) ? 'bg-white/12 text-white' : 'text-slate-200'"
-          :aria-current="isActive(item.to) ? 'page' : undefined"
-          @click="mobileMenuOpen = false"
+          :to="localePath('/')"
+          class="inline-flex shrink-0 items-center gap-3 rounded-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          :aria-label="$t('header.backHome')"
         >
-          {{ item.label }}
+          <span
+            class="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-primary/10 bg-primary text-sm font-bold tracking-[0.24em] text-white shadow-brand-soft"
+            aria-hidden="true"
+          >
+            HY
+          </span>
+          <span class="flex min-w-0 flex-col">
+            <span class="whitespace-nowrap text-base font-semibold tracking-[0.08em] sm:text-lg">
+              {{ $t('brand.name') }}
+            </span>
+            <span class="mono-meta whitespace-nowrap text-brand-muted">
+              {{ $t('brand.tagline') }}
+            </span>
+          </span>
         </NuxtLink>
 
-        <div class="mt-2">
+        <nav class="hidden min-w-0 flex-1 items-center justify-center gap-1 lg:flex" :aria-label="$t('header.mainNav')">
+          <NuxtLink
+            v-for="item in navItems"
+            :key="item.to"
+            :to="localePath(item.to)"
+            class="shrink-0 whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium transition-colors duration-200"
+            :class="isActive(item.to) ? 'bg-primary text-white shadow-brand-soft' : 'text-brand-muted hover:bg-brand-surface-strong hover:text-primary'"
+            :aria-current="isActive(item.to) ? 'page' : undefined"
+          >
+            {{ item.label }}
+          </NuxtLink>
+        </nav>
+
+        <div class="hidden shrink-0 items-center gap-2 lg:flex">
           <LangSwitcher />
+          <AppButton to="/contact" size="sm" :aria-label="$t('header.getQuoteAria')">
+            {{ $t('common.getQuote') }}
+          </AppButton>
         </div>
 
-        <AppButton
-          to="/contact"
-          size="lg"
-          :aria-label="$t('header.getQuoteAria')"
-          class="mt-2 w-full"
-          @click="mobileMenuOpen = false"
+        <button
+          type="button"
+          class="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-brand-line bg-brand-surface-strong text-primary transition-colors hover:border-primary/20 hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent lg:hidden"
+          :aria-expanded="mobileMenuOpen"
+          aria-controls="mobile-nav-panel"
+          :aria-label="mobileMenuOpen ? $t('header.closeMenu') : $t('header.openMenu')"
+          @click="toggleMobileMenu"
         >
-          {{ $t('common.getQuote') }}
-        </AppButton>
-      </nav>
+          <span class="sr-only">
+            {{ mobileMenuOpen ? $t('header.closeMenu') : $t('header.openMenu') }}
+          </span>
+          <svg
+            v-if="!mobileMenuOpen"
+            class="h-5 w-5"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            aria-hidden="true"
+          >
+            <path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+          <svg
+            v-else
+            class="h-5 w-5"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            aria-hidden="true"
+          >
+            <path stroke-linecap="round" d="M6 6l12 12M18 6L6 18" />
+          </svg>
+        </button>
+      </div>
+
+      <div
+        v-if="mobileMenuOpen"
+        id="mobile-nav-panel"
+        class="border-t border-brand-line/80 px-4 pb-4 pt-3 lg:hidden"
+      >
+        <nav class="flex flex-col gap-2" :aria-label="$t('header.mobileNav')">
+          <NuxtLink
+            v-for="item in navItems"
+            :key="`${item.to}-mobile`"
+            :to="localePath(item.to)"
+            class="rounded-2xl px-4 py-3 text-sm font-medium transition-colors duration-200"
+            :class="isActive(item.to) ? 'bg-primary text-white' : 'text-brand-muted hover:bg-brand-surface-strong hover:text-primary'"
+            :aria-current="isActive(item.to) ? 'page' : undefined"
+            @click="mobileMenuOpen = false"
+          >
+            {{ item.label }}
+          </NuxtLink>
+
+          <div class="mt-2">
+            <LangSwitcher />
+          </div>
+
+          <AppButton
+            to="/contact"
+            size="lg"
+            :aria-label="$t('header.getQuoteAria')"
+            class="mt-2 w-full"
+            @click="mobileMenuOpen = false"
+          >
+            {{ $t('common.getQuote') }}
+          </AppButton>
+        </nav>
+      </div>
     </div>
   </header>
 </template>

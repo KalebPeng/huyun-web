@@ -1,34 +1,58 @@
 <template>
-  <div class="bg-slate-50">
-    <section class="bg-[linear-gradient(135deg,#111827,#1a2744)] py-16 text-white sm:py-20">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <p class="text-sm font-semibold uppercase tracking-[0.24em] text-blue-200">
-          {{ $t('applicationsPage.eyebrow') }}
-        </p>
-        <h1 class="mt-4 text-4xl font-black sm:text-5xl">
-          {{ $t('applicationsPage.title') }}
-        </h1>
-        <p class="mt-5 max-w-3xl text-base leading-8 text-slate-200 sm:text-lg">
-          {{ $t('applicationsPage.description') }}
-        </p>
-      </div>
-    </section>
+  <div class="page-shell">
+    <PageHero
+      :eyebrow="$t('applicationsPage.eyebrow')"
+      :title="$t('applicationsPage.title')"
+      :description="$t('applicationsPage.description')"
+    >
+      <template #aside>
+        <div class="surface-card-soft p-6">
+          <p class="mono-meta text-brand-muted">{{ $t('applicationsPage.cardEyebrow') }}</p>
+          <div class="mt-5 grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
+            <div class="metric-tile">
+              <p class="metric-value">{{ applications.length }}</p>
+              <p class="metric-label">{{ $t('nav.applications') }}</p>
+            </div>
+            <div class="metric-tile">
+              <p class="metric-value">48h</p>
+              <p class="metric-label">{{ $t('common.getQuote') }}</p>
+            </div>
+            <div class="metric-tile">
+              <p class="metric-value">OEM</p>
+              <p class="metric-label">{{ $t('common.supported') }}</p>
+            </div>
+          </div>
+        </div>
+      </template>
+    </PageHero>
 
-    <section class="py-12 sm:py-16">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+    <section class="page-section">
+      <div class="section-shell">
+        <SectionHeading
+          :eyebrow="$t('applicationsPage.cardEyebrow')"
+          :title="$t('applicationsPage.title')"
+          :description="$t('applicationsPage.description')"
+        />
+
+        <div class="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           <article
             v-for="application in applications"
             :key="application.id"
-            class="flex h-full flex-col rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(15,23,42,0.12)]"
+            class="group surface-card flex h-full flex-col p-6 transition-transform duration-200 hover:-translate-y-1"
           >
-            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-accent">
-              {{ $t('applicationsPage.cardEyebrow') }}
-            </p>
-            <h2 class="mt-3 text-2xl font-black text-slate-950">
+            <div class="flex items-start justify-between gap-4">
+              <div class="inline-flex h-14 w-14 items-center justify-center rounded-[1.25rem] bg-brand-surface-strong text-primary">
+                <FeatureIcon :name="resolveIcon(application.slug)" class="h-7 w-7" />
+              </div>
+              <span class="mono-meta rounded-full border border-brand-line bg-brand-surface-strong px-3 py-1 text-brand-muted">
+                {{ $t('applicationsPage.cardEyebrow') }}
+              </span>
+            </div>
+
+            <h2 class="mt-6 text-2xl font-semibold tracking-tight text-brand-ink">
               {{ application.name }}
             </h2>
-            <p class="summary-clamp mt-4 text-sm leading-7 text-slate-600">
+            <p class="summary-clamp mt-4 text-sm leading-7 text-brand-muted">
               {{ application.summary }}
             </p>
 
@@ -37,11 +61,11 @@
                 v-for="tag in application.useCases.slice(0, 3)"
                 :key="tag"
                 :label="tag"
-                variant="primary"
+                variant="default"
               />
             </div>
 
-            <div class="mt-8">
+            <div class="mt-8 border-t border-brand-line/70 pt-5">
               <AppButton
                 :to="`/applications/${application.slug}`"
                 size="sm"
@@ -55,29 +79,15 @@
       </div>
     </section>
 
-    <section class="pb-16 sm:pb-20">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="rounded-3xl bg-[linear-gradient(135deg,#1a2744,#243f72)] px-6 py-10 text-white shadow-[0_24px_60px_rgba(15,23,42,0.18)] sm:px-10">
-          <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-            <div>
-              <h2 class="text-2xl font-black sm:text-3xl">
-                {{ $t('applicationsPage.ctaTitle') }}
-              </h2>
-              <p class="mt-3 max-w-2xl text-sm leading-7 text-slate-200 sm:text-base">
-                {{ $t('applicationsPage.ctaDescription') }}
-              </p>
-            </div>
-
-            <AppButton
-              to="/contact"
-              size="lg"
-              :aria-label="$t('applicationsPage.ctaAria')"
-              class="!bg-white !text-primary hover:!bg-slate-100 focus-visible:!outline-white"
-            >
-              {{ $t('common.getQuote') }}
-            </AppButton>
-          </div>
-        </div>
+    <section class="page-section pt-0">
+      <div class="section-shell">
+        <CtaBand
+          :eyebrow="$t('applicationsPage.eyebrow')"
+          :title="$t('applicationsPage.ctaTitle')"
+          :description="$t('applicationsPage.ctaDescription')"
+          primary-to="/contact"
+          :primary-label="$t('common.getQuote')"
+        />
       </div>
     </section>
   </div>
@@ -87,6 +97,10 @@
 import { usePageSeoMeta } from '~/composables/useSeoMeta'
 import AppButton from '~/components/common/AppButton.vue'
 import Badge from '~/components/common/Badge.vue'
+import CtaBand from '~/components/common/CtaBand.vue'
+import FeatureIcon from '~/components/common/FeatureIcon.vue'
+import PageHero from '~/components/common/PageHero.vue'
+import SectionHeading from '~/components/common/SectionHeading.vue'
 
 const { t, locale } = useI18n()
 const { fetchApplications } = useApplications()
@@ -99,6 +113,12 @@ const { data: applications } = await useAsyncData(
   }
 )
 
+const resolveIcon = (slug: string) => {
+  if (slug.includes('mining')) return 'mining'
+  if (slug.includes('filtration')) return 'water'
+  return 'industry'
+}
+
 usePageSeoMeta({
   title: t('applicationsPage.seo.title'),
   description: t('applicationsPage.seo.description')
@@ -109,7 +129,7 @@ usePageSeoMeta({
 .summary-clamp {
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   overflow: hidden;
 }
 </style>

@@ -15,13 +15,28 @@ export default {
     },
     extend: {
       colors: {
-        primary: '#1a2744',
+        primary: '#16304F',
         accent: '#2563eb',
-        neutral: '#f4f4f0',
-        dark: '#111827'
+        neutral: '#f5f7fa',
+        dark: '#10233A',
+        brand: {
+          surface: '#F5F7FA',
+          'surface-strong': '#EEF3F8',
+          ink: '#1F2937',
+          muted: '#526273',
+          line: '#D9E2EC'
+        }
       },
       fontFamily: {
-        sans: ['system-ui', 'PingFang SC', 'Microsoft YaHei', 'sans-serif']
+        sans: ['IBM Plex Sans', 'PingFang SC', 'Microsoft YaHei', 'sans-serif'],
+        mono: ['IBM Plex Mono', 'SFMono-Regular', 'monospace']
+      },
+      boxShadow: {
+        brand: '0 16px 40px rgba(22, 48, 79, 0.08)',
+        'brand-soft': '0 8px 24px rgba(22, 48, 79, 0.06)'
+      },
+      borderRadius: {
+        '4xl': '2rem'
       }
     }
   }

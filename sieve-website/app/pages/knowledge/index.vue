@@ -1,45 +1,40 @@
 <template>
-  <div class="min-h-screen bg-[#f8f9fb]">
-    <section class="bg-[linear-gradient(135deg,#111827,#1a2744)] py-16 text-white sm:py-20">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <p class="text-sm font-semibold uppercase tracking-[0.24em] text-blue-300">
-          {{ $t('knowledgePage.eyebrow') }}
-        </p>
-        <h1 class="mt-4 text-4xl font-black sm:text-5xl">
-          {{ $t('knowledgePage.title') }}
-        </h1>
-        <p class="mt-5 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
-          {{ $t('knowledgePage.description') }}
-        </p>
-
-        <div class="mt-8 max-w-xl">
-          <div class="relative">
-            <input
-              v-model.trim="searchKeyword"
-              type="search"
-              :placeholder="$t('knowledgePage.searchPlaceholder')"
-              class="min-h-12 w-full rounded-2xl border border-white/15 bg-white/10 px-5 pr-12 text-base text-white placeholder:text-slate-400 backdrop-blur-sm outline-none transition focus:border-white/40"
-            >
-            <svg class="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z" />
-            </svg>
-          </div>
+  <div class="page-shell">
+    <PageHero
+      :eyebrow="$t('knowledgePage.eyebrow')"
+      :title="$t('knowledgePage.title')"
+      :description="$t('knowledgePage.description')"
+    >
+      <div class="max-w-2xl">
+        <label for="knowledge-search" class="sr-only">{{ $t('knowledgePage.searchPlaceholder') }}</label>
+        <div class="field-wrap-light gap-3 pr-3">
+          <svg class="h-5 w-5 shrink-0 text-brand-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z" />
+          </svg>
+          <input
+            id="knowledge-search"
+            v-model.trim="searchKeyword"
+            type="search"
+            :placeholder="$t('knowledgePage.searchPlaceholder')"
+            class="w-full border-0 bg-transparent px-0 text-sm text-brand-ink outline-none placeholder:text-slate-400"
+          >
         </div>
       </div>
-    </section>
+    </PageHero>
 
-    <div class="border-b border-slate-200 bg-white shadow-sm">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="-mx-4 overflow-x-auto px-4 sm:mx-0 sm:px-0">
-          <div class="inline-flex min-w-full gap-1 py-3 sm:min-w-0 sm:flex-wrap">
+    <section class="page-section pb-8">
+      <div class="section-shell">
+        <div
+          class="-mx-4 overflow-x-auto px-4 pb-2 sm:mx-0 sm:px-0"
+          :aria-label="$t('knowledgePage.categories.all')"
+        >
+          <div class="inline-flex min-w-full gap-3 sm:min-w-0 sm:flex-wrap">
             <button
               v-for="tab in categoryTabs"
               :key="tab.value"
               type="button"
-              class="shrink-0 rounded-full px-4 py-1.5 text-sm font-semibold transition-colors duration-200"
-              :class="activeCategory === tab.value
-                ? 'bg-primary text-white'
-                : 'text-slate-600 hover:bg-slate-100 hover:text-primary'"
+              class="filter-chip"
+              :class="activeCategory === tab.value ? 'filter-chip-active' : 'filter-chip-idle'"
               @click="activeCategory = tab.value"
             >
               {{ tab.label }}
@@ -48,11 +43,11 @@
           </div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <section class="py-12 sm:py-16">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <p v-if="searchKeyword" class="mb-6 text-sm text-slate-500">
+    <section class="page-section pt-0">
+      <div class="section-shell">
+        <p v-if="searchKeyword" class="mb-6 text-sm text-brand-muted">
           {{ $t('knowledgePage.searchResult', { keyword: searchKeyword, count: filteredArticles.length }) }}
         </p>
 
@@ -61,38 +56,37 @@
             v-for="article in filteredArticles"
             :key="article.path"
             :to="article.path"
-            class="group flex flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-accent/30 hover:shadow-md"
+            class="group surface-card flex flex-col p-6 transition-transform duration-200 hover:-translate-y-1"
           >
-            <div class="flex items-center justify-between">
-              <span class="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-accent">
+            <div class="flex items-center justify-between gap-3">
+              <span class="rounded-full bg-brand-surface-strong px-3 py-1 text-xs font-semibold text-primary">
                 {{ article.category }}
               </span>
-              <time class="text-xs text-slate-400" :datetime="article.publishedAt">
+              <time class="mono-meta text-brand-muted" :datetime="article.publishedAt">
                 {{ formatDate(article.publishedAt) }}
               </time>
             </div>
 
-            <h2 class="mt-4 line-clamp-2 text-base font-bold leading-snug text-slate-900 transition-colors duration-200 group-hover:text-accent">
+            <h2 class="mt-5 line-clamp-2 text-xl font-semibold tracking-tight text-brand-ink transition-colors group-hover:text-primary">
               {{ article.title }}
             </h2>
-
-            <p class="mt-3 flex-1 line-clamp-3 text-sm leading-7 text-slate-500">
+            <p class="mt-4 flex-1 line-clamp-3 text-sm leading-7 text-brand-muted">
               {{ article.summary }}
             </p>
 
-            <div class="mt-4 flex flex-wrap gap-1.5">
+            <div class="mt-5 flex flex-wrap gap-2">
               <span
                 v-for="tag in (article.tags || []).slice(0, 3)"
                 :key="tag"
-                class="rounded-md bg-slate-100 px-2 py-0.5 text-xs text-slate-500"
+                class="rounded-full border border-brand-line bg-white px-3 py-1 text-xs text-brand-muted"
               >
                 {{ tag }}
               </span>
             </div>
 
-            <div class="mt-5 flex items-center gap-1 text-sm font-semibold text-accent">
+            <div class="mt-6 flex items-center gap-2 text-sm font-semibold text-primary">
               {{ $t('knowledgePage.readMore') }}
-              <svg class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <svg class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
               </svg>
             </div>
@@ -101,34 +95,25 @@
 
         <div
           v-else
-          class="rounded-3xl border border-dashed border-slate-300 bg-white px-6 py-20 text-center"
+          class="surface-card px-6 py-20 text-center"
         >
-          <p class="text-lg font-bold text-slate-900">{{ $t('knowledgePage.emptyTitle') }}</p>
-          <p class="mt-2 text-sm text-slate-500">{{ $t('knowledgePage.emptyDescription') }}</p>
+          <p class="text-lg font-semibold text-brand-ink">{{ $t('knowledgePage.emptyTitle') }}</p>
+          <p class="mt-3 text-sm leading-7 text-brand-muted">{{ $t('knowledgePage.emptyDescription') }}</p>
         </div>
       </div>
     </section>
 
-    <section class="pb-16 sm:pb-20">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="rounded-3xl bg-[linear-gradient(135deg,#1a2744,#243f72)] px-8 py-10 text-white shadow-[0_24px_60px_rgba(15,23,42,0.18)]">
-          <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-            <div>
-              <h2 class="text-2xl font-black sm:text-3xl">{{ $t('knowledgePage.ctaTitle') }}</h2>
-              <p class="mt-3 max-w-2xl text-sm leading-7 text-slate-300 sm:text-base">
-                {{ $t('knowledgePage.ctaDescription') }}
-              </p>
-            </div>
-            <div class="flex shrink-0 flex-col gap-3 sm:flex-row">
-              <AppButton to="/tools" size="lg" class="!border-white/30 !bg-white/10 !text-white hover:!bg-white/20">
-                {{ $t('knowledgePage.toolsCta') }}
-              </AppButton>
-              <AppButton to="/contact" size="lg" class="!bg-white !text-primary hover:!bg-slate-100">
-                {{ $t('common.contactUs') }}
-              </AppButton>
-            </div>
-          </div>
-        </div>
+    <section class="page-section pt-0">
+      <div class="section-shell">
+        <CtaBand
+          :eyebrow="$t('knowledgePage.eyebrow')"
+          :title="$t('knowledgePage.ctaTitle')"
+          :description="$t('knowledgePage.ctaDescription')"
+          primary-to="/contact"
+          :primary-label="$t('common.contactUs')"
+          secondary-to="/tools"
+          :secondary-label="$t('knowledgePage.toolsCta')"
+        />
       </div>
     </section>
   </div>
@@ -137,7 +122,8 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 
-import AppButton from '~/components/common/AppButton.vue'
+import CtaBand from '~/components/common/CtaBand.vue'
+import PageHero from '~/components/common/PageHero.vue'
 import { useArticles } from '~/composables/useArticles'
 import { usePageSeoMeta } from '~/composables/useSeoMeta'
 

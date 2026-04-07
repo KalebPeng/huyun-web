@@ -1,21 +1,13 @@
 <template>
-  <div class="bg-slate-50">
-    <section class="bg-[linear-gradient(135deg,#111827,#1a2744)] py-16 text-white sm:py-20">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <p class="text-sm font-semibold uppercase tracking-[0.24em] text-blue-200">
-          {{ $t('productsPage.eyebrow') }}
-        </p>
-        <h1 class="mt-4 text-4xl font-black sm:text-5xl">
-          {{ $t('productsPage.title') }}
-        </h1>
-        <p class="mt-5 max-w-3xl text-base leading-8 text-slate-200 sm:text-lg">
-          {{ $t('productsPage.description') }}
-        </p>
-      </div>
-    </section>
+  <div class="page-shell">
+    <PageHero
+      :eyebrow="$t('productsPage.eyebrow')"
+      :title="$t('productsPage.title')"
+      :description="$t('productsPage.description')"
+    />
 
-    <section class="py-8 sm:py-10">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section class="page-section pb-8">
+      <div class="section-shell">
         <div
           class="-mx-4 overflow-x-auto px-4 pb-2 sm:mx-0 sm:px-0"
           :aria-label="$t('productsPage.filterAria')"
@@ -25,10 +17,8 @@
               v-for="tab in categoryTabs"
               :key="tab.value"
               type="button"
-              class="min-h-11 shrink-0 rounded-full border px-5 text-sm font-semibold transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-              :class="tab.value === activeCategory
-                ? 'border-primary bg-primary text-white shadow-sm'
-                : 'border-slate-200 bg-white text-slate-700 hover:border-primary hover:text-primary'"
+              class="filter-chip"
+              :class="tab.value === activeCategory ? 'filter-chip-active' : 'filter-chip-idle'"
               :aria-pressed="tab.value === activeCategory"
               @click="handleCategoryChange(tab.value)"
             >
@@ -39,8 +29,8 @@
       </div>
     </section>
 
-    <section class="pb-16 sm:pb-20">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section class="page-section pt-0">
+      <div class="section-shell">
         <div
           v-if="filteredProducts.length"
           class="grid gap-6 md:grid-cols-2 xl:grid-cols-3"
@@ -54,41 +44,27 @@
 
         <div
           v-else
-          class="rounded-3xl border border-dashed border-slate-300 bg-white px-6 py-16 text-center shadow-sm"
+          class="surface-card px-6 py-16 text-center"
         >
-          <p class="text-lg font-bold text-slate-900">
+          <p class="text-lg font-semibold text-brand-ink">
             {{ $t('productsPage.emptyTitle') }}
           </p>
-          <p class="mt-3 text-sm leading-7 text-slate-500">
+          <p class="mt-3 text-sm leading-7 text-brand-muted">
             {{ $t('productsPage.emptyDescription') }}
           </p>
         </div>
       </div>
     </section>
 
-    <section class="pb-16 sm:pb-20">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="rounded-3xl bg-[linear-gradient(135deg,#1a2744,#243f72)] px-6 py-10 text-white shadow-[0_24px_60px_rgba(15,23,42,0.18)] sm:px-10">
-          <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-            <div>
-              <h2 class="text-2xl font-black sm:text-3xl">
-                {{ $t('productsPage.ctaTitle') }}
-              </h2>
-              <p class="mt-3 max-w-2xl text-sm leading-7 text-slate-200 sm:text-base">
-                {{ $t('productsPage.ctaDescription') }}
-              </p>
-            </div>
-
-            <AppButton
-              to="/contact"
-              size="lg"
-              :aria-label="$t('productsPage.ctaAria')"
-              class="!bg-white !text-primary hover:!bg-slate-100 focus-visible:!outline-white"
-            >
-              {{ $t('common.getQuote') }}
-            </AppButton>
-          </div>
-        </div>
+    <section class="page-section pt-0">
+      <div class="section-shell">
+        <CtaBand
+          :eyebrow="$t('productsPage.eyebrow')"
+          :title="$t('productsPage.ctaTitle')"
+          :description="$t('productsPage.ctaDescription')"
+          primary-to="/contact"
+          :primary-label="$t('common.getQuote')"
+        />
       </div>
     </section>
   </div>
@@ -97,9 +73,10 @@
 <script setup lang="ts">
 import { computed, watch } from 'vue'
 
-import { usePageSeoMeta } from '~/composables/useSeoMeta'
-import AppButton from '~/components/common/AppButton.vue'
+import CtaBand from '~/components/common/CtaBand.vue'
+import PageHero from '~/components/common/PageHero.vue'
 import ProductCard from '~/components/product/ProductCard.vue'
+import { usePageSeoMeta } from '~/composables/useSeoMeta'
 
 const allCategoryValue = '__all__'
 

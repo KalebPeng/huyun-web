@@ -1,37 +1,34 @@
 <template>
-  <section class="bg-slate-50 py-16 sm:py-20">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)]">
+  <section class="page-section bg-white/55">
+    <div class="section-shell">
+      <div class="grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.02fr)]">
         <div>
-          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-accent">
-            {{ $t('home.factorySection.eyebrow') }}
-          </p>
-          <h2 class="mt-3 text-3xl font-black text-primary sm:text-4xl">
-            {{ $t('home.factorySection.title') }}
-          </h2>
-          <p class="mt-4 text-base leading-8 text-slate-600 sm:text-lg">
-            {{ $t('home.factorySection.location') }}
-          </p>
+          <SectionHeading
+            :eyebrow="$t('home.factorySection.eyebrow')"
+            :title="$t('home.factorySection.title')"
+            :description="$t('home.factorySection.location')"
+          />
 
           <div class="mt-8 grid gap-4 sm:grid-cols-3">
             <article
               v-for="stat in factoryStats"
               :key="stat.key"
-              class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm"
+              class="metric-tile"
             >
-              <p class="text-3xl font-black text-primary">{{ stat.value }}</p>
-              <p class="mt-2 text-sm font-medium tracking-[0.12em] text-slate-500">
-                {{ stat.label }}
-              </p>
+              <p class="metric-value">{{ stat.value }}</p>
+              <p class="metric-label">{{ stat.label }}</p>
             </article>
           </div>
 
-          <div class="mt-10 grid gap-8 md:grid-cols-2">
-            <section>
-              <h3 class="text-xl font-bold text-slate-900">
-                {{ $t('home.factorySection.equipmentTitle') }}
-              </h3>
-              <ul class="mt-4 space-y-3 text-sm leading-7 text-slate-600">
+          <div class="mt-8 grid gap-5 md:grid-cols-2">
+            <section class="surface-card p-6">
+              <div class="flex items-center gap-3">
+                <FeatureIcon name="factory" tone="accent" />
+                <h3 class="text-xl font-semibold text-brand-ink">
+                  {{ $t('home.factorySection.equipmentTitle') }}
+                </h3>
+              </div>
+              <ul class="mt-5 space-y-3 text-sm leading-7 text-brand-muted">
                 <li
                   v-for="item in equipmentHighlights"
                   :key="item"
@@ -43,11 +40,14 @@
               </ul>
             </section>
 
-            <section>
-              <h3 class="text-xl font-bold text-slate-900">
-                {{ $t('home.factorySection.qualityTitle') }}
-              </h3>
-              <ul class="mt-4 space-y-3 text-sm leading-7 text-slate-600">
+            <section class="surface-card p-6">
+              <div class="flex items-center gap-3">
+                <FeatureIcon name="quality" tone="accent" />
+                <h3 class="text-xl font-semibold text-brand-ink">
+                  {{ $t('home.factorySection.qualityTitle') }}
+                </h3>
+              </div>
+              <ul class="mt-5 space-y-3 text-sm leading-7 text-brand-muted">
                 <li
                   v-for="item in qualityChecks"
                   :key="item"
@@ -65,9 +65,9 @@
           <article
             v-for="item in galleryItems"
             :key="item.key"
-            class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm"
+            class="surface-card overflow-hidden"
           >
-            <div class="relative h-52 overflow-hidden">
+            <div class="relative h-56 overflow-hidden">
               <NuxtImg
                 v-if="!imageErrors[item.key]"
                 :src="item.src"
@@ -102,6 +102,9 @@
 
 <script setup lang="ts">
 import { computed, reactive } from 'vue'
+
+import FeatureIcon from '~/components/common/FeatureIcon.vue'
+import SectionHeading from '~/components/common/SectionHeading.vue'
 
 interface FactoryStat {
   key: string

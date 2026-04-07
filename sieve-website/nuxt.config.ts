@@ -64,7 +64,7 @@ export default defineNuxtConfig({
     '@nuxt/image'
   ],
 
-  css: ['katex/dist/katex.min.css'],
+  css: ['~/assets/css/design-system.css', 'katex/dist/katex.min.css'],
 
   components: [
     {

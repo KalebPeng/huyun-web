@@ -1,139 +1,131 @@
-﻿<template>
-  <div v-if="article" class="min-h-screen bg-[#f8f9fb]">
-    <div class="sticky top-16 z-30 border-b border-slate-200 bg-white/90 backdrop-blur-sm">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <nav class="flex items-center gap-2 py-3 text-sm text-slate-500" :aria-label="$t('knowledgeDetail.breadcrumbAria')">
+<template>
+  <div v-if="article" class="page-shell">
+    <section class="border-b border-brand-line/70 bg-white/85 backdrop-blur-sm">
+      <div class="section-shell py-4">
+        <nav class="flex items-center gap-2 text-sm text-brand-muted" :aria-label="$t('knowledgeDetail.breadcrumbAria')">
           <NuxtLink :to="localePath('/')" class="transition-colors hover:text-primary">{{ $t('nav.home') }}</NuxtLink>
-          <span class="text-slate-300">/</span>
+          <span aria-hidden="true">/</span>
           <NuxtLink :to="localePath('/knowledge')" class="transition-colors hover:text-primary">{{ $t('nav.knowledge') }}</NuxtLink>
-          <span class="text-slate-300">/</span>
-          <span class="line-clamp-1 text-slate-700">{{ article.title }}</span>
+          <span aria-hidden="true">/</span>
+          <span class="line-clamp-1 text-brand-ink">{{ article.title }}</span>
         </nav>
       </div>
-    </div>
+    </section>
 
-    <div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-      <div class="lg:grid lg:grid-cols-[1fr_300px] lg:gap-12">
+    <PageHero
+      :eyebrow="article.category"
+      :title="article.title"
+      :description="article.summary"
+    >
+      <template #aside>
+        <div class="surface-card-soft p-6">
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="rounded-full bg-brand-surface-strong px-3 py-1 text-xs font-semibold text-primary">
+              {{ article.category }}
+            </span>
+            <time :datetime="article.publishedAt" class="mono-meta text-brand-muted">
+              {{ formatDate(article.publishedAt) }}
+            </time>
+          </div>
+          <div class="mt-5 space-y-4 text-sm text-brand-muted">
+            <p>{{ article.author }}</p>
+            <p>{{ $t('knowledgeDetail.reviewedAt', { date: formatDate(article.reviewedAt || article.publishedAt) }) }}</p>
+            <p>{{ $t('knowledgeDetail.reviewedBy', { team: article.reviewedBy || article.author }) }}</p>
+          </div>
+          <NuxtLink
+            :to="localePath('/content-standards')"
+            class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-accent"
+          >
+            {{ $t('knowledgeDetail.reviewStandardsLink') }}
+            <span aria-hidden="true">→</span>
+          </NuxtLink>
+        </div>
+      </template>
+    </PageHero>
+
+    <section class="page-section">
+      <div class="section-shell lg:grid lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-8">
         <article itemscope itemtype="https://schema.org/TechArticle">
-          <header>
-            <div class="flex flex-wrap items-center gap-3">
-              <span class="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-accent">
-                {{ article.category }}
-              </span>
-              <time
-                :datetime="article.publishedAt"
-                class="text-xs text-slate-400"
-                itemprop="datePublished"
-              >
-                {{ formatDate(article.publishedAt) }}
-              </time>
-              <span class="text-xs text-slate-400" itemprop="author">{{ article.author }}</span>
-            </div>
-
-            <h1
-              class="mt-5 text-2xl font-black leading-snug text-slate-900 sm:text-3xl lg:text-4xl"
-              itemprop="headline"
-            >
-              {{ article.title }}
-            </h1>
-
-            <p class="mt-4 text-base leading-8 text-slate-600" itemprop="description">
-              {{ article.summary }}
-            </p>
-
-            <div class="mt-5 flex flex-wrap gap-2">
+          <div class="surface-card p-6 sm:p-8">
+            <div class="flex flex-wrap gap-2">
               <span
                 v-for="tag in article.tags || []"
                 :key="tag"
-                class="rounded-md border border-slate-200 bg-white px-2.5 py-1 text-xs font-medium text-slate-600"
+                class="rounded-full border border-brand-line bg-brand-surface-strong px-3 py-1 text-xs text-brand-muted"
               >
                 {{ tag }}
               </span>
             </div>
 
-            <div class="mt-6 grid gap-4 rounded-2xl border border-slate-200 bg-slate-50/80 p-5 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
-              <div>
-                <p class="text-xs font-bold uppercase tracking-[0.18em] text-accent">{{ $t('knowledgeDetail.sourcesTitle') }}</p>
-                <ul class="mt-3 space-y-3">
+            <div class="mt-8 grid gap-4 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
+              <div class="surface-card-inset p-5">
+                <p class="eyebrow">{{ $t('knowledgeDetail.sourcesTitle') }}</p>
+                <ul class="mt-4 space-y-3">
                   <li
                     v-for="source in article.sources || []"
                     :key="source.title"
-                    class="rounded-xl border border-slate-200 bg-white px-4 py-3"
+                    class="rounded-2xl border border-brand-line bg-white px-4 py-4"
                   >
-                    <p class="text-sm font-semibold text-slate-900">{{ source.title }}</p>
-                    <p class="mt-1 text-xs font-medium text-slate-500">{{ source.publisher }}</p>
-                    <p class="mt-2 text-xs leading-6 text-slate-600">{{ source.note }}</p>
+                    <p class="text-sm font-semibold text-brand-ink">{{ source.title }}</p>
+                    <p class="mt-1 text-xs text-brand-muted">{{ source.publisher }}</p>
+                    <p class="mt-2 text-xs leading-6 text-brand-muted">{{ source.note }}</p>
                   </li>
                 </ul>
               </div>
 
               <div class="space-y-4">
-                <div class="rounded-xl border border-slate-200 bg-white px-4 py-3">
-                  <p class="text-xs font-bold uppercase tracking-[0.18em] text-slate-400">{{ $t('knowledgeDetail.reviewTitle') }}</p>
-                  <p class="mt-3 text-sm font-semibold text-slate-900">{{ article.author }}</p>
-                  <p class="mt-1 text-xs text-slate-500">{{ $t('knowledgeDetail.reviewedAt', { date: formatDate(article.reviewedAt || article.publishedAt) }) }}</p>
-                  <p class="mt-1 text-xs text-slate-500">{{ $t('knowledgeDetail.reviewedBy', { team: article.reviewedBy || article.author }) }}</p>
+                <div class="surface-card-inset p-5">
+                  <p class="eyebrow-soft">{{ $t('knowledgeDetail.boundaryTitle') }}</p>
+                  <p class="mt-4 text-sm leading-7 text-brand-muted">{{ article.applicability }}</p>
+                </div>
+
+                <div class="surface-card-inset p-5">
+                  <p class="eyebrow-soft">{{ $t('knowledgeDetail.aboutLink') }}</p>
                   <NuxtLink
-                    :to="localePath('/content-standards')"
-                    class="mt-3 inline-flex items-center gap-2 text-xs font-semibold text-accent transition-colors hover:text-primary"
+                    :to="localePath('/about')"
+                    class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-accent"
                   >
-                    {{ $t('knowledgeDetail.reviewStandardsLink') }}
-                    <span aria-hidden="true">-></span>
+                    {{ $t('knowledgeDetail.aboutLink') }}
+                    <span aria-hidden="true">→</span>
                   </NuxtLink>
                 </div>
-
-                <div class="rounded-xl border border-slate-200 bg-white px-4 py-3">
-                  <p class="text-xs font-bold uppercase tracking-[0.18em] text-slate-400">{{ $t('knowledgeDetail.boundaryTitle') }}</p>
-                  <p class="mt-3 text-sm leading-7 text-slate-600">{{ article.applicability }}</p>
-                </div>
-
-                <NuxtLink
-                  :to="localePath('/about')"
-                  class="inline-flex items-center gap-2 text-sm font-semibold text-accent transition-colors hover:text-primary"
-                >
-                  {{ $t('knowledgeDetail.aboutLink') }}
-                  <span aria-hidden="true">-></span>
-                </NuxtLink>
               </div>
             </div>
-          </header>
 
-          <hr class="my-8 border-slate-200">
+            <hr class="my-8 border-brand-line">
 
-          <ContentRenderer
-            :value="article"
-            tag="div"
-            class="prose prose-slate max-w-none prose-headings:font-black prose-h2:mb-4 prose-h2:mt-10 prose-h2:text-xl prose-h3:mb-2 prose-h3:mt-6 prose-h3:text-base prose-p:leading-8 prose-p:text-slate-700 prose-code:rounded prose-code:bg-slate-100 prose-code:px-1.5 prose-code:py-0.5 prose-code:text-sm prose-code:text-accent prose-pre:rounded-xl prose-pre:bg-slate-900 prose-pre:text-sm prose-pre:text-slate-100 prose-strong:text-slate-900 prose-table:text-sm prose-td:py-2 prose-th:py-2 prose-th:font-bold prose-a:text-accent prose-a:no-underline hover:prose-a:underline"
-          />
+            <ContentRenderer
+              :value="article"
+              tag="div"
+              class="article-prose prose prose-slate max-w-none prose-headings:font-semibold prose-headings:text-brand-ink prose-h2:mt-10 prose-h2:text-2xl prose-h3:mt-6 prose-h3:text-lg prose-p:leading-8 prose-p:text-brand-muted prose-strong:text-brand-ink prose-code:rounded prose-code:bg-brand-surface-strong prose-code:px-1.5 prose-code:py-0.5 prose-code:text-accent prose-pre:rounded-[1.5rem] prose-pre:bg-[#10233A] prose-pre:text-slate-100 prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-table:text-sm prose-th:font-semibold"
+            />
 
-          <div class="mt-12 flex items-center justify-between border-t border-slate-200 pt-8">
-            <NuxtLink
-              :to="localePath('/knowledge')"
-              class="flex items-center gap-2 text-sm font-semibold text-slate-600 transition-colors hover:text-primary"
-            >
-              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
-              </svg>
-              {{ $t('knowledgeDetail.backToList') }}
-            </NuxtLink>
-            <NuxtLink
-              :to="localePath('/contact')"
-              class="rounded-xl bg-accent px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-blue-700"
-            >
-              {{ $t('knowledgeDetail.contactCta') }}
-            </NuxtLink>
+            <div class="mt-12 flex flex-col gap-4 border-t border-brand-line pt-8 sm:flex-row sm:items-center sm:justify-between">
+              <NuxtLink
+                :to="localePath('/knowledge')"
+                class="inline-flex items-center gap-2 text-sm font-semibold text-brand-muted transition-colors hover:text-primary"
+              >
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                </svg>
+                {{ $t('knowledgeDetail.backToList') }}
+              </NuxtLink>
+              <AppButton to="/contact" size="md">
+                {{ $t('knowledgeDetail.contactCta') }}
+              </AppButton>
+            </div>
           </div>
         </article>
 
-        <aside class="mt-12 lg:mt-0">
-          <div class="sticky top-28 flex flex-col gap-6">
-            <div v-if="relatedArticles.length" class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-              <h3 class="text-sm font-bold text-slate-900">{{ $t('knowledgeDetail.relatedTitle') }}</h3>
+        <aside class="mt-8 lg:mt-0">
+          <div class="sticky top-28 flex flex-col gap-5">
+            <div v-if="relatedArticles.length" class="surface-card p-5">
+              <h3 class="text-lg font-semibold text-brand-ink">{{ $t('knowledgeDetail.relatedTitle') }}</h3>
               <ul class="mt-4 flex flex-col gap-4">
                 <li v-for="related in relatedArticles" :key="related.path">
                   <NuxtLink :to="related.path" class="group flex flex-col gap-1">
-                    <span class="text-xs font-semibold text-accent">{{ related.category }}</span>
-                    <span class="line-clamp-2 text-sm font-medium leading-snug text-slate-800 transition-colors group-hover:text-accent">
+                    <span class="mono-meta text-primary">{{ related.category }}</span>
+                    <span class="line-clamp-2 text-sm leading-7 text-brand-ink transition-colors group-hover:text-primary">
                       {{ related.title }}
                     </span>
                   </NuxtLink>
@@ -141,41 +133,43 @@
               </ul>
             </div>
 
-            <div class="rounded-2xl bg-[linear-gradient(135deg,#1a2744,#243f72)] p-5 text-white">
-              <p class="text-sm font-bold">{{ $t('knowledgeDetail.quoteBoxTitle') }}</p>
-              <p class="mt-2 text-xs leading-6 text-slate-300">
+            <div class="surface-card p-5">
+              <p class="eyebrow">{{ $t('knowledgeDetail.quoteBoxTitle') }}</p>
+              <p class="mt-4 text-sm leading-7 text-brand-muted">
                 {{ $t('knowledgeDetail.quoteBoxDescription') }}
               </p>
-              <NuxtLink
-                :to="localePath('/contact')"
-                class="mt-4 flex items-center justify-center rounded-xl bg-white py-2.5 text-sm font-bold text-primary transition-colors hover:bg-slate-100"
-              >
+              <AppButton to="/contact" size="md" class="mt-5 w-full">
                 {{ $t('common.getQuote') }}
-              </NuxtLink>
+              </AppButton>
             </div>
 
-            <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-              <p class="text-sm font-bold text-slate-900">{{ $t('knowledgeDetail.toolsTitle') }}</p>
-              <p class="mt-2 text-xs leading-6 text-slate-500">
+            <div class="surface-card p-5">
+              <p class="eyebrow-soft">{{ $t('knowledgeDetail.toolsTitle') }}</p>
+              <p class="mt-4 text-sm leading-7 text-brand-muted">
                 {{ $t('knowledgeDetail.toolsDescription') }}
               </p>
-              <NuxtLink
-                :to="localePath('/tools')"
-                class="mt-4 flex items-center justify-center rounded-xl border border-accent py-2.5 text-sm font-bold text-accent transition-colors hover:bg-blue-50"
-              >
+              <AppButton to="/tools" variant="outline" size="md" class="mt-5 w-full">
                 {{ $t('knowledgeDetail.toolsCta') }}
-              </NuxtLink>
+              </AppButton>
             </div>
           </div>
         </aside>
       </div>
-    </div>
+    </section>
   </div>
 
-  <div v-else class="flex min-h-[60vh] flex-col items-center justify-center gap-4 text-center">
-    <p class="text-5xl font-black text-slate-200">404</p>
-    <p class="text-lg font-bold text-slate-900">{{ $t('knowledgeDetail.notFoundTitle') }}</p>
-    <NuxtLink :to="localePath('/knowledge')" class="text-sm text-accent hover:underline">{{ $t('knowledgeDetail.backToList') }}</NuxtLink>
+  <div v-else class="page-shell">
+    <section class="page-section">
+      <div class="section-shell">
+        <div class="surface-card flex min-h-[60vh] flex-col items-center justify-center gap-4 px-6 py-16 text-center">
+          <p class="text-5xl font-semibold text-brand-line">404</p>
+          <p class="text-lg font-semibold text-brand-ink">{{ $t('knowledgeDetail.notFoundTitle') }}</p>
+          <NuxtLink :to="localePath('/knowledge')" class="text-sm font-semibold text-primary hover:underline">
+            {{ $t('knowledgeDetail.backToList') }}
+          </NuxtLink>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -183,6 +177,8 @@
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 
+import AppButton from '~/components/common/AppButton.vue'
+import PageHero from '~/components/common/PageHero.vue'
 import { useArticles } from '~/composables/useArticles'
 import { usePageSeoMeta } from '~/composables/useSeoMeta'
 
@@ -303,4 +299,3 @@ useHead(() => ({
     : []
 }))
 </script>
-

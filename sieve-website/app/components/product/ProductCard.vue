@@ -1,15 +1,15 @@
 <template>
   <article
-    class="group flex h-full flex-col overflow-hidden rounded-lg border border-slate-200 bg-white transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(15,23,42,0.12)]"
+    class="group surface-card flex h-full flex-col overflow-hidden transition-transform duration-200 hover:-translate-y-1"
   >
-    <div class="relative h-56 overflow-hidden bg-slate-100">
+    <div class="relative h-60 overflow-hidden bg-brand-surface-strong">
       <NuxtImg
         v-if="!imageFailed"
         :src="product.coverImage"
         :alt="$t('productCard.imageAlt', { name: product.name })"
         width="800"
         height="560"
-        class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+        class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
         loading="lazy"
         sizes="100vw md:50vw xl:33vw"
         placeholder
@@ -17,7 +17,7 @@
       />
       <div
         v-else
-        class="flex h-full w-full items-center justify-center bg-[linear-gradient(135deg,#dbe4f0,#f4f4f0)] text-sm font-medium tracking-[0.18em] text-slate-500"
+        class="flex h-full w-full items-center justify-center bg-[linear-gradient(135deg,#dbe4f0,#f5f7fa)] text-sm font-medium tracking-[0.18em] text-brand-muted"
         :aria-label="$t('productCard.placeholderAria', { name: product.name })"
       >
         {{ $t('productCard.placeholderText') }}
@@ -33,28 +33,31 @@
       </div>
     </div>
 
-    <div class="flex flex-1 flex-col p-5">
+    <div class="flex flex-1 flex-col p-6">
       <div class="flex items-start justify-between gap-3">
         <div>
-          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+          <p class="mono-meta text-brand-muted">
             {{ product.category }}
           </p>
-          <h3 class="mt-2 text-xl font-bold text-slate-900">
+          <h3 class="mt-3 text-2xl font-semibold tracking-tight text-brand-ink">
             {{ product.name }}
           </h3>
         </div>
         <Badge
           v-if="product.customSupported"
           :label="$t('productCard.customSupported')"
-          variant="success"
+          variant="primary"
         />
       </div>
 
-      <p class="summary-clamp mt-4 text-sm leading-7 text-slate-600">
+      <p class="summary-clamp mt-4 text-sm leading-7 text-brand-muted">
         {{ product.summary }}
       </p>
 
-      <div class="mt-6">
+      <div class="mt-6 flex items-center justify-between border-t border-brand-line/80 pt-4">
+        <span class="mono-meta text-brand-muted">
+          {{ product.materials.slice(0, 2).join(' / ') }}
+        </span>
         <AppButton
           :to="`/products/${product.slug}`"
           size="sm"
@@ -89,7 +92,7 @@ const materialBadges = computed(() => props.product.materials.slice(0, 3))
 .summary-clamp {
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   overflow: hidden;
 }
 </style>

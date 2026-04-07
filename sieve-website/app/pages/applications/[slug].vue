@@ -1,9 +1,12 @@
-﻿<template>
-  <div class="bg-slate-50">
+<template>
+  <div class="page-shell">
     <template v-if="application">
-      <section class="border-b border-slate-200 bg-white">
-        <div class="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
-          <nav :aria-label="$t('applicationDetail.breadcrumbAria')" class="flex flex-wrap items-center gap-2 text-sm text-slate-500">
+      <section class="border-b border-brand-line/70 bg-white/85 backdrop-blur-sm">
+        <div class="section-shell py-4">
+          <nav
+            :aria-label="$t('applicationDetail.breadcrumbAria')"
+            class="flex flex-wrap items-center gap-2 text-sm text-brand-muted"
+          >
             <NuxtLink :to="localePath('/')" class="transition-colors hover:text-primary">
               {{ $t('nav.home') }}
             </NuxtLink>
@@ -12,92 +15,106 @@
               {{ $t('nav.applications') }}
             </NuxtLink>
             <span aria-hidden="true">/</span>
-            <span class="font-medium text-slate-900">{{ application.name }}</span>
+            <span class="font-medium text-brand-ink">{{ application.name }}</span>
           </nav>
         </div>
       </section>
 
-      <section class="py-12 sm:py-16">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div class="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
-            <div>
-              <p class="text-sm font-semibold uppercase tracking-[0.2em] text-accent">
-                {{ $t('applicationDetail.overviewEyebrow') }}
-              </p>
-              <h1 class="mt-3 text-3xl font-black text-slate-950 sm:text-4xl">
-                {{ application.name }}
-              </h1>
-              <p class="mt-5 max-w-4xl text-base leading-8 text-slate-600 sm:text-lg">
-                {{ application.description }}
-              </p>
+      <PageHero
+        :eyebrow="$t('applicationDetail.overviewEyebrow')"
+        :title="application.name"
+        :description="application.description"
+      >
+        <template #actions>
+          <AppButton
+            :to="`/contact?scene=${application.slug}`"
+            size="lg"
+            :aria-label="$t('applicationDetail.ctaAria', { name: application.name })"
+          >
+            {{ $t('applicationDetail.ctaButton') }}
+          </AppButton>
+          <AppButton to="/products" variant="outline" size="lg">
+            {{ $t('applicationDetail.viewAllProducts') }}
+          </AppButton>
+        </template>
+
+        <template #aside>
+          <div class="surface-card-soft p-6">
+            <div class="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
+              <div class="metric-tile">
+                <p class="metric-value">{{ painPoints.length }}</p>
+                <p class="metric-label">{{ $t('applicationDetail.painPointsTitle') }}</p>
+              </div>
+              <div class="metric-tile">
+                <p class="metric-value">{{ recommendedProducts.length }}</p>
+                <p class="metric-label">{{ $t('applicationDetail.recommendedTitle') }}</p>
+              </div>
+              <div class="metric-tile">
+                <p class="metric-value">{{ application.useCases.length }}</p>
+                <p class="metric-label">{{ $t('applicationDetail.usageAdviceTitle') }}</p>
+              </div>
             </div>
-
-            <aside class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-              <h2 class="text-xl font-black text-slate-950">
-                {{ $t('applicationDetail.painPointsTitle') }}
-              </h2>
-              <ul class="mt-5 space-y-4">
-                <li
-                  v-for="painPoint in painPoints"
-                  :key="painPoint"
-                  class="flex gap-3 text-sm leading-7 text-slate-600"
-                >
-                  <span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-accent" aria-hidden="true" />
-                  <span>{{ painPoint }}</span>
-                </li>
-              </ul>
-            </aside>
           </div>
-        </div>
-      </section>
+        </template>
+      </PageHero>
 
-      <section class="pb-12 sm:pb-16">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
-            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-accent">
-              {{ $t('applicationDetail.considerationEyebrow') }}
-            </p>
-            <h2 class="mt-2 text-2xl font-black text-slate-950">
-              {{ $t('applicationDetail.considerationTitle') }}
-            </h2>
+      <section class="page-section">
+        <div class="section-shell grid gap-6 lg:grid-cols-[minmax(0,1.15fr)_360px]">
+          <div class="surface-card p-6 sm:p-8">
+            <SectionHeading
+              :eyebrow="$t('applicationDetail.considerationEyebrow')"
+              :title="$t('applicationDetail.considerationTitle')"
+              :description="application.summary"
+            />
 
             <div class="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
               <article
                 v-for="(consideration, index) in application.considerations"
                 :key="consideration"
-                class="rounded-2xl border border-slate-200 bg-slate-50 p-5"
+                class="surface-card-inset p-5"
               >
-                <div class="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-sm font-bold text-white">
-                  {{ index + 1 }}
-                </div>
-                <h3 class="mt-4 text-lg font-bold text-slate-900">
+                <span class="mono-meta text-accent">0{{ index + 1 }}</span>
+                <h3 class="mt-4 text-lg font-semibold text-brand-ink">
                   {{ consideration }}
                 </h3>
               </article>
             </div>
           </div>
+
+          <aside class="surface-card p-6 sm:p-8">
+            <p class="eyebrow">{{ $t('applicationDetail.painPointsTitle') }}</p>
+            <h2 class="mt-3 text-2xl font-semibold tracking-tight text-brand-ink">
+              {{ application.name }}
+            </h2>
+            <ul class="mt-6 space-y-4">
+              <li
+                v-for="painPoint in painPoints"
+                :key="painPoint"
+                class="flex gap-3 text-sm leading-7 text-brand-muted"
+              >
+                <span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-accent" aria-hidden="true" />
+                <span>{{ painPoint }}</span>
+              </li>
+            </ul>
+          </aside>
         </div>
       </section>
 
-      <section class="pb-12 sm:pb-16">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <p class="text-sm font-semibold uppercase tracking-[0.2em] text-accent">
-                {{ $t('applicationDetail.recommendedEyebrow') }}
-              </p>
-              <h2 class="mt-2 text-2xl font-black text-slate-950">
-                {{ $t('applicationDetail.recommendedTitle') }}
-              </h2>
-            </div>
-            <NuxtLink :to="localePath('/products')" class="text-sm font-semibold text-primary transition-colors hover:text-blue-600">
+      <section class="page-section pt-0">
+        <div class="section-shell">
+          <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+            <SectionHeading
+              :eyebrow="$t('applicationDetail.recommendedEyebrow')"
+              :title="$t('applicationDetail.recommendedTitle')"
+            />
+            <NuxtLink :to="localePath('/products')" class="mono-meta text-primary transition-colors hover:text-accent">
               {{ $t('applicationDetail.viewAllProducts') }}
             </NuxtLink>
           </div>
 
           <div
             v-if="recommendedProducts.length"
-            class="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3"
+            class="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3"
           >
             <ProductCard
               v-for="product in recommendedProducts"
@@ -108,41 +125,38 @@
 
           <div
             v-else
-            class="mt-8 rounded-3xl border border-dashed border-slate-300 bg-white px-6 py-16 text-center shadow-sm"
+            class="surface-card mt-10 px-6 py-16 text-center"
           >
-            <p class="text-lg font-bold text-slate-900">
+            <p class="text-lg font-semibold text-brand-ink">
               {{ $t('applicationDetail.emptyProductsTitle') }}
             </p>
-            <p class="mt-3 text-sm leading-7 text-slate-500">
+            <p class="mt-3 text-sm leading-7 text-brand-muted">
               {{ $t('applicationDetail.emptyProductsDescription') }}
             </p>
           </div>
         </div>
       </section>
 
-      <section class="pb-12 sm:pb-16">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div class="rounded-3xl bg-[linear-gradient(135deg,#111827,#1a2744)] p-6 text-white shadow-[0_24px_60px_rgba(15,23,42,0.18)] sm:p-8">
-            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-blue-200">
-              {{ $t('applicationDetail.usageAdviceEyebrow') }}
-            </p>
-            <h2 class="mt-2 text-2xl font-black">
-              {{ $t('applicationDetail.usageAdviceTitle') }}
-            </h2>
+      <section class="page-section pt-0">
+        <div class="section-shell">
+          <div class="surface-card p-6 sm:p-8">
+            <SectionHeading
+              :eyebrow="$t('applicationDetail.usageAdviceEyebrow')"
+              :title="$t('applicationDetail.usageAdviceTitle')"
+            />
 
             <ol class="mt-8 grid gap-4 md:grid-cols-2">
               <li
                 v-for="(item, index) in application.useCases"
                 :key="item"
-                class="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm"
+                class="surface-card-inset flex gap-4 p-5"
               >
-                <div class="flex items-center gap-4">
-                  <span class="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-sm font-bold text-blue-100">
-                    {{ index + 1 }}
-                  </span>
-                  <h3 class="text-base font-semibold text-white">
-                    {{ item }}
-                  </h3>
+                <span class="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-semibold text-white">
+                  {{ index + 1 }}
+                </span>
+                <div>
+                  <p class="text-base font-semibold text-brand-ink">{{ item }}</p>
+                  <p class="mt-2 text-sm leading-7 text-brand-muted">{{ application.summary }}</p>
                 </div>
               </li>
             </ol>
@@ -150,48 +164,34 @@
         </div>
       </section>
 
-      <section class="pb-16 sm:pb-20">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div class="rounded-3xl bg-[linear-gradient(135deg,#1a2744,#243f72)] px-6 py-10 text-white shadow-[0_24px_60px_rgba(15,23,42,0.18)] sm:px-10">
-            <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-              <div>
-                <h2 class="text-2xl font-black sm:text-3xl">
-                  {{ $t('applicationDetail.ctaTitle') }}
-                </h2>
-                <p class="mt-3 max-w-2xl text-sm leading-7 text-slate-200 sm:text-base">
-                  {{ $t('applicationDetail.ctaDescription') }}
-                </p>
-              </div>
-
-              <AppButton
-                :to="`/contact?scene=${application.slug}`"
-                size="lg"
-                :aria-label="$t('applicationDetail.ctaAria', { name: application.name })"
-                class="!bg-white !text-primary hover:!bg-slate-100 focus-visible:!outline-white"
-              >
-                {{ $t('applicationDetail.ctaButton') }}
-              </AppButton>
-            </div>
-          </div>
+      <section class="page-section pt-0">
+        <div class="section-shell">
+          <CtaBand
+            :eyebrow="$t('applicationDetail.overviewEyebrow')"
+            :title="$t('applicationDetail.ctaTitle')"
+            :description="$t('applicationDetail.ctaDescription')"
+            :primary-to="`/contact?scene=${application.slug}`"
+            :primary-label="$t('applicationDetail.ctaButton')"
+          />
         </div>
       </section>
     </template>
 
-    <section v-else class="py-24">
-      <div class="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
-        <p class="text-sm font-semibold uppercase tracking-[0.2em] text-accent">
-          {{ $t('applicationDetail.notFoundEyebrow') }}
-        </p>
-        <h1 class="mt-4 text-3xl font-black text-slate-950 sm:text-4xl">
-          {{ $t('applicationDetail.notFoundTitle') }}
-        </h1>
-        <p class="mt-5 text-base leading-8 text-slate-600">
-          {{ $t('applicationDetail.notFoundDescription') }}
-        </p>
-        <div class="mt-8 flex justify-center">
-          <AppButton to="/applications" size="lg" :aria-label="$t('applicationDetail.notFoundAria')">
-            {{ $t('applicationDetail.notFoundButton') }}
-          </AppButton>
+    <section v-else class="page-section">
+      <div class="section-shell">
+        <div class="surface-card px-6 py-16 text-center">
+          <p class="eyebrow">{{ $t('applicationDetail.notFoundEyebrow') }}</p>
+          <h1 class="mt-4 text-3xl font-semibold tracking-tight text-brand-ink sm:text-4xl">
+            {{ $t('applicationDetail.notFoundTitle') }}
+          </h1>
+          <p class="mx-auto mt-5 max-w-2xl text-base leading-8 text-brand-muted">
+            {{ $t('applicationDetail.notFoundDescription') }}
+          </p>
+          <div class="mt-8 flex justify-center">
+            <AppButton to="/applications" size="lg" :aria-label="$t('applicationDetail.notFoundAria')">
+              {{ $t('applicationDetail.notFoundButton') }}
+            </AppButton>
+          </div>
         </div>
       </div>
     </section>
@@ -201,9 +201,12 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
-import { usePageSeoMeta } from '~/composables/useSeoMeta'
 import AppButton from '~/components/common/AppButton.vue'
+import CtaBand from '~/components/common/CtaBand.vue'
+import PageHero from '~/components/common/PageHero.vue'
+import SectionHeading from '~/components/common/SectionHeading.vue'
 import ProductCard from '~/components/product/ProductCard.vue'
+import { usePageSeoMeta } from '~/composables/useSeoMeta'
 import type { ApplicationScene } from '~~/types'
 
 const route = useRoute()
@@ -312,4 +315,3 @@ useHead(() => ({
     : []
 }))
 </script>
-

@@ -1,12 +1,12 @@
 <template>
   <NuxtLink
     :to="targetPath"
-    class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-3 py-2 text-[11px] font-semibold tracking-[0.18em] text-white transition-colors duration-200 hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+    class="inline-flex min-h-11 items-center gap-2 rounded-full border border-brand-line bg-brand-surface-strong px-3 py-2 text-[11px] font-semibold tracking-[0.18em] text-primary transition-colors duration-200 hover:border-primary/15 hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
     :aria-label="t('langSwitcher.switchToAria', { locale: targetLabel })"
   >
     <span>{{ currentCode }}</span>
-    <span class="text-slate-400">/</span>
-    <span class="text-blue-200">{{ targetCode }}</span>
+    <span class="text-brand-muted">/</span>
+    <span class="text-accent">{{ targetCode }}</span>
   </NuxtLink>
 </template>
 

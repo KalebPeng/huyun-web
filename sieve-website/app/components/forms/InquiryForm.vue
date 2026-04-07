@@ -1,15 +1,13 @@
 <template>
-  <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
-    <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+  <div class="surface-card p-6 sm:p-8">
+    <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
       <div>
-        <p class="text-sm font-semibold uppercase tracking-[0.2em] text-accent">
-          {{ $t('form.inquiry.eyebrow') }}
-        </p>
-        <h2 class="mt-2 text-2xl font-black text-slate-950">
+        <p class="eyebrow">{{ $t('form.inquiry.eyebrow') }}</p>
+        <h2 class="mt-3 text-3xl font-bold tracking-tight text-brand-ink">
           {{ $t('form.inquiry.title') }}
         </h2>
       </div>
-      <p class="text-sm text-slate-500">
+      <p class="mono-meta text-brand-muted">
         {{ $t('form.inquiry.requiredHint') }}
       </p>
     </div>
@@ -34,14 +32,14 @@
     <form class="mt-8 space-y-5" @submit.prevent="handleSubmit">
       <div class="grid gap-5 md:grid-cols-2">
         <div>
-          <label class="mb-2 block text-sm font-semibold text-slate-900" for="inquiry-name">
+          <label class="field-label" for="inquiry-name">
             {{ $t('form.inquiry.fields.name') }}
           </label>
           <input
             id="inquiry-name"
             v-model.trim="form.name"
             type="text"
-            class="field-input"
+            class="field-input-light"
             :class="errors.name ? 'border-red-300 focus:border-red-500 focus:ring-red-100' : ''"
             :placeholder="$t('form.inquiry.placeholders.name')"
           >
@@ -51,27 +49,27 @@
         </div>
 
         <div>
-          <label class="mb-2 block text-sm font-semibold text-slate-900" for="inquiry-company">
+          <label class="field-label" for="inquiry-company">
             {{ $t('form.inquiry.fields.company') }}
           </label>
           <input
             id="inquiry-company"
             v-model.trim="form.company"
             type="text"
-            class="field-input"
+            class="field-input-light"
             :placeholder="$t('form.inquiry.placeholders.company')"
           >
         </div>
 
         <div>
-          <label class="mb-2 block text-sm font-semibold text-slate-900" for="inquiry-contact">
+          <label class="field-label" for="inquiry-contact">
             {{ $t('form.inquiry.fields.contact') }}
           </label>
           <input
             id="inquiry-contact"
             v-model.trim="form.contact"
             type="text"
-            class="field-input"
+            class="field-input-light"
             :class="errors.contact ? 'border-red-300 focus:border-red-500 focus:ring-red-100' : ''"
             :placeholder="$t('form.inquiry.placeholders.contact')"
           >
@@ -81,13 +79,13 @@
         </div>
 
         <div>
-          <label class="mb-2 block text-sm font-semibold text-slate-900" for="inquiry-usage">
+          <label class="field-label" for="inquiry-usage">
             {{ $t('form.inquiry.fields.usage') }}
           </label>
           <select
             id="inquiry-usage"
             v-model="form.usage"
-            class="field-input"
+            class="field-input-light"
           >
             <option value="">
               {{ $t('form.inquiry.placeholders.usage') }}
@@ -99,26 +97,26 @@
         </div>
 
         <div>
-          <label class="mb-2 block text-sm font-semibold text-slate-900" for="inquiry-product-type">
+          <label class="field-label" for="inquiry-product-type">
             {{ $t('form.inquiry.fields.productType') }}
           </label>
           <input
             id="inquiry-product-type"
             v-model.trim="form.productType"
             type="text"
-            class="field-input"
+            class="field-input-light"
             :placeholder="$t('form.inquiry.placeholders.productType')"
           >
         </div>
 
         <div>
-          <label class="mb-2 block text-sm font-semibold text-slate-900" for="inquiry-material">
+          <label class="field-label" for="inquiry-material">
             {{ $t('form.inquiry.fields.material') }}
           </label>
           <select
             id="inquiry-material"
             v-model="form.material"
-            class="field-input"
+            class="field-input-light"
           >
             <option value="">
               {{ $t('form.inquiry.placeholders.material') }}
@@ -130,50 +128,50 @@
         </div>
 
         <div>
-          <label class="mb-2 block text-sm font-semibold text-slate-900" for="inquiry-mesh">
+          <label class="field-label" for="inquiry-mesh">
             {{ $t('form.inquiry.fields.meshOrAperture') }}
           </label>
           <input
             id="inquiry-mesh"
             v-model.trim="form.meshOrAperture"
             type="text"
-            class="field-input"
+            class="field-input-light"
             :placeholder="$t('form.inquiry.placeholders.meshOrAperture')"
           >
         </div>
 
         <div>
-          <label class="mb-2 block text-sm font-semibold text-slate-900" for="inquiry-size">
+          <label class="field-label" for="inquiry-size">
             {{ $t('form.inquiry.fields.size') }}
           </label>
           <input
             id="inquiry-size"
             v-model.trim="form.size"
             type="text"
-            class="field-input"
+            class="field-input-light"
             :placeholder="$t('form.inquiry.placeholders.size')"
           >
         </div>
 
         <div>
-          <label class="mb-2 block text-sm font-semibold text-slate-900" for="inquiry-quantity">
+          <label class="field-label" for="inquiry-quantity">
             {{ $t('form.inquiry.fields.quantity') }}
           </label>
           <input
             id="inquiry-quantity"
             v-model.trim="form.quantity"
             type="text"
-            class="field-input"
+            class="field-input-light"
             :placeholder="$t('form.inquiry.placeholders.quantity')"
           >
         </div>
 
         <div>
-          <span class="mb-2 block text-sm font-semibold text-slate-900">
+          <span class="field-label">
             {{ $t('form.inquiry.fields.customRequired') }}
           </span>
-          <div class="flex min-h-12 items-center gap-6 rounded-2xl border border-slate-200 bg-slate-50 px-4">
-            <label class="inline-flex items-center gap-2 text-sm text-slate-700">
+          <div class="grid min-h-12 grid-cols-2 gap-2 rounded-2xl border border-brand-line bg-brand-surface-strong p-2">
+            <label class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-transparent px-3 py-2 text-sm font-medium text-brand-muted transition-colors hover:bg-white">
               <input
                 v-model="customRequiredValue"
                 type="radio"
@@ -182,7 +180,7 @@
               >
               <span>{{ $t('common.yes') }}</span>
             </label>
-            <label class="inline-flex items-center gap-2 text-sm text-slate-700">
+            <label class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-transparent px-3 py-2 text-sm font-medium text-brand-muted transition-colors hover:bg-white">
               <input
                 v-model="customRequiredValue"
                 type="radio"
@@ -196,14 +194,14 @@
       </div>
 
       <div>
-        <label class="mb-2 block text-sm font-semibold text-slate-900" for="inquiry-remark">
+        <label class="field-label" for="inquiry-remark">
           {{ $t('form.inquiry.fields.remark') }}
         </label>
         <textarea
           id="inquiry-remark"
           v-model.trim="form.remark"
           rows="4"
-          class="field-input resize-y"
+          class="field-input-light resize-y py-3"
           :placeholder="$t('form.inquiry.placeholders.remark')"
         />
       </div>
@@ -408,9 +406,3 @@ const handleSubmit = async () => {
   }
 }
 </script>
-
-<style scoped>
-.field-input {
-  @apply min-h-12 w-full rounded-2xl border border-slate-200 bg-white px-4 text-sm text-slate-900 outline-none transition-colors duration-200 placeholder:text-slate-400 focus:border-accent focus:ring-4 focus:ring-blue-100;
-}
-</style>

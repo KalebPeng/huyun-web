@@ -1,12 +1,13 @@
 <template>
-  <footer class="bg-dark text-white">
+  <footer class="mt-8 border-t border-brand-line/80 bg-[#10233A] text-white">
     <div class="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
-      <div class="grid gap-10 sm:grid-cols-2 xl:grid-cols-4">
-        <section aria-labelledby="footer-company">
-          <h2 id="footer-company" class="text-lg font-semibold tracking-[0.16em] text-white">
+      <div class="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_repeat(3,minmax(0,0.9fr))]">
+        <section aria-labelledby="footer-company" class="rounded-[1.75rem] border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
+          <p class="eyebrow-soft text-blue-200">{{ $t('brand.tagline') }}</p>
+          <h2 id="footer-company" class="mt-3 text-2xl font-semibold tracking-[0.04em] text-white">
             {{ $t('brand.name') }}
           </h2>
-          <p class="mt-4 text-sm leading-7 text-slate-300">
+          <p class="mt-4 max-w-md text-sm leading-7 text-slate-300">
             {{ $t('footer.description') }}
           </p>
         </section>
@@ -50,11 +51,11 @@
           <h2 id="footer-contact" class="text-sm font-semibold tracking-[0.2em] text-slate-200">
             {{ $t('footer.contact') }}
           </h2>
-          <ul class="mt-4 space-y-3 text-sm text-slate-300">
-            <li><span class="font-medium text-white">{{ $t('footer.phone') }}</span>+86 13561559016</li>
-            <li><span class="font-medium text-white">{{ $t('footer.wechat') }}</span>HUAYUN-MESH</li>
+          <ul class="mt-4 space-y-4 text-sm text-slate-300">
+            <li><span class="mr-2 font-medium text-white">{{ $t('footer.phone') }}</span>+86 13561559016</li>
+            <li><span class="mr-2 font-medium text-white">{{ $t('footer.wechat') }}</span>HUAYUN-MESH</li>
             <li>
-              <span class="font-medium text-white">{{ $t('footer.email') }}</span>
+              <span class="mr-2 font-medium text-white">{{ $t('footer.email') }}</span>
               <a
                 href="mailto:sales@huayun-mesh.com"
                 class="transition-colors duration-200 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
@@ -62,15 +63,16 @@
                 sales@huayun-mesh.com
               </a>
             </li>
-            <li><span class="font-medium text-white">{{ $t('footer.address') }}</span>{{ $t('contactPage.contactItems.addressValue') }}</li>
+            <li><span class="mr-2 font-medium text-white">{{ $t('footer.address') }}</span>{{ $t('contactPage.contactItems.addressValue') }}</li>
           </ul>
         </section>
       </div>
 
       <div
-        class="mt-10 border-t border-white/10 pt-6 text-center text-sm text-slate-400 sm:text-left"
+        class="mt-10 flex flex-col gap-3 border-t border-white/10 pt-6 text-sm text-slate-400 sm:flex-row sm:items-center sm:justify-between"
       >
-        {{ $t('footer.copyright') }}
+        <span>{{ $t('footer.copyright') }}</span>
+        <span class="mono-meta text-slate-500">Industrial screen systems · OEM / ODM</span>
       </div>
     </div>
   </footer>

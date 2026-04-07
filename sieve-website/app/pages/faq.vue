@@ -1,40 +1,30 @@
-﻿<template>
-  <div class="bg-slate-50">
-    <section class="bg-[linear-gradient(135deg,#111827,#1a2744)] py-16 text-white sm:py-20">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <p class="text-sm font-semibold uppercase tracking-[0.24em] text-blue-200">
-          {{ $t('nav.faq') }}
-        </p>
-        <h1 class="mt-4 text-4xl font-black sm:text-5xl">
-          {{ $t('faqPage.title') }}
-        </h1>
-        <p class="mt-5 max-w-3xl text-base leading-8 text-slate-200 sm:text-lg">
-          {{ $t('faqPage.description') }}
-        </p>
-
-        <div class="mt-8 max-w-2xl">
-          <label for="faq-search" class="sr-only">{{ $t('faqPage.searchLabel') }}</label>
-          <div class="relative">
-            <input
-              id="faq-search"
-              v-model.trim="searchKeyword"
-              type="search"
-              :placeholder="$t('faqPage.searchPlaceholder')"
-              class="min-h-12 w-full rounded-2xl border border-white/15 bg-white/10 px-5 pr-12 text-base text-white placeholder:text-slate-300 backdrop-blur-sm outline-none transition-colors duration-200 focus:border-white/40"
-              :aria-label="$t('faqPage.searchAria')"
-            >
-            <span class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-slate-300" aria-hidden="true">
-              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-4.35-4.35m1.85-5.15a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z" />
-              </svg>
-            </span>
-          </div>
+<template>
+  <div class="page-shell">
+    <PageHero
+      :eyebrow="$t('nav.faq')"
+      :title="$t('faqPage.title')"
+      :description="$t('faqPage.description')"
+    >
+      <div class="max-w-2xl">
+        <label for="faq-search" class="sr-only">{{ $t('faqPage.searchLabel') }}</label>
+        <div class="field-wrap-light gap-3 pr-3">
+          <svg class="h-5 w-5 shrink-0 text-brand-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-4.35-4.35m1.85-5.15a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z" />
+          </svg>
+          <input
+            id="faq-search"
+            v-model.trim="searchKeyword"
+            type="search"
+            :placeholder="$t('faqPage.searchPlaceholder')"
+            class="w-full border-0 bg-transparent px-0 text-sm text-brand-ink outline-none placeholder:text-slate-400"
+            :aria-label="$t('faqPage.searchAria')"
+          >
         </div>
       </div>
-    </section>
+    </PageHero>
 
-    <section class="py-8 sm:py-10">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section class="page-section pb-8">
+      <div class="section-shell">
         <div
           class="-mx-4 overflow-x-auto px-4 pb-2 sm:mx-0 sm:px-0"
           :aria-label="$t('faqPage.filterAria')"
@@ -44,10 +34,8 @@
               v-for="tab in categoryTabs"
               :key="tab.value"
               type="button"
-              class="min-h-11 shrink-0 rounded-full border px-5 text-sm font-semibold transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-              :class="tab.value === activeCategory
-                ? 'border-primary bg-primary text-white shadow-sm'
-                : 'border-slate-200 bg-white text-slate-700 hover:border-primary hover:text-primary'"
+              class="filter-chip"
+              :class="tab.value === activeCategory ? 'filter-chip-active' : 'filter-chip-idle'"
               :aria-pressed="tab.value === activeCategory"
               @click="activeCategory = tab.value"
             >
@@ -56,17 +44,14 @@
           </div>
         </div>
 
-        <p
-          v-if="searchKeyword"
-          class="mt-4 text-sm text-slate-500"
-        >
+        <p v-if="searchKeyword" class="mt-5 text-sm text-brand-muted">
           {{ $t('faqPage.searching', { keyword: searchKeyword }) }}
         </p>
       </div>
     </section>
 
-    <section class="pb-16 sm:pb-20">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section class="page-section pt-0">
+      <div class="section-shell">
         <FaqAccordion
           v-if="filteredFaqs.length"
           :items="filteredFaqs"
@@ -74,41 +59,27 @@
 
         <div
           v-else
-          class="rounded-3xl border border-dashed border-slate-300 bg-white px-6 py-16 text-center shadow-sm"
+          class="surface-card px-6 py-16 text-center"
         >
-          <p class="text-lg font-bold text-slate-900">
+          <p class="text-lg font-semibold text-brand-ink">
             {{ $t('faqPage.emptyTitle') }}
           </p>
-          <p class="mt-3 text-sm leading-7 text-slate-500">
+          <p class="mt-3 text-sm leading-7 text-brand-muted">
             {{ $t('faqPage.emptyDescription') }}
           </p>
         </div>
       </div>
     </section>
 
-    <section class="pb-16 sm:pb-20">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="rounded-3xl bg-[linear-gradient(135deg,#1a2744,#243f72)] px-6 py-10 text-white shadow-[0_24px_60px_rgba(15,23,42,0.18)] sm:px-10">
-          <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-            <div>
-              <h2 class="text-2xl font-black sm:text-3xl">
-                {{ $t('faqPage.ctaTitle') }}
-              </h2>
-              <p class="mt-3 max-w-2xl text-sm leading-7 text-slate-200 sm:text-base">
-                {{ $t('faqPage.ctaDescription') }}
-              </p>
-            </div>
-
-            <AppButton
-              to="/contact"
-              size="lg"
-              :aria-label="$t('faqPage.ctaAria')"
-              class="!bg-white !text-primary hover:!bg-slate-100 focus-visible:!outline-white"
-            >
-              {{ $t('common.contactUs') }}
-            </AppButton>
-          </div>
-        </div>
+    <section class="page-section pt-0">
+      <div class="section-shell">
+        <CtaBand
+          :eyebrow="$t('nav.faq')"
+          :title="$t('faqPage.ctaTitle')"
+          :description="$t('faqPage.ctaDescription')"
+          primary-to="/contact"
+          :primary-label="$t('common.contactUs')"
+        />
       </div>
     </section>
   </div>
@@ -117,9 +88,10 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 
-import { usePageSeoMeta } from '~/composables/useSeoMeta'
-import AppButton from '~/components/common/AppButton.vue'
+import CtaBand from '~/components/common/CtaBand.vue'
 import FaqAccordion from '~/components/common/FaqAccordion.vue'
+import PageHero from '~/components/common/PageHero.vue'
+import { usePageSeoMeta } from '~/composables/useSeoMeta'
 import type { FAQ } from '~~/types'
 
 type FaqCategoryKey =
@@ -219,4 +191,3 @@ useHead(() => ({
   ]
 }))
 </script>
-

@@ -1,232 +1,228 @@
-﻿<template>
-  <div class="tools-page min-h-screen">
-    <section class="tools-hero relative overflow-hidden pb-16 pt-12 sm:pb-20 sm:pt-16">
-      <div class="hero-grid pointer-events-none absolute inset-0" aria-hidden="true" />
-      <div class="hero-glow pointer-events-none absolute left-1/2 top-0 h-64 w-96 -translate-x-1/2 -translate-y-1/2" aria-hidden="true" />
-
-      <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="text-center">
-          <div class="inline-flex items-center gap-2 rounded-full border border-accent/25 bg-accent/8 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.22em] text-accent">
-            <span class="h-1.5 w-1.5 rounded-full bg-accent" />
-            {{ $t('toolsPage.eyebrow') }}
+<template>
+  <div class="page-shell">
+    <PageHero
+      :eyebrow="$t('toolsPage.eyebrow')"
+      :title="$t('toolsPage.title')"
+      :description="$t('toolsPage.description')"
+    >
+      <template #aside>
+        <div class="surface-card-soft p-6">
+          <div class="space-y-4">
+            <div class="metric-tile">
+              <p class="metric-value">ASTM</p>
+              <p class="metric-label">E11 / ISO 9044</p>
+            </div>
+            <div class="metric-tile">
+              <p class="metric-value">2 min</p>
+              <p class="metric-label">{{ $t('toolsPage.howTo.title') }}</p>
+            </div>
           </div>
-          <h1 class="mt-4 text-4xl font-black tracking-tight text-white sm:text-5xl lg:text-6xl">
-            {{ $t('toolsPage.title') }}
-          </h1>
-          <p class="mx-auto mt-4 max-w-2xl text-base leading-7 text-slate-400">
-            {{ $t('toolsPage.description') }}
-          </p>
         </div>
-      </div>
-    </section>
+      </template>
+    </PageHero>
 
-    <section class="relative pb-16 sm:pb-20">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="grid gap-8 lg:grid-cols-[1fr_340px]">
-          <div class="space-y-6">
-            <div class="calc-card overflow-hidden rounded-2xl">
-              <div class="calc-card-header flex items-center justify-between px-6 py-4">
-                <div class="flex items-center gap-3">
-                  <div class="calc-icon-wrap flex h-9 w-9 items-center justify-center rounded-lg">
-                    <svg class="h-5 w-5 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
-                      <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
-                      <path d="M9 9h6M9 12h6M9 15h4" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h2 class="text-sm font-bold text-white">{{ $t('toolsPage.converter.title') }}</h2>
-                    <p class="text-[11px] text-slate-500">{{ $t('toolsPage.converter.subtitle') }}</p>
-                  </div>
+    <section class="page-section">
+      <div class="section-shell grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px]">
+        <div class="space-y-6">
+          <div class="rounded-[2rem] border border-[#1d3658] bg-[#10233A] p-6 text-white shadow-[0_24px_48px_rgba(16,35,58,0.2)] sm:p-8">
+            <div class="flex flex-col gap-4 border-b border-white/10 pb-5 sm:flex-row sm:items-center sm:justify-between">
+              <div class="flex items-center gap-3">
+                <div class="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-white/10 text-accent">
+                  <FeatureIcon name="calculator" class="h-6 w-6" />
                 </div>
-                <span class="std-badge">ASTM E11</span>
+                <div>
+                  <p class="mono-meta text-slate-400">{{ $t('toolsPage.converter.subtitle') }}</p>
+                  <h2 class="mt-1 text-xl font-semibold">{{ $t('toolsPage.converter.title') }}</h2>
+                </div>
+              </div>
+              <span class="mono-meta rounded-full border border-white/10 bg-white/5 px-3 py-1 text-slate-300">ASTM E11</span>
+            </div>
+
+            <div class="mt-6 grid gap-5 sm:grid-cols-3">
+              <div>
+                <label class="mb-2 block text-sm font-semibold text-slate-200">{{ $t('meshCalculator.fields.mesh') }}</label>
+                <div class="field-wrap-dark gap-3">
+                  <input
+                    v-model.number="mesh"
+                    type="number"
+                    min="1"
+                    class="w-full border-0 bg-transparent px-0 text-sm font-medium text-slate-100 outline-none placeholder:text-slate-500"
+                    :placeholder="$t('toolsPage.placeholders.mesh')"
+                    @input="updateFromMesh"
+                  >
+                  <span class="mono-meta text-slate-500">{{ $t('meshCalculator.units.mesh') }}</span>
+                </div>
               </div>
 
-              <div class="px-6 pb-6">
-                <div class="grid gap-5 sm:grid-cols-3">
-                  <div class="field-group">
-                    <label class="field-label">{{ $t('meshCalculator.fields.mesh') }}</label>
-                    <div class="field-wrap">
-                      <input
-                        v-model.number="mesh"
-                        type="number"
-                        min="1"
-                        class="field-input"
-                        :placeholder="$t('toolsPage.placeholders.mesh')"
-                        @input="updateFromMesh"
-                      />
-                      <span class="field-unit">{{ $t('meshCalculator.units.mesh') }}</span>
-                    </div>
-                  </div>
-
-                  <div class="field-group">
-                    <label class="field-label">{{ $t('meshCalculator.fields.aperture') }}</label>
-                    <div class="field-wrap">
-                      <input
-                        v-model.number="aperture"
-                        type="number"
-                        step="0.001"
-                        min="0"
-                        class="field-input"
-                        :placeholder="$t('toolsPage.placeholders.aperture')"
-                        @input="updateFromAperture"
-                      />
-                      <span class="field-unit">{{ $t('meshCalculator.units.metric') }}</span>
-                    </div>
-                  </div>
-
-                  <div class="field-group">
-                    <label class="field-label">{{ $t('meshCalculator.fields.wireDiameter') }}</label>
-                    <div class="field-wrap">
-                      <input
-                        v-model.number="wireDia"
-                        type="number"
-                        step="0.01"
-                        min="0.01"
-                        class="field-input"
-                        :placeholder="$t('toolsPage.placeholders.wire')"
-                      />
-                      <span class="field-unit">{{ $t('meshCalculator.units.metric') }}</span>
-                    </div>
-                  </div>
+              <div>
+                <label class="mb-2 block text-sm font-semibold text-slate-200">{{ $t('meshCalculator.fields.aperture') }}</label>
+                <div class="field-wrap-dark gap-3">
+                  <input
+                    v-model.number="aperture"
+                    type="number"
+                    step="0.001"
+                    min="0"
+                    class="w-full border-0 bg-transparent px-0 text-sm font-medium text-slate-100 outline-none placeholder:text-slate-500"
+                    :placeholder="$t('toolsPage.placeholders.aperture')"
+                    @input="updateFromAperture"
+                  >
+                  <span class="mono-meta text-slate-500">{{ $t('meshCalculator.units.metric') }}</span>
                 </div>
+              </div>
 
-                <div class="result-panel mt-5 grid gap-3 sm:grid-cols-2">
-                  <div class="result-item">
-                    <span class="result-label">{{ $t('meshCalculator.fields.openingArea') }}</span>
-                    <div class="result-value-wrap">
-                      <span class="result-value">{{ openingArea }}</span>
-                      <span class="result-unit">%</span>
-                    </div>
-                    <div class="result-bar-bg mt-2 overflow-hidden rounded-full">
-                      <div
-                        class="result-bar-fill h-full rounded-full transition-all duration-700 ease-out"
-                        :style="`width:${Math.min(parseFloat(openingArea), 100)}%`"
-                      />
-                    </div>
-                  </div>
-
-                  <div class="result-item">
-                    <span class="result-label">{{ $t('toolsPage.pitchLabel') }}</span>
-                    <div class="result-value-wrap">
-                      <span class="result-value">{{ pitch }}</span>
-                      <span class="result-unit">{{ $t('meshCalculator.units.metric') }}</span>
-                    </div>
-                    <p class="mt-2 text-[11px] text-slate-600">{{ $t('toolsPage.pitchDescription') }}</p>
-                  </div>
+              <div>
+                <label class="mb-2 block text-sm font-semibold text-slate-200">{{ $t('meshCalculator.fields.wireDiameter') }}</label>
+                <div class="field-wrap-dark gap-3">
+                  <input
+                    v-model.number="wireDia"
+                    type="number"
+                    step="0.01"
+                    min="0.01"
+                    class="w-full border-0 bg-transparent px-0 text-sm font-medium text-slate-100 outline-none placeholder:text-slate-500"
+                    :placeholder="$t('toolsPage.placeholders.wire')"
+                  >
+                  <span class="mono-meta text-slate-500">{{ $t('meshCalculator.units.metric') }}</span>
                 </div>
-
-                <details class="formula-details mt-5">
-                  <summary class="formula-summary cursor-pointer">{{ $t('toolsPage.formulaSummary') }}</summary>
-                  <div class="formula-body mt-3 grid gap-3 sm:grid-cols-2">
-                    <div class="formula-card">
-                      <p class="formula-name">{{ $t('toolsPage.formulas.apertureTitle') }}</p>
-                      <code class="formula-code">W = (25.4 / M) - d</code>
-                      <p class="formula-desc">{{ $t('toolsPage.formulas.apertureDescription') }}</p>
-                    </div>
-                    <div class="formula-card">
-                      <p class="formula-name">{{ $t('toolsPage.formulas.openingAreaTitle') }}</p>
-                      <code class="formula-code">OA = (W / (W + d))^2 x 100</code>
-                      <p class="formula-desc">{{ $t('toolsPage.formulas.openingAreaDescription') }}</p>
-                    </div>
-                  </div>
-                </details>
               </div>
             </div>
 
-            <div class="calc-card overflow-hidden rounded-2xl">
-              <div class="calc-card-header px-6 py-4">
-                <div class="flex items-center gap-3">
-                  <div class="calc-icon-wrap flex h-9 w-9 items-center justify-center rounded-lg">
-                    <svg class="h-5 w-5 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
-                      <path d="M3 10h18M3 14h18M10 3v18M14 3v18" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h2 class="text-sm font-bold text-white">{{ $t('toolsPage.referenceTitle') }}</h2>
-                    <p class="text-[11px] text-slate-500">{{ $t('toolsPage.referenceSubtitle') }}</p>
-                  </div>
+            <div class="mt-6 grid gap-4 md:grid-cols-2">
+              <div class="rounded-[1.5rem] border border-white/10 bg-white/5 p-5">
+                <p class="mono-meta text-slate-400">{{ $t('meshCalculator.fields.openingArea') }}</p>
+                <div class="mt-3 flex items-end gap-2">
+                  <span class="text-4xl font-semibold tracking-tight text-accent">{{ openingArea }}</span>
+                  <span class="mono-meta pb-1 text-slate-400">%</span>
+                </div>
+                <div class="mt-4 h-1.5 overflow-hidden rounded-full bg-white/10">
+                  <div
+                    class="h-full rounded-full bg-gradient-to-r from-blue-500 to-sky-300 transition-all duration-700"
+                    :style="`width:${Math.min(parseFloat(openingArea), 100)}%`"
+                  />
                 </div>
               </div>
 
-              <div class="overflow-x-auto px-0">
-                <table class="ref-table min-w-full text-xs">
-                  <thead>
-                    <tr>
-                      <th class="ref-th">{{ $t('toolsPage.table.mesh') }}</th>
-                      <th class="ref-th">{{ $t('toolsPage.table.aperture') }}</th>
-                      <th class="ref-th">{{ $t('toolsPage.table.wire') }}</th>
-                      <th class="ref-th">{{ $t('toolsPage.table.openingArea') }}</th>
-                      <th class="ref-th">{{ $t('toolsPage.table.useCase') }}</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr
-                      v-for="row in referenceData"
-                      :key="row.mesh"
-                      class="ref-row cursor-pointer"
-                      :class="{ 'ref-row-active': selectedRef === row.mesh }"
-                      @click="applyRefRow(row)"
-                    >
-                      <td class="ref-td font-bold text-white">{{ row.mesh }}</td>
-                      <td class="ref-td font-mono text-accent">{{ row.aperture }}</td>
-                      <td class="ref-td font-mono text-slate-300">{{ row.wire }}</td>
-                      <td class="ref-td">
-                        <div class="flex items-center gap-2">
-                          <div class="h-1.5 w-12 overflow-hidden rounded-full bg-slate-700">
-                            <div class="h-full rounded-full bg-accent/70" :style="`width:${row.oa}%`" />
-                          </div>
-                          <span class="text-slate-300">{{ row.oa }}%</span>
-                        </div>
-                      </td>
-                      <td class="ref-td text-slate-500">{{ row.use }}</td>
-                    </tr>
-                  </tbody>
-                </table>
+              <div class="rounded-[1.5rem] border border-white/10 bg-white/5 p-5">
+                <p class="mono-meta text-slate-400">{{ $t('toolsPage.pitchLabel') }}</p>
+                <div class="mt-3 flex items-end gap-2">
+                  <span class="text-4xl font-semibold tracking-tight text-white">{{ pitch }}</span>
+                  <span class="mono-meta pb-1 text-slate-400">{{ $t('meshCalculator.units.metric') }}</span>
+                </div>
+                <p class="mt-4 text-sm leading-7 text-slate-400">{{ $t('toolsPage.pitchDescription') }}</p>
               </div>
-              <p class="px-6 pb-4 pt-2 text-[11px] text-slate-600">{{ $t('toolsPage.tableHint') }}</p>
+            </div>
+
+            <details class="mt-6 rounded-[1.5rem] border border-white/10 bg-white/5 p-5">
+              <summary class="cursor-pointer list-none text-sm font-semibold text-white">
+                {{ $t('toolsPage.formulaSummary') }}
+              </summary>
+              <div class="mt-4 grid gap-3 sm:grid-cols-2">
+                <div class="rounded-2xl border border-white/10 bg-[#0b1728] p-4">
+                  <p class="mono-meta text-slate-500">{{ $t('toolsPage.formulas.apertureTitle') }}</p>
+                  <code class="mt-3 block rounded-xl bg-white/5 px-3 py-2 font-mono text-sm text-accent">W = (25.4 / M) - d</code>
+                  <p class="mt-3 text-xs leading-6 text-slate-400">{{ $t('toolsPage.formulas.apertureDescription') }}</p>
+                </div>
+                <div class="rounded-2xl border border-white/10 bg-[#0b1728] p-4">
+                  <p class="mono-meta text-slate-500">{{ $t('toolsPage.formulas.openingAreaTitle') }}</p>
+                  <code class="mt-3 block rounded-xl bg-white/5 px-3 py-2 font-mono text-sm text-accent">OA = (W / (W + d))^2 x 100</code>
+                  <p class="mt-3 text-xs leading-6 text-slate-400">{{ $t('toolsPage.formulas.openingAreaDescription') }}</p>
+                </div>
+              </div>
+            </details>
+          </div>
+
+          <div class="surface-card overflow-hidden">
+            <div class="border-b border-brand-line px-6 py-5">
+              <SectionHeading
+                :eyebrow="$t('toolsPage.referenceSubtitle')"
+                :title="$t('toolsPage.referenceTitle')"
+              />
+            </div>
+
+            <div class="overflow-x-auto">
+              <table class="min-w-full text-sm">
+                <thead class="bg-brand-surface-strong">
+                  <tr>
+                    <th class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-[0.14em] text-brand-muted">{{ $t('toolsPage.table.mesh') }}</th>
+                    <th class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-[0.14em] text-brand-muted">{{ $t('toolsPage.table.aperture') }}</th>
+                    <th class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-[0.14em] text-brand-muted">{{ $t('toolsPage.table.wire') }}</th>
+                    <th class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-[0.14em] text-brand-muted">{{ $t('toolsPage.table.openingArea') }}</th>
+                    <th class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-[0.14em] text-brand-muted">{{ $t('toolsPage.table.useCase') }}</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-brand-line">
+                  <tr
+                    v-for="row in referenceData"
+                    :key="row.mesh"
+                    class="cursor-pointer transition-colors hover:bg-brand-surface-strong"
+                    :class="{ 'bg-brand-surface-strong': selectedRef === row.mesh }"
+                    @click="applyRefRow(row)"
+                  >
+                    <td class="px-6 py-4 font-semibold text-brand-ink">{{ row.mesh }}</td>
+                    <td class="px-6 py-4 font-mono text-primary">{{ row.aperture }}</td>
+                    <td class="px-6 py-4 font-mono text-brand-muted">{{ row.wire }}</td>
+                    <td class="px-6 py-4">
+                      <div class="flex items-center gap-2">
+                        <div class="h-1.5 w-16 overflow-hidden rounded-full bg-brand-line/70">
+                          <div class="h-full rounded-full bg-accent/70" :style="`width:${row.oa}%`" />
+                        </div>
+                        <span class="text-brand-muted">{{ row.oa }}%</span>
+                      </div>
+                    </td>
+                    <td class="px-6 py-4 text-brand-muted">{{ row.use }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="px-6 pb-5 pt-3 text-xs leading-6 text-brand-muted">{{ $t('toolsPage.tableHint') }}</p>
+          </div>
+        </div>
+
+        <div class="space-y-5">
+          <div class="surface-card p-5">
+            <div class="flex items-center gap-3">
+              <div class="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-brand-surface-strong text-primary">
+                <FeatureIcon name="specs" class="h-6 w-6" />
+              </div>
+              <h3 class="text-lg font-semibold text-brand-ink">{{ $t('toolsPage.materialGuideTitle') }}</h3>
+            </div>
+            <div class="mt-5 space-y-3">
+              <div v-for="mat in materialGuide" :key="mat.name" class="surface-card-inset p-4">
+                <div class="flex items-center justify-between gap-3">
+                  <span class="text-sm font-semibold text-brand-ink">{{ mat.name }}</span>
+                  <span class="rounded-full px-3 py-1 text-xs font-semibold" :class="`level-${mat.level}`">{{ mat.levelText }}</span>
+                </div>
+                <p class="mt-2 text-xs leading-6 text-brand-muted">{{ mat.note }}</p>
+              </div>
             </div>
           </div>
 
-          <div class="space-y-5">
-            <div class="side-card rounded-2xl p-5">
-              <h3 class="side-card-title">{{ $t('toolsPage.materialGuideTitle') }}</h3>
-              <div class="mt-4 space-y-3">
-                <div v-for="mat in materialGuide" :key="mat.name" class="mat-row">
-                  <div class="flex items-center justify-between">
-                    <span class="text-xs font-bold text-white">{{ mat.name }}</span>
-                    <span class="mat-badge" :class="`mat-badge-${mat.level}`">{{ mat.levelText }}</span>
-                  </div>
-                  <p class="mt-1 text-[11px] leading-5 text-slate-500">{{ mat.note }}</p>
-                </div>
+          <div class="surface-card p-5">
+            <div class="flex items-center gap-3">
+              <div class="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-brand-surface-strong text-primary">
+                <FeatureIcon name="custom" class="h-6 w-6" />
+              </div>
+              <h3 class="text-lg font-semibold text-brand-ink">{{ $t('toolsPage.decisionTitle') }}</h3>
+            </div>
+            <div class="mt-5 space-y-3">
+              <div v-for="step in decisionSteps" :key="step.q" class="surface-card-inset p-4">
+                <p class="text-sm font-semibold text-brand-ink">{{ step.q }}</p>
+                <p class="mt-2 text-xs leading-6 text-primary">{{ step.a }}</p>
               </div>
             </div>
+          </div>
 
-            <div class="side-card rounded-2xl p-5">
-              <h3 class="side-card-title">{{ $t('toolsPage.decisionTitle') }}</h3>
-              <div class="mt-4 space-y-2.5">
-                <div v-for="step in decisionSteps" :key="step.q" class="decision-item rounded-xl p-3">
-                  <p class="text-[11px] font-semibold text-slate-300">{{ step.q }}</p>
-                  <p class="mt-1 text-[11px] text-accent">-> {{ step.a }}</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="cta-card rounded-2xl p-5 text-center">
-              <p class="text-xs font-bold uppercase tracking-[0.16em] text-blue-300/70">{{ $t('toolsPage.supportEyebrow') }}</p>
-              <p class="mt-2 whitespace-pre-line text-sm font-semibold text-white">{{ $t('toolsPage.supportTitle') }}</p>
-              <NuxtLink
-                :to="localePath('/contact')"
-                class="mt-4 inline-flex w-full items-center justify-center rounded-lg bg-accent px-4 py-2.5 text-sm font-bold text-white transition-colors duration-200 hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
-              >
-                {{ $t('toolsPage.supportCta') }}
-              </NuxtLink>
-              <a
-                href="tel:4001234567"
-                class="mt-2 inline-flex w-full items-center justify-center rounded-lg border border-white/10 px-4 py-2.5 text-sm font-semibold text-slate-300 transition-colors duration-200 hover:border-white/20 hover:text-white"
-              >
-                {{ $t('toolsPage.callCta') }}
-              </a>
-            </div>
+          <div class="rounded-[2rem] border border-[#1d3658] bg-[#10233A] p-5 text-white">
+            <p class="eyebrow text-blue-300">{{ $t('toolsPage.supportEyebrow') }}</p>
+            <p class="mt-3 whitespace-pre-line text-lg font-semibold">{{ $t('toolsPage.supportTitle') }}</p>
+            <AppButton to="/contact" size="md" class="mt-5 w-full">
+              {{ $t('toolsPage.supportCta') }}
+            </AppButton>
+            <a
+              href="tel:4001234567"
+              class="mt-3 inline-flex min-h-12 w-full items-center justify-center rounded-xl border border-white/10 px-4 py-2.5 text-sm font-semibold text-slate-300 transition-colors duration-200 hover:border-white/20 hover:text-white"
+            >
+              {{ $t('toolsPage.callCta') }}
+            </a>
           </div>
         </div>
       </div>
@@ -237,6 +233,10 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 
+import AppButton from '~/components/common/AppButton.vue'
+import FeatureIcon from '~/components/common/FeatureIcon.vue'
+import PageHero from '~/components/common/PageHero.vue'
+import SectionHeading from '~/components/common/SectionHeading.vue'
 import { usePageSeoMeta } from '~/composables/useSeoMeta'
 
 interface ReferenceRow {
@@ -404,265 +404,33 @@ useHead(() => ({
 </script>
 
 <style scoped>
-.tools-page {
-  background-color: #0b1120;
-  background-image:
-    radial-gradient(ellipse 80% 40% at 50% -10%, rgba(37,99,235,0.12) 0%, transparent 60%);
+.level-excellent {
+  background: rgba(16, 185, 129, 0.12);
+  color: #059669;
 }
 
-.hero-grid {
-  background-image:
-    linear-gradient(rgba(37,99,235,0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(37,99,235,0.06) 1px, transparent 1px);
-  background-size: 48px 48px;
-  mask-image: radial-gradient(ellipse 80% 80% at 50% 0%, black 0%, transparent 70%);
+.level-high {
+  background: rgba(37, 99, 235, 0.12);
+  color: #2563eb;
 }
 
-.calc-card {
-  background: #111827;
-  border: 1px solid rgba(255,255,255,0.07);
-  box-shadow: 0 4px 6px rgba(0,0,0,0.3), 0 1px 3px rgba(0,0,0,0.2);
+.level-medium {
+  background: rgba(234, 179, 8, 0.14);
+  color: #b45309;
 }
 
-.calc-card-header {
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-  background: rgba(255,255,255,0.02);
-}
-
-.calc-icon-wrap {
-  background: rgba(37,99,235,0.12);
-  border: 1px solid rgba(37,99,235,0.2);
-}
-
-.std-badge {
-  font-family: monospace;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  color: rgba(147, 197, 253, 0.8);
-  background: rgba(37,99,235,0.1);
-  border: 1px solid rgba(37,99,235,0.2);
-  border-radius: 4px;
-  padding: 2px 8px;
-}
-
-.field-group { display: flex; flex-direction: column; gap: 6px; }
-
-.field-label {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+.level-low {
+  background: rgba(100, 116, 139, 0.14);
   color: #475569;
 }
 
-.field-wrap {
-  display: flex;
-  align-items: center;
-  background: #0f172a;
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 8px;
-  overflow: hidden;
-  transition: border-color 0.15s;
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
-.field-wrap:focus-within {
-  border-color: rgba(37,99,235,0.7);
-  box-shadow: 0 0 0 3px rgba(37,99,235,0.12);
-}
-
-.field-input {
-  flex: 1;
-  min-width: 0;
-  background: transparent;
-  border: 0;
-  color: #f1f5f9;
-  font-size: 14px;
-  font-weight: 600;
-  padding: 9px 12px;
-  outline: none;
-}
-
-.field-input::placeholder { color: #334155; }
-
-.field-unit {
-  padding: 0 10px 0 6px;
-  font-size: 11px;
-  font-weight: 600;
-  color: #334155;
-  font-family: monospace;
-}
-
-.field-input::-webkit-inner-spin-button,
-.field-input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
-.field-input { -moz-appearance: textfield; }
-
-.result-panel {
-  background: #0f172a;
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 12px;
-  padding: 16px;
-}
-
-.result-item { display: flex; flex-direction: column; }
-
-.result-label {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: #475569;
-}
-
-.result-value-wrap { display: flex; align-items: baseline; gap: 6px; margin-top: 6px; }
-
-.result-value {
-  font-size: 28px;
-  font-weight: 900;
-  font-family: monospace;
-  color: #60a5fa;
-  letter-spacing: -0.02em;
-  line-height: 1;
-}
-
-.result-unit {
-  font-size: 13px;
-  font-weight: 700;
-  color: #334155;
-}
-
-.result-bar-bg {
-  height: 4px;
-  background: rgba(255,255,255,0.06);
-  border-radius: 99px;
-}
-
-.result-bar-fill {
-  background: linear-gradient(90deg, #1d4ed8, #60a5fa);
-}
-
-.formula-details > summary { list-style: none; }
-.formula-details > summary::-webkit-details-marker { display: none; }
-
-.formula-summary {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 11px;
-  font-weight: 600;
-  color: #475569;
-  transition: color 0.15s;
-}
-.formula-summary:hover { color: #64748b; }
-.formula-summary::before {
-  content: '>';
-  font-size: 14px;
-  transition: transform 0.2s;
-}
-details[open] .formula-summary::before { transform: rotate(90deg); }
-
-.formula-card {
-  background: #0f172a;
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 10px;
-  padding: 12px 14px;
-}
-
-.formula-name {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #475569;
-  margin-bottom: 6px;
-}
-
-.formula-code {
-  display: block;
-  font-family: monospace;
-  font-size: 12px;
-  font-weight: 700;
-  color: #93c5fd;
-  background: rgba(37,99,235,0.08);
-  border-radius: 6px;
-  padding: 6px 10px;
-  margin-bottom: 6px;
-}
-
-.formula-desc {
-  font-size: 11px;
-  color: #334155;
-  line-height: 1.5;
-}
-
-.ref-table { border-collapse: collapse; }
-.ref-th {
-  padding: 8px 16px;
-  text-align: left;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: #334155;
-  background: rgba(255,255,255,0.02);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-  white-space: nowrap;
-}
-
-.ref-row {
-  transition: background-color 0.12s;
-  border-bottom: 1px solid rgba(255,255,255,0.04);
-}
-.ref-row:hover { background: rgba(37,99,235,0.07); }
-.ref-row-active { background: rgba(37,99,235,0.12) !important; }
-
-.ref-td {
-  padding: 8px 16px;
-  font-size: 12px;
-  color: #64748b;
-  white-space: nowrap;
-}
-
-.side-card {
-  background: #111827;
-  border: 1px solid rgba(255,255,255,0.07);
-}
-
-.side-card-title {
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  color: #e2e8f0;
-}
-
-.mat-badge {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  border-radius: 4px;
-  padding: 1px 7px;
-}
-
-.mat-badge-excellent { background: rgba(16,185,129,0.15); color: #34d399; }
-.mat-badge-high { background: rgba(37,99,235,0.15); color: #60a5fa; }
-.mat-badge-medium { background: rgba(234,179,8,0.15); color: #fbbf24; }
-.mat-badge-low { background: rgba(100,116,139,0.15); color: #94a3b8; }
-
-.mat-row {
-  padding-bottom: 12px;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-}
-.mat-row:last-child { padding-bottom: 0; border-bottom: none; }
-
-.decision-item {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.06);
-}
-
-.cta-card {
-  background: linear-gradient(145deg, #1a2744, #1e3a8a);
-  border: 1px solid rgba(96,165,250,0.2);
-  box-shadow: 0 0 40px rgba(37,99,235,0.12);
+input[type='number'] {
+  -moz-appearance: textfield;
 }
 </style>
-

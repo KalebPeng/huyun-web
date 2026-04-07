@@ -1,7 +1,7 @@
 <template>
-  <div class="min-h-screen bg-slate-100 font-sans text-slate-900">
+  <div class="min-h-screen page-shell">
     <AppHeader />
-    <main id="main-content" class="min-h-[calc(100vh-18rem)]">
+    <main id="main-content" class="min-h-[calc(100vh-18rem)] pt-1">
       <slot />
     </main>
     <AppFooter />

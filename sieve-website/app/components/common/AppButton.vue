@@ -66,21 +66,21 @@ const localizedTo = computed(() => {
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
-    'bg-accent text-white hover:bg-blue-500 focus-visible:outline-accent disabled:bg-blue-300',
+    'border border-accent bg-accent text-white shadow-brand-soft hover:border-blue-700 hover:bg-blue-700 focus-visible:outline-accent disabled:border-blue-300 disabled:bg-blue-300',
   outline:
-    'border border-white/40 bg-transparent text-white hover:border-white hover:bg-white/10 focus-visible:outline-white',
+    'border border-brand-line bg-white text-primary hover:border-primary/30 hover:bg-brand-surface-strong focus-visible:outline-accent',
   ghost:
-    'bg-transparent text-white hover:bg-white/10 focus-visible:outline-white'
+    'border border-transparent bg-transparent text-primary hover:bg-brand-surface-strong focus-visible:outline-accent'
 }
 
 const sizeClasses: Record<ButtonSize, string> = {
-  sm: 'min-h-10 px-4 text-sm',
-  md: 'min-h-11 px-5 text-sm',
+  sm: 'min-h-11 px-4 text-sm',
+  md: 'min-h-12 px-5 text-sm',
   lg: 'min-h-12 px-6 text-base'
 }
 
 const buttonClass = computed(() => [
-  'inline-flex items-center justify-center rounded-md whitespace-nowrap font-semibold leading-none transition-colors duration-200',
+  'inline-flex items-center justify-center rounded-xl whitespace-nowrap font-semibold leading-none transition-all duration-200 cursor-pointer',
   'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2',
   'disabled:cursor-not-allowed disabled:opacity-70',
   variantClasses[props.variant],

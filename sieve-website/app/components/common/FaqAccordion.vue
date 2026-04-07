@@ -3,20 +3,26 @@
     <article
       v-for="item in items"
       :key="item.id"
-      class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm"
+      class="surface-card overflow-hidden"
     >
       <button
         type="button"
-        class="flex w-full items-center justify-between gap-4 px-5 py-4 text-left transition-colors duration-200 hover:bg-slate-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+        class="flex w-full items-center justify-between gap-4 px-5 py-5 text-left transition-colors duration-200 hover:bg-brand-surface-strong focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
         :aria-expanded="isOpen(item.id)"
         :aria-controls="`faq-panel-${item.id}`"
         @click="toggleItem(item.id)"
       >
-        <span class="text-base font-bold text-slate-900">
+        <span class="text-base font-semibold leading-7 text-brand-ink sm:text-lg">
           {{ item.question }}
         </span>
-        <span class="shrink-0 text-2xl font-light text-slate-500" aria-hidden="true">
-          {{ isOpen(item.id) ? '−' : '+' }}
+        <span
+          class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-brand-line bg-white text-brand-muted transition-all duration-200"
+          :class="isOpen(item.id) ? 'rotate-45 border-accent/20 bg-accent/8 text-accent' : ''"
+          aria-hidden="true"
+        >
+          <svg class="h-4 w-4" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M6 1v10M1 6h10" />
+          </svg>
         </span>
       </button>
 
@@ -25,7 +31,7 @@
         class="overflow-hidden transition-[max-height] duration-300 ease-in-out"
         :class="isOpen(item.id) ? 'max-h-80' : 'max-h-0'"
       >
-        <div class="border-t border-slate-200 bg-slate-50 px-5 py-4 text-sm leading-7 text-slate-600">
+        <div class="border-t border-brand-line bg-brand-surface-strong px-5 py-4 text-sm leading-7 text-brand-muted">
           {{ item.answer }}
         </div>
       </div>
@@ -57,6 +63,3 @@ const toggleItem = (id: string) => {
   openIds.value = [...openIds.value, id]
 }
 </script>
-
-<style scoped>
-</style>
