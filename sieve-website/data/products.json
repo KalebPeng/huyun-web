@@ -18,10 +18,9 @@
       "en": "Mining welded screen panels, also known as slot screens, are manufactured from premium stainless steel (SUS304/316L) or abrasion-resistant alloy wire with fully automated CNC welding. Their core value is a very high open area, typically 15-25% higher effective screening area than conventional woven mesh, combined with strong self-cleaning behavior. The V-wire profile creates a tapered opening that is narrow at the top and wider underneath, reducing pegging and blinding. This makes the product a strong choice for coal preparation dewatering, desliming, and fine classification in metallic mining.",
       "zh": "矿用焊接筛网（条缝筛）采用优质不锈钢（SUS304/316L）或耐磨合金钢丝，通过全自动数控焊接设备精准加工而成。其核心优势在于极高的开口率（有效筛分面积比传统编织网提升 15-25%）和极佳的自清理能力。V型丝结构的梯形截面形成了“上窄下宽”的泄料口，能有效防止物料颗粒因楔形效应导致的堵塞，是选煤厂脱水、脱介以及金属矿山细粒分级工况的首选。"
     },
-    "coverImage": "/images/placeholders/product-cover.svg",
+    "coverImage": "/images/products/mining-welded-screen/cover.webp",
     "gallery": [
-      "/images/products/mining-welded-screen/detail-1.jpg",
-      "/images/products/mining-welded-screen/detail-2.jpg"
+      "/images/products/mining-welded-screen/cover.webp"
     ],
     "materials": {
       "en": ["SUS304", "SUS316L", "Abrasion-Resistant Alloy Steel"],
@@ -92,10 +91,9 @@
       "en": "Huayun 65Mn woven screen mesh uses high-grade 65Mn spring steel with tested hardness up to HRC 45-50, delivering strong fatigue resistance and long abrasion life. The manufacturing route uses a pre-crimped weaving process so that even large apertures up to 120 mm combined with extra-heavy wire diameters up to 14 mm maintain strong geometric stability under vibration. It is especially effective for screening hard aggregates such as limestone and basalt under high-impact loading, and its total operating cost is typically 30-40% lower than ordinary carbon steel screens.",
       "zh": "华云 65Mn 编织筛网采用高品质 65 锰弹簧钢作为基材，材质硬度经检测可达 HRC 45-50，具有优异的疲劳抗力和极强的表面耐磨寿命。生产工艺采用先轧制波纹后再编织的预先成型技术，确保了在 120mm 大孔径及 14mm 超重型丝径组合下，网面依然能保持极高的几何稳定性。该产品特别适用于高冲击荷载下的石灰石、玄武岩等硬质骨料筛分，其综合使用成本较普通碳钢筛网降低约 30-40%。"
     },
-    "coverImage": "/images/placeholders/product-cover.svg",
+    "coverImage": "/images/products/65mn-woven-screen/cover.webp",
     "gallery": [
-      "/images/products/65mn-woven-screen/detail-1.jpg",
-      "/images/products/65mn-woven-screen/detail-2.jpg"
+      "/images/products/65mn-woven-screen/cover.webp"
     ],
     "materials": {
       "en": ["65Mn Spring Steel", "High-Manganese Steel (Mn13)"],
@@ -166,10 +164,9 @@
       "en": "Polyurethane screen media is produced from polyurethane elastomer and is widely used in mining. Compared with metal mesh, it offers obvious vibration damping and noise reduction, much longer service life, often 3-5 times that of metal wire screens, and strong self-cleaning performance. It is well suited to wet, fine, and high-abrasion ore screening conditions.",
       "zh": "聚氨酯筛网是一种以聚氨酯为原料生产的矿山筛网。相比金属筛网，它具有显著的减震降噪性能、超长的使用寿命（通常是金属网的 3-5 倍）以及极好的自清理能力。适用于潮湿、精细、高磨损的矿石筛分环境。"
     },
-    "coverImage": "/images/placeholders/product-cover.svg",
+    "coverImage": "/images/products/polyurethane-screen/cover.webp",
     "gallery": [
-      "/images/products/polyurethane-screen/detail-1.jpg",
-      "/images/products/polyurethane-screen/detail-2.jpg"
+      "/images/products/polyurethane-screen/cover.webp"
     ],
     "materials": {
       "en": ["Imported Polyurethane Elastomer", "Embedded Steel Reinforcement"],
@@ -240,10 +237,9 @@
       "en": "Stainless woven mesh is produced from 304, 316, and similar grades in plain or twill weave patterns. It balances strength, corrosion resistance, and screening precision, making it suitable for food, chemical, filtration, and equipment guarding applications.",
       "zh": "不锈钢编织网采用 304、316 等材质，通过平纹、斜纹等方式织造而成，兼顾强度、耐腐蚀性与筛分精度，适用于食品、化工、过滤和设备防护场景。"
     },
-    "coverImage": "/images/placeholders/product-cover.svg",
+    "coverImage": "/images/products/stainless-woven-mesh/cover.webp",
     "gallery": [
-      "/images/products/stainless-woven-mesh/detail-1.jpg",
-      "/images/products/stainless-woven-mesh/detail-2.jpg"
+      "/images/products/stainless-woven-mesh/cover.webp"
     ],
     "materials": {
       "en": ["SUS304", "SUS316", "SUS316L"],
@@ -314,10 +310,9 @@
       "en": "Crimped wire mesh is woven after the wire has been mechanically crimped, giving the screen high dimensional stability and strong load capacity. It is suitable for grading and screening medium to coarse particles and is commonly used on grain machines, stone plants, and vibrating screen equipment.",
       "zh": "轧花网先将金属丝轧制成波纹后再编织，网面稳定性高，承载力强，适合中粗颗粒物料的筛分与分级，常见于粮机、石料场和振动筛设备。"
     },
-    "coverImage": "/images/placeholders/product-cover.svg",
+    "coverImage": "/images/products/crimped-wire-mesh/cover.webp",
     "gallery": [
-      "/images/products/crimped-wire-mesh/detail-1.jpg",
-      "/images/products/crimped-wire-mesh/detail-2.jpg"
+      "/images/products/crimped-wire-mesh/cover.webp"
     ],
     "materials": {
       "en": ["High-Carbon Steel", "65Mn", "Galvanized Steel Wire"],
