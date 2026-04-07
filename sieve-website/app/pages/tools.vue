@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <div class="tools-page min-h-screen">
     <section class="tools-hero relative overflow-hidden pb-16 pt-12 sm:pb-20 sm:pt-16">
       <div class="hero-grid pointer-events-none absolute inset-0" aria-hidden="true" />
@@ -120,12 +120,12 @@
                   <div class="formula-body mt-3 grid gap-3 sm:grid-cols-2">
                     <div class="formula-card">
                       <p class="formula-name">{{ $t('toolsPage.formulas.apertureTitle') }}</p>
-                      <code class="formula-code">W = 25.4 / M − d</code>
+                      <code class="formula-code">W = (25.4 / M) - d</code>
                       <p class="formula-desc">{{ $t('toolsPage.formulas.apertureDescription') }}</p>
                     </div>
                     <div class="formula-card">
                       <p class="formula-name">{{ $t('toolsPage.formulas.openingAreaTitle') }}</p>
-                      <code class="formula-code">OA = (W / (W + d))² × 100</code>
+                      <code class="formula-code">OA = (W / (W + d))^2 x 100</code>
                       <p class="formula-desc">{{ $t('toolsPage.formulas.openingAreaDescription') }}</p>
                     </div>
                   </div>
@@ -206,7 +206,7 @@
               <div class="mt-4 space-y-2.5">
                 <div v-for="step in decisionSteps" :key="step.q" class="decision-item rounded-xl p-3">
                   <p class="text-[11px] font-semibold text-slate-300">{{ step.q }}</p>
-                  <p class="mt-1 text-[11px] text-accent">→ {{ step.a }}</p>
+                  <p class="mt-1 text-[11px] text-accent">-> {{ step.a }}</p>
                 </div>
               </div>
             </div>
@@ -298,7 +298,7 @@ const pitch = computed(() => {
   if (aperture.value && wireDia.value && aperture.value > 0) {
     return (aperture.value + wireDia.value).toFixed(3)
   }
-  return '—'
+  return '-'
 })
 
 const referenceData = computed<ReferenceRow[]>(() => [
@@ -349,7 +349,7 @@ const toolsJsonLd = computed(() => ({
       applicationCategory: 'EngineeringApplication',
       operatingSystem: 'Any',
       browserRequirements: 'Requires JavaScript',
-      inLanguage: localeProperties.value.language || 'zh-CN',
+      inLanguage: localeProperties.value.language || 'en',
       description: t('toolsPage.seo.description'),
       offers: {
         '@type': 'Offer',
@@ -379,7 +379,7 @@ const toolsJsonLd = computed(() => ({
       name: t('toolsPage.howTo.title'),
       description: t('toolsPage.howTo.description'),
       totalTime: 'PT2M',
-      inLanguage: localeProperties.value.language || 'zh-CN',
+      inLanguage: localeProperties.value.language || 'en',
       supply: [{ '@type': 'HowToSupply', name: t('toolsPage.howTo.supply') }],
       tool: [{ '@type': 'HowToTool', name: t('toolsPage.title') }],
       step: [
@@ -555,7 +555,7 @@ useHead(() => ({
 }
 .formula-summary:hover { color: #64748b; }
 .formula-summary::before {
-  content: '›';
+  content: '>';
   font-size: 14px;
   transition: transform 0.2s;
 }
@@ -665,3 +665,4 @@ details[open] .formula-summary::before { transform: rotate(90deg); }
   box-shadow: 0 0 40px rgba(37,99,235,0.12);
 }
 </style>
+

@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <div>
     <HeroSection />
     <ProductSection />
@@ -58,7 +58,7 @@ const organizationJsonLd = computed(() => ({
     t('seo.knowsAbout.aggregate'),
     t('seo.knowsAbout.custom')
   ],
-  inLanguage: localeProperties.value.language || 'zh-CN'
+  inLanguage: localeProperties.value.language || 'en'
 }))
 
 useHead(() => ({
@@ -70,3 +70,4 @@ useHead(() => ({
   ]
 }))
 </script>
+

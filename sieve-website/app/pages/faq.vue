@@ -1,9 +1,9 @@
-<template>
+﻿<template>
   <div class="bg-slate-50">
     <section class="bg-[linear-gradient(135deg,#111827,#1a2744)] py-16 text-white sm:py-20">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <p class="text-sm font-semibold uppercase tracking-[0.24em] text-blue-200">
-          FAQ
+          {{ $t('nav.faq') }}
         </p>
         <h1 class="mt-4 text-4xl font-black sm:text-5xl">
           {{ $t('faqPage.title') }}
@@ -24,7 +24,9 @@
               :aria-label="$t('faqPage.searchAria')"
             >
             <span class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-slate-300" aria-hidden="true">
-              ⌕
+              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-4.35-4.35m1.85-5.15a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z" />
+              </svg>
             </span>
           </div>
         </div>
@@ -191,7 +193,7 @@ const faqJsonLd = computed(() => ({
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
   mainEntityOfPage: `${siteUrl}/faq`,
-  inLanguage: localeProperties.value.language || 'zh-CN',
+  inLanguage: localeProperties.value.language || 'en',
   mainEntity: faqs.value.map((faq) => ({
     '@type': 'Question',
     name: faq.question,
@@ -217,3 +219,4 @@ useHead(() => ({
   ]
 }))
 </script>
+

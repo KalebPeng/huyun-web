@@ -1,3 +1,5 @@
+import type { H3Event } from 'h3'
+import { getRequestHeader } from 'h3'
 import { Resend } from 'resend'
 
 import type { InquiryForm } from '~~/types'
@@ -5,6 +7,87 @@ import type { InquiryForm } from '~~/types'
 interface InquiryResponse {
   success: boolean
   message: string
+}
+
+type InquiryLocale = 'en' | 'zh'
+
+interface InquiryCopy {
+  yes: string
+  no: string
+  empty: string
+  source: string
+  missingRequired: string
+  sendFailed: string
+  successMessage: string
+  subjectPrefix: string
+  emailTitle: string
+  emailSubtitle: string
+  fields: {
+    name: string
+    company: string
+    contact: string
+    usage: string
+    productType: string
+    material: string
+    meshOrAperture: string
+    size: string
+    quantity: string
+    customRequired: string
+    remark: string
+  }
+}
+
+const INQUIRY_COPY: Record<InquiryLocale, InquiryCopy> = {
+  en: {
+    yes: 'Yes',
+    no: 'No',
+    empty: '/',
+    source: 'Source: Website inquiry form',
+    missingRequired: 'Name and contact are required',
+    sendFailed: 'Failed to send inquiry',
+    successMessage: 'Your inquiry has been received',
+    subjectPrefix: 'New inquiry notification',
+    emailTitle: 'New Inquiry Notification',
+    emailSubtitle: 'A new inquiry form has been submitted on the website.',
+    fields: {
+      name: 'Name',
+      company: 'Company',
+      contact: 'Contact',
+      usage: 'Application / Industry',
+      productType: 'Product Type',
+      material: 'Material Requirement',
+      meshOrAperture: 'Mesh Size or Aperture',
+      size: 'Dimensions',
+      quantity: 'Quantity',
+      customRequired: 'Custom Required',
+      remark: 'Additional Notes'
+    }
+  },
+  zh: {
+    yes: '是',
+    no: '否',
+    empty: '/',
+    source: '来源：来自企业官网询价表单',
+    missingRequired: '姓名和联系方式不能为空',
+    sendFailed: '发送失败',
+    successMessage: '已收到您的询价',
+    subjectPrefix: '新询价通知',
+    emailTitle: '新询价通知',
+    emailSubtitle: '企业官网收到一条新的询价表单提交。',
+    fields: {
+      name: '姓名',
+      company: '公司名称',
+      contact: '联系方式',
+      usage: '用途 / 行业',
+      productType: '所需产品类型',
+      material: '材质要求',
+      meshOrAperture: '目数或孔径',
+      size: '尺寸规格',
+      quantity: '需求数量',
+      customRequired: '是否需要定制',
+      remark: '备注说明'
+    }
+  }
 }
 
 const sanitizeText = (value: unknown) => {
@@ -23,27 +106,51 @@ const escapeHtml = (value: string) =>
     .replaceAll('"', '&quot;')
     .replaceAll("'", '&#39;')
 
-const formatValue = (value: string | boolean | undefined) => {
-  if (typeof value === 'boolean') {
-    return value ? '是' : '否'
+const resolveLocale = (bodyLocale: unknown, event: H3Event): InquiryLocale => {
+  if (bodyLocale === 'zh' || bodyLocale === 'en') {
+    return bodyLocale
   }
 
-  return value && value.trim() ? value.trim() : '/'
+  const referer = getRequestHeader(event, 'referer')
+
+  if (referer) {
+    try {
+      const pathname = new URL(referer).pathname
+
+      if (pathname === '/zh' || pathname.startsWith('/zh/')) {
+        return 'zh'
+      }
+    } catch {
+      // Ignore invalid referer URLs and fall back to headers.
+    }
+  }
+
+  const acceptLanguage = getRequestHeader(event, 'accept-language')?.toLowerCase() || ''
+
+  return acceptLanguage.startsWith('zh') ? 'zh' : 'en'
 }
 
-const buildInquiryHtml = (payload: InquiryForm) => {
+const formatValue = (value: string | boolean | undefined, copy: InquiryCopy) => {
+  if (typeof value === 'boolean') {
+    return value ? copy.yes : copy.no
+  }
+
+  return value && value.trim() ? value.trim() : copy.empty
+}
+
+const buildInquiryHtml = (payload: InquiryForm, copy: InquiryCopy) => {
   const rows: Array<[string, string]> = [
-    ['姓名', formatValue(payload.name)],
-    ['公司名称', formatValue(payload.company)],
-    ['联系方式', formatValue(payload.contact)],
-    ['用途 / 行业', formatValue(payload.usage)],
-    ['所需产品类型', formatValue(payload.productType)],
-    ['材质要求', formatValue(payload.material)],
-    ['目数或孔径', formatValue(payload.meshOrAperture)],
-    ['尺寸规格', formatValue(payload.size)],
-    ['需求数量', formatValue(payload.quantity)],
-    ['是否需要定制', formatValue(payload.customRequired)],
-    ['备注说明', formatValue(payload.remark)]
+    [copy.fields.name, formatValue(payload.name, copy)],
+    [copy.fields.company, formatValue(payload.company, copy)],
+    [copy.fields.contact, formatValue(payload.contact, copy)],
+    [copy.fields.usage, formatValue(payload.usage, copy)],
+    [copy.fields.productType, formatValue(payload.productType, copy)],
+    [copy.fields.material, formatValue(payload.material, copy)],
+    [copy.fields.meshOrAperture, formatValue(payload.meshOrAperture, copy)],
+    [copy.fields.size, formatValue(payload.size, copy)],
+    [copy.fields.quantity, formatValue(payload.quantity, copy)],
+    [copy.fields.customRequired, formatValue(payload.customRequired, copy)],
+    [copy.fields.remark, formatValue(payload.remark, copy)]
   ]
 
   const tableRows = rows
@@ -61,8 +168,8 @@ const buildInquiryHtml = (payload: InquiryForm) => {
     <div style="font-family: Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #f8fafc; padding: 24px; color: #0f172a;">
       <div style="max-width: 760px; margin: 0 auto; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden;">
         <div style="padding: 24px 28px; background: linear-gradient(135deg, #111827, #1a2744); color: #ffffff;">
-          <h1 style="margin: 0; font-size: 24px; line-height: 1.4;">新询价通知</h1>
-          <p style="margin: 8px 0 0; font-size: 14px; color: #cbd5e1;">企业官网收到一条新的询价表单提交。</p>
+          <h1 style="margin: 0; font-size: 24px; line-height: 1.4;">${escapeHtml(copy.emailTitle)}</h1>
+          <p style="margin: 8px 0 0; font-size: 14px; color: #cbd5e1;">${escapeHtml(copy.emailSubtitle)}</p>
         </div>
         <div style="padding: 24px 28px;">
           <table style="width: 100%; border-collapse: collapse; font-size: 14px; line-height: 1.7;">
@@ -71,7 +178,7 @@ const buildInquiryHtml = (payload: InquiryForm) => {
             </tbody>
           </table>
           <p style="margin: 20px 0 0; font-size: 13px; color: #64748b;">
-            来源：来自企业官网询价表单
+            ${escapeHtml(copy.source)}
           </p>
         </div>
       </div>
@@ -82,8 +189,11 @@ const buildInquiryHtml = (payload: InquiryForm) => {
 export default defineEventHandler(async (event): Promise<InquiryResponse> => {
   const config = useRuntimeConfig(event)
   const body = await readBody<Partial<InquiryForm>>(event)
+  const locale = resolveLocale(body?.locale, event)
+  const copy = INQUIRY_COPY[locale]
 
   const payload: InquiryForm = {
+    locale,
     name: sanitizeText(body?.name),
     company: sanitizeText(body?.company),
     contact: sanitizeText(body?.contact),
@@ -100,7 +210,7 @@ export default defineEventHandler(async (event): Promise<InquiryResponse> => {
   if (!payload.name || !payload.contact) {
     throw createError({
       statusCode: 400,
-      statusMessage: '姓名和联系方式不能为空'
+      statusMessage: copy.missingRequired
     })
   }
 
@@ -109,7 +219,7 @@ export default defineEventHandler(async (event): Promise<InquiryResponse> => {
 
     return {
       success: false,
-      message: '发送失败'
+      message: copy.sendFailed
     }
   }
 
@@ -119,13 +229,13 @@ export default defineEventHandler(async (event): Promise<InquiryResponse> => {
     await resend.emails.send({
       from: config.fromEmail,
       to: config.notifyEmail,
-      subject: `新询价通知 - ${payload.name}`,
-      html: buildInquiryHtml(payload)
+      subject: `${copy.subjectPrefix} - ${payload.name}`,
+      html: buildInquiryHtml(payload, copy)
     })
 
     return {
       success: true,
-      message: '已收到您的询价'
+      message: copy.successMessage
     }
   } catch (error) {
     console.error('Failed to send inquiry email:', error)
@@ -133,7 +243,7 @@ export default defineEventHandler(async (event): Promise<InquiryResponse> => {
 
     return {
       success: false,
-      message: '发送失败'
+      message: copy.sendFailed
     }
   }
 })

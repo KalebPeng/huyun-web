@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <div v-if="article" class="min-h-screen bg-[#f8f9fb]">
     <div class="sticky top-16 z-30 border-b border-slate-200 bg-white/90 backdrop-blur-sm">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -43,7 +43,7 @@
 
             <div class="mt-5 flex flex-wrap gap-2">
               <span
-                v-for="tag in article.tags"
+                v-for="tag in article.tags || []"
                 :key="tag"
                 class="rounded-md border border-slate-200 bg-white px-2.5 py-1 text-xs font-medium text-slate-600"
               >
@@ -78,7 +78,7 @@
                     class="mt-3 inline-flex items-center gap-2 text-xs font-semibold text-accent transition-colors hover:text-primary"
                   >
                     {{ $t('knowledgeDetail.reviewStandardsLink') }}
-                    <span aria-hidden="true">→</span>
+                    <span aria-hidden="true">-></span>
                   </NuxtLink>
                 </div>
 
@@ -92,7 +92,7 @@
                   class="inline-flex items-center gap-2 text-sm font-semibold text-accent transition-colors hover:text-primary"
                 >
                   {{ $t('knowledgeDetail.aboutLink') }}
-                  <span aria-hidden="true">→</span>
+                  <span aria-hidden="true">-></span>
                 </NuxtLink>
               </div>
             </div>
@@ -239,15 +239,15 @@ const articleJsonLd = computed(() => {
     datePublished: article.value.publishedAt,
     dateModified: article.value.reviewedAt || article.value.publishedAt,
     articleSection: article.value.category,
-    keywords: article.value.tags.join(', '),
-    inLanguage: localeProperties.value.language || 'zh-CN',
+    keywords: (article.value.tags || []).join(', '),
+    inLanguage: localeProperties.value.language || 'en',
     publishingPrinciples: `${siteUrl}${localePath('/content-standards')}`,
-    about: article.value.tags.map(tag => ({
+    about: (article.value.tags || []).map(tag => ({
       '@type': 'Thing',
       name: tag
     })),
-    citation: article.value.sources?.map(source => `${source.title}（${source.publisher}）`),
-    isBasedOn: article.value.sources?.map(source => ({
+    citation: (article.value.sources || []).map((source) => `${source.title} (${source.publisher})`),
+    isBasedOn: (article.value.sources || []).map(source => ({
       '@type': 'CreativeWork',
       name: source.title,
       description: source.note,
@@ -303,3 +303,4 @@ useHead(() => ({
     : []
 }))
 </script>
+

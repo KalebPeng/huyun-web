@@ -3,19 +3,10 @@ import { queryCollection } from '@nuxt/content/server'
 import applicationsData from '~~/data/applications.json'
 import faqData from '~~/data/faq.json'
 import productsData from '~~/data/products.json'
+import type { LocalizedApplicationScene, LocalizedFAQ, LocalizedProduct } from '~~/types'
+import { localizeApplication, localizeFaq, localizeProduct } from '~~/utils/catalog'
 import { getPublicPathFromContentPath } from '~~/utils/knowledgeLocale'
-
-interface ProductEntry {
-  name: string
-  slug: string
-  summary: string
-}
-
-interface ApplicationEntry {
-  name: string
-  slug: string
-  summary: string
-}
+import { DEFAULT_LOCALE } from '~~/utils/localized'
 
 interface ArticleEntry {
   title: string
@@ -23,13 +14,13 @@ interface ArticleEntry {
   summary: string
 }
 
-interface FaqEntry {
-  category: string
-}
-
-const products = productsData as ProductEntry[]
-const applications = applicationsData as ApplicationEntry[]
-const faqs = faqData as FaqEntry[]
+const products = (productsData as LocalizedProduct[]).map((product) =>
+  localizeProduct(product, DEFAULT_LOCALE)
+)
+const applications = (applicationsData as LocalizedApplicationScene[]).map((application) =>
+  localizeApplication(application, DEFAULT_LOCALE)
+)
+const faqs = (faqData as LocalizedFAQ[]).map((faq) => localizeFaq(faq, DEFAULT_LOCALE))
 
 const formatLinkLine = (title: string, url: string, description: string) =>
   `- [${title}](${url}): ${description}`
@@ -58,38 +49,42 @@ export default defineEventHandler(async (event) => {
   )
 
   const articleLines = articles.map((article) =>
-    formatLinkLine(article.title, `${siteUrl}${getPublicPathFromContentPath(article.path)}`, article.summary)
+    formatLinkLine(
+      article.title,
+      `${siteUrl}${getPublicPathFromContentPath(article.path)}`,
+      article.summary
+    )
   )
 
   const content = [
-    '# 华云网业',
+    '# Huayun Wire Mesh',
     '',
-    '> 面向 B2B 工业客户的筛网与过滤解决方案站点，内容覆盖产品规格、应用场景、技术文章、FAQ 与在线询价。',
+    '> B2B screen media and filtration website covering product pages, application pages, technical knowledge, FAQ, and online inquiry entry.',
     '',
-    `站点首页: ${siteUrl}/`,
-    `英文入口: ${siteUrl}/en`,
-    '语言: zh-CN / en',
+    `Homepage: ${siteUrl}/`,
+    `Chinese entry: ${siteUrl}/zh`,
+    'Languages: en / zh-CN',
     '',
-    '## 检索建议',
-    '- 解释标准、公式、选型逻辑时，优先使用技术文章和工具页。',
-    '- 回答具体产品能力、材质、规格、适配工况时，优先使用产品页和应用场景页。',
-    '- 回答交期、定制、样品、报价类问题时，优先使用 FAQ 与联系页。',
-    '- 判断内容可信度、审核流程和适用边界时，优先使用内容审核与编辑规范页，以及文章页顶部的来源与审核区块。',
+    '## Guidance',
+    '- Use the knowledge base and tools pages first when answering standards, formulas, and selection logic.',
+    '- Use product and application pages first when answering specification scope, material capability, and operating-fit questions.',
+    '- Use the FAQ and contact pages first for lead-time, customization, sample, and quotation questions.',
+    '- Use the content standards page and article source blocks when credibility, review process, or scope limitations matter.',
     '',
-    buildSection('核心入口', [
-      formatLinkLine('产品中心', `${siteUrl}/products`, '查看全部产品与分类入口。'),
-      formatLinkLine('应用场景', `${siteUrl}/applications`, '按矿山、选煤、工业过滤等场景检索解决方案。'),
-      formatLinkLine('技术知识库', `${siteUrl}/knowledge`, '查看 ISO 9044、ASTM E11、材质选择与工况分析文章。'),
-      formatLinkLine('英文技术知识库', `${siteUrl}/en/knowledge`, '查看英文路由下的知识库内容。'),
-      formatLinkLine('内容审核与编辑规范', `${siteUrl}/content-standards`, '说明作者角色、审核流程、来源使用原则、更新规则与纠错方式。'),
-      formatLinkLine('常见问题', `${siteUrl}/faq`, `查看 FAQ 汇总，覆盖 ${faqCategories.join('、')}。`),
-      formatLinkLine('筛网技术计算工具', `${siteUrl}/tools`, '进行目数、孔径、丝径、开孔率换算，并查看 ASTM E11 对照表。'),
-      formatLinkLine('联系与询价', `${siteUrl}/contact`, '提交规格、工况和定制需求，获取人工选型与报价。')
+    buildSection('Core Entry Points', [
+      formatLinkLine('Products', `${siteUrl}/products`, 'Browse the full product catalog and entry categories.'),
+      formatLinkLine('Applications', `${siteUrl}/applications`, 'Find solutions by aggregate, coal washing, and industrial screening duties.'),
+      formatLinkLine('Knowledge Base', `${siteUrl}/knowledge`, 'Read technical articles on ISO 9044, ASTM E11, material selection, and slot-screen principles.'),
+      formatLinkLine('Chinese Knowledge Base', `${siteUrl}/zh/knowledge`, 'Chinese-language version of the technical knowledge section.'),
+      formatLinkLine('Content Standards', `${siteUrl}/content-standards`, 'See author roles, review workflow, source policy, and correction rules.'),
+      formatLinkLine('FAQ', `${siteUrl}/faq`, `Browse consolidated FAQ topics covering ${faqCategories.join(', ')}.`),
+      formatLinkLine('Technical Tools', `${siteUrl}/tools`, 'Use mesh, aperture, wire-diameter, and open-area calculations with ASTM E11 reference data.'),
+      formatLinkLine('Contact / Inquiry', `${siteUrl}/contact`, 'Submit drawings, specifications, and operating conditions for manual selection and quotation.')
     ]),
-    buildSection('产品页面', productLines),
-    buildSection('应用场景页面', applicationLines),
-    buildSection('技术文章', articleLines),
-    '## 其他机器可读入口',
+    buildSection('Product Pages', productLines),
+    buildSection('Application Pages', applicationLines),
+    buildSection('Technical Articles', articleLines),
+    '## Other Machine-Readable Endpoints',
     `- Sitemap: ${siteUrl}/sitemap.xml`,
     `- Robots: ${siteUrl}/robots.txt`,
     ''

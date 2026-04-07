@@ -63,7 +63,7 @@
 
             <!-- 右：产品信息 -->
             <div class="flex flex-col">
-              <p class="section-eyebrow">Product Overview</p>
+              <p class="section-eyebrow">{{ product.category }}</p>
               <h1 class="mt-2 text-[2rem] font-black leading-tight text-slate-950 sm:text-[2.25rem]">
                 {{ product.name }}
               </h1>
@@ -129,7 +129,7 @@
               <div v-if="product.standard" class="mt-5 flex flex-wrap items-center gap-2">
                 <span class="text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-400">{{ $t('productDetail.standardsLabel') }}</span>
                 <span
-                  v-for="std in product.standard.split('；')"
+                  v-for="std in product.standard.split(/[;；]/).filter(Boolean)"
                   :key="std"
                   class="inline-block rounded border border-slate-200 bg-slate-50 px-2 py-0.5 text-[11px] font-mono font-medium text-slate-600"
                 >
@@ -147,7 +147,7 @@
           <div class="content-card rounded-2xl border border-slate-200 bg-white">
             <div class="flex items-center justify-between border-b border-slate-100 px-6 py-4">
               <div>
-                <p class="section-eyebrow">Specifications</p>
+                <p class="section-eyebrow">{{ $t('productDetail.specificationsTitle') }}</p>
                 <h2 class="mt-0.5 text-xl font-black text-slate-950">{{ $t('productDetail.specificationsTitle') }}</h2>
               </div>
             </div>
@@ -189,7 +189,7 @@
           <!-- 深色主题卡片 -->
           <div class="selection-card overflow-hidden rounded-2xl">
             <div class="px-6 py-5 sm:px-8">
-              <p class="section-eyebrow-light">Selection Guide</p>
+              <p class="section-eyebrow-light">{{ $t('productDetail.selectionGuideTitle') }}</p>
               <h2 class="mt-1 text-xl font-black text-white">{{ $t('productDetail.selectionGuideTitle') }}</h2>
             </div>
 
@@ -249,7 +249,7 @@
       <section class="pb-10 sm:pb-12">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div class="content-card rounded-2xl border border-slate-200 bg-white px-6 py-5 sm:px-8">
-            <p class="section-eyebrow">Applications</p>
+            <p class="section-eyebrow">{{ $t('productDetail.applicationsTitle') }}</p>
             <h2 class="mt-0.5 text-xl font-black text-slate-950">{{ $t('productDetail.applicationsTitle') }}</h2>
             <div class="mt-4 flex flex-wrap gap-2">
               <Badge
@@ -270,7 +270,7 @@
       <section class="pb-10 sm:pb-12">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div class="adv-card overflow-hidden rounded-2xl px-6 py-5 sm:px-8">
-            <p class="section-eyebrow-light">Advantages</p>
+            <p class="section-eyebrow-light">{{ $t('productDetail.advantagesTitle') }}</p>
             <h2 class="mt-0.5 text-xl font-black text-white">{{ $t('productDetail.advantagesTitle') }}</h2>
 
             <div class="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
@@ -296,7 +296,7 @@
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div class="content-card rounded-2xl border border-slate-200 bg-white">
             <div class="border-b border-slate-100 px-6 py-4 sm:px-8">
-              <p class="section-eyebrow">FAQ</p>
+              <p class="section-eyebrow">{{ $t('productDetail.faqTitle') }}</p>
               <h2 class="mt-0.5 text-xl font-black text-slate-950">{{ $t('productDetail.faqTitle') }}</h2>
             </div>
 
@@ -345,7 +345,7 @@
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div class="mb-6 flex items-end justify-between">
             <div>
-              <p class="section-eyebrow">Related Products</p>
+              <p class="section-eyebrow">{{ $t('productDetail.relatedProductsTitle') }}</p>
               <h2 class="mt-0.5 text-xl font-black text-slate-950">{{ $t('productDetail.relatedProductsTitle') }}</h2>
             </div>
             <NuxtLink :to="localePath('/products')" class="text-xs font-semibold text-primary transition-colors hover:text-accent">
@@ -396,7 +396,7 @@
 
     <section v-else class="py-24">
       <div class="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
-        <p class="section-eyebrow">Product Not Found</p>
+        <p class="section-eyebrow">{{ $t('nav.products') }}</p>
         <h1 class="mt-4 text-3xl font-black text-slate-950 sm:text-4xl">
           {{ $t('productDetail.notFoundTitle') }}
         </h1>
@@ -441,8 +441,6 @@ const { getFaqsByIds, getFaqsByProductId } = useFaq()
 
 const openFaqId = ref<string | null>(null)
 const imageFailed = ref(false)
-const advantageIcons = ['01', '02', '03', '04', '05', '06']
-
 const toAbsoluteUrl = (value: string) => {
   const siteUrl = runtimeConfig.public.siteUrl.replace(/\/+$/, '')
   return value.startsWith('http') ? value : `${siteUrl}${value.startsWith('/') ? value : `/${value}`}`
@@ -664,7 +662,7 @@ const productJsonLd = computed(() => {
       })),
     isRelatedTo: [
       ...(product.value.standard
-        ? product.value.standard.split('；').map(std => ({
+        ? product.value.standard.split(/[;；]/).filter(Boolean).map(std => ({
             '@type': 'CreativeWork',
             name: std.trim(),
             description: t('productDetail.standardDescription', { name: product.value!.name })

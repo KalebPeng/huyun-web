@@ -1,22 +1,28 @@
 import { computed } from 'vue'
 
 import applicationsData from '~~/data/applications.json'
-import type { ApplicationScene } from '~~/types'
+import type { LocalizedApplicationScene } from '~~/types'
+import { localizeApplication } from '~~/utils/catalog'
+import { normalizeLocale } from '~~/utils/localized'
 
-const applications = applicationsData as ApplicationScene[]
+const applications = applicationsData as LocalizedApplicationScene[]
 
 export const useApplications = () => {
-  const allApplications = computed(() => applications)
-  const fetchApplications = async () => applications
+  const { locale } = useI18n()
+  const currentLocale = computed(() => normalizeLocale(locale.value))
+  const allApplications = computed(() =>
+    applications.map((application) => localizeApplication(application, currentLocale.value))
+  )
+  const fetchApplications = async () => allApplications.value
 
   const getApplicationById = (id: string) =>
-    applications.find((application) => application.id === id)
+    allApplications.value.find((application) => application.id === id)
 
   const getApplicationBySlug = (slug: string) =>
-    applications.find((application) => application.slug === slug)
+    allApplications.value.find((application) => application.slug === slug)
 
   const getApplicationsByIds = (ids: string[]) =>
-    applications.filter((application) => ids.includes(application.id))
+    allApplications.value.filter((application) => ids.includes(application.id))
 
   return {
     applications: allApplications,

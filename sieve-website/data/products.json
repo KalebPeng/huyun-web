@@ -2,176 +2,371 @@
   {
     "id": "product-mining-welded-screen",
     "slug": "mining-welded-screen",
-    "name": "矿用焊接筛网",
-    "category": "焊接筛网",
-    "summary": "高强度条缝焊接结构，适用于洗煤、脱水和重载筛分。",
-    "description": "矿用焊接筛网（条缝筛）采用优质不锈钢（SUS304/316L）或耐磨合金钢丝，通过全自动数控焊接设备精准加工而成。其核心优势在于极高的开口率（有效筛分面积比传统编织网提升 15-25%）和极佳的自清理能力。V型丝结构的梯形截面形成了'上窄下宽'的泄料口，能有效防止物料颗粒因楔形效应导致的堵塞，是选煤厂脱水、脱介以及金属矿山细粒分级工况的首选。",
+    "name": {
+      "en": "Mining Welded Screen",
+      "zh": "矿用焊接筛网"
+    },
+    "category": {
+      "en": "Welded Screen Mesh",
+      "zh": "焊接筛网"
+    },
+    "summary": {
+      "en": "High-strength slot welded construction for coal washing, dewatering, and heavy-duty screening.",
+      "zh": "高强度条缝焊接结构，适用于洗煤、脱水和重载筛分。"
+    },
+    "description": {
+      "en": "Mining welded screen panels, also known as slot screens, are manufactured from premium stainless steel (SUS304/316L) or abrasion-resistant alloy wire with fully automated CNC welding. Their core value is a very high open area, typically 15-25% higher effective screening area than conventional woven mesh, combined with strong self-cleaning behavior. The V-wire profile creates a tapered opening that is narrow at the top and wider underneath, reducing pegging and blinding. This makes the product a strong choice for coal preparation dewatering, desliming, and fine classification in metallic mining.",
+      "zh": "矿用焊接筛网（条缝筛）采用优质不锈钢（SUS304/316L）或耐磨合金钢丝，通过全自动数控焊接设备精准加工而成。其核心优势在于极高的开口率（有效筛分面积比传统编织网提升 15-25%）和极佳的自清理能力。V型丝结构的梯形截面形成了“上窄下宽”的泄料口，能有效防止物料颗粒因楔形效应导致的堵塞，是选煤厂脱水、脱介以及金属矿山细粒分级工况的首选。"
+    },
     "coverImage": "/images/placeholders/product-cover.svg",
     "gallery": [
       "/images/products/mining-welded-screen/detail-1.jpg",
       "/images/products/mining-welded-screen/detail-2.jpg"
     ],
-    "materials": ["SUS304", "SUS316L", "耐磨合金钢"],
+    "materials": {
+      "en": ["SUS304", "SUS316L", "Abrasion-Resistant Alloy Steel"],
+      "zh": ["SUS304", "SUS316L", "耐磨合金钢"]
+    },
     "apertureRange": "0.1mm - 10mm",
     "wireDiameterRange": "1.0mm - 12mm",
     "meshRange": "2 - 250 mesh",
-    "sizes": ["按图纸定制", "最大宽度 2.5m", "长度不限"],
+    "sizes": {
+      "en": ["Custom to drawing", "Maximum width 2.5 m", "Unlimited length"],
+      "zh": ["按图纸定制", "最大宽度 2.5m", "长度不限"]
+    },
     "customSupported": true,
-    "tensileStrength": "SUS304 ≥ 515 MPa；SUS316L ≥ 485 MPa",
-    "hardness": "SUS304 HB ≤ 200；耐磨合金钢 HRC 45-52",
-    "standard": "GB/T 5330-2003；ISO 9044:1999；ASTM A493",
+    "tensileStrength": {
+      "en": "SUS304 ≥ 515 MPa; SUS316L ≥ 485 MPa",
+      "zh": "SUS304 ≥ 515 MPa；SUS316L ≥ 485 MPa"
+    },
+    "hardness": {
+      "en": "SUS304 HB ≤ 200; abrasion-resistant alloy steel HRC 45-52",
+      "zh": "SUS304 HB ≤ 200；耐磨合金钢 HRC 45-52"
+    },
+    "standard": {
+      "en": "GB/T 5330-2003; ISO 9044:1999; ASTM A493",
+      "zh": "GB/T 5330-2003；ISO 9044:1999；ASTM A493"
+    },
     "selectionGuide": {
       "abrasion": "high",
       "corrosion": "high",
       "temperature": "medium",
       "moisture": "excellent",
-      "note": "推荐用于含硫化物、酸性矿浆等腐蚀性强的湿式脱水工况；V 型丝截面可将盲孔率降至最低，适合细粒精确分级。"
+      "note": {
+        "en": "Recommended for wet dewatering duties involving sulfides, acidic slurry, or other corrosive media. The V-wire profile minimizes blinding and suits fine, accurate classification.",
+        "zh": "推荐用于含硫化物、酸性矿浆等腐蚀性强的湿式脱水工况；V 型丝截面可将盲孔率降至最低，适合细粒精确分级。"
+      }
     },
     "applications": ["app-mining-grading", "app-coal-dewatering"],
-    "advantages": ["焊点极强", "耐磨耐腐蚀", "自清理能力强", "筛分效率高"],
+    "advantages": {
+      "en": ["Extremely strong weld joints", "Wear and corrosion resistant", "Excellent self-cleaning", "High screening efficiency"],
+      "zh": ["焊点极强", "耐磨耐腐蚀", "自清理能力强", "筛分效率高"]
+    },
     "faqs": ["faq-spec-02", "faq-custom-02", "faq-quote-02"],
     "relatedProducts": ["product-65mn-woven-screen", "product-polyurethane-screen"],
-    "seoTitle": "矿用焊接筛网厂家 | 不锈钢条缝筛板定制",
-    "seoDescription": "提供高质量矿用焊接筛网和条缝筛板，适用于矿山脱水、洗煤和骨料分级，支持按图纸定制。"
+    "seoTitle": {
+      "en": "Mining Welded Screen Manufacturer | Custom Stainless Slot Screens",
+      "zh": "矿用焊接筛网厂家 | 不锈钢条缝筛板定制"
+    },
+    "seoDescription": {
+      "en": "High-quality mining welded screens and slot screen panels for mine dewatering, coal washing, and aggregate classification with drawing-based customization.",
+      "zh": "提供高质量矿用焊接筛网和条缝筛板，适用于矿山脱水、洗煤和骨料分级，支持按图纸定制。"
+    }
   },
   {
     "id": "product-65mn-woven-screen",
     "slug": "65mn-woven-screen",
-    "name": "65锰钢编织筛网",
-    "category": "编织筛网",
-    "summary": "高强度 65Mn 钢丝编织，抗冲击、极度耐磨，适合砂石矿山。",
-    "description": "华云 65Mn 编织筛网采用高品质 65 锰弹簧钢作为基材，材质硬度经检测可达 HRC 45-50，具有优异的疲劳抗力和极强的表面耐磨寿命。生产工艺采用先轧制波纹后再编织的预先成型技术，确保了在 120mm 大孔径及 14mm 超重型丝径组合下，网面依然能保持极高的几何稳定性。该产品特别适用于高冲击荷载下的石灰石、玄武岩等硬质骨料筛分，其综合使用成本较普通碳钢筛网降低约 30-40%。",
+    "name": {
+      "en": "65Mn Woven Screen",
+      "zh": "65锰钢编织筛网"
+    },
+    "category": {
+      "en": "Woven Screen Mesh",
+      "zh": "编织筛网"
+    },
+    "summary": {
+      "en": "Woven from high-strength 65Mn spring steel wire for impact resistance and extreme wear in aggregate plants.",
+      "zh": "高强度 65Mn 钢丝编织，抗冲击、极度耐磨，适合砂石矿山。"
+    },
+    "description": {
+      "en": "Huayun 65Mn woven screen mesh uses high-grade 65Mn spring steel with tested hardness up to HRC 45-50, delivering strong fatigue resistance and long abrasion life. The manufacturing route uses a pre-crimped weaving process so that even large apertures up to 120 mm combined with extra-heavy wire diameters up to 14 mm maintain strong geometric stability under vibration. It is especially effective for screening hard aggregates such as limestone and basalt under high-impact loading, and its total operating cost is typically 30-40% lower than ordinary carbon steel screens.",
+      "zh": "华云 65Mn 编织筛网采用高品质 65 锰弹簧钢作为基材，材质硬度经检测可达 HRC 45-50，具有优异的疲劳抗力和极强的表面耐磨寿命。生产工艺采用先轧制波纹后再编织的预先成型技术，确保了在 120mm 大孔径及 14mm 超重型丝径组合下，网面依然能保持极高的几何稳定性。该产品特别适用于高冲击荷载下的石灰石、玄武岩等硬质骨料筛分，其综合使用成本较普通碳钢筛网降低约 30-40%。"
+    },
     "coverImage": "/images/placeholders/product-cover.svg",
     "gallery": [
       "/images/products/65mn-woven-screen/detail-1.jpg",
       "/images/products/65mn-woven-screen/detail-2.jpg"
     ],
-    "materials": ["65Mn 弹簧钢", "高锰钢 (Mn13)"],
+    "materials": {
+      "en": ["65Mn Spring Steel", "High-Manganese Steel (Mn13)"],
+      "zh": ["65Mn 弹簧钢", "高锰钢 (Mn13)"]
+    },
     "apertureRange": "2mm - 120mm",
     "wireDiameterRange": "1.5mm - 14mm",
     "meshRange": "1 - 12 mesh",
-    "sizes": ["1m x 2m", "1.5m x 3m", "按设备定制"],
+    "sizes": {
+      "en": ["1 m x 2 m", "1.5 m x 3 m", "Custom to equipment"],
+      "zh": ["1m x 2m", "1.5m x 3m", "按设备定制"]
+    },
     "customSupported": true,
-    "tensileStrength": "65Mn ≥ 1080 MPa（热处理后 ≥ 1470 MPa）；Mn13 ≥ 686 MPa",
-    "hardness": "65Mn 淬火态 HRC 45-50；Mn13 加工硬化后 HB 450-550",
-    "standard": "GB/T 5329-2003；GB/T 1222-2016（弹簧钢）；ISO 4783-1",
+    "tensileStrength": {
+      "en": "65Mn ≥ 1080 MPa (after heat treatment ≥ 1470 MPa); Mn13 ≥ 686 MPa",
+      "zh": "65Mn ≥ 1080 MPa（热处理后 ≥ 1470 MPa）；Mn13 ≥ 686 MPa"
+    },
+    "hardness": {
+      "en": "65Mn in quenched condition HRC 45-50; Mn13 after work hardening HB 450-550",
+      "zh": "65Mn 淬火态 HRC 45-50；Mn13 加工硬化后 HB 450-550"
+    },
+    "standard": {
+      "en": "GB/T 5329-2003; GB/T 1222-2016 (spring steel); ISO 4783-1",
+      "zh": "GB/T 5329-2003；GB/T 1222-2016（弹簧钢）；ISO 4783-1"
+    },
     "selectionGuide": {
       "abrasion": "excellent",
       "corrosion": "low",
       "temperature": "medium",
       "moisture": "low",
-      "note": "最适合干式高冲击骨料筛分（石灰石、花岗岩、玄武岩）；避免用于酸性或盐雾环境，如需耐腐蚀请选择不锈钢编织网。"
+      "note": {
+        "en": "Best suited to dry, high-impact aggregate screening such as limestone, granite, and basalt. Avoid acidic or salt-laden environments. Choose stainless woven mesh when corrosion resistance is required.",
+        "zh": "最适合干式高冲击骨料筛分（石灰石、花岗岩、玄武岩）；避免用于酸性或盐雾环境，如需耐腐蚀请选择不锈钢编织网。"
+      }
     },
     "applications": ["app-mining-grading", "app-industrial-grading"],
-    "advantages": ["极高硬度", "高耐磨寿命", "抗疲劳性能强", "性价比高"],
+    "advantages": {
+      "en": ["Exceptional hardness", "Long wear life", "Strong fatigue resistance", "Cost-effective"],
+      "zh": ["极高硬度", "高耐磨寿命", "抗疲劳性能强", "性价比高"]
+    },
     "faqs": ["faq-material-02", "faq-delivery-02", "faq-sample-01"],
     "relatedProducts": ["product-mining-welded-screen", "product-polyurethane-screen"],
-    "seoTitle": "65锰钢编织筛网厂家 | 矿用高耐磨振动筛网",
-    "seoDescription": "专业生产 65Mn 锰钢编织筛网，具有极强耐磨性，适用于矿山、石料厂和振动筛配套。"
+    "seoTitle": {
+      "en": "65Mn Woven Screen Manufacturer | Heavy-Wear Vibrating Screen Mesh",
+      "zh": "65锰钢编织筛网厂家 | 矿用高耐磨振动筛网"
+    },
+    "seoDescription": {
+      "en": "Professional 65Mn woven screen mesh with strong abrasion resistance for mines, quarries, and vibrating screen retrofits.",
+      "zh": "专业生产 65Mn 锰钢编织筛网，具有极强耐磨性，适用于矿山、石料厂和振动筛配套。"
+    }
   },
   {
     "id": "product-polyurethane-screen",
     "slug": "polyurethane-screen",
-    "name": "聚氨酯筛网",
-    "category": "矿用筛网",
-    "summary": "高分子弹性材质，静音、耐磨、不堵孔，适合精细筛分。",
-    "description": "聚氨酯筛网是一种以聚氨酯为原料生产的矿山筛网。相比金属筛网，它具有显著的减震降噪性能、超长的使用寿命（通常是金属网的 3-5 倍）以及极好的自清理能力。适用于潮湿、精细、高磨损的矿石筛分环境。",
+    "name": {
+      "en": "Polyurethane Screen",
+      "zh": "聚氨酯筛网"
+    },
+    "category": {
+      "en": "Mining Screen Mesh",
+      "zh": "矿用筛网"
+    },
+    "summary": {
+      "en": "Elastic polymer screen media with low noise, strong wear life, and anti-blinding performance for fine screening.",
+      "zh": "高分子弹性材质，静音、耐磨、不堵孔，适合精细筛分。"
+    },
+    "description": {
+      "en": "Polyurethane screen media is produced from polyurethane elastomer and is widely used in mining. Compared with metal mesh, it offers obvious vibration damping and noise reduction, much longer service life, often 3-5 times that of metal wire screens, and strong self-cleaning performance. It is well suited to wet, fine, and high-abrasion ore screening conditions.",
+      "zh": "聚氨酯筛网是一种以聚氨酯为原料生产的矿山筛网。相比金属筛网，它具有显著的减震降噪性能、超长的使用寿命（通常是金属网的 3-5 倍）以及极好的自清理能力。适用于潮湿、精细、高磨损的矿石筛分环境。"
+    },
     "coverImage": "/images/placeholders/product-cover.svg",
     "gallery": [
       "/images/products/polyurethane-screen/detail-1.jpg",
       "/images/products/polyurethane-screen/detail-2.jpg"
     ],
-    "materials": ["进口聚氨酯弹性体", "内嵌钢筋筋条"],
+    "materials": {
+      "en": ["Imported Polyurethane Elastomer", "Embedded Steel Reinforcement"],
+      "zh": ["进口聚氨酯弹性体", "内嵌钢筋筋条"]
+    },
     "apertureRange": "0.1mm - 150mm",
-    "wireDiameterRange": "无 (模压成型)",
-    "meshRange": "< 1 - 150 mesh 等效",
-    "sizes": ["305x610mm 模块", "定制张紧式筛板", "异形定制"],
+    "wireDiameterRange": "None (compression molded)",
+    "meshRange": "< 1 - 150 mesh equivalent",
+    "sizes": {
+      "en": ["305 x 610 mm modules", "Custom tensioned screen panels", "Custom irregular shapes"],
+      "zh": ["305x610mm 模块", "定制张紧式筛板", "异形定制"]
+    },
     "customSupported": true,
-    "tensileStrength": "聚氨酯基体抗拉强度 ≥ 35 MPa；断裂伸长率 ≥ 350%",
-    "hardness": "Shore A 65-90（可按需调配）",
-    "standard": "GB/T 15382-2021（聚氨酯弹性体）；参照 ISO 4649 耐磨测试",
+    "tensileStrength": {
+      "en": "Polyurethane matrix tensile strength ≥ 35 MPa; elongation at break ≥ 350%",
+      "zh": "聚氨酯基体抗拉强度 ≥ 35 MPa；断裂伸长率 ≥ 350%"
+    },
+    "hardness": {
+      "en": "Shore A 65-90 (adjustable to requirement)",
+      "zh": "Shore A 65-90（可按需调配）"
+    },
+    "standard": {
+      "en": "GB/T 15382-2021 (polyurethane elastomer); abrasion test per ISO 4649",
+      "zh": "GB/T 15382-2021（聚氨酯弹性体）；参照 ISO 4649 耐磨测试"
+    },
     "selectionGuide": {
       "abrasion": "excellent",
       "corrosion": "excellent",
       "temperature": "low",
       "moisture": "excellent",
-      "note": "在潮湿、细粒、高磨损和低噪音要求场景中综合表现最佳；工作温度不超过 80°C；不适合有机溶剂接触工况。"
+      "note": {
+        "en": "Best overall performance in wet, fine, abrasive, and low-noise duties. Maximum working temperature should remain below 80°C. Not suitable for contact with organic solvents.",
+        "zh": "在潮湿、细粒、高磨损和低噪音要求场景中综合表现最佳；工作温度不超过 80°C；不适合有机溶剂接触工况。"
+      }
     },
     "applications": ["app-mining-grading", "app-coal-dewatering"],
-    "advantages": ["寿命极长", "降噪静音", "耐水耐油", "维护成本低"],
+    "advantages": {
+      "en": ["Extra-long service life", "Noise reduction", "Water and oil resistant", "Low maintenance cost"],
+      "zh": ["寿命极长", "降噪静音", "耐水耐油", "维护成本低"]
+    },
     "faqs": ["faq-custom-02", "faq-quote-02", "faq-sample-02"],
     "relatedProducts": ["product-mining-welded-screen", "product-65mn-woven-screen"],
-    "seoTitle": "聚氨酯华云网业厂家 | 耐磨聚氨酯筛板模块定制",
-    "seoDescription": "提供聚氨酯模块化筛板和张紧式筛网，具有长寿命、低噪音和高筛分效率，适用于各类矿山振动筛。"
+    "seoTitle": {
+      "en": "Polyurethane Screen Manufacturer | Wear-Resistant Modular Screen Panels",
+      "zh": "聚氨酯华云网业厂家 | 耐磨聚氨酯筛板模块定制"
+    },
+    "seoDescription": {
+      "en": "Polyurethane modular panels and tensioned screens with long life, low noise, and high screening efficiency for mining vibrating screens.",
+      "zh": "提供聚氨酯模块化筛板和张紧式筛网，具有长寿命、低噪音和高筛分效率，适用于各类矿山振动筛。"
+    }
   },
   {
     "id": "product-stainless-woven-mesh",
     "slug": "stainless-woven-mesh",
-    "name": "不锈钢编织网",
-    "category": "通用筛网",
-    "summary": "适用于过滤、防护和精细筛分的通用型金属丝网。",
-    "description": "不锈钢编织网采用 304、316 等材质，通过平纹、斜纹等方式织造而成，兼顾强度、耐腐蚀性与筛分精度，适用于食品、化工、过滤和设备防护场景。",
+    "name": {
+      "en": "Stainless Woven Mesh",
+      "zh": "不锈钢编织网"
+    },
+    "category": {
+      "en": "General Purpose Screen Mesh",
+      "zh": "通用筛网"
+    },
+    "summary": {
+      "en": "General-purpose wire mesh for filtration, guarding, and precision screening.",
+      "zh": "适用于过滤、防护和精细筛分的通用型金属丝网。"
+    },
+    "description": {
+      "en": "Stainless woven mesh is produced from 304, 316, and similar grades in plain or twill weave patterns. It balances strength, corrosion resistance, and screening precision, making it suitable for food, chemical, filtration, and equipment guarding applications.",
+      "zh": "不锈钢编织网采用 304、316 等材质，通过平纹、斜纹等方式织造而成，兼顾强度、耐腐蚀性与筛分精度，适用于食品、化工、过滤和设备防护场景。"
+    },
     "coverImage": "/images/placeholders/product-cover.svg",
     "gallery": [
       "/images/products/stainless-woven-mesh/detail-1.jpg",
       "/images/products/stainless-woven-mesh/detail-2.jpg"
     ],
-    "materials": ["SUS304", "SUS316", "SUS316L"],
+    "materials": {
+      "en": ["SUS304", "SUS316", "SUS316L"],
+      "zh": ["SUS304", "SUS316", "SUS316L"]
+    },
     "meshRange": "2-635 mesh",
     "apertureRange": "0.02-10 mm",
     "wireDiameterRange": "0.03-2.0 mm",
-    "sizes": ["1m x 30m", "1.22m x 30m", "定制裁片"],
+    "sizes": {
+      "en": ["1 m x 30 m", "1.22 m x 30 m", "Custom cut pieces"],
+      "zh": ["1m x 30m", "1.22m x 30m", "定制裁片"]
+    },
     "customSupported": true,
-    "tensileStrength": "SUS304 ≥ 515 MPa；SUS316L ≥ 485 MPa",
-    "hardness": "SUS304 HB ≤ 200；SUS316L HB ≤ 217",
-    "standard": "ISO 9044:1999；ASTM E11-22；GB/T 5330-2003",
+    "tensileStrength": {
+      "en": "SUS304 ≥ 515 MPa; SUS316L ≥ 485 MPa",
+      "zh": "SUS304 ≥ 515 MPa；SUS316L ≥ 485 MPa"
+    },
+    "hardness": {
+      "en": "SUS304 HB ≤ 200; SUS316L HB ≤ 217",
+      "zh": "SUS304 HB ≤ 200；SUS316L HB ≤ 217"
+    },
+    "standard": {
+      "en": "ISO 9044:1999; ASTM E11-22; GB/T 5330-2003",
+      "zh": "ISO 9044:1999；ASTM E11-22；GB/T 5330-2003"
+    },
     "selectionGuide": {
       "abrasion": "medium",
       "corrosion": "high",
       "temperature": "high",
       "moisture": "excellent",
-      "note": "SUS304 适合一般化工和食品过滤；SUS316/316L 含钼（Mo 2-3%），耐氯离子腐蚀，适合海水、酸液和医药场景；最高工作温度可达 800°C（氧化气氛）。"
+      "note": {
+        "en": "SUS304 suits general chemical and food filtration. SUS316/316L contains 2-3% molybdenum for better chloride resistance and is preferred for seawater, acidic liquids, and pharmaceutical duties. Maximum working temperature can reach about 800°C in oxidizing atmospheres.",
+        "zh": "SUS304 适合一般化工和食品过滤；SUS316/316L 含钼（Mo 2-3%），耐氯离子腐蚀，适合海水、酸液和医药场景；最高工作温度可达 800°C（氧化气氛）。"
+      }
     },
     "applications": ["app-industrial-grading"],
-    "advantages": ["耐腐蚀", "筛分精度高", "规格范围广", "可卷装或裁片"],
+    "advantages": {
+      "en": ["Corrosion resistant", "High screening precision", "Wide specification range", "Available in rolls or cut pieces"],
+      "zh": ["耐腐蚀", "筛分精度高", "规格范围广", "可卷装或裁片"]
+    },
     "faqs": ["faq-spec-01", "faq-material-01", "faq-custom-01"],
     "relatedProducts": ["product-65mn-woven-screen"],
-    "seoTitle": "不锈钢编织网厂家 | 过滤筛分用金属丝网",
-    "seoDescription": "提供多种目数和材质的不锈钢编织网，支持卷装、裁片和按图定制。"
+    "seoTitle": {
+      "en": "Stainless Woven Mesh Manufacturer | Wire Mesh for Filtration and Screening",
+      "zh": "不锈钢编织网厂家 | 过滤筛分用金属丝网"
+    },
+    "seoDescription": {
+      "en": "Stainless woven mesh in multiple mesh counts and material grades, available in rolls, cut pieces, and drawing-based customization.",
+      "zh": "提供多种目数和材质的不锈钢编织网，支持卷装、裁片和按图定制。"
+    }
   },
   {
     "id": "product-crimped-wire-mesh",
     "slug": "crimped-wire-mesh",
-    "name": "重型轧花网",
-    "category": "重型筛网",
-    "summary": "结构坚固、抗冲击，常用于石料、砂石和粮食分级。",
-    "description": "轧花网先将金属丝轧制成波纹后再编织，网面稳定性高，承载力强，适合中粗颗粒物料的筛分与分级，常见于粮机、石料场和振动筛设备。",
+    "name": {
+      "en": "Heavy Crimped Wire Mesh",
+      "zh": "重型轧花网"
+    },
+    "category": {
+      "en": "Heavy-Duty Screen Mesh",
+      "zh": "重型筛网"
+    },
+    "summary": {
+      "en": "Rigid, impact-resistant mesh commonly used for stone, sand, and grain classification.",
+      "zh": "结构坚固、抗冲击，常用于石料、砂石和粮食分级。"
+    },
+    "description": {
+      "en": "Crimped wire mesh is woven after the wire has been mechanically crimped, giving the screen high dimensional stability and strong load capacity. It is suitable for grading and screening medium to coarse particles and is commonly used on grain machines, stone plants, and vibrating screen equipment.",
+      "zh": "轧花网先将金属丝轧制成波纹后再编织，网面稳定性高，承载力强，适合中粗颗粒物料的筛分与分级，常见于粮机、石料场和振动筛设备。"
+    },
     "coverImage": "/images/placeholders/product-cover.svg",
     "gallery": [
       "/images/products/crimped-wire-mesh/detail-1.jpg",
       "/images/products/crimped-wire-mesh/detail-2.jpg"
     ],
-    "materials": ["高碳钢", "65Mn", "镀锌钢丝"],
+    "materials": {
+      "en": ["High-Carbon Steel", "65Mn", "Galvanized Steel Wire"],
+      "zh": ["高碳钢", "65Mn", "镀锌钢丝"]
+    },
     "apertureRange": "2-100 mm",
     "wireDiameterRange": "1.0-12 mm",
     "meshRange": "< 1 - 10 mesh",
-    "sizes": ["1m x 2m", "1.5m x 2.5m", "整机配套定制"],
+    "sizes": {
+      "en": ["1 m x 2 m", "1.5 m x 2.5 m", "Custom to complete equipment"],
+      "zh": ["1m x 2m", "1.5m x 2.5m", "整机配套定制"]
+    },
     "customSupported": true,
-    "tensileStrength": "高碳钢 ≥ 800 MPa；65Mn 处理后 ≥ 1080 MPa",
-    "hardness": "高碳钢 HB 200-280；镀锌丝锌层附着力符合 GB/T 1839",
-    "standard": "GB/T 10561；ISO 4783-2；参照 ASTM A740",
+    "tensileStrength": {
+      "en": "High-carbon steel ≥ 800 MPa; 65Mn after treatment ≥ 1080 MPa",
+      "zh": "高碳钢 ≥ 800 MPa；65Mn 处理后 ≥ 1080 MPa"
+    },
+    "hardness": {
+      "en": "High-carbon steel HB 200-280; zinc adhesion on galvanized wire meets GB/T 1839",
+      "zh": "高碳钢 HB 200-280；镀锌丝锌层附着力符合 GB/T 1839"
+    },
+    "standard": {
+      "en": "GB/T 10561; ISO 4783-2; reference ASTM A740",
+      "zh": "GB/T 10561；ISO 4783-2；参照 ASTM A740"
+    },
     "selectionGuide": {
       "abrasion": "high",
       "corrosion": "low",
       "temperature": "medium",
       "moisture": "low",
-      "note": "重型轧花结构使丝径交叉点锁定牢固，不易松动，适合大块石料和粮食等中重载工况；镀锌版本可用于轻度潮湿环境。"
+      "note": {
+        "en": "The heavy crimped structure locks wire intersections tightly and resists loosening under large stone or grain loads. Galvanized versions can be used in mildly wet environments.",
+        "zh": "重型轧花结构使丝径交叉点锁定牢固，不易松动，适合大块石料和粮食等中重载工况；镀锌版本可用于轻度潮湿环境。"
+      }
     },
-    "applications": ["app-grain-screening", "app-mining-screening"],
-    "advantages": ["承载力高", "抗冲击", "不易松动", "适配振动筛设备"],
+    "applications": ["app-mining-grading", "app-industrial-grading"],
+    "advantages": {
+      "en": ["High load capacity", "Impact resistant", "Stable weave lock", "Fits vibrating screens"],
+      "zh": ["承载力高", "抗冲击", "不易松动", "适配振动筛设备"]
+    },
     "faqs": ["faq-material-02", "faq-delivery-02", "faq-sample-01"],
     "relatedProducts": ["product-65mn-woven-screen", "product-mining-welded-screen"],
-    "seoTitle": "重型轧花网厂家 | 矿用振动筛配套网",
-    "seoDescription": "轧花网适用于石料、砂石、粮食等物料筛分，支持按设备尺寸定制。"
+    "seoTitle": {
+      "en": "Heavy Crimped Wire Mesh Manufacturer | Screen Mesh for Mining Vibrating Screens",
+      "zh": "重型轧花网厂家 | 矿用振动筛配套网"
+    },
+    "seoDescription": {
+      "en": "Crimped wire mesh for stone, sand, and grain screening with customization to equipment dimensions.",
+      "zh": "轧花网适用于石料、砂石、粮食等物料筛分，支持按设备尺寸定制。"
+    }
   }
 ]

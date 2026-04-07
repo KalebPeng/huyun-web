@@ -251,26 +251,27 @@ const props = withDefaults(defineProps<Props>(), {
   initialUsage: ''
 })
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
 
 const usageOptions = computed<SelectOption[]>(() => [
-  { value: '粮食筛分', label: t('form.inquiry.options.usage.grain') },
-  { value: '工业过滤', label: t('form.inquiry.options.usage.filtration') },
-  { value: '矿山筛分', label: t('form.inquiry.options.usage.mining') },
-  { value: '养殖', label: t('form.inquiry.options.usage.breeding') },
-  { value: '建筑', label: t('form.inquiry.options.usage.construction') },
-  { value: '其他', label: t('form.inquiry.options.usage.other') }
+  { value: t('form.inquiry.options.usage.grain'), label: t('form.inquiry.options.usage.grain') },
+  { value: t('form.inquiry.options.usage.filtration'), label: t('form.inquiry.options.usage.filtration') },
+  { value: t('form.inquiry.options.usage.mining'), label: t('form.inquiry.options.usage.mining') },
+  { value: t('form.inquiry.options.usage.breeding'), label: t('form.inquiry.options.usage.breeding') },
+  { value: t('form.inquiry.options.usage.construction'), label: t('form.inquiry.options.usage.construction') },
+  { value: t('form.inquiry.options.usage.other'), label: t('form.inquiry.options.usage.other') }
 ])
 
 const materialOptions = computed<SelectOption[]>(() => [
-  { value: '不锈钢304', label: t('form.inquiry.options.material.stainless304') },
-  { value: '不锈钢316', label: t('form.inquiry.options.material.stainless316') },
-  { value: '碳钢', label: t('form.inquiry.options.material.carbonSteel') },
-  { value: '镀锌', label: t('form.inquiry.options.material.galvanized') },
-  { value: '其他', label: t('form.inquiry.options.material.other') }
+  { value: t('form.inquiry.options.material.stainless304'), label: t('form.inquiry.options.material.stainless304') },
+  { value: t('form.inquiry.options.material.stainless316'), label: t('form.inquiry.options.material.stainless316') },
+  { value: t('form.inquiry.options.material.carbonSteel'), label: t('form.inquiry.options.material.carbonSteel') },
+  { value: t('form.inquiry.options.material.galvanized'), label: t('form.inquiry.options.material.galvanized') },
+  { value: t('form.inquiry.options.material.other'), label: t('form.inquiry.options.material.other') }
 ])
 
 const form = reactive<InquiryFormPayload>({
+  locale: undefined,
   name: '',
   company: '',
   contact: '',
@@ -323,7 +324,7 @@ const normalizeUsage = (value: string) => {
   }
 
   const validOptions = usageOptions.value.map((option) => option.value)
-  return validOptions.includes(value) ? value : '其他'
+  return validOptions.includes(value) ? value : t('form.inquiry.options.usage.other')
 }
 
 watch(
@@ -365,6 +366,7 @@ const validate = () => {
 }
 
 const resetForm = () => {
+  form.locale = undefined
   form.name = ''
   form.company = ''
   form.contact = ''
@@ -390,7 +392,10 @@ const handleSubmit = async () => {
   try {
     await $fetch<InquiryResponse>('/api/inquiry', {
       method: 'POST',
-      body: { ...form }
+      body: {
+        ...form,
+        locale: locale.value === 'zh' ? 'zh' : 'en'
+      }
     })
 
     submitStatus.value = 'success'

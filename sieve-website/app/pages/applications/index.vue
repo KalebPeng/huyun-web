@@ -88,11 +88,16 @@ import { usePageSeoMeta } from '~/composables/useSeoMeta'
 import AppButton from '~/components/common/AppButton.vue'
 import Badge from '~/components/common/Badge.vue'
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
 const { fetchApplications } = useApplications()
-const { data: applications } = await useAsyncData('applications-list', fetchApplications, {
-  default: () => []
-})
+const { data: applications } = await useAsyncData(
+  () => `applications-list:${locale.value}`,
+  fetchApplications,
+  {
+    default: () => [],
+    watch: [locale]
+  }
+)
 
 usePageSeoMeta({
   title: t('applicationsPage.seo.title'),

@@ -28,8 +28,8 @@ export function usePageSeoMeta({ title, description, image }: SeoMetaOptions) {
   const switchLocalePath = useSwitchLocalePath()
   const siteUrl = config.public.siteUrl || 'https://huayunmesh.com'
   const currentPath = switchLocalePath(locale.value) || route.path || '/'
-  const zhPath = switchLocalePath('zh') || '/'
-  const enPath = switchLocalePath('en') || '/en'
+  const zhPath = switchLocalePath('zh') || '/zh'
+  const enPath = switchLocalePath('en') || '/'
   const canonicalUrl = toAbsoluteUrl(currentPath, siteUrl)
   const imageUrl = image ? toAbsoluteUrl(image, siteUrl) : undefined
 
@@ -60,7 +60,7 @@ export function usePageSeoMeta({ title, description, image }: SeoMetaOptions) {
         key: 'alternate-x-default',
         rel: 'alternate',
         hreflang: 'x-default',
-        href: toAbsoluteUrl(zhPath, siteUrl)
+        href: toAbsoluteUrl(enPath, siteUrl)
       }
     ]
   })

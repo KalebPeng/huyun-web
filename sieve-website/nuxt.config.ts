@@ -1,10 +1,11 @@
-import rehypeKatex from 'rehype-katex'
+﻿import rehypeKatex from 'rehype-katex'
 import remarkMath from 'remark-math'
 
 import applicationsData from './data/applications.json'
 import productsData from './data/products.json'
 
 const siteUrl = process.env.NUXT_PUBLIC_SITE_URL || 'https://huayunmesh.com'
+const stripUtf8Bom = (value: string) => value.replace(/^\uFEFF/, '')
 
 const createLocalizedEntries = (path: string, changefreq: 'daily' | 'weekly' | 'monthly' = 'monthly') => {
   const normalizedPath = path === '/' ? '' : path
@@ -15,7 +16,7 @@ const createLocalizedEntries = (path: string, changefreq: 'daily' | 'weekly' | '
       changefreq
     },
     {
-      loc: `/en${normalizedPath}`,
+      loc: `/zh${normalizedPath}`,
       changefreq
     }
   ]
@@ -45,6 +46,14 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   ssr: true,
+
+  hooks: {
+    'content:file:beforeParse'(ctx) {
+      if (typeof ctx.file.body === 'string') {
+        ctx.file.body = stripUtf8Bom(ctx.file.body)
+      }
+    }
+  },
 
   modules: [
     '@nuxt/content',
@@ -84,7 +93,7 @@ export default defineNuxtConfig({
     // Keeping it empty loads locale files from `sieve-website/i18n/*.json`.
     langDir: '',
     strategy: 'prefix_except_default',
-    defaultLocale: 'zh',
+    defaultLocale: 'en',
     locales: [
       {
         code: 'zh',
@@ -103,13 +112,13 @@ export default defineNuxtConfig({
       useCookie: true,
       cookieKey: 'i18n_redirected',
       redirectOn: 'root',
-      fallbackLocale: 'zh'
+      fallbackLocale: 'en'
     }
   },
 
   site: {
     url: siteUrl,
-    name: '华云网业'
+    name: 'Huayun Wire Mesh'
   },
 
   sitemap: {
@@ -168,21 +177,22 @@ export default defineNuxtConfig({
   app: {
     head: {
       htmlAttrs: {
-        lang: 'zh-CN'
+        lang: 'en'
       },
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
-      title: '华云网业',
-      titleTemplate: '%s | 华云网业',
+      title: 'Huayun Wire Mesh',
+      titleTemplate: '%s | Huayun Wire Mesh',
       meta: [
         {
           name: 'description',
           content:
-            '华云网业专注矿用筛网、65Mn 编织网、条缝筛与聚氨酯筛板，提供矿山、选煤、骨料与工业过滤场景的筛分解决方案。'
+            'Huayun Wire Mesh specializes in mining screens, 65Mn woven mesh, welded slot screens, and polyurethane panels for aggregate, coal washing, and industrial filtration.'
         },
-        { property: 'og:site_name', content: '华云网业' },
+        { property: 'og:site_name', content: 'Huayun Wire Mesh' },
         { property: 'og:type', content: 'website' }
       ]
     }
   }
 })
+

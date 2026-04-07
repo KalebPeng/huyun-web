@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <div class="bg-slate-50">
     <section class="bg-[linear-gradient(135deg,#111827,#1a2744)] py-16 text-white sm:py-20">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -144,7 +144,7 @@ const prefilledProductType = computed(() => {
 
 const prefilledUsage = computed(() => {
   const slug = resolveQueryValue(route.query.scene)
-  return slug ? getApplicationBySlug(slug)?.name ?? '其他' : ''
+  return slug ? getApplicationBySlug(slug)?.name ?? t('form.inquiry.options.usage.other') : ''
 })
 
 usePageSeoMeta({
@@ -152,3 +152,4 @@ usePageSeoMeta({
   description: t('contactPage.seo.description')
 })
 </script>
+

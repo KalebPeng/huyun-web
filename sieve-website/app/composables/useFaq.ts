@@ -1,26 +1,32 @@
 import { computed } from 'vue'
 
 import faqData from '~~/data/faq.json'
-import type { FAQ } from '~~/types'
+import type { LocalizedFAQ } from '~~/types'
+import { localizeFaq } from '~~/utils/catalog'
+import { normalizeLocale } from '~~/utils/localized'
 
-const faqs = faqData as FAQ[]
+const faqs = faqData as LocalizedFAQ[]
 
 export const useFaq = () => {
-  const allFaqs = computed(() => faqs)
+  const { locale } = useI18n()
+  const currentLocale = computed(() => normalizeLocale(locale.value))
+  const allFaqs = computed(() =>
+    faqs.map((faq) => localizeFaq(faq, currentLocale.value))
+  )
 
-  const getFaqById = (id: string) => faqs.find((faq) => faq.id === id)
+  const getFaqById = (id: string) => allFaqs.value.find((faq) => faq.id === id)
 
   const getFaqsByCategory = (category: string) =>
-    faqs.filter((faq) => faq.category === category)
+    allFaqs.value.filter((faq) => faq.category === category)
 
   const getFaqsByIds = (ids: string[]) =>
-    faqs.filter((faq) => ids.includes(faq.id))
+    allFaqs.value.filter((faq) => ids.includes(faq.id))
 
   const getFaqsByProductId = (productId: string) =>
-    faqs.filter((faq) => faq.relatedProductIds?.includes(productId))
+    allFaqs.value.filter((faq) => faq.relatedProductIds?.includes(productId))
 
   const getFaqsByApplicationId = (applicationId: string) =>
-    faqs.filter((faq) => faq.relatedApplicationIds?.includes(applicationId))
+    allFaqs.value.filter((faq) => faq.relatedApplicationIds?.includes(applicationId))
 
   return {
     faqs: allFaqs,

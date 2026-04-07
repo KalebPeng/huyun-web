@@ -1,18 +1,30 @@
-import type { Article } from '~~/types/article'
+import type { Article, ArticleSource } from '~~/types/article'
 import {
   getContentPathFromPublicPath,
   getLocaleFromContentPath,
   getPublicPathFromContentPath
 } from '~~/utils/knowledgeLocale'
 
-type ArticleDocument = Omit<Article, 'slug'>
+interface RawArticleDocument extends Omit<Article, 'slug' | 'tags' | 'sources'> {
+  tags?: string[] | null
+  sources?: ArticleSource[] | null
+}
 
 const getSlugFromPath = (path: string) => path.split('/').filter(Boolean).at(-1) || ''
 
-const toArticle = (article: ArticleDocument): Article => ({
+const toArticle = (article: RawArticleDocument): Article => ({
   ...article,
   path: getPublicPathFromContentPath(article.path),
-  slug: getSlugFromPath(article.path)
+  slug: getSlugFromPath(article.path),
+  tags: Array.isArray(article.tags) ? article.tags.filter((tag): tag is string => typeof tag === 'string') : [],
+  sources: Array.isArray(article.sources)
+    ? article.sources.filter((source): source is ArticleSource =>
+        Boolean(source)
+        && typeof source.title === 'string'
+        && typeof source.publisher === 'string'
+        && typeof source.note === 'string'
+      )
+    : []
 })
 
 export const useArticles = () => {
@@ -23,7 +35,7 @@ export const useArticles = () => {
       .order('publishedAt', 'DESC')
       .all()
 
-    return (articles as ArticleDocument[]).filter(
+    return (articles as RawArticleDocument[]).filter(
       (article) => getLocaleFromContentPath(article.path) === locale.value
     )
   }
@@ -38,7 +50,7 @@ export const useArticles = () => {
       .path(getContentPathFromPublicPath(path, locale.value as 'zh' | 'en'))
       .first()
 
-    return article ? toArticle(article as ArticleDocument) : null
+    return article ? toArticle(article as RawArticleDocument) : null
   }
 
   const getArticlesByCategory = async (category: string, excludePath?: string) => {

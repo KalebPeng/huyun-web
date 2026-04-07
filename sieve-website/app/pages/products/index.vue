@@ -101,65 +101,62 @@ import { usePageSeoMeta } from '~/composables/useSeoMeta'
 import AppButton from '~/components/common/AppButton.vue'
 import ProductCard from '~/components/product/ProductCard.vue'
 
-type CategoryKey = 'all' | 'woven' | 'welded' | 'crimped' | 'mining' | 'filter-disc'
+const allCategoryValue = '__all__'
 
 interface CategoryTab {
   label: string
-  value: CategoryKey
+  value: string
 }
 
 const route = useRoute()
 const router = useRouter()
-const { t } = useI18n()
+const { t, locale } = useI18n()
 const { fetchProducts } = useProducts()
-const { data: productsData } = await useAsyncData('products-list', fetchProducts, {
-  default: () => []
+const { data: productsData } = await useAsyncData(
+  () => `products-list:${locale.value}`,
+  fetchProducts,
+  {
+    default: () => [],
+    watch: [locale]
+  }
+)
+
+const categoryTabs = computed<CategoryTab[]>(() => {
+  const categories = [...new Set(productsData.value.map((product) => product.category))]
+
+  return [
+    { label: t('productsPage.categories.all'), value: allCategoryValue },
+    ...categories.map((category) => ({
+      label: category,
+      value: category
+    }))
+  ]
 })
 
-const categoryTabs = computed<CategoryTab[]>(() => [
-  { label: t('productsPage.categories.all'), value: 'all' },
-  { label: t('productsPage.categories.woven'), value: 'woven' },
-  { label: t('productsPage.categories.welded'), value: 'welded' },
-  { label: t('productsPage.categories.crimped'), value: 'crimped' },
-  { label: t('productsPage.categories.mining'), value: 'mining' },
-  { label: t('productsPage.categories.filterDisc'), value: 'filter-disc' }
-])
+const validCategoryValues = computed(() => new Set(categoryTabs.value.map((tab) => tab.value)))
 
-const validCategoryValues = computed(() => new Set<CategoryKey>(categoryTabs.value.map((tab) => tab.value)))
-
-const normalizeCategory = (value: unknown): CategoryKey => {
+const normalizeCategory = (value: unknown): string => {
   if (typeof value !== 'string') {
-    return 'all'
+    return allCategoryValue
   }
 
-  return validCategoryValues.value.has(value as CategoryKey) ? (value as CategoryKey) : 'all'
-}
-
-const resolveProductCategory = (slug: string): CategoryKey => {
-  if (slug === 'stainless-woven-mesh') return 'woven'
-  if (slug === 'welded-wire-mesh') return 'welded'
-  if (slug === 'crimped-wire-mesh') return 'crimped'
-  if (slug === 'mine-screen-mesh') return 'mining'
-  if (slug === 'filter-disc') return 'filter-disc'
-  return 'all'
+  return validCategoryValues.value.has(value) ? value : allCategoryValue
 }
 
 const activeCategory = computed(() => normalizeCategory(route.query.category))
 
 const filteredProducts = computed(() => {
-  if (activeCategory.value === 'all') {
+  if (activeCategory.value === allCategoryValue) {
     return productsData.value
   }
 
-  return productsData.value.filter(
-    (product) => resolveProductCategory(product.slug) === activeCategory.value
-  )
+  return productsData.value.filter((product) => product.category === activeCategory.value)
 })
 
-const updateCategoryQuery = async (category: CategoryKey) => {
+const updateCategoryQuery = async (category: string) => {
   const nextQuery = { ...route.query }
 
-  if (category === 'all') {
+  if (category === allCategoryValue) {
     delete nextQuery.category
   } else {
     nextQuery.category = category
@@ -168,7 +165,7 @@ const updateCategoryQuery = async (category: CategoryKey) => {
   await router.replace({ query: nextQuery })
 }
 
-const handleCategoryChange = (category: CategoryKey) => {
+const handleCategoryChange = (category: string) => {
   if (category === activeCategory.value) {
     return
   }
@@ -182,7 +179,7 @@ watch(
     const normalized = normalizeCategory(category)
     const current = typeof category === 'string' ? category : undefined
 
-    if ((normalized === 'all' && current === undefined) || current === normalized) {
+    if ((normalized === allCategoryValue && current === undefined) || current === normalized) {
       return
     }
 

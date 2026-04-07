@@ -42,7 +42,7 @@ interface Props {
   items: FAQ[]
 }
 
-const props = defineProps<Props>()
+defineProps<Props>()
 
 const openIds = ref<string[]>([])
 

@@ -82,7 +82,7 @@
 
             <div class="mt-4 flex flex-wrap gap-1.5">
               <span
-                v-for="tag in article.tags.slice(0, 3)"
+                v-for="tag in (article.tags || []).slice(0, 3)"
                 :key="tag"
                 class="rounded-md bg-slate-100 px-2 py-0.5 text-xs text-slate-500"
               >
@@ -142,8 +142,14 @@ import { useArticles } from '~/composables/useArticles'
 import { usePageSeoMeta } from '~/composables/useSeoMeta'
 
 const { getAllArticles } = useArticles()
-const { data } = await useAsyncData('knowledge-articles', () => getAllArticles())
 const { t, locale } = useI18n()
+const { data } = await useAsyncData(
+  () => `knowledge-articles:${locale.value}`,
+  () => getAllArticles(),
+  {
+    watch: [locale]
+  }
+)
 
 const allCategoryValue = '__all__'
 const articles = computed(() => data.value || [])
@@ -172,7 +178,7 @@ const filteredArticles = computed(() => {
   const keyword = searchKeyword.value.toLowerCase()
   const keywordMatches = keyword
     ? articles.value.filter(article =>
-        `${article.title} ${article.summary} ${article.tags.join(' ')}`
+        `${article.title} ${article.summary} ${(article.tags || []).join(' ')}`
           .toLowerCase()
           .includes(keyword)
       )

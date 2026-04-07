@@ -1,106 +1,232 @@
 [
   {
     "id": "faq-spec-01",
-    "category": "产品规格",
-    "question": "如何根据 ISO 9044 标准理解筛网目数（Mesh）与孔径（Aperture）的关系？",
-    "answer": "根据 ISO 9044:1999（金属丝编织网技术条件），目数（Mesh）是指每英寸（25.4mm）内的网孔数，孔径（Aperture）则是相邻两根丝中心间距减去丝径的净距离，计算公式为：孔径 = 25.4 / 目数 - 丝径（mm）。以 10 目、丝径 0.8mm 为例：孔径 = 25.4 / 10 - 0.8 = 1.74mm。因此相同目数下，丝径越细，孔径越大，开孔率越高，但强度随之降低。选型时须参照物料 D90 粒径分布，选择孔径约为 D90 的 1.2-1.5 倍，以保证透筛率与防堵孔的平衡。",
+    "category": {
+      "en": "Product Specifications",
+      "zh": "产品规格"
+    },
+    "question": {
+      "en": "How should mesh count and aperture be understood under ISO 9044?",
+      "zh": "如何根据 ISO 9044 标准理解筛网目数（Mesh）与孔径（Aperture）的关系？"
+    },
+    "answer": {
+      "en": "Under ISO 9044, mesh count is the number of openings per inch (25.4 mm), while aperture is the clear opening after subtracting wire diameter. A practical formula is: aperture = 25.4 / mesh count - wire diameter (mm). At the same mesh count, finer wire gives a larger aperture and higher open area but lower strength. In selection work, an aperture around 1.2-1.5 times the material D90 is a reasonable starting point for balancing throughput and anti-blinding performance.",
+      "zh": "根据 ISO 9044:1999（金属丝编织网技术条件），目数（Mesh）是指每英寸（25.4mm）内的网孔数，孔径（Aperture）则是相邻两根丝中心间距减去丝径的净距离，计算公式为：孔径 = 25.4 / 目数 - 丝径（mm）。以 10 目、丝径 0.8mm 为例：孔径 = 25.4 / 10 - 0.8 = 1.74mm。因此相同目数下，丝径越细，孔径越大，开孔率越高，但强度随之降低。选型时须参照物料 D90 粒径分布，选择孔径约为 D90 的 1.2-1.5 倍，以保证透筛率与防堵孔的平衡。"
+    },
     "relatedProductIds": ["product-stainless-woven-mesh", "product-65mn-woven-screen"],
     "relatedApplicationIds": ["app-industrial-grading"]
   },
   {
     "id": "faq-spec-02",
-    "category": "产品规格",
-    "question": "针对非标振动筛设备，华云网业是否支持按图纸定制筛网尺寸和安装结构？",
-    "answer": "是的，定制化是我们的核心能力。除标准矩形片网外，完全支持按设备图纸进行包边、弯边、打孔、张紧钩以及异形框架焊接。无论进口品牌还是国产定制机型，只需提供外形尺寸（A/B/C 向）和张紧方式，即可实现 1:1 精准配套。产品符合 GB/T 5330-2003 或 ISO 9044:1999 要求，定制规格可按需出具检测报告。",
+    "category": {
+      "en": "Product Specifications",
+      "zh": "产品规格"
+    },
+    "question": {
+      "en": "Can Huayun customize screen size and mounting structure for non-standard vibrating screens?",
+      "zh": "针对非标振动筛设备，华云网业是否支持按图纸定制筛网尺寸和安装结构？"
+    },
+    "answer": {
+      "en": "Yes. We support custom sizing, edging, bending, punching, tension hooks, and irregular frame welding based on equipment drawings. If you provide outer dimensions and the mounting method, we can usually make a 1:1 matching screen. Custom product can be built to GB/T 5330-2003 or ISO 9044:1999 requirements, and inspection reports can be issued when needed.",
+      "zh": "是的，定制化是我们的核心能力。除标准矩形片网外，完全支持按设备图纸进行包边、弯边、打孔、张紧钩以及异形框架焊接。无论进口品牌还是国产定制机型，只需提供外形尺寸（A/B/C 向）和张紧方式，即可实现 1:1 精准配套。产品符合 GB/T 5330-2003 或 ISO 9044:1999 要求，定制规格可按需出具检测报告。"
+    },
     "relatedProductIds": ["product-mining-welded-screen", "product-65mn-woven-screen", "product-polyurethane-screen"]
   },
   {
     "id": "faq-spec-03",
-    "category": "产品规格",
-    "question": "ASTM E11 与 ISO 3310-1 筛网标准有何区别？选型时如何对应？",
-    "answer": "ASTM E11（美国材料与试验协会标准）和 ISO 3310-1（国际标准化组织标准）均规定了金属丝编织试验筛的技术要求，但在目数划分体系上存在差异：ASTM E11 使用英寸基准（如 No.10 = 2.00mm 孔径），ISO 3310-1 则以 R20 优先数系定义孔径（如 2.00mm、2.24mm、2.50mm）。国内执行标准 GB/T 6003.1-2012 与 ISO 3310-1 基本对应。在实际选型中，若出口或设备来自北美，应优先确认对方采购标准是 ASTM E11 还是 ISO；若两者均需满足，华云可出具双标认证产品。",
+    "category": {
+      "en": "Product Specifications",
+      "zh": "产品规格"
+    },
+    "question": {
+      "en": "What is the difference between ASTM E11 and ISO 3310-1, and how should they be matched during selection?",
+      "zh": "ASTM E11 与 ISO 3310-1 筛网标准有何区别？选型时如何对应？"
+    },
+    "answer": {
+      "en": "Both standards define test-sieve requirements, but ASTM E11 uses an inch-based designation system while ISO 3310-1 uses preferred metric aperture series. In export projects, confirm which standard the equipment or customer expects. If both are required, dual-standard compliant product can be supplied.",
+      "zh": "ASTM E11（美国材料与试验协会标准）和 ISO 3310-1（国际标准化组织标准）均规定了金属丝编织试验筛的技术要求，但在目数划分体系上存在差异：ASTM E11 使用英寸基准（如 No.10 = 2.00mm 孔径），ISO 3310-1 则以 R20 优先数系定义孔径（如 2.00mm、2.24mm、2.50mm）。国内执行标准 GB/T 6003.1-2012 与 ISO 3310-1 基本对应。在实际选型中，若出口或设备来自北美，应优先确认对方采购标准是 ASTM E11 还是 ISO；若两者均需满足，华云可出具双标认证产品。"
+    },
     "relatedProductIds": ["product-stainless-woven-mesh"]
   },
   {
     "id": "faq-material-01",
-    "category": "材质选择",
-    "question": "在腐蚀环境中，如何依据 ASTM A276 / GB 4237 标准选择 304 还是 316L 不锈钢筛网？",
-    "answer": "选材核心是氯离子浓度和 pH 值。304（S30400）含 18% Cr、8% Ni，适用于常规食品、化工和水处理等弱腐蚀工况，点蚀当量（PREN）约为 18。316L（S31603）在此基础上加入 2-3% Mo，PREN 提升至 24-26，显著增强抗氯离子点蚀能力，适合沿海环境、选煤酸性洗液和医药无菌场景。具体判断：氯离子浓度 < 200 ppm 且 pH > 5，304 足够；超过此限值或有有机酸（醋酸、草酸），建议选用 316L。两者均须符合 ASTM A240 或 GB/T 4237 板材标准，华云采购原材料均附有 MTC（材质证明书）。",
+    "category": {
+      "en": "Material Selection",
+      "zh": "材质选择"
+    },
+    "question": {
+      "en": "In corrosive service, how do you decide between 304 and 316L stainless screen mesh?",
+      "zh": "在腐蚀环境中，如何依据 ASTM A276 / GB 4237 标准选择 304 还是 316L 不锈钢筛网？"
+    },
+    "answer": {
+      "en": "The main decision factors are chloride concentration and pH. Grade 304 fits general food, chemical, and water-treatment service. Grade 316L adds molybdenum and is a safer choice for coastal use, acidic coal-washing liquids, and pharmaceutical duties. As a rule of thumb, when chloride rises above about 200 ppm or organic acids are present, 316L is usually preferred.",
+      "zh": "选材核心是氯离子浓度和 pH 值。304（S30400）含 18% Cr、8% Ni，适用于常规食品、化工和水处理等弱腐蚀工况，点蚀当量（PREN）约为 18。316L（S31603）在此基础上加入 2-3% Mo，PREN 提升至 24-26，显著增强抗氯离子点蚀能力，适合沿海环境、选煤酸性洗液和医药无菌场景。具体判断：氯离子浓度 < 200 ppm 且 pH > 5，304 足够；超过此限值或有有机酸（醋酸、草酸），建议选用 316L。两者均须符合 ASTM A240 或 GB/T 4237 板材标准，华云采购原材料均附有 MTC（材质证明书）。"
+    },
     "relatedProductIds": ["product-stainless-woven-mesh", "product-mining-welded-screen"],
     "relatedApplicationIds": ["app-industrial-grading"]
   },
   {
     "id": "faq-material-02",
-    "category": "材质选择",
-    "question": "矿山骨料干筛与洗煤厂湿法脱水，分别应选择哪种筛网材质和结构？",
-    "answer": "两种工况需求截然不同，选材逻辑如下：\n\n【干式矿山骨料筛分（石灰石、玄武岩、花岗岩）】：主要矛盾是高冲击 + 高磨耗。推荐 65Mn 弹簧钢编织网（HRC 45-50），其抗拉强度经热处理后 ≥ 1470 MPa，综合使用成本比普通碳钢降低 30-40%。大孔径（50-120mm）建议采用重型轧花网，波纹锁定结构防止网丝松动。\n\n【洗煤厂湿式脱水 / 脱介】：主要矛盾是防堵孔 + 耐酸腐蚀。推荐焊接条缝筛（V 型绕丝），梯形截面开口率比编织网高 15-25%，楔形效应使颗粒不易嵌塞；材质选 SUS316L（含钼）以应对含硫化物的酸性矿浆。符合 GB/T 5330-2003 及 ISO 9044:1999 要求。",
+    "category": {
+      "en": "Material Selection",
+      "zh": "材质选择"
+    },
+    "question": {
+      "en": "For dry aggregate screening in mines and wet dewatering in coal plants, which materials and structures should be selected?",
+      "zh": "矿山骨料干筛与洗煤厂湿法脱水，分别应选择哪种筛网材质和结构？"
+    },
+    "answer": {
+      "en": "For dry, high-impact aggregate screening, 65Mn spring steel woven mesh or heavy crimped mesh is usually the best fit because hardness and abrasion resistance matter most. For wet coal washing and dewatering, welded slot screens in SUS316L are more suitable because high open area, anti-blinding behavior, and acid corrosion resistance become the key priorities.",
+      "zh": "两种工况需求截然不同，选材逻辑如下：\n\n【干式矿山骨料筛分（石灰石、玄武岩、花岗岩）】：主要矛盾是高冲击 + 高磨耗。推荐 65Mn 弹簧钢编织网（HRC 45-50），其抗拉强度经热处理后 ≥ 1470 MPa，综合使用成本比普通碳钢降低 30-40%。大孔径（50-120mm）建议采用重型轧花网，波纹锁定结构防止网丝松动。\n\n【洗煤厂湿式脱水 / 脱介】：主要矛盾是防堵孔 + 耐酸腐蚀。推荐焊接条缝筛（V 型绕丝），梯形截面开口率比编织网高 15-25%，楔形效应使颗粒不易嵌塞；材质选 SUS316L（含钼）以应对含硫化物的酸性矿浆。符合 GB/T 5330-2003 及 ISO 9044:1999 要求。"
+    },
     "relatedProductIds": ["product-65mn-woven-screen", "product-mining-welded-screen", "product-crimped-wire-mesh"],
     "relatedApplicationIds": ["app-mining-grading", "app-coal-dewatering"]
   },
   {
     "id": "faq-material-03",
-    "category": "材质选择",
-    "question": "聚氨酯筛网和金属筛网相比，在哪些工况下更具综合优势？",
-    "answer": "聚氨酯（PU）筛网与金属网各有适用窗口：\n\n聚氨酯优势场景：① 细粒级（0.5-15mm）潮湿矿石筛分，PU 弹性变形可防止颗粒嵌入；② 降噪要求高的车间（PU 噪音较钢网降低 10-15dB）；③ 使用寿命要求长（PU 寿命通常是金属网的 3-5 倍）；④ 对油脂类物料有耐受需求（硬度 Shore A 65-90 可调）。\n\n金属网更优场景：① 工作温度 > 80°C；② 接触有机溶剂或芳香烃类物料；③ 需要高精度试验筛（须符合 ISO 3310-1 公差要求，PU 难以达到）；④ 大块物料（孔径 > 50mm）重型冲击场合。\n\n华云可提供两种材质的对比选型评估报告，帮助您在总拥有成本（TCO）视角下做最优决策。",
+    "category": {
+      "en": "Material Selection",
+      "zh": "材质选择"
+    },
+    "question": {
+      "en": "Compared with metal mesh, in which duties does polyurethane screen media offer the best overall value?",
+      "zh": "聚氨酯筛网和金属筛网相比，在哪些工况下更具综合优势？"
+    },
+    "answer": {
+      "en": "Polyurethane performs best in wet fine screening, low-noise plants, and duties where long wear life matters most. Metal mesh remains the better choice when temperature exceeds 80°C, organic solvents are present, very tight test-sieve tolerances are required, or large lumps create heavy impact loading.",
+      "zh": "聚氨酯（PU）筛网与金属网各有适用窗口：\n\n聚氨酯优势场景：① 细粒级（0.5-15mm）潮湿矿石筛分，PU 弹性变形可防止颗粒嵌入；② 降噪要求高的车间（PU 噪音较钢网降低 10-15dB）；③ 使用寿命要求长（PU 寿命通常是金属网的 3-5 倍）；④ 对油脂类物料有耐受需求（硬度 Shore A 65-90 可调）。\n\n金属网更优场景：① 工作温度 > 80°C；② 接触有机溶剂或芳香烃类物料；③ 需要高精度试验筛（须符合 ISO 3310-1 公差要求，PU 难以达到）；④ 大块物料（孔径 > 50mm）重型冲击场合。\n\n华云可提供两种材质的对比选型评估报告，帮助您在总拥有成本（TCO）视角下做最优决策。"
+    },
     "relatedProductIds": ["product-polyurethane-screen", "product-65mn-woven-screen"],
     "relatedApplicationIds": ["app-mining-grading"]
   },
   {
     "id": "faq-custom-01",
-    "category": "定制问题",
-    "question": "不锈钢编织网是否支持包边、冲片、多层复合等二次加工？",
-    "answer": "支持全系二次加工服务：\n- **包边**：橡胶包边、不锈钢角钢包边或铝合金型材包边，适用于过滤框架和振动筛配套；\n- **冲片**：可将标准网按图纸裁切为圆形、环形或异形，用于过滤元件装配；\n- **多层复合**：粗网（支撑层）+ 细网（过滤层）点焊或胶合复合，常用于液体精过滤；\n- **表面处理**：电解抛光（Ra < 0.4μm）适合食品医药洁净要求；镀锌处理适合户外防护网。\n所有加工件均按客户图纸或样品执行，关键尺寸公差参照 ISO 9044 或按协议标准。",
+    "category": {
+      "en": "Customization",
+      "zh": "定制问题"
+    },
+    "question": {
+      "en": "Does stainless woven mesh support secondary processing such as edging, punched discs, or multilayer laminates?",
+      "zh": "不锈钢编织网是否支持包边、冲片、多层复合等二次加工？"
+    },
+    "answer": {
+      "en": "Yes. We support edging, punched discs, multilayer laminates, and surface finishing such as electropolishing or galvanizing. Fabricated parts can be made to drawing or sample, and critical tolerances can reference ISO 9044 or another agreed specification.",
+      "zh": "支持全系二次加工服务：\n- **包边**：橡胶包边、不锈钢角钢包边或铝合金型材包边，适用于过滤框架和振动筛配套；\n- **冲片**：可将标准网按图纸裁切为圆形、环形或异形，用于过滤元件装配；\n- **多层复合**：粗网（支撑层）+ 细网（过滤层）点焊或胶合复合，常用于液体精过滤；\n- **表面处理**：电解抛光（Ra < 0.4μm）适合食品医药洁净要求；镀锌处理适合户外防护网。\n所有加工件均按客户图纸或样品执行，关键尺寸公差参照 ISO 9044 或按协议标准。"
+    },
     "relatedProductIds": ["product-stainless-woven-mesh"],
     "relatedApplicationIds": ["app-industrial-grading"]
   },
   {
     "id": "faq-custom-02",
-    "category": "定制问题",
-    "question": "焊接条缝筛（V 型绕丝筛）为什么比普通编织网更适合选煤厂脱水脱介？",
-    "answer": "核心差异在物理结构。焊接条缝筛（又称 Johnson Screen）采用 V 型截面绕丝（三角形绕丝），通过全自动 TIG 焊接固定在支撑杆上，形成缝隙上窄下宽的梯形开口。这一结构带来三大优势：\n\n① **防堵塞**：梯形开口的楔形效应使颗粒通过后不会卡住，而编织网方形孔极易使近边界粒径颗粒嵌入；\n② **高开口率**：有效筛分面积比同等孔径编织网高 15-25%，提升 Throughput（单位时间处理量）；\n③ **高强度焊点**：焊接节点抗拉强度远超编织网交叉摩擦点，在高频振动下不松丝、不位移。\n\n在含硫化物的酸性矿浆环境中，华云采用 SUS316L 材质，满足 GB/T 5330-2003 和 ISO 9044:1999 的技术要求。",
+    "category": {
+      "en": "Customization",
+      "zh": "定制问题"
+    },
+    "question": {
+      "en": "Why are welded slot screens more suitable than woven mesh for dewatering and desliming in coal plants?",
+      "zh": "焊接条缝筛（V 型绕丝筛）为什么比普通编织网更适合选煤厂脱水脱介？"
+    },
+    "answer": {
+      "en": "The difference is structural. V-wire welded slot screens create a tapered opening that improves anti-pegging performance and usually delivers higher open area than woven mesh at the same nominal slot size. Their welded support structure also holds geometry more reliably under high-frequency vibration.",
+      "zh": "核心差异在物理结构。焊接条缝筛（又称 Johnson Screen）采用 V 型截面绕丝（三角形绕丝），通过全自动 TIG 焊接固定在支撑杆上，形成缝隙上窄下宽的梯形开口。这一结构带来三大优势：\n\n① **防堵塞**：梯形开口的楔形效应使颗粒通过后不会卡住，而编织网方形孔极易使近边界粒径颗粒嵌入；\n② **高开口率**：有效筛分面积比同等孔径编织网高 15-25%，提升 Throughput（单位时间处理量）；\n③ **高强度焊点**：焊接节点抗拉强度远超编织网交叉摩擦点，在高频振动下不松丝、不位移。\n\n在含硫化物的酸性矿浆环境中，华云采用 SUS316L 材质，满足 GB/T 5330-2003 和 ISO 9044:1999 的技术要求。"
+    },
     "relatedProductIds": ["product-mining-welded-screen"],
     "relatedApplicationIds": ["app-mining-grading", "app-coal-dewatering"]
   },
   {
     "id": "faq-quote-01",
-    "category": "报价问题",
-    "question": "向华云网业询价时，需要提供哪些关键技术参数？",
-    "answer": "为快速出具精准报价，建议提供以下信息：\n\n**必填**：① 产品类型（编织网 / 焊接筛 / 聚氨酯板）；② 材质（如 SUS304、65Mn、聚氨酯）；③ 孔径（mm）或目数（Mesh）；④ 丝径（mm）；⑤ 尺寸（长 × 宽）；⑥ 数量（片数或重量）。\n\n**加分项（有助于报价更准确）**：使用场景（筛分 / 过滤 / 防护）、振动筛品牌型号、安装方式（张紧 / 固定框）、适用标准（ASTM E11 / ISO 9044 / GB/T）、图纸或样品照片。\n\n参数越完整，我们通常可在 24 小时内回复含技术建议的正式报价单。",
+    "category": {
+      "en": "Quotation",
+      "zh": "报价问题"
+    },
+    "question": {
+      "en": "What technical data should be provided when requesting a quotation from Huayun?",
+      "zh": "向华云网业询价时，需要提供哪些关键技术参数？"
+    },
+    "answer": {
+      "en": "A workable RFQ should include product type, material grade, aperture or mesh count, wire diameter, size, and quantity. Duty conditions, equipment model, mounting method, applicable standards, and drawings or sample photos will make the quotation more accurate and faster.",
+      "zh": "为快速出具精准报价，建议提供以下信息：\n\n**必填**：① 产品类型（编织网 / 焊接筛 / 聚氨酯板）；② 材质（如 SUS304、65Mn、聚氨酯）；③ 孔径（mm）或目数（Mesh）；④ 丝径（mm）；⑤ 尺寸（长 × 宽）；⑥ 数量（片数或重量）。\n\n**加分项（有助于报价更准确）**：使用场景（筛分 / 过滤 / 防护）、振动筛品牌型号、安装方式（张紧 / 固定框）、适用标准（ASTM E11 / ISO 9044 / GB/T）、图纸或样品照片。\n\n参数越完整，我们通常可在 24 小时内回复含技术建议的正式报价单。"
+    },
     "relatedProductIds": ["product-stainless-woven-mesh", "product-65mn-woven-screen"]
   },
   {
     "id": "faq-quote-02",
-    "category": "报价问题",
-    "question": "定制化工业筛网的采购价格主要受哪些核心技术参数和商务因素影响？",
-    "answer": "价格由以下因素动态决定：\n\n① **材质等级**：SUS316L 原材料成本约为 65Mn 的 3-4 倍，聚氨酯因模具摊销而批量越大越经济；\n② **丝径与孔径组合**：细丝密网（如 200 目 × 0.05mm）生产工艺复杂，价格显著高于同规格粗丝网；\n③ **加工工艺**：包边、冲片、框架焊接、表面抛光等二次加工按工序单独计价；\n④ **采购规模**：大批量订单可摊薄开机调试成本，阶梯定价通常在 50m² 和 200m² 节点有明显折扣；\n⑤ **交期紧急程度**：绿色通道排产（< 5 个工作日）会产生加急费。\n\n华云提供透明化报价模型，所有定制工艺均有成本依据，欢迎提供图纸或样品获取精确报价。",
+    "category": {
+      "en": "Quotation",
+      "zh": "报价问题"
+    },
+    "question": {
+      "en": "Which technical and commercial factors mainly affect the purchase price of custom industrial screen mesh?",
+      "zh": "定制化工业筛网的采购价格主要受哪些核心技术参数和商务因素影响？"
+    },
+    "answer": {
+      "en": "Price mainly depends on material grade, the wire diameter and aperture combination, secondary fabrication steps, purchase volume, and delivery urgency. Fine dense mesh, premium stainless grades, complicated fabrication, and rush scheduling all increase cost.",
+      "zh": "价格由以下因素动态决定：\n\n① **材质等级**：SUS316L 原材料成本约为 65Mn 的 3-4 倍，聚氨酯因模具摊销而批量越大越经济；\n② **丝径与孔径组合**：细丝密网（如 200 目 × 0.05mm）生产工艺复杂，价格显著高于同规格粗丝网；\n③ **加工工艺**：包边、冲片、框架焊接、表面抛光等二次加工按工序单独计价；\n④ **采购规模**：大批量订单可摊薄开机调试成本，阶梯定价通常在 50m² 和 200m² 节点有明显折扣；\n⑤ **交期紧急程度**：绿色通道排产（< 5 个工作日）会产生加急费。\n\n华云提供透明化报价模型，所有定制工艺均有成本依据，欢迎提供图纸或样品获取精确报价。"
+    },
     "relatedProductIds": ["product-mining-welded-screen", "product-polyurethane-screen"]
   },
   {
     "id": "faq-delivery-01",
-    "category": "发货交期",
-    "question": "标准库存件与重型定制筛网的生产周期和交货期是多少？",
-    "answer": "华云建立了分级交付机制，配合客户停机检修时间窗口：\n\n| 产品类型 | 标准交期 | 备注 |\n|---------|---------|------|\n| 不锈钢编织网（常规规格） | 3-5 个工作日 | 库存丰富，可即时发货 |\n| 65Mn 编织网、轧花网 | 5-10 个工作日 | 需轧波、穿丝工序 |\n| 焊接条缝筛（V 型绕丝） | 7-15 个工作日 | 全自动焊接，需排产 |\n| 聚氨酯模块筛板 | 10-20 个工作日 | 含模压固化时间 |\n| 复杂异形定制件 | 单独确认 | 按图纸评估 |\n\n紧急停产补单可申请绿色排产通道，最大限度降低矿山或选煤厂的停工损失。",
+    "category": {
+      "en": "Lead Time",
+      "zh": "发货交期"
+    },
+    "question": {
+      "en": "What are the production and delivery lead times for standard stock items and heavy custom screens?",
+      "zh": "标准库存件与重型定制筛网的生产周期和交货期是多少？"
+    },
+    "answer": {
+      "en": "Typical lead times are about 3-5 working days for standard stainless woven mesh, 5-10 days for 65Mn woven mesh or crimped mesh, 7-15 days for welded slot screens, and 10-20 days for polyurethane modular panels. Complex irregular parts should be confirmed case by case.",
+      "zh": "华云建立了分级交付机制，配合客户停机检修时间窗口：\n\n| 产品类型 | 标准交期 | 备注 |\n|---------|---------|------|\n| 不锈钢编织网（常规规格） | 3-5 个工作日 | 库存丰富，可即时发货 |\n| 65Mn 编织网、轧花网 | 5-10 个工作日 | 需轧波、穿丝工序 |\n| 焊接条缝筛（V 型绕丝） | 7-15 个工作日 | 全自动焊接，需排产 |\n| 聚氨酯模块筛板 | 10-20 个工作日 | 含模压固化时间 |\n| 复杂异形定制件 | 单独确认 | 按图纸评估 |\n\n紧急停产补单可申请绿色排产通道，最大限度降低矿山或选煤厂的停工损失。"
+    },
     "relatedProductIds": ["product-mining-welded-screen", "product-65mn-woven-screen"]
   },
   {
     "id": "faq-delivery-02",
-    "category": "发货交期",
-    "question": "重型定制筛网的交期一般多久？",
-    "answer": "重型筛网（如矿用焊接条缝筛、65Mn 大孔轧花网）标准生产周期为 7-20 个工作日，具体视规格和排产情况而定。涉及特殊开模（聚氨酯异形筛板）或大批量订单，周期需单独确认。若时间紧迫，可提前沟通开启加急绿色通道。",
+    "category": {
+      "en": "Lead Time",
+      "zh": "发货交期"
+    },
+    "question": {
+      "en": "What is the typical lead time for heavy custom screen mesh?",
+      "zh": "重型定制筛网的交期一般多久？"
+    },
+    "answer": {
+      "en": "Heavy-duty screens such as mining welded slot screens or large-aperture 65Mn crimped mesh usually require 7-20 working days, depending on specification and production loading. Projects involving new molds or large order quantities need separate confirmation.",
+      "zh": "重型筛网（如矿用焊接条缝筛、65Mn 大孔轧花网）标准生产周期为 7-20 个工作日，具体视规格和排产情况而定。涉及特殊开模（聚氨酯异形筛板）或大批量订单，周期需单独确认。若时间紧迫，可提前沟通开启加急绿色通道。"
+    },
     "relatedProductIds": ["product-mining-welded-screen", "product-crimped-wire-mesh"]
   },
   {
     "id": "faq-sample-01",
-    "category": "样品问题",
-    "question": "正式采购前，华云网业是否支持样品试制？如何申请？",
-    "answer": "完全支持样品先行确认。华云的样品服务分两种模式：\n\n**标准样品**：针对 65Mn 编织网、不锈钢网等库存规格，可直接寄送实物样品供客户进行材质 / 孔径 / 强度复核，运费到付，样品免费（大幅超额规格除外）。\n\n**定制打样**：针对包边过滤网片、异形矿筛板、聚氨酯模块，采用「小批量打样 + 全性能验证」模式。打样前需提供图纸或样品，确认安装配合度与工况兼容性后，再进入量产。打样费用按工艺成本核算，量产后可抵扣。\n\n申请方式：通过官网询价页填写需求，注明「申请样品」，我们的技术销售会在 24 小时内跟进。",
+    "category": {
+      "en": "Sampling",
+      "zh": "样品问题"
+    },
+    "question": {
+      "en": "Does Huayun support sample making before formal purchase, and how is it requested?",
+      "zh": "正式采购前，华云网业是否支持样品试制？如何申请？"
+    },
+    "answer": {
+      "en": "Yes. Standard stock items can usually be sampled directly, and custom parts can go through small-batch trial production after drawings or samples are confirmed. To request a sample, submit the requirement through the inquiry page and clearly note that a sample is needed.",
+      "zh": "完全支持样品先行确认。华云的样品服务分两种模式：\n\n**标准样品**：针对 65Mn 编织网、不锈钢网等库存规格，可直接寄送实物样品供客户进行材质 / 孔径 / 强度复核，运费到付，样品免费（大幅超额规格除外）。\n\n**定制打样**：针对包边过滤网片、异形矿筛板、聚氨酯模块，采用「小批量打样 + 全性能验证」模式。打样前需提供图纸或样品，确认安装配合度与工况兼容性后，再进入量产。打样费用按工艺成本核算，量产后可抵扣。\n\n申请方式：通过官网询价页填写需求，注明「申请样品」，我们的技术销售会在 24 小时内跟进。"
+    },
     "relatedProductIds": ["product-65mn-woven-screen", "product-crimped-wire-mesh"]
   },
   {
     "id": "faq-sample-02",
-    "category": "样品问题",
-    "question": "定制过滤网片、聚氨酯筛板等复杂产品也能打样吗？",
-    "answer": "可以，但定制网片和聚氨酯筛板的打样需要先确认图纸和工艺要求。聚氨酯筛板涉及模具制作，若孔型标准（如方孔、长条孔、圆孔），现有模具可直接打样；若为全新异形孔型，需评估开模费用（通常 2000-8000 元，量产后可分摊）。所有打样件须通过尺寸、孔径和安装适配测试，确认合格后方签量产合同。",
+    "category": {
+      "en": "Sampling",
+      "zh": "样品问题"
+    },
+    "question": {
+      "en": "Can complex custom products such as filter discs or polyurethane panels also be sampled?",
+      "zh": "定制过滤网片、聚氨酯筛板等复杂产品也能打样吗？"
+    },
+    "answer": {
+      "en": "Yes, but drawings and process requirements must be confirmed first. Standard aperture shapes can often use existing tooling, while a new irregular aperture may require separate tooling evaluation. Trial parts still need dimensional, aperture, and fit-up checks before mass production is approved.",
+      "zh": "可以，但定制网片和聚氨酯筛板的打样需要先确认图纸和工艺要求。聚氨酯筛板涉及模具制作，若孔型标准（如方孔、长条孔、圆孔），现有模具可直接打样；若为全新异形孔型，需评估开模费用（通常 2000-8000 元，量产后可分摊）。所有打样件须通过尺寸、孔径和安装适配测试，确认合格后方签量产合同。"
+    },
     "relatedProductIds": ["product-polyurethane-screen", "product-stainless-woven-mesh"]
   }
 ]

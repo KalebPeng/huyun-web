@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <div class="bg-slate-50">
     <section class="relative isolate overflow-hidden bg-[linear-gradient(135deg,#0f172a,#1e293b)] py-20 text-white sm:py-24">
       <div
@@ -269,7 +269,7 @@ useHead(() => ({
             name: pageTitle.value,
             description: pageDescription.value,
             url: `${siteUrl}${localePath('/content-standards')}`,
-            inLanguage: localeProperties.value.language || 'zh-CN',
+            inLanguage: localeProperties.value.language || 'en',
             about: {
               '@id': `${siteUrl}#organization`
             },
@@ -294,3 +294,4 @@ useHead(() => ({
   ]
 }))
 </script>
+

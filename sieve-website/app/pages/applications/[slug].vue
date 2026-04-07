@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <div class="bg-slate-50">
     <template v-if="application">
       <section class="border-b border-slate-200 bg-white">
@@ -278,7 +278,7 @@ const articleJsonLd = computed(() => {
     image: application.value.coverImage ? [toAbsoluteUrl(application.value.coverImage)] : undefined,
     mainEntityOfPage: `${runtimeConfig.public.siteUrl}${localePath(`/applications/${application.value.slug}`)}`,
     articleSection: t('nav.applications'),
-    inLanguage: localeProperties.value.language || 'zh-CN',
+    inLanguage: localeProperties.value.language || 'en',
     author: {
       '@type': 'Organization',
       name: t('brand.name')
@@ -312,3 +312,4 @@ useHead(() => ({
     : []
 }))
 </script>
+
