@@ -3,10 +3,10 @@
     class="sticky top-0 z-50 border-b border-white/10 bg-primary text-white transition-shadow duration-300"
     :class="{ 'shadow-[0_10px_30px_rgba(15,23,42,0.35)]': isScrolled }"
   >
-    <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
+    <div class="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-4 sm:px-6 lg:gap-6 lg:px-8">
       <NuxtLink
         :to="localePath('/')"
-        class="inline-flex items-center gap-3 rounded-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+        class="inline-flex shrink-0 items-center gap-3 rounded-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
         :aria-label="$t('header.backHome')"
       >
         <span
@@ -15,20 +15,22 @@
         >
           HY
         </span>
-        <span class="flex flex-col">
-          <span class="text-lg font-bold tracking-[0.18em]">{{ $t('brand.name') }}</span>
-          <span class="text-xs uppercase tracking-[0.32em] text-slate-300">
+        <span class="flex min-w-0 flex-col">
+          <span class="whitespace-nowrap text-base font-bold tracking-[0.12em] sm:text-lg xl:tracking-[0.16em]">
+            {{ $t('brand.name') }}
+          </span>
+          <span class="whitespace-nowrap text-[10px] uppercase tracking-[0.24em] text-slate-300 sm:text-xs">
             {{ $t('brand.tagline') }}
           </span>
         </span>
       </NuxtLink>
 
-      <nav class="hidden items-center gap-1 lg:flex" :aria-label="$t('header.mainNav')">
+      <nav class="hidden min-w-0 flex-1 items-center justify-center gap-0.5 xl:gap-1 lg:flex" :aria-label="$t('header.mainNav')">
         <NuxtLink
           v-for="item in navItems"
           :key="item.to"
           :to="localePath(item.to)"
-          class="rounded-md px-4 py-2 text-sm font-medium transition-colors duration-200 hover:bg-white/10"
+          class="shrink-0 whitespace-nowrap rounded-md px-3 py-2 text-[13px] font-medium transition-colors duration-200 hover:bg-white/10 xl:px-4 xl:text-sm"
           :class="isActive(item.to) ? 'bg-white/12 text-white' : 'text-slate-200'"
           :aria-current="isActive(item.to) ? 'page' : undefined"
         >
@@ -36,9 +38,9 @@
         </NuxtLink>
       </nav>
 
-      <div class="hidden items-center gap-3 lg:flex">
+      <div class="hidden shrink-0 items-center gap-2 lg:flex">
         <LangSwitcher />
-        <AppButton to="/contact" size="md" :aria-label="$t('header.getQuoteAria')">
+        <AppButton to="/contact" size="sm" :aria-label="$t('header.getQuoteAria')">
           {{ $t('common.getQuote') }}
         </AppButton>
       </div>

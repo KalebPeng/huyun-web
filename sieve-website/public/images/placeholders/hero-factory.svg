@@ -1,25 +1,67 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720" role="img" aria-labelledby="title desc">
-  <title id="title">Factory Hero Placeholder</title>
-  <desc id="desc">Factory hero placeholder artwork</desc>
+  <title id="title">Factory hero illustration</title>
+  <desc id="desc">Abstract factory workshop illustration for the homepage hero</desc>
   <defs>
     <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
-      <stop offset="0%" stop-color="#1a2744" />
-      <stop offset="52%" stop-color="#243f72" />
-      <stop offset="100%" stop-color="#0f172a" />
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="48%" stop-color="#1e3a68" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+    <linearGradient id="panel" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.2)" />
+      <stop offset="100%" stop-color="rgba(255,255,255,0.04)" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0%" stop-color="#60a5fa" />
+      <stop offset="100%" stop-color="#93c5fd" />
     </linearGradient>
   </defs>
+
   <rect width="960" height="720" fill="url(#bg)" />
-  <g fill="none" stroke="rgba(255,255,255,0.12)">
-    <path d="M120 120H840V600H120z" />
-    <path d="M120 220H840M120 320H840M120 420H840M120 520H840" />
-    <path d="M240 120V600M360 120V600M480 120V600M600 120V600M720 120V600" />
+  <rect width="960" height="720" fill="rgba(15, 23, 42, 0.24)" />
+
+  <g opacity="0.22" stroke="#cbd5e1" stroke-width="1">
+    <path d="M0 120H960" />
+    <path d="M0 240H960" />
+    <path d="M0 360H960" />
+    <path d="M0 480H960" />
+    <path d="M0 600H960" />
+    <path d="M120 0V720" />
+    <path d="M240 0V720" />
+    <path d="M360 0V720" />
+    <path d="M480 0V720" />
+    <path d="M600 0V720" />
+    <path d="M720 0V720" />
+    <path d="M840 0V720" />
   </g>
-  <g fill="#fff" opacity="0.92">
-    <text x="96" y="520" font-size="72" font-family="Arial, sans-serif" font-weight="700">
-      FACTORY VISUAL
-    </text>
-    <text x="96" y="582" font-size="28" font-family="Arial, sans-serif">
-      Replace with workshop or production line photo
-    </text>
+
+  <g opacity="0.95">
+    <path d="M120 510L260 390L390 450L520 320L660 430L820 290V610H120Z" fill="rgba(15,23,42,0.5)" />
+    <path d="M110 560H840" stroke="rgba(255,255,255,0.14)" stroke-width="2" />
+    <path d="M190 560V390" stroke="rgba(255,255,255,0.18)" stroke-width="12" stroke-linecap="round" />
+    <path d="M300 560V430" stroke="rgba(255,255,255,0.16)" stroke-width="10" stroke-linecap="round" />
+    <path d="M520 560V320" stroke="rgba(255,255,255,0.2)" stroke-width="14" stroke-linecap="round" />
+    <path d="M700 560V410" stroke="rgba(255,255,255,0.16)" stroke-width="10" stroke-linecap="round" />
+  </g>
+
+  <g>
+    <rect x="110" y="146" width="740" height="380" rx="26" fill="url(#panel)" stroke="rgba(255,255,255,0.12)" />
+    <rect x="152" y="188" width="656" height="210" rx="20" fill="rgba(15,23,42,0.2)" stroke="rgba(255,255,255,0.1)" />
+    <path d="M152 268H808" stroke="rgba(255,255,255,0.08)" stroke-width="2" />
+    <path d="M152 338H808" stroke="rgba(255,255,255,0.08)" stroke-width="2" />
+    <path d="M260 188V398" stroke="rgba(255,255,255,0.08)" stroke-width="2" />
+    <path d="M420 188V398" stroke="rgba(255,255,255,0.08)" stroke-width="2" />
+    <path d="M580 188V398" stroke="rgba(255,255,255,0.08)" stroke-width="2" />
+    <path d="M740 188V398" stroke="rgba(255,255,255,0.08)" stroke-width="2" />
+  </g>
+
+  <g>
+    <rect x="168" y="444" width="174" height="44" rx="22" fill="rgba(255,255,255,0.08)" />
+    <rect x="190" y="460" width="90" height="12" rx="6" fill="url(#accent)" />
+    <circle cx="790" cy="170" r="76" fill="rgba(96,165,250,0.12)" />
+    <circle cx="770" cy="188" r="36" fill="rgba(255,255,255,0.06)" />
+    <circle cx="198" cy="150" r="10" fill="#93c5fd" />
+    <circle cx="226" cy="150" r="10" fill="rgba(255,255,255,0.28)" />
+    <circle cx="254" cy="150" r="10" fill="rgba(255,255,255,0.16)" />
   </g>
 </svg>

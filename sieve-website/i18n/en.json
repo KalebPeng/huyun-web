@@ -158,11 +158,11 @@
   },
   "brand": {
     "name": "Huayun Wire Mesh",
-    "tagline": "Industrial Mesh"
+    "tagline": "Screen Systems"
   },
   "common": {
     "contactUs": "Contact Us",
-    "getQuote": "Request a Quote",
+    "getQuote": "Get Quote",
     "no": "No",
     "notSupported": "Not Supported",
     "supported": "Supported",
@@ -482,12 +482,12 @@
     },
     "hero": {
       "capabilityLabel": "Core Capability",
-      "capabilityValue": "Integrated supply of screening, filtration, and protection products",
+      "capabilityValue": "Screens, filters, and protection mesh",
       "deliveryLabel": "Delivery Focus",
-      "deliveryValue": "Rapid sampling, custom fabrication, reliable delivery",
+      "deliveryValue": "Fast sampling, custom builds, on-time delivery",
       "description": "Specialized in mining welded screens, 65Mn woven mesh, and polyurethane panels — delivering high-abrasion, long-life screening solutions for mining, coal washing, and aggregate grading.",
-      "factoryPlaceholderLabel": "Factory Visual Placeholder",
-      "factoryPlaceholderTitle": "Factory Photo Placeholder",
+      "factoryPlaceholderLabel": "Factory",
+      "factoryPlaceholderTitle": "Production Workshop",
       "imageAlt": "Huayun Wire Mesh — Mining Welded Screen and 65Mn Woven Mesh Production",
       "primaryCtaAria": "Go to Request a Quote",
       "secondaryCta": "View Products",
@@ -496,7 +496,7 @@
         "clients": "Clients",
         "experience": "Experience",
         "response": "Fast Response",
-        "skus": "Product Specifications"
+        "skus": "SKUs"
       },
       "statsValues": {
         "experience": "20+ Years"
@@ -582,13 +582,13 @@
     }
   },
   "nav": {
-    "about": "About Us",
-    "applications": "Application Scenes",
+    "about": "About",
+    "applications": "Applications",
     "faq": "FAQ",
     "home": "Home",
-    "knowledge": "Technical Knowledge Base",
+    "knowledge": "Knowledge",
     "products": "Products",
-    "tools": "Technical Tools"
+    "tools": "Tools"
   },
   "productCard": {
     "customSupported": "Custom Available",
