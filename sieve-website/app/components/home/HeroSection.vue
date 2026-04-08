@@ -58,6 +58,7 @@
                   height="1120"
                   loading="eager"
                   fetchpriority="high"
+                  sizes="100vw lg:44vw"
                   placeholder
                   class="h-full min-h-[360px] w-full object-cover"
                 />
@@ -76,7 +77,9 @@
                     :alt="$t('home.hero.imageAlt')"
                     width="720"
                     height="560"
-                    loading="eager"
+                    loading="lazy"
+                    fetchpriority="low"
+                    sizes="100vw sm:50vw lg:20vw"
                     placeholder
                     class="h-full min-h-[172px] w-full object-cover"
                   />
@@ -87,7 +90,9 @@
                     :alt="$t('home.hero.imageAlt')"
                     width="720"
                     height="560"
-                    loading="eager"
+                    loading="lazy"
+                    fetchpriority="low"
+                    sizes="100vw sm:50vw lg:20vw"
                     placeholder
                     class="h-full min-h-[172px] w-full object-cover"
                   />

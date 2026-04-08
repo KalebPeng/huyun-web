@@ -28,8 +28,22 @@ export default {
         }
       },
       fontFamily: {
-        sans: ['IBM Plex Sans', 'PingFang SC', 'Microsoft YaHei', 'sans-serif'],
-        mono: ['IBM Plex Mono', 'SFMono-Regular', 'monospace']
+        sans: [
+          'IBM Plex Sans',
+          'PingFang SC',
+          'Hiragino Sans GB',
+          'Microsoft YaHei',
+          'ui-sans-serif',
+          'system-ui',
+          'sans-serif'
+        ],
+        mono: [
+          'IBM Plex Mono',
+          'SFMono-Regular',
+          'ui-monospace',
+          'Consolas',
+          'monospace'
+        ]
       },
       boxShadow: {
         brand: '0 16px 40px rgba(22, 48, 79, 0.08)',
