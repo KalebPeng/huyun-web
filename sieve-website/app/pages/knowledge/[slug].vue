@@ -274,6 +274,37 @@ const articleJsonLd = computed(() => {
   }
 })
 
+const breadcrumbJsonLd = computed(() => {
+  if (!article.value) {
+    return null
+  }
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: t('nav.home'),
+        item: `${siteUrl}${localePath('/')}`
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: t('nav.knowledge'),
+        item: `${siteUrl}${localePath('/knowledge')}`
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: article.value.title,
+        item: `${siteUrl}${article.value.path}`
+      }
+    ]
+  }
+})
+
 const formatDate = (dateStr: string) => {
   return new Intl.DateTimeFormat(locale.value === 'zh' ? 'zh-CN' : 'en-US', {
     year: 'numeric',
@@ -289,14 +320,21 @@ usePageSeoMeta({
 })
 
 useHead(() => ({
-  script: articleJsonLd.value
-    ? [
-        {
+  script: [
+    articleJsonLd.value
+      ? {
           key: 'article-jsonld',
           type: 'application/ld+json',
           textContent: JSON.stringify(articleJsonLd.value)
         }
-      ]
-    : []
+      : null,
+    breadcrumbJsonLd.value
+      ? {
+          key: 'knowledge-breadcrumb-jsonld',
+          type: 'application/ld+json',
+          textContent: JSON.stringify(breadcrumbJsonLd.value)
+        }
+      : null
+  ].filter(Boolean)
 }))
 </script>

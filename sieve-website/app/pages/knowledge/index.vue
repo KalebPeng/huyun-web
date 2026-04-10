@@ -129,6 +129,9 @@ import { usePageSeoMeta } from '~/composables/useSeoMeta'
 
 const { getAllArticles } = useArticles()
 const { t, locale } = useI18n()
+const runtimeConfig = useRuntimeConfig()
+const localePath = useLocalePath()
+const siteUrl = runtimeConfig.public.siteUrl.replace(/\/+$/, '')
 const { data } = await useAsyncData(
   () => `knowledge-articles:${locale.value}`,
   () => getAllArticles(),
@@ -181,6 +184,21 @@ const filteredArticles = computed(() => {
   return keywordMatches
 })
 
+const articleListJsonLd = computed(() => ({
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: t('knowledgePage.title'),
+  description: t('knowledgePage.seo.description'),
+  url: `${siteUrl}${localePath('/knowledge')}`,
+  numberOfItems: filteredArticles.value.length,
+  itemListElement: filteredArticles.value.map((article, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    url: `${siteUrl}${article.path}`,
+    name: article.title
+  }))
+}))
+
 const formatDate = (dateStr: string) => {
   return new Intl.DateTimeFormat(locale.value === 'zh' ? 'zh-CN' : 'en-US', {
     year: 'numeric',
@@ -193,4 +211,16 @@ usePageSeoMeta({
   title: t('knowledgePage.seo.title'),
   description: t('knowledgePage.seo.description')
 })
+
+useHead(() => ({
+  script: filteredArticles.value.length
+    ? [
+        {
+          key: 'knowledge-list-jsonld',
+          type: 'application/ld+json',
+          textContent: JSON.stringify(articleListJsonLd.value)
+        }
+      ]
+    : []
+}))
 </script>

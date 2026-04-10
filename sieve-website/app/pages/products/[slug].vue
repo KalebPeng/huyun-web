@@ -594,6 +594,37 @@ const productJsonLd = computed(() => {
   }
 })
 
+const breadcrumbJsonLd = computed(() => {
+  if (!product.value) {
+    return null
+  }
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: t('nav.home'),
+        item: `${runtimeConfig.public.siteUrl}${localePath('/')}`
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: t('nav.products'),
+        item: `${runtimeConfig.public.siteUrl}${localePath('/products')}`
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: product.value.name,
+        item: `${runtimeConfig.public.siteUrl}${localePath(`/products/${product.value.slug}`)}`
+      }
+    ]
+  }
+})
+
 watch(
   () => product.value?.coverImage,
   () => {
@@ -612,14 +643,21 @@ usePageSeoMeta({
 })
 
 useHead(() => ({
-  script: productJsonLd.value
-    ? [
-        {
+  script: [
+    productJsonLd.value
+      ? {
           key: 'product-jsonld',
           type: 'application/ld+json',
           textContent: JSON.stringify(productJsonLd.value)
         }
-      ]
-    : []
+      : null,
+    breadcrumbJsonLd.value
+      ? {
+          key: 'product-breadcrumb-jsonld',
+          type: 'application/ld+json',
+          textContent: JSON.stringify(breadcrumbJsonLd.value)
+        }
+      : null
+  ].filter(Boolean)
 }))
 </script>

@@ -94,6 +94,8 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
+
 import { usePageSeoMeta } from '~/composables/useSeoMeta'
 import AppButton from '~/components/common/AppButton.vue'
 import Badge from '~/components/common/Badge.vue'
@@ -103,6 +105,9 @@ import PageHero from '~/components/common/PageHero.vue'
 import SectionHeading from '~/components/common/SectionHeading.vue'
 
 const { t, locale } = useI18n()
+const runtimeConfig = useRuntimeConfig()
+const localePath = useLocalePath()
+const siteUrl = runtimeConfig.public.siteUrl.replace(/\/+$/, '')
 const { fetchApplications } = useApplications()
 const { data: applications } = await useAsyncData(
   () => `applications-list:${locale.value}`,
@@ -119,10 +124,37 @@ const resolveIcon = (slug: string) => {
   return 'industry'
 }
 
+const applicationListJsonLd = computed(() => ({
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: t('applicationsPage.title'),
+  description: t('applicationsPage.seo.description'),
+  url: `${siteUrl}${localePath('/applications')}`,
+  numberOfItems: applications.value.length,
+  itemListElement: applications.value.map((application, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    url: `${siteUrl}${localePath(`/applications/${application.slug}`)}`,
+    name: application.name
+  }))
+}))
+
 usePageSeoMeta({
   title: t('applicationsPage.seo.title'),
   description: t('applicationsPage.seo.description')
 })
+
+useHead(() => ({
+  script: applications.value.length
+    ? [
+        {
+          key: 'applications-list-jsonld',
+          type: 'application/ld+json',
+          textContent: JSON.stringify(applicationListJsonLd.value)
+        }
+      ]
+    : []
+}))
 </script>
 
 <style scoped>

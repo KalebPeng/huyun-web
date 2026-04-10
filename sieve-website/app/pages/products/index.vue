@@ -87,7 +87,10 @@ interface CategoryTab {
 
 const route = useRoute()
 const router = useRouter()
+const runtimeConfig = useRuntimeConfig()
+const localePath = useLocalePath()
 const { t, locale } = useI18n()
+const siteUrl = runtimeConfig.public.siteUrl.replace(/\/+$/, '')
 const { fetchProducts } = useProducts()
 const { data: productsData } = await useAsyncData(
   () => `products-list:${locale.value}`,
@@ -130,6 +133,21 @@ const filteredProducts = computed(() => {
   return productsData.value.filter((product) => product.category === activeCategory.value)
 })
 
+const productListJsonLd = computed(() => ({
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: t('productsPage.title'),
+  description: t('productsPage.seo.description'),
+  url: `${siteUrl}${localePath('/products')}`,
+  numberOfItems: filteredProducts.value.length,
+  itemListElement: filteredProducts.value.map((product, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    url: `${siteUrl}${localePath(`/products/${product.slug}`)}`,
+    name: product.name
+  }))
+}))
+
 const updateCategoryQuery = async (category: string) => {
   const nextQuery = { ...route.query }
 
@@ -169,4 +187,16 @@ usePageSeoMeta({
   title: t('productsPage.seo.title'),
   description: t('productsPage.seo.description')
 })
+
+useHead(() => ({
+  script: filteredProducts.value.length
+    ? [
+        {
+          key: 'products-list-jsonld',
+          type: 'application/ld+json',
+          textContent: JSON.stringify(productListJsonLd.value)
+        }
+      ]
+    : []
+}))
 </script>
