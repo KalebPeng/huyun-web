@@ -1,73 +1,73 @@
 ---
 lang: 'en'
-title: "深度解析：影响 65Mn 矿用筛网疲劳寿命的核心因素"
-description: "65Mn 弹簧钢在交变应力下的疲劳断裂机理，以及基于硬度 HRC 45-50 的使用周期预测模型。"
-category: "技术研究"
-summary: "65Mn 弹簧钢在交变应力下的疲劳断裂机理，以及基于硬度 HRC 45-50 的使用周期预测模型。"
-author: "华云网业技术部"
+title: "In-Depth Analysis: Key Factors Affecting the Fatigue Life of 65Mn Mining Screen Mesh"
+description: "The fatigue fracture mechanism of 65Mn spring steel under cyclic stress, and a service life prediction model based on HRC 45–50 hardness."
+category: "Technical Research"
+summary: "The fatigue fracture mechanism of 65Mn spring steel under cyclic stress, and a service life prediction model based on HRC 45–50 hardness."
+author: "Huayun Wire Mesh Technical Department"
 publishedAt: "2026-04-01"
 reviewedAt: "2026-04-02"
-reviewedBy: "华云网业技术与质控联合审核"
-applicability: "适用于干式骨料与矿石筛分场景下的 65Mn 编织网寿命预估；寿命数据受振幅、张紧状态和进料方式影响，不能替代现场维护台账。"
-seoTitle: "65Mn 矿用筛网疲劳寿命分析 | 影响因素与延寿建议"
-seoDescription: "深入分析 65Mn 弹簧钢筛网的疲劳断裂机理，涵盖丝径均匀性、脱碳层、热处理工艺和安装张紧对使用寿命的影响。"
+reviewedBy: "Huayun Wire Mesh Joint Technical & Quality Control Review"
+applicability: "Intended for service life estimation of 65Mn woven mesh in dry aggregate and ore screening applications. Life data is sensitive to vibration amplitude, tensioning condition, and feed method, and cannot substitute for on-site maintenance records."
+seoTitle: "65Mn Mining Screen Mesh Fatigue Life Analysis | Influencing Factors & Life Extension Tips"
+seoDescription: "A detailed analysis of the fatigue fracture mechanism in 65Mn spring steel screen mesh, covering the effects of wire diameter uniformity, decarburization layer, heat treatment process, and installation tension on service life."
 tags:
   - "65Mn"
-  - "疲劳寿命"
-  - "材质分析"
-  - "技术研究"
+  - "fatigue life"
+  - "material analysis"
+  - "technical research"
 sources:
   -
-    title: "GB/T 1222-2016 弹簧钢"
-    publisher: "国家标准"
-    note: "用于 65Mn 热处理参数和硬度范围参考。"
+    title: "GB/T 1222-2016 Spring Steels"
+    publisher: "Chinese National Standard"
+    note: "Referenced for 65Mn heat treatment parameters and hardness range."
   -
     title: "ISO 9044:1999 Industrial woven wire cloth — Technical requirements and tests"
     publisher: "ISO"
-    note: "用于丝径公差与编织网质量控制口径说明。"
+    note: "Referenced for wire diameter tolerance and woven mesh quality control criteria."
   -
-    title: "华云网业矿山客户寿命回访与更换台账"
-    publisher: "华云网业售后部"
-    note: "用于典型寿命区间和预防性更换建议归纳。"
+    title: "Huayun Wire Mesh Mining Customer Service Life Follow-up and Replacement Log"
+    publisher: "Huayun Wire Mesh After-sales Department"
+    note: "Used to compile typical service life ranges and preventive replacement recommendations."
 ---
 
-## 疲劳失效的本质
+## The Nature of Fatigue Failure
 
-65Mn 弹簧钢筛网在实际工况中往往因**疲劳**而非单纯磨损失效。振动筛工作频率通常为 12-18Hz，每天约产生 40-60 万次应力循环，金属丝在反复弯曲拉伸中积累微裂纹，最终在远低于静态抗拉强度的应力下断裂。
+In real operating conditions, 65Mn spring steel screen mesh typically fails through **fatigue** rather than simple abrasion. Vibrating screens commonly run at 12–18 Hz, generating approximately 400,000–600,000 stress cycles per day. Repeated bending and tensile loading causes microcracks to accumulate in the wire, eventually leading to fracture at stress levels far below the static tensile strength.
 
-## 影响疲劳寿命的核心因素
+## Key Factors Affecting Fatigue Life
 
-### 1. 丝径均匀性
+### 1. Wire Diameter Uniformity
 
-丝径公差过大（截面不圆）会造成局部应力集中，裂纹优先在最细截面处萌生。按 ISO 9044 要求，丝径允许偏差应控制在 ±3-5% 以内。华云生产线配备在线丝径检测，公差控制在 ±2%。
+Excessive wire diameter tolerance — particularly out-of-round cross-sections — creates localized stress concentrations, where cracks preferentially initiate at the thinnest point. Per ISO 9044, allowable wire diameter deviation should be kept within ±3–5%. Huayun's production lines use inline diameter monitoring to hold tolerances within ±2%.
 
-### 2. 表面脱碳层
+### 2. Surface Decarburization Layer
 
-热处理不当会在丝材表面形成脱碳层，该层碳含量低、硬度低，承受循环弯曲时极易萌生裂纹。检验方法：金相切片观察表面层组织，脱碳层厚度应 < 0.5% 丝径。
+Improper heat treatment can produce a decarburized surface layer with reduced carbon content and lower hardness, making it highly susceptible to crack initiation under cyclic bending. Inspection method: examine the surface microstructure via metallographic cross-section; decarburization layer depth should be less than 0.5% of the wire diameter.
 
-### 3. 热处理工艺
+### 3. Heat Treatment Process
 
-65Mn 典型热处理参数：淬火温度 820-840°C（油淬），回火温度 420-520°C。回火温度过低导致脆性大（易断），过高则硬度不足（耐磨性差）。目标硬度 HRC 45-50 对应的回火温度约为 460-500°C。
+Typical heat treatment parameters for 65Mn: quenching at 820–840°C (oil quench), tempering at 420–520°C. Tempering temperature that is too low results in excessive brittleness and a higher risk of sudden fracture; too high, and hardness drops, reducing wear resistance. The target hardness of HRC 45–50 corresponds to a tempering temperature of approximately 460–500°C.
 
-### 4. 安装张紧状态
+### 4. Installation Tension
 
-编织网在振动筛上若张紧不足，会在共振频率下产生大幅挠曲，弯曲应力远超设计值。安装后用橡胶锤敲击检查张紧度，声音应清脆（紧绷）而非沉闷（松弛）。
+Insufficient tension on the vibrating screen deck allows the mesh to flex excessively at resonance frequencies, driving bending stresses well above the design threshold. After installation, check tension by striking the mesh with a rubber mallet — a crisp, resonant tone indicates proper tension; a dull thud indicates slack.
 
-## 使用寿命预测参考
+## Service Life Reference Guide
 
-基于华云客户反馈数据（干式骨料筛分，孔径 20-50mm）：
+Based on Huayun customer feedback data (dry aggregate screening, 20–50 mm aperture):
 
-| 工况 | 物料 | 典型寿命 |
-|------|------|--------|
-| 轻载 | 砂石、石灰石细碎 | 6-9 个月 |
-| 中载 | 玄武岩、花岗岩 | 3-5 个月 |
-| 重载 | 铁矿石、河卵石 | 1-3 个月 |
+| Duty Level | Material | Typical Service Life |
+|------------|----------|----------------------|
+| Light duty | Sand, fine-crushed limestone | 6–9 months |
+| Medium duty | Basalt, granite | 3–5 months |
+| Heavy duty | Iron ore, river cobblestone | 1–3 months |
 
-实际寿命受张紧状态、振动参数和进料方式影响较大，以上数据为正常维护条件下的参考值。
+Actual service life varies considerably with tensioning condition, vibration parameters, and feed method. The figures above are reference values under normal maintenance conditions.
 
-## 延寿建议
+## Recommendations for Extending Service Life
 
-1. **选粗丝**：在满足分级精度前提下，增大丝径（降低 w/d 比）可显著降低应力幅
-2. **检查振动参数**：振幅过大（> 12mm）或频率失谐会加速疲劳，建议每月检测
-3. **预防性更换**：建立更换台账，在疲劳断丝发生前按周期预防性更换，避免断丝造成的二次设备损伤
+1. **Use heavier wire:** Where classification precision allows, increasing wire diameter (reducing the w/d ratio) substantially lowers stress amplitude.
+2. **Monitor vibration parameters:** Excessive amplitude (> 12 mm) or off-resonance frequency tuning accelerates fatigue — monthly checks are recommended.
+3. **Implement preventive replacement:** Maintain a replacement log and swap mesh on a scheduled cycle before fatigue wire breaks occur, avoiding secondary equipment damage caused by broken wires.
 

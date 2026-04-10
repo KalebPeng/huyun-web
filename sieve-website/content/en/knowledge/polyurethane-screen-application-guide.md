@@ -1,75 +1,74 @@
 ---
 lang: 'en'
-title: "聚氨酯筛网使用指南：工况适配、硬度选择与常见失效分析"
-description: "聚氨酯筛网因其优异的耐磨性和降噪效果在矿山广泛应用，但不正确的硬度选择会导致早期失效。本文从工况适配角度给出系统选型和维护建议。"
-category: "产品知识"
-summary: "聚氨酯筛网因其优异的耐磨性和降噪效果在矿山广泛应用，但不正确的硬度选择会导致早期失效。本文从工况适配角度给出系统选型和维护建议。"
-author: "华云网业技术部"
+title: "Polyurethane Screen Mesh Guide: Application Matching, Hardness Selection, and Common Failure Analysis"
+description: "Polyurethane screen mesh is widely used in mining for its excellent wear resistance and noise reduction, but incorrect hardness selection leads to premature failure. This article provides systematic selection and maintenance guidance from an application-matching perspective."
+category: "Product Knowledge"
+summary: "Polyurethane screen mesh is widely used in mining for its excellent wear resistance and noise reduction, but incorrect hardness selection leads to premature failure. This article provides systematic selection and maintenance guidance from an application-matching perspective."
+author: "Huayun Wire Mesh Technical Department"
 publishedAt: "2026-04-01"
 reviewedAt: "2026-04-02"
-reviewedBy: "华云网业技术与质控联合审核"
-applicability: "适用于矿山湿筛、降噪和寿命优先场景下的聚氨酯筛网初选；涉及强酸、有机溶剂或高温工况时需单独做介质兼容性确认。"
-seoTitle: "聚氨酯筛网选型与失效分析 | Shore A 硬度选择指南"
-seoDescription: "系统介绍聚氨酯筛网的硬度选择、工况适配条件和常见失效模式，帮助矿山采购工程师优化筛网选型和延长使用寿命。"
+reviewedBy: "Huayun Wire Mesh Joint Technical & Quality Control Review"
+applicability: "Intended for initial polyurethane screen mesh selection in mining wet screening, noise-sensitive, and service-life-priority applications. Strong acid, organic solvent, or high-temperature conditions require separate media compatibility confirmation."
+seoTitle: "Polyurethane Screen Mesh Selection & Failure Analysis | Shore A Hardness Guide"
+seoDescription: "A comprehensive guide to polyurethane screen mesh hardness selection, application compatibility, and common failure modes to help mining procurement engineers optimize screen selection and extend service life."
 tags:
-  - "聚氨酯筛网"
-  - "Shore A硬度"
-  - "矿山筛分"
-  - "失效分析"
+  - "polyurethane screen mesh"
+  - "Shore A hardness"
+  - "mining screening"
+  - "failure analysis"
 sources:
   -
     title: "ISO 4649 Rubber, vulcanized or thermoplastic — Determination of abrasion resistance"
     publisher: "ISO"
-    note: "用于聚氨酯耐磨性测试口径说明。"
+    note: "Referenced for polyurethane abrasion resistance testing criteria."
   -
-    title: "华云网业聚氨酯筛板内控标准"
-    publisher: "华云网业质量部"
-    note: "用于力学指标、硬度范围和出厂判定要求。"
+    title: "Huayun Wire Mesh Polyurethane Screen Panel Internal Quality Standard"
+    publisher: "Huayun Wire Mesh Quality Department"
+    note: "Referenced for mechanical property specifications, hardness ranges, and outgoing inspection requirements."
   -
-    title: "华云网业聚氨酯筛板失效回访记录"
-    publisher: "华云网业售后部"
-    note: "用于堵孔、撕裂和老化失效模式归纳。"
+    title: "Huayun Wire Mesh Polyurethane Screen Panel Failure Follow-up Records"
+    publisher: "Huayun Wire Mesh After-sales Department"
+    note: "Used to categorize blinding, tearing, and aging failure modes."
 ---
 
-## 聚氨酯筛网的材料特性
+## Material Characteristics of Polyurethane Screen Mesh
 
-聚氨酯（PU）是一种高分子弹性体，力学性能区间宽（Shore A 20-98），兼具橡胶弹性和工程塑料的刚性。
+Polyurethane (PU) is a high-molecular-weight elastomer with a broad mechanical performance range (Shore A 20–98), combining the elasticity of rubber with the rigidity of engineering plastics.
 
-**主要性能指标（华云标准）：**
-- 抗拉强度：≥35 MPa
-- 断裂伸长率：≥350%
-- 邵氏硬度：Shore A 65-90（可按需调配）
-- 工作温度：-30°C ~ +80°C
-- 耐磨性：ISO 4649 测试磨耗量 < 60mm³
+**Key performance specifications (Huayun standard):**
+- Tensile strength: ≥ 35 MPa
+- Elongation at break: ≥ 350%
+- Shore hardness: Shore A 65–90 (adjustable to application requirements)
+- Operating temperature: −30°C to +80°C
+- Abrasion resistance: ISO 4649 volume loss < 60 mm³
 
-## 硬度（Shore A）的选择
+## Hardness (Shore A) Selection
 
-| 硬度 | 适用场景 | 特点 |
-|------|---------|------|
-| Shore A 65-70 | 细粒潮湿矿石（< 5mm）| 弹性好，自清理能力强 |
-| Shore A 75-80 | 中等矿石（5-25mm）| 弹性与耐磨均衡，最常用 |
-| Shore A 85-90 | 粗粒重载矿石（> 25mm）| 承载力强，弹性降低 |
+| Hardness | Recommended Application | Characteristics |
+|----------|------------------------|-----------------|
+| Shore A 65–70 | Fine, wet ore (< 5 mm) | High elasticity, strong self-cleaning action |
+| Shore A 75–80 | Medium ore (5–25 mm) | Balanced wear resistance and elasticity — most common choice |
+| Shore A 85–90 | Coarse, heavy-duty ore (> 25 mm) | High load capacity, reduced elasticity |
 
-**误区**：硬度越高不代表越耐磨。过硬的 PU（Shore A > 90）在细粒湿矿筛分时失去弹性，颗粒嵌入孔内无法自排出，反而造成堵孔失效。
+**Common misconception:** Higher hardness does not mean better wear resistance. Overly hard PU (Shore A > 90) loses elasticity in fine wet ore screening — particles wedge into apertures and cannot self-clear, causing blinding failure.
 
-## 适用边界
+## Application Boundaries
 
-**聚氨酯更优**：细粒级湿矿（0.5-15mm）、噪音敏感厂区（降噪 10-15dB）、中等腐蚀性矿浆、使用寿命优先（通常是金属网的 3-5 倍）。
+**Polyurethane is the better choice for:** fine wet ore (0.5–15 mm), noise-sensitive plant areas (10–15 dB reduction), moderately corrosive slurries, and service-life-priority applications (typically 3–5× the life of metal mesh).
 
-**金属网更优**：工作温度 > 80°C、接触有机溶剂或强酸（pH < 3）、需高精度筛分（ISO 3310-1 公差）、孔径 > 50mm 的重载冲击。
+**Metal mesh is the better choice for:** operating temperatures above 80°C, contact with organic solvents or strong acids (pH < 3), applications requiring high-precision separation (ISO 3310-1 tolerances), and heavy impact screening with apertures above 50 mm.
 
-## 常见失效模式
+## Common Failure Modes
 
-| 失效现象 | 根本原因 | 对策 |
-|---------|---------|------|
-| 早期撕裂（< 1个月）| 硬度过低或安装张紧力不足 | 升高一档硬度；检查安装 |
-| 堵孔 | 硬度过高或物料水分过大 | 降低一档硬度；增加冲洗水 |
-| 表面龟裂 | 臭氧老化（露天存放）| 避光存放，库存 > 12个月先做老化测试 |
-| 底部支撑变形 | 内嵌钢筋腐蚀膨胀 | 酸性工况选不锈钢内骨架 |
+| Failure Symptom | Root Cause | Corrective Action |
+|----------------|------------|-------------------|
+| Early tearing (< 1 month) | Hardness too low or insufficient installation tension | Step up one hardness grade; inspect installation |
+| Aperture blinding | Hardness too high or excessive feed moisture | Step down one hardness grade; increase wash water flow |
+| Surface cracking | Ozone aging (outdoor storage) | Store away from UV/ozone; stock held > 12 months should undergo aging assessment before use |
+| Underside support deformation | Embedded steel reinforcement corroding and expanding | Specify stainless steel internal framework for acidic applications |
 
-## 安装与维护
+## Installation and Maintenance
 
-1. **安装方向**：按厂家标注箭头安装，错误安装导致不均匀磨损
-2. **张紧力**：张紧式筛板拉伸量通常为 2-4%
-3. **定期检查**：孔径扩大超过标称值 20% 时更换
-
+1. **Installation orientation:** Follow the directional arrow marked by the manufacturer — incorrect orientation causes uneven wear patterns.
+2. **Tensioning:** Tensioned screen panels are typically pre-stretched 2–4%.
+3. **Routine inspection:** Replace panels when measured aperture exceeds 20% above the nominal value.

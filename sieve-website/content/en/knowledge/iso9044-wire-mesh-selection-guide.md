@@ -1,90 +1,90 @@
 ---
 lang: 'en'
-title: "ISO 9044 标准详解：如何用孔径和丝径参数精准选购金属编织网"
-description: "ISO 9044:1999 是金属丝编织网的国际核心标准，规定了孔径公差、丝径范围和开孔率计算方法。本文从工程师视角梳理标准要点，帮助采购和质检人员读懂检测报告。"
-category: "技术标准"
-summary: "ISO 9044:1999 是金属丝编织网的国际核心标准，规定了孔径公差、丝径范围和开孔率计算方法。本文从工程师视角梳理标准要点，帮助采购和质检人员读懂检测报告。"
-author: "华云网业技术部"
+title: "ISO 9044 Explained: How to Select Industrial Woven Wire Mesh Using Aperture and Wire Diameter Parameters"
+description: "ISO 9044:1999 is the key international standard for woven wire cloth, defining aperture tolerances, wire diameter ranges, and open area calculations. This article breaks down the standard from an engineering perspective to help procurement and QC teams interpret test reports with confidence."
+category: "Technical Standards"
+summary: "ISO 9044:1999 is the key international standard for woven wire cloth, defining aperture tolerances, wire diameter ranges, and open area calculations. This article breaks down the standard from an engineering perspective to help procurement and QC teams interpret test reports with confidence."
+author: "Huayun Wire Mesh Technical Department"
 publishedAt: "2026-03-15"
 reviewedAt: "2026-04-02"
-reviewedBy: "华云网业技术与质控联合审核"
-applicability: "适用于金属编织网采购、来料验收和筛分精度要求明确的过滤场景；不适用于聚氨酯、条缝筛等非编织网产品。"
-seoTitle: "ISO 9044 金属编织网标准详解 | 孔径丝径选型指南"
-seoDescription: "深入解读 ISO 9044:1999 标准的孔径定义、公差等级和开孔率计算，帮助工程师和采购人员精准选购金属丝网。"
+reviewedBy: "Huayun Wire Mesh Joint Technical & Quality Control Review"
+applicability: "Applicable to woven wire mesh procurement, incoming material inspection, and filtration applications with defined separation accuracy requirements. Not applicable to non-woven products such as polyurethane panels or wedge wire screens."
+seoTitle: "ISO 9044 Woven Wire Mesh Standard Explained | Aperture & Wire Diameter Selection Guide"
+seoDescription: "A practical breakdown of ISO 9044:1999 covering aperture definitions, tolerance grades, and open area calculations to help engineers and buyers select the right woven wire mesh."
 tags:
   - "ISO 9044"
-  - "孔径标准"
-  - "金属编织网"
-  - "选型指南"
+  - "aperture standard"
+  - "woven wire mesh"
+  - "selection guide"
 sources:
   -
     title: "ISO 9044:1999 Industrial woven wire cloth — Technical requirements and tests"
     publisher: "ISO"
-    note: "用于孔径、丝径允差和检测要求说明。"
+    note: "Referenced for aperture and wire diameter tolerances and testing requirements."
   -
-    title: "GB/T 5330-2003 工业用金属丝编织方孔筛网"
-    publisher: "国家标准"
-    note: "用于国内采购、图纸对接和验收口径对应。"
+    title: "GB/T 5330-2003 Industrial woven wire square mesh"
+    publisher: "Chinese National Standard"
+    note: "Referenced for domestic procurement, drawing alignment, and acceptance criteria."
   -
-    title: "华云网业编织网来料与成品检验记录"
-    publisher: "华云网业质量部"
-    note: "用于补充检测报告中的实操检验项目与抽检流程。"
+    title: "Huayun Wire Mesh Incoming Material and Finished Product Inspection Records"
+    publisher: "Huayun Wire Mesh Quality Department"
+    note: "Used to supplement practical inspection items and sampling procedures referenced in test reports."
 ---
 
-## 什么是 ISO 9044？
+## What Is ISO 9044?
 
-ISO 9044:1999（金属丝编织网工业用途——技术要求和试验）是金属编织网领域最权威的国际标准之一，与我国 GB/T 5330-2003 基本对应。核心内容包括：孔径（Aperture）定义与公差等级、丝径（Wire Diameter）允差、有效开孔率（OA%）计算以及网面平整度要求。
+ISO 9044:1999 (*Industrial woven wire cloth — Technical requirements and tests*) is one of the most authoritative international standards in the woven wire mesh field, broadly equivalent to China's GB/T 5330-2003. Its core provisions cover: aperture definition and tolerance grades, wire diameter allowances, open area percentage (OA%) calculation, and mesh flatness requirements.
 
-## 核心参数定义
+## Key Parameter Definitions
 
-### 孔径（Aperture, w）
+### Aperture (w)
 
-孔径是相邻两根平行丝之间的净距离，计算公式：
+The aperture is the clear distance between two adjacent parallel wires, calculated as:
 
 ```
 w = p - d
 ```
 
-其中 `p` 为节距（相邻丝中心距），`d` 为丝径。
+where `p` is the pitch (center-to-center distance between adjacent wires) and `d` is the wire diameter.
 
-### 目数（Mesh Count）与节距
+### Mesh Count and Pitch
 
-目数是每 25.4mm（1 英寸）内的网孔数量，节距公式为：
+Mesh count is the number of openings per 25.4 mm (1 inch). Pitch is derived as:
 
 ```
 p = 25.4 / Mesh
 ```
 
-以 20 目、丝径 0.4mm 为例：`p = 1.27mm`，`w = 0.87mm`
+Example — 20 mesh, wire diameter 0.4 mm: `p = 1.27 mm`, `w = 0.87 mm`
 
-### 有效开孔率（Opening Area, OA%）
+### Open Area (OA%)
 
 ```
 OA% = (w / (w + d))² × 100
 ```
 
-## ISO 9044 孔径公差等级
+## ISO 9044 Aperture Tolerance Grades
 
-| 等级 | 适用场景 | 孔径允许偏差 |
-|------|---------|-------------|
-| 普通级 | 工业防护、过滤初级 | ±10%~15% |
-| 精密级 | 粒径分级、食品筛选 | ±5%~8% |
-| 超精密级 | 试验筛、实验室分析 | ±3%~5% |
+| Grade | Typical Application | Aperture Tolerance |
+|-------|--------------------|--------------------|
+| Standard | Industrial guarding, primary filtration | ±10–15% |
+| Precision | Particle classification, food screening | ±5–8% |
+| Ultra-precision | Test sieves, laboratory analysis | ±3–5% |
 
-## 检测报告应包含的信息
+## What a Compliant Test Report Should Include
 
-一份符合 ISO 9044 的检测报告应明确：
+A test report conforming to ISO 9044 should clearly state:
 
-1. **材质牌号**：如 SUS304（1.4301）或 SUS316L（1.4404）
-2. **标称孔径**和**实测孔径**（5 点取样平均值）
-3. **标称丝径**和**实测丝径**
-4. **织造方式**：平纹（Plain Weave）还是斜纹（Twill Weave）
-5. **执行标准编号**：ISO 9044:1999 或 GB/T 5330-2003
+1. **Material designation** — e.g., SUS304 (1.4301) or SUS316L (1.4404)
+2. **Nominal aperture** and **measured aperture** (average of 5-point sampling)
+3. **Nominal wire diameter** and **measured wire diameter**
+4. **Weave type** — Plain Weave or Twill Weave
+5. **Applicable standard** — ISO 9044:1999 or GB/T 5330-2003
 
-## 实操选型建议
+## Practical Selection Guidelines
 
-- **筛分精度要求高**：选精密级，要求供应商出具每批次检测数据
-- **过滤场景**：选孔径约为目标粒径 D90 的 0.8-1.0 倍
-- **重载耐磨场景**：优先增大丝径，即使开孔率下降也能显著延长寿命
-- **防腐环境**：满足孔径要求的前提下选 316L，PREN ≥ 24
+- **High separation accuracy required:** Specify the Precision grade and require per-batch test data from your supplier.
+- **Filtration applications:** Select an aperture approximately 0.8–1.0× the D90 of the target particle size.
+- **Heavy-duty wear applications:** Prioritize a larger wire diameter — even at the cost of reduced open area, the gain in service life is substantial.
+- **Corrosive environments:** Where aperture requirements are met, specify 316L with PREN ≥ 24.
 

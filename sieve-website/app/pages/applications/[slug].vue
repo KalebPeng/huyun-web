@@ -268,19 +268,29 @@ const recommendedProducts = computed(() => {
   return getProductsByIds(application.value.recommendedProducts)
 })
 
-const articleJsonLd = computed(() => {
+const applicationJsonLd = computed(() => {
   if (!application.value) {
     return null
   }
 
   return {
     '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: application.value.name,
+    '@type': 'CollectionPage',
+    name: application.value.name,
     description: application.value.seoDescription || application.value.description,
+    url: `${runtimeConfig.public.siteUrl}${localePath(`/applications/${application.value.slug}`)}`,
     image: application.value.coverImage ? [toAbsoluteUrl(application.value.coverImage)] : undefined,
     mainEntityOfPage: `${runtimeConfig.public.siteUrl}${localePath(`/applications/${application.value.slug}`)}`,
-    articleSection: t('nav.applications'),
+    about: {
+      '@type': 'Thing',
+      name: application.value.name,
+      description: application.value.summary
+    },
+    isPartOf: {
+      '@type': 'WebSite',
+      name: t('brand.name'),
+      url: runtimeConfig.public.siteUrl
+    },
     inLanguage: localeProperties.value.language || 'en',
     author: {
       '@type': 'Organization',
@@ -300,16 +310,17 @@ usePageSeoMeta({
   description:
     application.value?.seoDescription ||
     t('applicationDetail.seo.fallbackDescription'),
-  image: application.value?.coverImage
+  image: application.value?.coverImage,
+  robots: application.value ? undefined : 'noindex, nofollow'
 })
 
 useHead(() => ({
-  script: articleJsonLd.value
+  script: applicationJsonLd.value
     ? [
         {
           key: 'application-jsonld',
           type: 'application/ld+json',
-          textContent: JSON.stringify(articleJsonLd.value)
+          textContent: JSON.stringify(applicationJsonLd.value)
         }
       ]
     : []

@@ -4,6 +4,7 @@ interface SeoMetaOptions {
   title: string
   description: string
   image?: string
+  robots?: string
 }
 
 const DEFAULT_SHARE_IMAGE = '/images/products/stainless-woven-mesh/cover.webp'
@@ -27,7 +28,7 @@ const toAbsoluteUrl = (value: string, siteUrl: string) => {
   return `${normalizedSiteUrl}${normalizedValue}`
 }
 
-export function usePageSeoMeta({ title, description, image }: SeoMetaOptions) {
+export function usePageSeoMeta({ title, description, image, robots }: SeoMetaOptions) {
   const route = useRoute()
   const config = useRuntimeConfig()
   const { locale, localeProperties } = useI18n()
@@ -77,7 +78,7 @@ export function usePageSeoMeta({ title, description, image }: SeoMetaOptions) {
   useNuxtSeoMeta({
     title,
     description,
-    robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
+    robots: robots || 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
     ogTitle: title,
     ogDescription: description,
     ogSiteName: 'Huayun Wire Mesh',

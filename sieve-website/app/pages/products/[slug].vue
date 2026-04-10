@@ -607,7 +607,8 @@ usePageSeoMeta({
   description:
     product.value?.seoDescription ||
     t('productDetail.seo.fallbackDescription'),
-  image: product.value?.coverImage
+  image: product.value?.coverImage,
+  robots: product.value ? undefined : 'noindex, nofollow'
 })
 
 useHead(() => ({

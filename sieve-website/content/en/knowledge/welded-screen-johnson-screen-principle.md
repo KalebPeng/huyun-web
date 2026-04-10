@@ -1,69 +1,68 @@
 ---
 lang: 'en'
-title: "条缝筛（Johnson Screen）工作原理与选煤脱水应用详解"
-description: "条缝筛因 V 型绕丝的梯形截面而具有自清理能力和极高开口率，是选煤厂脱水脱介工序的核心设备配件。本文解析其结构原理、规格参数和维护要点。"
-category: "产品知识"
-summary: "条缝筛因 V 型绕丝的梯形截面而具有自清理能力和极高开口率，是选煤厂脱水脱介工序的核心设备配件。本文解析其结构原理、规格参数和维护要点。"
-author: "华云网业技术部"
+title: "Wedge Wire Screens (Johnson Screens): Operating Principles and Coal Preparation Dewatering Applications"
+description: "The trapezoidal cross-section of V-shaped profile wire gives wedge wire screens self-cleaning capability and exceptionally high open area, making them a critical component in coal preparation plant dewatering and medium recovery circuits. This article covers structural principles, specification parameters, and maintenance essentials."
+category: "Product Knowledge"
+summary: "The trapezoidal cross-section of V-shaped profile wire gives wedge wire screens self-cleaning capability and exceptionally high open area, making them a critical component in coal preparation plant dewatering and medium recovery circuits. This article covers structural principles, specification parameters, and maintenance essentials."
+author: "Huayun Wire Mesh Technical Department"
 publishedAt: "2026-03-28"
 reviewedAt: "2026-04-02"
-reviewedBy: "华云网业技术与质控联合审核"
-applicability: "适用于选煤、脱水、脱介及中高开口率过滤场景的条缝筛初步选型；具体缝隙宽度和支撑结构仍需结合流量、压差和矿浆性质校核。"
-seoTitle: "条缝筛工作原理与选煤脱水应用 | V型绕丝焊接筛板详解"
-seoDescription: "详解 Johnson Screen 的 V 型绕丝结构原理、缝隙参数设计和选煤厂脱水脱介工况应用，含维护要点与选型建议。"
+reviewedBy: "Huayun Wire Mesh Joint Technical & Quality Control Review"
+applicability: "Intended for initial wedge wire screen selection in coal preparation, dewatering, medium recovery, and medium-to-high open area filtration applications. Specific slot width and support structure must still be verified against flow rate, differential pressure, and slurry characteristics."
+seoTitle: "Wedge Wire Screen Operating Principles & Coal Preparation Dewatering | V-Profile Welded Screen Panel Guide"
+seoDescription: "A detailed explanation of the Johnson Screen V-profile wire structure, slot parameter design, and coal preparation dewatering and medium recovery applications, with maintenance guidelines and selection recommendations."
 tags:
-  - "条缝筛"
+  - "wedge wire screen"
   - "Johnson Screen"
-  - "选煤脱水"
-  - "焊接筛"
-  - "V型绕丝"
+  - "coal preparation dewatering"
+  - "welded screen"
+  - "V-profile wire"
 sources:
   -
-    title: "华云网业条缝筛制造通用技术条件"
-    publisher: "华云网业工艺部"
-    note: "用于绕丝截面、支撑杆布局和焊接结构说明。"
+    title: "Huayun Wire Mesh Wedge Wire Screen General Manufacturing Specification"
+    publisher: "Huayun Wire Mesh Process Engineering Department"
+    note: "Referenced for profile wire cross-section, support rod layout, and welded structure details."
   -
-    title: "华云网业选煤脱水项目现场回访记录"
-    publisher: "华云网业售后部"
-    note: "用于脱水、脱介处理量与维护建议归纳。"
+    title: "Huayun Wire Mesh Coal Preparation Dewatering Project Site Follow-up Records"
+    publisher: "Huayun Wire Mesh After-sales Department"
+    note: "Used to compile dewatering and medium recovery throughput data and maintenance recommendations."
   -
-    title: "华云网业不锈钢材质适配记录"
-    publisher: "华云网业技术部"
-    note: "用于 SUS304 / SUS316L 在不同矿浆环境下的选材边界说明。"
+    title: "Huayun Wire Mesh Stainless Steel Material Compatibility Records"
+    publisher: "Huayun Wire Mesh Technical Department"
+    note: "Referenced for SUS304 / SUS316L material selection boundaries across different slurry environments."
 ---
 
-## 什么是条缝筛（Johnson Screen）？
+## What Is a Wedge Wire Screen (Johnson Screen)?
 
-条缝筛（Wedge Wire Screen）是一种以 V 型截面绕丝为过滤单元、通过全自动焊接固定在支撑杆上的工业筛分元件。名称来源于 19 世纪美国工程师 Edward E. Johnson，最初用于水井过滤，后广泛用于矿山、选煤、石油化工和污水处理领域。
+A wedge wire screen is an industrial filtration element made from V-shaped profile wire as the filtering unit, resistance-welded onto support rods using fully automated equipment. The name traces back to 19th-century American engineer Edward E. Johnson, who originally developed the design for water well filtration. It has since become widely used in mining, coal preparation, petrochemicals, and wastewater treatment.
 
-## V 型绕丝的结构优势
+## Structural Advantages of V-Profile Wire
 
-普通编织网网孔截面为正方形，颗粒进入孔口后容易嵌塞。条缝筛采用三角形截面绕丝，形成上窄下宽的楔形缝隙——颗粒如果直径略大于缝口宽度，会被拦截在表面不会卡入；直径略小的颗粒则顺利通过，极大减少盲孔。
+Standard woven mesh has square aperture cross-sections — particles that enter the opening can easily become wedged. Wedge wire screens use triangular-profile wire that forms slots which are narrow at the top and wider toward the base. A particle slightly larger than the slot opening is stopped cleanly at the surface without becoming trapped; particles slightly smaller pass through freely. This geometry dramatically reduces blinding compared to conventional mesh.
 
-## 核心性能参数
+## Key Performance Parameters
 
-| 参数 | 典型范围 | 说明 |
-|------|---------|------|
-| 缝隙宽度（Slot Width）| 0.1-10mm | 即过滤精度，按物料 D50 设计 |
-| 有效开口率 | 20-60% | 比同等孔径编织网高 15-25% |
-| 最大承压 | 0.6-1.2 MPa | 取决于支撑杆规格 |
+| Parameter | Typical Range | Notes |
+|-----------|---------------|-------|
+| Slot Width | 0.1–10 mm | Defines filtration precision; designed to the material's D50 |
+| Effective Open Area | 20–60% | Typically 15–25% higher than equivalent-aperture woven mesh |
+| Maximum Working Pressure | 0.6–1.2 MPa | Depends on support rod specification |
 
-## 选煤厂脱水应用
+## Coal Preparation Dewatering Applications
 
-**脱水（Dewatering）**：精煤经弧形筛或离心机固液分离。条缝筛高开口率使单位面积处理量提升 20% 以上，SUS316L 材质耐受酸性（pH 4-6）矿浆长期腐蚀。
+**Dewatering:** Clean coal is separated from process water using curved screens or centrifuges. The high open area of wedge wire screens increases throughput per unit area by more than 20%, while SUS316L construction withstands prolonged exposure to acidic slurry (pH 4–6).
 
-**脱介（Desliming）**：重介质选煤中分离磁铁矿粉。0.5-1.0mm 缝隙精确截留介质颗粒，介质回收率通常达 98% 以上。
+**Medium Recovery (Desliming):** In dense medium separation circuits, wedge wire screens recover magnetite powder from the process medium. Slot widths of 0.5–1.0 mm accurately retain medium particles, with medium recovery rates typically exceeding 98%.
 
-## 维护要点
+## Maintenance Guidelines
 
-1. **定期冲洗**：每班次结束后顺缝隙方向高压冲洗
-2. **检查焊点**：重点检查振动幅度最大的边缘区域
-3. **测量磨损**：每季度用塞规检测缝隙宽度，磨损超过 15% 建议更换
-4. **安装方向**：V 型绕丝宽端朝向物料流动方向，确保楔形效应发挥作用
+1. **Regular flushing:** High-pressure wash along the slot direction at the end of each shift.
+2. **Weld point inspection:** Focus on edge zones where vibration amplitude is greatest.
+3. **Wear measurement:** Check slot width with feeler gauges every quarter; replacement is recommended when wear exceeds 15% of nominal slot width.
+4. **Installation orientation:** Orient the V-profile wire with the wider face toward the material flow direction to ensure the wedge effect functions correctly.
 
-## 规格选型建议
+## Selection Recommendations
 
-- **缝隙宽度**：取目标分离粒径的 0.7-0.9 倍（考虑磨损余量）
-- **材质**：酸性矿浆选 SUS316L；中性环境可选 SUS304
-- **支撑杆方向**：横向支撑适合弧形筛；纵向支撑适合平面振动筛
-
+- **Slot width:** Size at 0.7–0.9× the target separation particle diameter to allow a wear margin.
+- **Material:** Specify SUS316L for acidic slurry environments; SUS304 is suitable for neutral conditions.
+- **Support rod orientation:** Transverse support suits curved (banana) screens; longitudinal support suits flat-deck vibrating screens.

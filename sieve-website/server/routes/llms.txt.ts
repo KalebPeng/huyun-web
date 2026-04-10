@@ -5,7 +5,7 @@ import faqData from '~~/data/faq.json'
 import productsData from '~~/data/products.json'
 import type { LocalizedApplicationScene, LocalizedFAQ, LocalizedProduct } from '~~/types'
 import { localizeApplication, localizeFaq, localizeProduct } from '~~/utils/catalog'
-import { getPublicPathFromContentPath } from '~~/utils/knowledgeLocale'
+import { getLocaleFromContentPath, getPublicPathFromContentPath } from '~~/utils/knowledgeLocale'
 import { DEFAULT_LOCALE } from '~~/utils/localized'
 
 interface ArticleEntry {
@@ -64,13 +64,24 @@ export default defineEventHandler(async (event) => {
     )
   )
 
-  const articleLines = articles.map((article) =>
-    formatLinkLine(
-      article.title,
-      `${siteUrl}${getPublicPathFromContentPath(article.path)}`,
-      article.summary
+  const articleLinesEn = articles
+    .filter((article) => getLocaleFromContentPath(article.path) === 'en')
+    .map((article) =>
+      formatLinkLine(
+        article.title,
+        `${siteUrl}${getPublicPathFromContentPath(article.path)}`,
+        article.summary
+      )
     )
-  )
+  const articleLinesZh = articles
+    .filter((article) => getLocaleFromContentPath(article.path) === 'zh')
+    .map((article) =>
+      formatLinkLine(
+        article.title,
+        `${siteUrl}${getPublicPathFromContentPath(article.path)}`,
+        article.summary
+      )
+    )
 
   const content = [
     '# Huayun Wire Mesh',
@@ -106,7 +117,8 @@ export default defineEventHandler(async (event) => {
     buildSection('Product Pages (ZH)', productLinesZh),
     buildSection('Application Pages (EN)', applicationLines),
     buildSection('Application Pages (ZH)', applicationLinesZh),
-    buildSection('Technical Articles', articleLines),
+    buildSection('Technical Articles (EN)', articleLinesEn),
+    buildSection('Technical Articles (ZH)', articleLinesZh),
     '## Other Machine-Readable Endpoints',
     `- Sitemap: ${siteUrl}/sitemap.xml`,
     `- Robots: ${siteUrl}/robots.txt`,

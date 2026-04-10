@@ -284,7 +284,8 @@ const formatDate = (dateStr: string) => {
 
 usePageSeoMeta({
   title: article.value?.seoTitle || article.value?.title || t('knowledgeDetail.fallbackTitle'),
-  description: article.value?.seoDescription || article.value?.summary || ''
+  description: article.value?.seoDescription || article.value?.summary || '',
+  robots: article.value ? undefined : 'noindex, nofollow'
 })
 
 useHead(() => ({

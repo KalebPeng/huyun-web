@@ -1,76 +1,72 @@
 ---
 lang: 'en'
-title: "65Mn 锰钢网 vs 不锈钢编织网：矿山筛分场景的材质选择逻辑"
-description: "65Mn 弹簧钢和不锈钢是工业筛分中最常见的两种材质。耐磨性、耐腐蚀性和使用成本的不同决定了各自的适用边界。本文用具体工况数据帮你做出正确选择。"
-category: "材质选择"
-summary: "65Mn 弹簧钢和不锈钢是工业筛分中最常见的两种材质。耐磨性、耐腐蚀性和使用成本的不同决定了各自的适用边界。本文用具体工况数据帮你做出正确选择。"
-author: "华云网业技术部"
+title: "65Mn Manganese Steel Mesh vs Stainless Steel Woven Mesh: Material Selection Logic for Mining Screen Applications"
+description: "65Mn spring steel and stainless steel are the two most common materials in industrial screening. Differences in wear resistance, corrosion resistance, and lifecycle cost define where each material belongs. This article uses real operating data to help you make the right call."
+category: "Material Selection"
+summary: "65Mn spring steel and stainless steel are the two most common materials in industrial screening. Differences in wear resistance, corrosion resistance, and lifecycle cost define where each material belongs. This article uses real operating data to help you make the right call."
+author: "Huayun Wire Mesh Technical Department"
 publishedAt: "2026-03-22"
 reviewedAt: "2026-04-02"
-reviewedBy: "华云网业技术与质控联合审核"
-applicability: "适用于矿山、骨料和一般工业过滤场景的 65Mn / SUS304 / SUS316L 材质初选；实际腐蚀介质、食品认证和高温要求仍需按现场条件复核。"
-seoTitle: "65Mn锰钢网 vs 不锈钢编织网对比 | 矿山筛分材质选择"
-seoDescription: "从抗拉强度、耐磨性、耐腐蚀性和总拥有成本四个维度，对比 65Mn 锰钢网和不锈钢编织网在不同矿山筛分工况下的适用性。"
+reviewedBy: "Huayun Wire Mesh Joint Technical & Quality Control Review"
+applicability: "Intended for initial material selection between 65Mn / SUS304 / SUS316L in mining, aggregate, and general industrial filtration applications. Actual corrosive media, food-grade certification requirements, and high-temperature conditions must still be verified against site-specific parameters."
+seoTitle: "65Mn Manganese Steel Mesh vs Stainless Steel Woven Mesh | Mining Screen Material Guide"
+seoDescription: "A four-dimension comparison of 65Mn manganese steel mesh and stainless steel woven mesh across tensile strength, wear resistance, corrosion resistance, and total cost of ownership for mining screen applications."
 tags:
   - "65Mn"
-  - "不锈钢"
-  - "材质选择"
-  - "矿山筛网"
-  - "TCO分析"
+  - "stainless steel"
+  - "material selection"
+  - "mining screen mesh"
+  - "TCO analysis"
 sources:
   -
-    title: "GB/T 1222-2016 弹簧钢"
-    publisher: "国家标准"
-    note: "用于 65Mn 弹簧钢性能和热处理区间参考。"
+    title: "GB/T 1222-2016 Spring Steels"
+    publisher: "Chinese National Standard"
+    note: "Referenced for 65Mn spring steel mechanical properties and heat treatment ranges."
   -
-    title: "华云网业矿山筛网客户回访台账"
-    publisher: "华云网业售后与工艺部"
-    note: "用于 TCO、寿命和更换周期估算。"
+    title: "Huayun Wire Mesh Mining Screen Customer Follow-up Log"
+    publisher: "Huayun Wire Mesh After-sales & Process Engineering Department"
+    note: "Used for TCO estimates, service life benchmarks, and replacement cycle data."
   -
-    title: "华云网业材质适配工况规范"
-    publisher: "华云网业技术部"
-    note: "用于腐蚀、磨损与成本边界判断。"
+    title: "Huayun Wire Mesh Material-to-Application Compatibility Specification"
+    publisher: "Huayun Wire Mesh Technical Department"
+    note: "Used to define boundaries for corrosion, wear, and cost-based material decisions."
 ---
 
-## 材质属性对比
+## Material Property Comparison
 
-| 属性 | 65Mn 弹簧钢 | SUS304 | SUS316L |
-|------|------------|--------|--------|
-| 抗拉强度 | ≥1470 MPa（热处理后）| ≥515 MPa | ≥485 MPa |
-| 硬度 | HRC 45-50（淬火态）| HB ≤200 | HB ≤217 |
-| 耐磨性 | 极强 | 中等 | 中等 |
-| 耐腐蚀性 | 弱（干燥环境）| 强 | 极强 |
-| 成本 | 低 | 中 | 高 |
+| Property | 65Mn Spring Steel | SUS304 | SUS316L |
+|----------|-------------------|--------|---------|
+| Tensile Strength | ≥1470 MPa (post heat treatment) | ≥515 MPa | ≥485 MPa |
+| Hardness | HRC 45–50 (quenched) | HB ≤200 | HB ≤217 |
+| Wear Resistance | Excellent | Moderate | Moderate |
+| Corrosion Resistance | Low (dry environments only) | High | Excellent |
+| Cost | Low | Medium | High |
 
-## 65Mn 锰钢网的适用场景
+## Where 65Mn Manganese Steel Mesh Belongs
 
-65Mn（执行 GB/T 1222-2016）是干式矿山骨料筛分的首选，最优工况包括石灰石、玄武岩、花岗岩等硬质骨料的粗中细碎分级，孔径范围 5-120mm，振动筛干式作业。高硬度（HRC 45-50）和高弹性模量使其在高频振动冲击下不易疲劳断丝，综合使用寿命比普通碳钢网提升 2-3 倍。
+65Mn (conforming to GB/T 1222-2016) is the go-to choice for dry mining and aggregate screening. Optimal applications include coarse, medium, and fine classification of hard aggregates such as limestone, basalt, and granite, with aperture sizes ranging from 5 to 120 mm in dry vibrating screen operation. Its high hardness (HRC 45–50) and high elastic modulus make it highly fatigue-resistant under high-frequency impact, delivering 2–3× the service life of standard carbon steel mesh.
 
-**避免的场景**：酸性或含氯离子湿式环境、温度超过 200°C 的高温工况、需要食品级认证的场合。
+**Avoid using 65Mn in:** acidic or chloride-bearing wet environments, operating temperatures above 200°C, or any application requiring food-grade certification.
 
-## 不锈钢编织网的适用场景
+## Where Stainless Steel Woven Mesh Belongs
 
-**SUS304** 适合一般水处理过滤、食品粮食筛选、化工液体过滤，点蚀当量 PREN ≈ 18，可应对大多数弱酸弱碱。
+**SUS304** suits general water treatment filtration, food and grain screening, and chemical liquid filtration. With a pitting resistance equivalent (PREN) of approximately 18, it handles most weak acids and alkalis reliably.
 
-**SUS316L** 适合选煤厂酸性矿浆脱水、沿海环境、医药食品出口要求。额外添加 2-3% Mo，PREN ≈ 24-26，显著抑制氯离子点蚀。
+**SUS316L** is the right choice for acidic coal slurry dewatering in coal preparation plants, coastal installations, and pharmaceutical or food export applications requiring stringent certifications. The addition of 2–3% molybdenum raises PREN to approximately 24–26, providing significantly better resistance to chloride-induced pitting.
 
-## 总拥有成本（TCO）分析
+## Total Cost of Ownership (TCO) Analysis
 
-以振动筛配套筛网为例（孔径 20mm，面积 6㎡）：
+Based on a vibrating screen deck configuration (20 mm aperture, 6 m² panel area):
 
-| 方案 | 单次采购 | 更换周期 | 年均成本 |
-|------|---------|---------|--------|
-| 普通碳钢网 | ~800元 | 2个月 | 4800元 |
-| 65Mn 锰钢网 | ~1500元 | 5-6个月 | 3000元 |
-| SUS304 网 | ~2200元 | 8-10个月 | 2640元 |
+| Option | Unit Purchase Cost | Replacement Interval | Annualized Cost |
+|--------|--------------------|----------------------|-----------------|
+| Standard carbon steel mesh | ~¥800 | 2 months | ¥4,800 |
+| 65Mn manganese steel mesh | ~¥1,500 | 5–6 months | ¥3,000 |
+| SUS304 stainless mesh | ~¥2,200 | 8–10 months | ¥2,640 |
 
-## 决策树
-
-```
-是否有腐蚀介质（酸、碱、含氯液体）？
-├── 是 → 选不锈钢（316L > 304）
-└── 否 → 是否为高冲击干式骨料筛分？
-    ├── 是 → 选 65Mn（成本最优）
-    └── 否 → 根据温度和精度需求选 304
-```
-
+## Decision Tree
+Is there a corrosive medium present (acids, alkalis, chloride-bearing liquids)?
+├── Yes → Choose stainless steel (316L preferred over 304)
+└── No  → Is this high-impact dry aggregate screening?
+├── Yes → Choose 65Mn (best cost performance)
+└── No  → Select 304 based on temperature tolerance and precision requirements

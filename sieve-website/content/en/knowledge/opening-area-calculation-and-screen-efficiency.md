@@ -1,77 +1,77 @@
 ---
 lang: 'en'
-title: "开孔率计算公式与筛分效率：为什么开孔率不是越高越好？"
-description: "开孔率（OA%）直接影响筛网处理能力，但过高的开孔率意味着更细的丝径，强度随之下降。本文分析开孔率与筛分效率、使用寿命之间的工程权衡。"
-category: "技术原理"
-summary: "开孔率（OA%）直接影响筛网处理能力，但过高的开孔率意味着更细的丝径，强度随之下降。本文分析开孔率与筛分效率、使用寿命之间的工程权衡。"
-author: "华云网业技术部"
+title: "Open Area Calculation and Screening Efficiency: Why Higher Open Area Isn't Always Better"
+description: "Open area percentage (OA%) directly affects screen throughput capacity, but a higher OA% implies finer wire, which comes at the cost of strength. This article examines the engineering trade-offs between open area, screening efficiency, and service life."
+category: "Technical Principles"
+summary: "Open area percentage (OA%) directly affects screen throughput capacity, but a higher OA% implies finer wire, which comes at the cost of strength. This article examines the engineering trade-offs between open area, screening efficiency, and service life."
+author: "Huayun Wire Mesh Technical Department"
 publishedAt: "2026-04-01"
 reviewedAt: "2026-04-02"
-reviewedBy: "华云网业技术与质控联合审核"
-applicability: "适用于正方形孔编织网和条缝筛的处理能力估算与方案比较；不应替代现场试筛、整机产能测试和寿命验证。"
-seoTitle: "开孔率计算公式与筛分效率优化 | 工业筛网选型指南"
-seoDescription: "详解筛网开孔率计算方法，分析孔径丝径比对处理能力和使用寿命的影响，给出不同工况下的选型策略。"
+reviewedBy: "Huayun Wire Mesh Joint Technical & Quality Control Review"
+applicability: "Suitable for throughput estimation and option comparison for square-aperture woven mesh and wedge wire screens. Should not substitute for on-site sieve trials, full-system capacity testing, or service life validation."
+seoTitle: "Open Area Calculation & Screening Efficiency Optimization | Industrial Screen Mesh Selection Guide"
+seoDescription: "A detailed explanation of screen mesh open area calculation, with analysis of how the aperture-to-wire diameter ratio affects throughput capacity and service life, plus selection strategies for different operating conditions."
 tags:
-  - "开孔率"
-  - "筛分效率"
-  - "选型原则"
-  - "技术原理"
+  - "open area"
+  - "screening efficiency"
+  - "selection principles"
+  - "technical principles"
 sources:
   -
     title: "ASTM E11 Test Sieves and Test Sieve Cloth"
     publisher: "ASTM International"
-    note: "用于目数、筛孔术语和参考规格口径说明。"
+    note: "Referenced for mesh count terminology, sieve opening definitions, and nominal specifications."
   -
     title: "ISO 9044:1999 Industrial woven wire cloth — Technical requirements and tests"
     publisher: "ISO"
-    note: "用于编织网孔径、节距和开孔率几何关系参照。"
+    note: "Referenced for the geometric relationships between aperture, pitch, and open area in woven mesh."
   -
-    title: "华云网业重载筛分选型规则"
-    publisher: "华云网业技术部"
-    note: "用于不同 w/d 比对应工况和寿命权衡建议。"
+    title: "Huayun Wire Mesh Heavy-Duty Screening Selection Rules"
+    publisher: "Huayun Wire Mesh Technical Department"
+    note: "Used for w/d ratio recommendations and service life trade-off guidance across different operating conditions."
 ---
 
-## 开孔率的计算
+## Calculating Open Area
 
-对于正方形孔编织网，开孔率（OA%）计算公式：
+For square-aperture woven wire mesh, open area percentage (OA%) is calculated as:
 
 ```
 OA% = (w / (w + d))² × 100
 ```
 
-其中 w = 孔径（mm），d = 丝径（mm）。
+where w = aperture (mm) and d = wire diameter (mm).
 
-**示例**：孔径 2.0mm，丝径 0.5mm → OA% = (2.0/2.5)² × 100 = **64%**
+**Example:** Aperture 2.0 mm, wire diameter 0.5 mm → OA% = (2.0 / 2.5)² × 100 = **64%**
 
-同样孔径 2.0mm，丝径 1.0mm → OA% = (2.0/3.0)² × 100 = **44%**
+Same aperture 2.0 mm, wire diameter 1.0 mm → OA% = (2.0 / 3.0)² × 100 = **44%**
 
-丝径翻倍，开孔率从 64% 下降到 44%，处理能力理论上减少约 31%。
+Doubling the wire diameter drops open area from 64% to 44% — a theoretical throughput reduction of approximately 31%.
 
-## 开孔率与强度的权衡
+## The Open Area vs. Strength Trade-Off
 
-以 10 目网（节距固定 2.54mm）为例：
+Using a 10-mesh panel (fixed pitch of 2.54 mm) as an example:
 
-| 丝径 | 孔径 | OA% | 承载能力 |
-|------|------|-----|--------|
-| 0.3mm | 2.24mm | 77.8% | 低 |
-| 0.5mm | 2.04mm | 64.5% | 中 |
-| 0.8mm | 1.74mm | 46.9% | 高 |
-| 1.2mm | 1.34mm | 27.8% | 极高 |
+| Wire Diameter | Aperture | OA% | Load Capacity |
+|---------------|----------|-----|---------------|
+| 0.3 mm | 2.24 mm | 77.8% | Low |
+| 0.5 mm | 2.04 mm | 64.5% | Medium |
+| 0.8 mm | 1.74 mm | 46.9% | High |
+| 1.2 mm | 1.34 mm | 27.8% | Very High |
 
-高开孔率（细丝）在重载矿山工况下极易断丝，更换频率激增，综合成本反而更高。
+In heavy-duty mining conditions, high open area panels (fine wire) are prone to frequent wire breaks, driving up replacement frequency and ultimately increasing total cost.
 
-## 正确的选型思路
+## A Rational Selection Approach
 
-**第一步**：根据物料 D90 确定孔径 w（通常取 D90 × 1.2-1.5 作为名义孔径）
+**Step 1:** Determine aperture w from the material's D90 — a nominal aperture of D90 × 1.2–1.5 is a common starting point.
 
-**第二步**：根据磨损性和冲击力选 w/d 比：
-- 细粒轻料（粮食、化工粉末）：w/d = 4-6，追求高开孔率
-- 中等矿石（砂石骨料）：w/d = 2-3，平衡开孔率与强度
-- 重载矿山（玄武岩、铁矿）：w/d = 1.5-2，优先强度
+**Step 2:** Choose the w/d ratio based on abrasiveness and impact load:
+- Fine, light materials (grain, chemical powder): w/d = 4–6, prioritize high open area
+- Medium-duty ore (sand and aggregate): w/d = 2–3, balance open area against strength
+- Heavy-duty mining (basalt, iron ore): w/d = 1.5–2, prioritize strength
 
-**第三步**：用开孔率公式验算处理能力，如不满足，考虑增加筛面面积而非减小丝径。
+**Step 3:** Verify throughput capacity using the open area formula. If capacity falls short, consider increasing screen deck area rather than reducing wire diameter.
 
-## 条缝筛的开孔率优势
+## The Open Area Advantage of Wedge Wire Screens
 
-与编织网相比，条缝筛（V 型绕丝）有效开孔率通常高 15-25%。支撑杆不参与过滤，楔形截面减少盲孔，在选煤脱水工况中同等面积处理量显著更高。
+Compared to woven mesh, wedge wire screens (V-profile wire) typically achieve 15–25% higher effective open area. The support rods play no role in filtration, and the wedge-shaped profile minimizes blinding, delivering meaningfully higher throughput per unit area in coal preparation dewatering applications.
 
