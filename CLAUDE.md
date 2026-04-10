@@ -250,8 +250,19 @@ npm run check:images
 - robots.txt
 - llms.txt
 - 页面级 JSON-LD
+- 404 详情页 `noindex, nofollow`
+- 产品 / 应用 / 知识库列表 `ItemList`
+- 产品 / 知识库详情 `BreadcrumbList`
+- 应用详情 `CollectionPage`
+- 产品详情页相关文章联动与 `subjectOf`
 
 `llms.txt` 里已经补了中英文入口，不要再只按英文默认站思路写 GEO 内容。
+
+另外专门维护了一份说明：
+
+- `sieve-website/SEO_GEO_MAINTENANCE.md`
+
+后面只要涉及知识库新增、产品页事实调整、`llms.txt` 改动，先看这份。
 
 如果后面继续加 SEO 内容，优先关注：
 
@@ -381,14 +392,17 @@ npm run check:images
 2. 在 `content/zh/knowledge/` 新建对应中文 md
 3. 保持文件名一致
 4. 补齐 frontmatter
-5. 运行 `npm run build`
+5. 如果文章和某个产品强相关，同步更新 `utils/productKnowledge.ts`
+6. 如果文章改动了公司能力 / 服务边界 / 询盘规则，同步检查 `server/routes/llms.txt.ts`
+7. 运行 `npm run build`
 
 ### 改 SEO / GEO
 
 1. 看 `useSeoMeta.ts`
 2. 看 `llms.txt.ts`
 3. 看 sitemap / robots
-4. 构建验证
+4. 看 `sieve-website/SEO_GEO_MAINTENANCE.md`
+5. 构建验证
 
 ---
 

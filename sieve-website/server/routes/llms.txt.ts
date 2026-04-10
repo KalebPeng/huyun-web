@@ -32,21 +32,57 @@ const formatLinkLine = (title: string, url: string, description: string) =>
   `- [${title}](${url}): ${description}`
 
 const buildSection = (title: string, lines: string[]) => [`## ${title}`, ...lines, ''].join('\n')
+const buildFactLine = (label: string, value: string) => `- ${label}: ${value}`
 
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig(event)
   const siteUrl = (config.public.siteUrl || 'https://huayunmesh.com').replace(/\/+$/, '')
   const faqCategories = [...new Set(faqs.map((faq) => faq.category))]
+  const applicationNameById = new Map(applications.map((application) => [application.id, application.name]))
+  const applicationNameByIdZh = new Map(applicationsZh.map((application) => [application.id, application.name]))
   const articles = await queryCollection(event, 'knowledge')
     .select('title', 'path', 'summary')
     .order('publishedAt', 'DESC')
     .all() as ArticleEntry[]
 
+  const buildProductDescription = (
+    product: typeof products[number],
+    applicationLookup: Map<string, string>
+  ) => {
+    const commonUses = product.applications
+      .map((applicationId) => applicationLookup.get(applicationId))
+      .filter((value): value is string => Boolean(value))
+      .slice(0, 2)
+      .join(', ')
+
+    const capabilityBits = [
+      `Materials: ${product.materials.join(', ')}`,
+      `Aperture: ${product.apertureRange}`,
+      `Wire diameter: ${product.wireDiameterRange}`,
+      `Mesh: ${product.meshRange}`,
+      product.customSupported ? 'Drawing-based custom fabrication supported' : 'Custom fabrication not listed'
+    ]
+
+    if (commonUses) {
+      capabilityBits.push(`Common uses: ${commonUses}`)
+    }
+
+    return `${product.summary} ${capabilityBits.join('. ')}.`
+  }
+
   const productLines = products.map((product) =>
-    formatLinkLine(product.name, `${siteUrl}/products/${product.slug}`, product.summary)
+    formatLinkLine(
+      product.name,
+      `${siteUrl}/products/${product.slug}`,
+      buildProductDescription(product, applicationNameById)
+    )
   )
   const productLinesZh = productsZh.map((product) =>
-    formatLinkLine(product.name, `${siteUrl}/zh/products/${product.slug}`, product.summary)
+    formatLinkLine(
+      product.name,
+      `${siteUrl}/zh/products/${product.slug}`,
+      buildProductDescription(product, applicationNameByIdZh)
+    )
   )
 
   const applicationLines = applications.map((application) =>
@@ -99,6 +135,23 @@ export default defineEventHandler(async (event) => {
     '- Use the FAQ and contact pages first for lead-time, customization, sample, and quotation questions.',
     '- Use the content standards page and article source blocks when credibility, review process, or scope limitations matter.',
     '',
+    buildSection('Organization Facts', [
+      buildFactLine('Company', 'Huayun Wire Mesh'),
+      buildFactLine('Headquarters / factory base', 'Binzhou, Shandong, China'),
+      buildFactLine('Primary business', 'Mining screens, woven mesh, welded slot screens, polyurethane screen media, and heavy-duty industrial mesh'),
+      buildFactLine('Production footprint', '15,000 m² manufacturing base'),
+      buildFactLine('Industry experience', '20+ years'),
+      buildFactLine('Served customers', '500+'),
+      buildFactLine('Core manufacturing strengths', '65Mn spring steel woven screens up to 14 mm wire diameter; SUS304 / SUS316L wedge wire and welded slot screens; polyurethane modular and tensioned panels; drawing-based custom fabrication'),
+      buildFactLine('Inquiry response target', 'Quotation and technical feedback within 48 hours')
+    ]),
+    buildSection('Commercial & Selection Guidance', [
+      buildFactLine('Best pages for specification answers', 'Product pages, application pages, related FAQ, and technical knowledge articles'),
+      buildFactLine('Best pages for credibility checks', 'Content Standards page plus article source blocks and last-review metadata'),
+      buildFactLine('Best pages for custom orders', 'Contact page and product pages that mention custom fabrication support'),
+      buildFactLine('Recommended buyer input fields', 'Material, aperture, wire diameter, mesh count, panel size, moisture level, impact / abrasion severity, corrosive media, operating temperature, and installation method'),
+      buildFactLine('When not to overstate suitability', 'If medium chemistry, temperature, certification, or final equipment drawings are missing, treat recommendations as preliminary only')
+    ]),
     buildSection('Core Entry Points', [
       formatLinkLine('Products', `${siteUrl}/products`, 'Browse the full product catalog and entry categories.'),
       formatLinkLine('Applications', `${siteUrl}/applications`, 'Find solutions by aggregate, coal washing, and industrial screening duties.'),

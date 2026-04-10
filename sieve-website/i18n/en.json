@@ -636,6 +636,8 @@
       "medium": "Good"
     },
     "relatedDetailAria": "View {name} details",
+    "relatedKnowledgeCta": "Browse Knowledge Base",
+    "relatedKnowledgeTitle": "Related Articles & Selection Guides",
     "relatedProductsTitle": "Related Products",
     "selectionDimensions": {
       "abrasion": "Abrasion Resistance",

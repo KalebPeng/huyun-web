@@ -123,12 +123,17 @@
             />
 
             <div class="mt-6 flex flex-wrap gap-2">
-              <Badge
+              <NuxtLink
                 v-for="application in applicationBadges"
                 :key="application.id"
-                :label="application.name"
-                variant="primary"
-              />
+                :to="localePath(`/applications/${application.slug}`)"
+                class="rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+              >
+                <Badge
+                  :label="application.name"
+                  variant="primary"
+                />
+              </NuxtLink>
             </div>
 
             <div class="mt-8 border-t border-brand-line pt-6">
@@ -278,6 +283,37 @@
         <div class="section-shell">
           <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
             <SectionHeading
+              :eyebrow="$t('nav.knowledge')"
+              :title="$t('productDetail.relatedKnowledgeTitle')"
+            />
+            <NuxtLink :to="localePath('/knowledge')" class="mono-meta text-primary transition-colors hover:text-accent">
+              {{ $t('productDetail.relatedKnowledgeCta') }}
+            </NuxtLink>
+          </div>
+
+          <div class="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            <NuxtLink
+              v-for="article in relatedKnowledgeArticles"
+              :key="article.path"
+              :to="article.path"
+              class="surface-card-inset group p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/20 hover:shadow-soft"
+            >
+              <p class="mono-meta text-primary">{{ article.category }}</p>
+              <h3 class="mt-4 text-lg font-semibold leading-7 text-brand-ink transition-colors group-hover:text-primary">
+                {{ article.title }}
+              </h3>
+              <p class="mt-3 text-sm leading-7 text-brand-muted">
+                {{ article.summary }}
+              </p>
+            </NuxtLink>
+          </div>
+        </div>
+      </section>
+
+      <section class="page-section pt-0">
+        <div class="section-shell">
+          <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+            <SectionHeading
               :eyebrow="$t('productDetail.relatedProductsTitle')"
               :title="$t('productDetail.relatedProductsTitle')"
             />
@@ -328,7 +364,10 @@ import PageHero from '~/components/common/PageHero.vue'
 import SectionHeading from '~/components/common/SectionHeading.vue'
 import ProductCard from '~/components/product/ProductCard.vue'
 import MeshCalculator from '~/components/tools/MeshCalculator.vue'
+import { useArticles } from '~/composables/useArticles'
 import { usePageSeoMeta } from '~/composables/useSeoMeta'
+import { getRelatedKnowledgeSlugs } from '~~/utils/productKnowledge'
+import type { Article } from '~~/types/article'
 import type { FAQ, Product } from '~~/types'
 
 interface SpecificationRow {
@@ -343,16 +382,17 @@ interface QuickSpec {
 
 const route = useRoute()
 const runtimeConfig = useRuntimeConfig()
+const siteUrl = runtimeConfig.public.siteUrl.replace(/\/+$/, '')
 const localePath = useLocalePath()
 const { t, locale } = useI18n()
 const { getProductBySlug, getProductsByIds, products } = useProducts()
 const { getApplicationsByIds } = useApplications()
 const { getFaqsByIds, getFaqsByProductId } = useFaq()
+const { getAllArticles } = useArticles()
 
 const imageFailed = ref(false)
 
 const toAbsoluteUrl = (value: string) => {
-  const siteUrl = runtimeConfig.public.siteUrl.replace(/\/+$/, '')
   return value.startsWith('http') ? value : `${siteUrl}${value.startsWith('/') ? value : `/${value}`}`
 }
 
@@ -522,6 +562,28 @@ const relatedProducts = computed<Product[]>(() => {
   return [...preferred, ...fallback].slice(0, 4)
 })
 
+const { data: relatedKnowledgeData } = await useAsyncData(
+  () => `product-knowledge:${locale.value}:${slug.value ?? 'unknown'}`,
+  async () => {
+    if (!product.value) {
+      return []
+    }
+
+    const articles = await getAllArticles()
+    const articleBySlug = new Map(articles.map((article) => [article.slug, article]))
+
+    return getRelatedKnowledgeSlugs(product.value.slug)
+      .map((articleSlug) => articleBySlug.get(articleSlug))
+      .filter((article): article is Article => Boolean(article))
+      .slice(0, 3)
+  },
+  {
+    watch: [slug, locale]
+  }
+)
+
+const relatedKnowledgeArticles = computed(() => relatedKnowledgeData.value || [])
+
 const productJsonLd = computed(() => {
   if (!product.value) {
     return null
@@ -576,6 +638,12 @@ const productJsonLd = computed(() => {
         '@id': `${runtimeConfig.public.siteUrl}/products/${relId.replace('product-', '')}`
       })) ?? [])
     ],
+    subjectOf: relatedKnowledgeArticles.value.map((article) => ({
+      '@type': 'TechArticle',
+      headline: article.title,
+      url: `${siteUrl}${article.path}`,
+      description: article.summary
+    })),
     manufacturer: {
       '@type': 'Organization',
       name: t('brand.name'),

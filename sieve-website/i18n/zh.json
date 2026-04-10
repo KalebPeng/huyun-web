@@ -636,6 +636,8 @@
       "medium": "良好"
     },
     "relatedDetailAria": "查看 {name} 详情",
+    "relatedKnowledgeCta": "查看知识库",
+    "relatedKnowledgeTitle": "相关文章与选型指南",
     "relatedProductsTitle": "关联产品推荐",
     "selectionDimensions": {
       "abrasion": "耐磨性",
