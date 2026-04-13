@@ -20,6 +20,7 @@ const PRODUCT_KNOWLEDGE_MAP: Record<string, string[]> = {
     'iso9044-wire-mesh-selection-guide'
   ],
   'mining-welded-screen': [
+    'heat-treatment-of-mining-welded-screen-panels',
     'welded-screen-johnson-screen-principle',
     'opening-area-calculation-and-screen-efficiency',
     'iso9044-wire-mesh-selection-guide'
